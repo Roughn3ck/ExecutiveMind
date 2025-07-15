@@ -1,0 +1,13 @@
+# --- Apache Rewrite Engine ---
+
+# Enable the rewrite engine
+RewriteEngine On
+
+# --- Redirect Root to Subdirectory ---
+
+# Condition: Check if the request is for the main domain (not a subfolder)
+RewriteCond %{REQUEST_URI} ^/$
+
+# Rule: Silently rewrite the request to the /agent/ subfolder
+# The [L] flag means "Last Rule" - stop processing after this.
+RewriteRule ^(.*)$ /agent/ [L]

@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '-t'
+  - 'australia-southeast1-docker.pkg.dev/executivemind/process-contact-image/nexus-agent:sqlite'
+  - '.'
+
+images:
+- 'australia-southeast1-docker.pkg.dev/executivemind/process-contact-image/nexus-agent:sqlite'

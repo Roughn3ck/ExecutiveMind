@@ -1,0 +1,2 @@
+## 🎥 Video Generation:
+Hero video: From this introductory shot fly out the window surrounded in a blue stream of data across the city with the background becoming warmer and sunnier, cut to people looking up at the sky and pointing morphing into consumers in a shopping centre, concert or gathering of people, then to a factory data-centre and end with a colleagues in a boardroom with a sophisticated look like the opening image where the boardmembers are sat around a wooden boardroom table in beautiful leather seats discussing AI.
