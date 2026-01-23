@@ -1,66 +1,101 @@
 import ftplib
 import os
 
-# --- Configuration: Replace with your actual details! ---
-FTP_HOST = "ftp.executivemind.io"  # 👈 Your FTP Host
-FTP_USER = "agent@executivemind.io"     # 👈 Your FTP Username
-FTP_PASS = "3x3cut1veM1nd"     # 👈 Your FTP Password
-REMOTE_PATH = "agent"      # 👈 The folder on the server (usually public_html)
+# --- Configuration ---
+FTP_HOST = "ftp.executivemind.io"
+FTP_USER = "agent@executivemind.io"
+FTP_PASS = "3x3cut1veM1nd"
+# No remote path needed, as the login defaults to the correct directory.
 
-# --- The Function our Agent will use ---
-def upload_file_to_server(local_file_path, remote_file_name):
+# --- File Deployment Plan ---
+# Files to be placed in the ROOT (public_html)
+ROOT_FILES = [
+    "articles.html",
+    "join.html"
+]
+# Directories to be placed in the ROOT (public_html)
+ROOT_DIRS = [
+    "articles",
+    "assets"
+]
+# Files to be placed in the AGENT subfolder (public_html/agent)
+AGENT_FILES = [
+    "index.html"
+]
+
+# --- The Main Agent Function ---
+def upload_website():
     """
-    Connects to the FTP server using a secure TLS connection and uploads a single file.
-    
-    Args:
-        local_file_path (str): The full path to the local file to upload.
-        remote_file_name (str): The name the file should have on the server.
+    Connects to the FTP server once and uploads all specified files and directories.
     """
     try:
-        # Check if the local file exists
-        if not os.path.exists(local_file_path):
-            print(f"❌ Error: Local file not found at '{local_file_path}'")
-            return
-
-        # Use FTP_TLS for a secure connection
         ftp = ftplib.FTP_TLS(FTP_HOST)
-        
-        # Log in (this happens over the secure control connection)
         ftp.login(FTP_USER, FTP_PASS)
-        print("✅ Secure control connection established and logged in.")
-        
-        # Switch to secure data connection
-        # This encrypts the file content during transfer
+        print("✅ Secure connection established.")
         ftp.prot_p()
-        print("✅ Data connection is now secure.")
-            
-        # Change to the correct remote directory
-        ftp.cwd(REMOTE_PATH)
-        print(f"✅ Changed directory to '{REMOTE_PATH}'.")
-            
-        # Open the local file in binary read mode
-        with open(local_file_path, 'rb') as file:
-            # Upload the file
-            ftp.storbinary(f'STOR {remote_file_name}', file)
-            
-        print(f"🚀 Successfully uploaded '{local_file_path}' to '{remote_file_name}' on the server!")
+        
+        # --- 1. DEPLOY TO THE ROOT (public_html) ---
+        print("✅ Operating from default root directory (public_html).")
 
-        # Quit the FTP session
+        # Upload individual files to the root
+        for filename in ROOT_FILES:
+            if os.path.exists(filename):
+                print(f"  Uploading to root: {filename}...")
+                with open(filename, 'rb') as file:
+                    ftp.storbinary(f'STOR {filename}', file)
+                print(f"  🚀 Success: '{filename}' uploaded.")
+            else:
+                print(f"  ❌ Warning: Local file '{filename}' not found. Skipping.")
+        
+        # Upload contents of directories to the root
+        for dirname in ROOT_DIRS:
+            if os.path.isdir(dirname):
+                print(f"\n  Processing directory: {dirname}/")
+                # Create remote directory if it doesn't exist
+                if dirname not in ftp.nlst():
+                    ftp.mkd(dirname)
+                    print(f"  🛠 Created remote directory '{dirname}'.")
+                
+                # Upload files within the directory
+                for item in os.listdir(dirname):
+                    local_path = os.path.join(dirname, item)
+                    if os.path.isfile(local_path):
+                        remote_filepath = f"{dirname}/{item}"
+                        print(f"    Uploading to {remote_filepath}...")
+                        with open(local_path, 'rb') as file:
+                            ftp.storbinary(f'STOR {remote_filepath}', file)
+                        print(f"    🚀 Success.")
+            else:
+                print(f"  ❌ Warning: Local directory '{dirname}' not found. Skipping.")
+
+        # --- 2. DEPLOY TO THE AGENT SUBFOLDER ---
+        print(f"\n✅ Changing to AGENT subfolder...")
+        # Check for and create the 'agent' directory if needed
+        if 'agent' not in ftp.nlst():
+            ftp.mkd('agent')
+            print("  🛠 Created remote directory 'agent'.")
+        ftp.cwd('agent')
+        print("✅ Now in 'public_html/agent'.")
+
+        for filename in AGENT_FILES:
+            if os.path.exists(filename):
+                print(f"  Uploading to agent/: {filename}...")
+                with open(filename, 'rb') as file:
+                    ftp.storbinary(f'STOR {filename}', file)
+                print(f"  🚀 Success: '{filename}' uploaded.")
+            else:
+                print(f"  ❌ Warning: Local file '{filename}' not found. Skipping.")
+
         ftp.quit()
-        print("✅ FTP session closed.")
+        print("\n✅ All operations complete. FTP session closed.")
 
     except ftplib.all_errors as e:
         print(f"❌ FTP Error: {e}")
     except Exception as e:
         print(f"❌ An unexpected error occurred: {e}")
 
-# --- This part is for testing the script directly ---
+# --- This part runs the main function ---
 if __name__ == "__main__":
-    print("--- Running Secure FTP Uploader Test ---")
-    
-    local_file_to_upload = "index.html"
-    remote_filename = "index.html"
-    
-    upload_file_to_server(local_file_to_upload, remote_filename)
-    
-    print("--- Test Complete ---")
+    print("--- Initializing Executive Mind Multi-Directory Upload Protocol ---")
+    upload_website()
+    print("--- Protocol Complete ---")

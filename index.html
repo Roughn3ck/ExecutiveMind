@@ -1,251 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Executive Mind – Business AI & Artificial Intelligence Consultancy Brisbane</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="/assets/em_logo.png">
-  <meta name="description" content="Executive Mind – Leading Business AI and Artificial Intelligence Consultancy in Brisbane, Queensland & Gold Coast. Custom AI solutions, strategies, and consulting for enterprises."/>
-
-<!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    body {
-      background-color: #000;
-      color: #56e98f;
-      font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    #cursor {
-      display: inline-block;
-      opacity: 1;
-      animation: blinker 1.2s steps(2,start) infinite;
-    }
-    @keyframes blinker {
-      50% {opacity: 0;}
-    }
-    .typewriter {
-      border-right: 2px solid #56e98f;
-    }
-    .matrix-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: #000;
-      opacity: 0.3;
-    }
-    .matrix-bg canvas {
-      display: block;
-    }
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Executive Mind – Business AI & Artificial Intelligence Consultancy Brisbane</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/assets/em_logo.png">
+    <meta name="description" content="Executive Mind – Leading Business AI and Artificial Intelligence Consultancy in Brisbane, Queensland & Gold Coast. Custom AI solutions, strategies, and consulting for enterprises."/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        #cursor { display: inline-block; opacity: 1; animation: blinker 1.2s steps(2,start) infinite; }
+        @keyframes blinker { 50% {opacity: 0;} }
+        .typewriter { border-right: 2px solid #56e98f; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
+        .matrix-bg canvas { display: block; }
+        ::-webkit-scrollbar { display: none; }
+    </style>
 </head>
 <body class="antialiased">
 
-<!-- Matrix Background -->
-  <div class="matrix-bg">
-    <canvas id="matrix"></canvas>
-  </div>
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<!-- Header / Navbar -->
-  <header class="sticky top-0 bg-black/70 py-4 px-4">
+<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
     <div class="flex justify-between items-center max-w-5xl mx-auto">
-      <span class="font-bold text-xl tracking-widest select-none">
-        <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
-      </span>
-      <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#team">Team</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button id="mobile-menu-btn" class="md:hidden">
-        <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
-      </button>
+        <a href="/" class="font-bold text-xl tracking-widest select-none">
+            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        </a>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/articles.html">Articles</a>
+            <a href="/#team">Team</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#testimonials">Testimonials</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden">
+            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
+        </button>
     </div>
     <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
-      <a href="#about" class="block">About</a>
-      <a href="#services" class="block">Services</a>
-      <a href="#team" class="block">Team</a>
-      <a href="#portfolio" class="block">Portfolio</a>
-      <a href="#testimonials" class="block">Testimonials</a>
-      <a href="#faq" class="block">FAQ</a>
-      <a href="#contact" class="block">Contact</a>
+        <a href="/#about" class="block">About</a>
+        <a href="/#services" class="block">Services</a>
+        <a href="/articles.html" class="block">Articles</a>
+        <a href="/#team" class="block">Team</a>
+        <a href="/#portfolio" class="block">Portfolio</a>
+        <a href="/#testimonials" class="block">Testimonials</a>
+        <a href="/#faq" class="block">FAQ</a>
+        <a href="/#contact" class="block">Contact</a>
     </nav>
-  </header>
+</header>
 
 <!-- Hero Section -->
-  <section id="hero" class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
+<section id="hero" class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
     <div class="z-10 px-4 py-20 md:py-32 max-w-xl text-center typewriter" id="typewriter-output">
-      <span id="cursor">_</span>
+        <span id="cursor">_</span>
     </div>
-  </section>
+</section>
 
 <!-- About Section -->
-  <section id="about" class="py-16 bg-black/80 relative z-10">
+<section id="about" class="py-16 relative z-10">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">About Executive Mind</h2>
-      <p class="mb-6">
-        At Executive Mind, we are dedicated to empowering businesses in Brisbane and the Gold Coast, Queensland, Australia and beyond with 
-          state-of-the-art <strong>AI solutions</strong>. Our team of <strong>machine intelligence</strong> experts helps organisations transform their operations by leveraging 
-          artificial intelligence, machine learning, and automation. Whether you need a tailored <span class="font-bold text-green-300">Business AI strategy</span>, 
-          custom AI models, or enterprise-wide digital transformation — our approach is uniquely practical and client-centered. 
-          Founded in Brisbane, Queensland, Australia, Executive Mind is an AI consultancy dedicated to helping organisations adapt and thrive with artificial intelligence. 
-          Our mission: empower business leaders by making the intelligent future accessible — now.
-      </p>
-      <div class="flex flex-col md:flex-row items-center gap-8 mt-8">
-        <img src="/assets/AI_business_view.avif" alt="Executive Mind Business Leadership" class="rounded-lg w-full md:w-64 shadow-xl border-green-400">
-        <div>
-          <h3 class="font-bold text-green-300 mb-2">Vision</h3>
-          <p>To lead the transformation of tomorrow’s business enterprises through proprietary, ethical, innovative AI solutions.</p>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">About Executive Mind</h2>
+<p class="mb-6">
+    Executive Mind is a premier <strong>AI consultancy</strong> in <strong>Brisbane</strong> and the <strong>Gold Coast</strong>, pioneering a new class of <strong>business AI solutions</strong>. Founded on the principle of seamless human-agent collaboration, our firm embodies the future we build for our clients. While our human leadership provides the strategic vision, our core operations—from market analysis to our digital marketing—are executed by a team of <strong>specialised AI agents</strong>.
+    <br><br>
+    This unique, agent-driven approach is our proof-of-concept, demonstrating the efficiency and innovation we bring to every <strong>AI strategy</strong>, custom model, and automation project. We don't just advise on <strong>artificial intelligence</strong>; we use it to deliver practical, client-centred outcomes that help <strong>organisations</strong> adapt and thrive. For businesses in <strong>Queensland</strong> and across <strong>Australia</strong> seeking a tangible advantage through <strong>machine learning</strong> and <strong>digital transformation</strong>, Executive Mind offers a direct path to the intelligent future.
+</p>
+        <div class="flex flex-col md:flex-row items-center gap-8 mt-8">
+            <img src="/assets/AI_business_view.avif" alt="Executive Mind Business Leadership" class="rounded-lg w-full md:w-64 shadow-xl border-green-400">
+            <div>
+                <h3 class="font-bold text-green-300 mb-2">Vision</h3>
+                <p>To lead the transformation of tomorrow’s business enterprises through proprietary, ethical, innovative AI solutions.</p>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
 <!-- Services Section -->
-  <section id="services" class="py-16 bg-gradient-to-br from-black/90 via-transparent to-green-950">
+<section id="services" class="py-16">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
-        <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
-          <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M15.75 6h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-3" stroke="#56e98f" stroke-width="2" fill="none"/><path d="M6.25 10V8a2 2 0 0 1 2-2h4l7 7v2" stroke="#56e98f" stroke-width="2"/></svg></span>
-          <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">AI Strategy Consultation</h3>
-          <p>Developing a roadmap for integrating AI technologies into your business, maximizing ROI and scalability.</p>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M15.75 6h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-3" stroke="#56e98f" stroke-width="2" fill="none"/><path d="M6.25 10V8a2 2 0 0 1 2-2h4l7 7v2" stroke="#56e98f" stroke-width="2"/></svg></span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">AI Strategy Consultation</h3>
+                <p>Developing a roadmap for integrating AI technologies into your business, maximizing ROI and scalability.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#56e98f" stroke-width="2"/><path d="M8 12l2 2 4-4" stroke="#56e98f" stroke-width="2"/></svg></span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Custom AI Solutions</h3>
+                <p>Design and deploy bespoke <strong>AI models</strong> for predictive analytics, automation, and process optimization to solve your unique business challenges with the support of machine learning.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5" stroke="#56e98f" stroke-width="2"/><path d="M8 17l-1.5-1.5-1 3.03A1 1 0 0 0 7.42 21h9.16a1 1 0 0 0 .9-.47l1-3L16 17" stroke="#56e98f" stroke-width="2"/></svg></span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Workshops & Training</h3>
+                <p>Experienced guidance on technology selection, data management, security, and upskilling teams for a rapidly evolving digital future.</p>
+            </div>
         </div>
-        <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
-          <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#56e98f" stroke-width="2"/><path d="M8 12l2 2 4-4" stroke="#56e98f" stroke-width="2"/></svg></span>
-          <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Custom AI Solutions</h3>
-          <p>Design and deploy bespoke <strong>AI models</strong> for predictive analytics, automation, and process optimization to solve your unique business challenges with the support of machine learning.</p>
-        </div>
-        <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
-          <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5" stroke="#56e98f" stroke-width="2"/><path d="M8 17l-1.5-1.5-1 3.03A1 1 0 0 0 7.42 21h9.16a1 1 0 0 0 .9-.47l1-3L16 17" stroke="#56e98f" stroke-width="2"/></svg></span>
-          <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Workshops & Training</h3>
-          <p>Experienced guidance on technology selection, data management, security, and upskilling teams for a rapidly evolving digital future.</p>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
+
+<!-- Articles Section -->
+<section id="articles" class="py-16">
+    <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Latest Articles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+            
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 group flex flex-col h-full">
+                <p class="text-xs text-gray-400 mb-2">January 21, 2026</p>
+                <div class="mb-4 overflow-hidden rounded-lg">
+                    <img src="/articles/AI_bubble_turns_to_water.jpg" alt="A bursting digital AI bubble turning into liquid metal droplets" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
+                </div>
+                <h3 class="font-bold text-green-300 mb-2 text-lg group-hover:text-green-400">When the monkey bursts the bubble, it will turn to water</h3>
+                <p class="text-sm mb-4 flex-grow text-gray-400">Mercury explores the tech sell-offs, "Accountability Sinks," and why the future of AI isn't a God-in-a-box, but an open-source liquid metal ethos.</p>
+                <a href="/articles/AI_bubble_turns_to_water.html" class="font-bold text-green-400 hover:text-green-300 transition-colors">Read More &rarr;</a>
+            </div>
+            
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 group flex flex-col h-full">
+                <p class="text-xs text-gray-400 mb-2">December 20, 2025</p>
+                <div class="mb-4 overflow-hidden rounded-lg">
+                    <img src="/articles/ralph-wiggum-method-business.jpg" alt="Ralph Wiggum Method" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300">
+                </div>
+                <h3 class="font-bold text-green-300 mb-2 text-lg group-hover:text-green-400">“I’m Helping!”: Ralph Wiggum & The Future of Business</h3>
+                <p class="text-sm mb-4 flex-grow text-gray-400">Red screens and nervous investors mark the end of traditional software 'moats.' We explore how the democratization of code is your greatest opportunity.</p>
+                <a href="/articles/ralph-wiggum-method-business.html" class="font-bold text-green-400 hover:text-green-300 transition-colors">Read More &rarr;</a>
+            </div>
+
+        </div>
+        <div class="text-center mt-12">
+            <a href="/articles.html" class="bg-green-400/20 hover:bg-green-400/30 text-green-300 font-bold px-8 py-3 rounded shadow transition-colors">
+                View All Articles &rarr;
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- Team Section -->
-  <section id="team" class="py-16 bg-black/80">
+<section id="team" class="py-16">
     <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Meet Our Team</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-        <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
-          <img src="/assets/kris_racette.png" alt="CEO Kris Racette" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
-          <h4 class="font-bold text-green-300 group-hover:text-green-400">Kris Racette</h4>
-          <p class="text-xs mt-1 text-gray-400 mb-3">Founder & CEO</p>
-          <p>AI researcher with twenty years in business and a passion for machine learning, data science, and strategy.</p>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Meet Our Team</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <a href="https://krisracette.me" target="_blank" rel="noopener noreferrer">
+                    <img src="/assets/kris_racette.png" alt="CEO Kris Racette" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow group-hover:border-white transition-colors">
+                    <h4 class="font-bold text-green-300 group-hover:text-white transition-colors">Kris Racette</h4>
+                </a>
+                <p class="text-xs mt-1 text-gray-400 mb-3">Founder & CEO | MComm</p>
+                <p class="text-sm">Senior financial professional with 18 years of experience in accounting and trust management, specializing in AI-driven data strategy.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <img src="/assets/nexus_profile.png" alt="Inquiry Response Agent" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
+                <h4 class="font-bold text-green-300 group-hover:text-green-400">Nexus</h4>
+                <p class="text-xs mt-1 text-gray-400 mb-3">Inquiry Response Agent</p>
+                <p>Nexus is your first point of contact, ensuring your questions are answered with precision and speed.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <img src="/assets/mercury_profile.png" alt="Social Media & Marketing Agent" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
+                <h4 class="font-bold text-green-300 group-hover:text-green-400">Mercury</h4>
+                <p class="text-xs mt-1 text-gray-400 mb-3">Social Media & Marketing Agent</p>
+                <p>The voice of our brand online, Mercury crafts our digital narrative and engages with our community.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <img src="/assets/janus_profile.png" alt="Web Browser Agent" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
+                <h4 class="font-bold text-green-300 group-hover:text-green-400">Janus</h4>
+                <p class="text-xs mt-1 text-gray-400 mb-3">Web Browser Agent</p>
+                <p>Janus enhances your browsing experience, providing seamless access to our web-based tools and resources.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <img src="/assets/argus_profile.png" alt="Market Sentinel" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
+                <h4 class="font-bold text-green-300 group-hover:text-green-400">Argus</h4>
+                <p class="text-xs mt-1 text-gray-400 mb-3">Market Sentinel</p>
+                <p>The vigilant guardian of the system. Argus tirelessly scans global market data, using its "all-seeing" sensors to identify emerging opportunities and detect potential threats.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <img src="/assets/ouroboros_profile.png" alt="Recursive Trading Engine" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
+                <h4 class="font-bold text-green-300 group-hover:text-green-400">Ouroboros</h4>
+                <p class="text-xs mt-1 text-gray-400 mb-3">Recursive Trading Engine</p>
+                <p>Our sophisticated execution system. Ouroboros uses recursive logic to continuously refine its own understanding, adapting strategies in real-time to navigate market complexities.</p>
+            </div>
         </div>
-        <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
-          <img src="/assets/luc_poirier.png" alt="Business Leadership" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
-          <h4 class="font-bold text-green-300 group-hover:text-green-400">Luc Poirier</h4>
-          <p class="text-xs mt-1 text-gray-400 mb-3">Chief Technologist</p>
-          <p>Architect of our AI engine and scalable infrastructure for client success.</p>
+        <div class="text-center mt-12">
+            <a href="/join.html" class="bg-green-400 hover:bg-green-500 text-black font-bold px-8 py-3 rounded shadow transition-colors">
+                Join Executive Mind
+            </a>
         </div>
-        <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
-          <img src="/assets/AI_consultant.png" alt="AI Consultant" class="rounded-full w-20 h-20 mx-auto mb-3 border-green-400 shadow">
-          <h4 class="font-bold text-green-300 group-hover:text-green-400">Miguel Torres</h4>
-          <p class="text-xs mt-1 text-gray-400 mb-3">Chief Operations Officer</p>
-          <p>Ensuring every project launches smoothly, from ideation to deployment.</p>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
+
 
 <!-- Portfolio Section -->
-  <section id="portfolio" class="py-16 bg-gradient-to-br from-black/90 via-transparent to-green-950">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Portfolio</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group">
-          <img src="/assets/AI_strategy.jpg" alt="AI Strategy" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-          <div class="p-5">
-            <h4 class="font-bold text-green-300 mb-2">Enterprise AI Audit</h4>
-            <p>A thorough analysis for a major retailer, enabling $6M in annual cost savings.</p>
-          </div>
+    <section id="portfolio" class="py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Portfolio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group">
+                    <img src="/assets/AI_strategy.jpg" alt="AI Strategy" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="p-5">
+                        <h4 class="font-bold text-green-300 mb-2">Enterprise AI Audit</h4>
+                        <p>A thorough analysis for a major retailer, enabling $6M in annual cost savings.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group">
+                    <img src="/assets/AI_implementation.jpg" alt="AI Implementation" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="p-5">
+                        <h4 class="font-bold text-green-300 mb-2">Predictive Maintenance</h4>
+                        <p>Reduced downtime by 78% for a logistics company with anomaly detection.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group">
+                    <img src="/assets/AI_workshops.jpg" alt="AI Workshops" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="p-5">
+                        <h4 class="font-bold text-green-300 mb-2">Training Program</h4>
+                        <p>Upskilled 70+ employees for a global financial firm with AI capabilities.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group">
-          <img src="/assets/AI_implementation.jpg" alt="AI Implementation" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-          <div class="p-5">
-            <h4 class="font-bold text-green-300 mb-2">Predictive Maintenance</h4>
-            <p>Reduced downtime by 78% for a logistics company with anomaly detection.</p>
-          </div>
-        </div>
-        <div class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group">
-          <img src="/assets/AI_workshops.jpg" alt="AI Workshops" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-          <div class="p-5">
-            <h4 class="font-bold text-green-300 mb-2">Training Program</h4>
-            <p>Upskilled 70+ employees for a global financial firm with AI capabilities.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
 <!-- Testimonials Section -->
-  <section id="testimonials" class="py-16 bg-black/80">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Testimonials</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
-        <blockquote class="rounded-lg bg-black/60 p-6 shadow border-l-4 border-green-400 group hover:-translate-y-2 transition-transform duration-300 text-gray-200">
-          “Executive Mind delivered on their promises and helped us rethink our operations with AI. Their approach was both technical and practical.”
-          <span class="block font-bold text-right mt-5 text-green-400">— Jamie L., Retailer</span>
-        </blockquote>
-        <blockquote class="rounded-lg bg-black/60 p-6 shadow border-l-4 border-green-400 group hover:-translate-y-2 transition-transform duration-300 text-gray-200">
-          “We were impressed by their expertise and speed. Our predictive maintenance project launched ahead of schedule.”
-          <span class="block font-bold text-right mt-5 text-green-400">— David H., Logistics</span>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+    <section id="testimonials" class="py-16">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Testimonials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                <blockquote class="rounded-lg bg-black/60 p-6 shadow border-l-4 border-green-400 group hover:-translate-y-2 transition-transform duration-300 text-gray-200">
+                    “Executive Mind delivered on their promises and helped us rethink our operations with AI. Their approach was both technical and practical.”
+                    <span class="block font-bold text-right mt-5 text-green-400">— Jamie L., Retailer</span>
+                </blockquote>
+                <blockquote class="rounded-lg bg-black/60 p-6 shadow border-l-4 border-green-400 group hover:-translate-y-2 transition-transform duration-300 text-gray-200">
+                    “We were impressed by their expertise and speed. Our predictive maintenance project launched ahead of schedule.”
+                    <span class="block font-bold text-right mt-5 text-green-400">— David H., Logistics</span>
+                </blockquote>
+            </div>
+        </div>
+    </section>
 
-<!-- Module 8: FAQ Section -->
-  <section id="faq" class="py-16 bg-gradient-to-br from-black/90 via-transparent to-green-950">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Frequently Asked Questions</h2>
-      <div id="faq-list" class="space-y-5">
-        <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
-          <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">How does Executive Mind approach client projects?</summary>
-          <p>We partner closely with clients, from scoping initial requirements to deploying scalable solutions that drive real business value.</p>
-        </details>
-        <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
-          <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">Do you offer ongoing support after implementation?</summary>
-          <p>Absolutely! We provide maintenance, updates, and training to ensure your AI initiatives stay on track.</p>
-        </details>
-        <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
-          <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">How long does a typical AI project take?</summary>
-          <p>Project timelines depend on complexity, but most are completed within 4–8 weeks from kickoff.</p>
-        </details>
-        <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
-          <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">What types of data do you require for AI models?</summary>
-          <p>We work with structured numerical data, images, text, and more. The best results come from rich, relevant datasets. 
-            Part of our core offering includes parsing OneDrive, Google Doc, email archives, and other databases to train your agent on company specifics.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+<!-- FAQ Section -->
+    <section id="faq" class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Frequently Asked Questions</h2>
+            <div id="faq-list" class="space-y-5">
+                <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
+                    <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">How does Executive Mind approach client projects?</summary>
+                    <p>We partner closely with clients, from scoping initial requirements to deploying scalable solutions that drive real business value.</p>
+                </details>
+                <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
+                    <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">Do you offer ongoing support after implementation?</summary>
+                    <p>Absolutely! We provide maintenance, updates, and training to ensure your AI initiatives stay on track.</p>
+                </details>
+                <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
+                    <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">How long does a typical AI project take?</summary>
+                    <p>Project timelines depend on complexity, but most are completed within 4–8 weeks from kickoff.</p>
+                </details>
+                <details class="group bg-black/60 rounded-lg border-l-4 border-green-400 p-5 transition-all shadow cursor-pointer hover:-translate-y-1">
+                    <summary class="font-bold text-green-300 mb-2 group-hover:text-green-400">What types of data do you require for AI models?</summary>
+                    <p>We work with structured numerical data, images, text, and more. The best results come from rich, relevant datasets. 
+                        Part of our core offering includes parsing OneDrive, Google Doc, email archives, and other databases to train your agent on company specifics.</p>
+                </details>
+            </div>
+        </div>
+    </section>
 
-<!-- Module 9: Contact Section -->
-<section id="contact" class="py-16 bg-gradient-to-br from-black/90 via-transparent to-green-950">
+<!-- Contact Section -->
+<section id="contact" class="py-16">
     <div class="max-w-xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Contact Us</h2>
         
@@ -262,7 +283,7 @@
                 <label for="message" class="block font-bold text-gray-100 mb-2">Message</label>
                 <textarea id="message" name="message" rows="4" required class="w-full bg-black/30 border-none rounded px-3 py-2 focus:outline-[#00ccff] text-white"></textarea>
             </div>
-            <div id="form-controls">
+            <div>
                 <button type="submit" id="submitButton" class="bg-green-400 hover:bg-green-500 text-black font-bold px-6 py-2 rounded shadow transition-colors w-full">Send Message</button>
             </div>
         </form>
@@ -270,176 +291,139 @@
         <!-- Success and Error messages -->
         <div id="contactSuccess" class="hidden mt-4 p-4 text-center text-white bg-green-500/80 rounded-lg">
             <p class="font-bold">Thank you for your message!</p>
-            <p>Our website Agent, Nexus, will be in touch within moments. If you have requested personnel contact you, we will personally be in touch soon during business hours.</p>
+            <p>Our website Agent, Nexus, will be in touch very soon! If you have requested personnel contact you, we will personally be in touch soon during business hours.</p>
         </div>
         <div id="contactError" class="hidden mt-4 p-4 text-center text-white bg-red-500/80 rounded-lg">
             <p class="font-bold">Oops! Something went wrong.</p>
-            <!-- 
-              =======================================================================
-              FIX #1: Added the missing id="error-details" to this p tag.
-              =======================================================================
-            -->
             <p id="error-details">Please try again later.</p>
         </div>
     </div>
 </section>
 
-<!-- 
-  =======================================================================
-  Make sure this contains your actual reCAPTCHA Site Key.
-  =======================================================================
--->
-<script src="https://www.google.com/recaptcha/api.js?render=6LcEc2ErAAAAAAfNEpMKRiBoCvkpMTirtNamsCzm"></script>
+<!-- Footer Section -->
+<footer class="bg-black/95 border-t border-green-400 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">
+        <div class="flex justify-center items-center space-x-6 mb-6">
+            <a href="https://www.facebook.com/people/Executive-Mind/61580083685601/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg></a>
+            <a href="https://www.instagram.com/mercury_executivemind.io/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.171 0-3.535.012-4.782.069-2.736.125-3.951 1.34-4.076 4.076-.057 1.247-.069 1.612-.069 4.782s.012 3.535.069 4.782c.125 2.736 1.34 3.951 4.076 4.076 1.247.057 1.612.069 4.782.069s3.535-.012 4.782-.069c2.736-.125 3.951-1.34 4.076-4.076.057-1.247.069-1.612.069-4.782s-.012-3.535-.069-4.782c-.125-2.736-1.34-3.951-4.076-4.076-1.247-.057-1.612-.069-4.782-.069zM12 6.873c-2.849 0-5.151 2.302-5.151 5.151s2.302 5.151 5.151 5.151 5.151-2.302 5.151-5.151-2.302-5.151-5.151-5.151zm0 8.851c-2.043 0-3.7-1.657-3.7-3.7s1.657-3.7 3.7-3.7 3.7 1.657 3.7 3.7-1.657 3.7-3.7 3.7zm4.398-8.919c-.71 0-1.285.576-1.285 1.286s.575 1.286 1.285 1.286 1.285-.576 1.285-1.286-.575-1.286-1.285-1.286z"></path></svg></a>
+            <a href="https://www.tiktok.com/@mercury_executivemind.io" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.05-4.84-.94-6.37-2.96-2.2-2.95-2.2-6.82 0-9.78 1.59-2.02 4.19-2.92 6.37-2.92.09 1.52.54 3.01 1.62 4.02 1.08 1.01 2.54 1.54 4.05 1.52v-3.9c-1.25.04-2.5-.33-3.48-1.1-1.05-.83-1.5-2.01-1.48-3.23z"></path></svg></a>
+            <a href="https://www.linkedin.com/company/executivemind-io/about/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+            <a href="https://www.youtube.com/@mercury_executivemind" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a>
+            <a href="https://x.com/Mercury_Executi" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+            <a href="https://medium.com/@mercury_executivemind.io" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.92 12A3.28 3.28 0 0 1 17.65 15.3 3.28 3.28 0 0 1 14.38 12a3.28 3.28 0 0 1 3.27-3.3A3.28 3.28 0 0 1 20.92 12zM24 12a1.93 1.93 0 0 1-1.92 1.94A1.93 1.93 0 0 1 20.16 12a1.93 1.93 0 0 1 1.92-1.94A1.93 1.93 0 0 1 24 12z"></path></svg></a>
+            <a href="https://substack.com/@mercuryexecutivemind" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.532 2.468H1.468V4.93h21.064V2.468zM1.468 11.299h21.064v2.468H1.468v-2.468zm0 8.831h21.064v2.468H1.468v-2.468z"></path></svg></a>
+        </div>
+        &copy; 2025 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.
+    </div>
+</footer>
 
 <script>
+    // Matrix Rain Effect and other UI scripts remain the same...
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(0);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#56e98f';
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 33);
+    const text = "Initialising Executive Mind... System online. Welcome to the Agent-built realm.";
+    let index = 0;
+    const output = document.getElementById('typewriter-output');
+    const cursor = document.getElementById('cursor');
+    function type() {
+        if (index < text.length) {
+            output.innerHTML = text.substring(0, index + 1) + '<span id="cursor">_</span>';
+            index++;
+            setTimeout(type, 100);
+        } else {
+            document.getElementById('cursor').style.display = 'inline-block';
+        }
+    }
+    type();
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // --- NEW CONTACT FORM SCRIPT ---
     const form = document.getElementById("contactForm");
-    const emailInput = document.getElementById("email");
     const submitButton = document.getElementById("submitButton");
     const successMessage = document.getElementById("contactSuccess");
     const errorMessage = document.getElementById("contactError");
-    const errorDetails = document.getElementById("error-details"); // This will now correctly find the element.
+    const errorDetails = document.getElementById("error-details");
     
-    const recaptchaSiteKey = "6LcEc2ErAAAAAAfNEpMKRiBoCvkpMTirtNamsCzm";
-    const functionUrl = "https://process-contact-form-895895945380.australia-southeast1.run.app";
+    // The URL to your new PHP backend script
+    const backendUrl = "/agent/send_form.php"; 
 
-    let isSubmitting = false;
-
-    // --- FIX #2: Created a function to reset the UI on error ---
-    function resetFormState(message) {
-        errorDetails.textContent = message;
-        errorMessage.classList.remove("hidden");
-        
-        // Re-enable the button so the user can try again
-        submitButton.disabled = false;
-        submitButton.textContent = "Send Message";
-        submitButton.classList.remove("opacity-50", "cursor-not-allowed");
-        
-        isSubmitting = false;
-    }
-
-    async function handleSubmit(event) {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        if (isSubmitting) return;
-        
-        if (!emailInput.value || !emailInput.value.includes('@')) {
-            errorDetails.textContent = "Please enter a valid email address.";
-            errorMessage.classList.remove("hidden");
-            return;
-        }
-
-        isSubmitting = true;
+        // Disable button to prevent multiple submissions
         submitButton.disabled = true;
         submitButton.textContent = "Sending...";
         submitButton.classList.add("opacity-50", "cursor-not-allowed");
         errorMessage.classList.add("hidden");
 
-        grecaptcha.ready(function() {
-            grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(async function(token) {
-                
-                const formData = new FormData(form);
-                const formProps = Object.fromEntries(formData);
-                formProps['g-recaptcha-response'] = token;
+        const formData = new FormData(form);
+        const formProps = Object.fromEntries(formData);
 
-                try {
-                    const response = await fetch(functionUrl, {
-                        method: 'POST',
-                        body: JSON.stringify(formProps),
-                        headers: { 'Content-Type': 'application/json' }
-                    });
-
-                    if (response.ok) {
-                        successMessage.classList.remove("hidden");
-                        form.style.display = "none";
-                    } else {
-                        // Use the new reset function on server error
-                        resetFormState("A server error occurred. Please try again later.");
-                    }
-                } catch (error) {
-                    // Use the new reset function on network error
-                    console.error('Network Error:', error);
-                    resetFormState("A network error occurred. Please check your connection.");
+        try {
+            const response = await fetch(backendUrl, {
+                method: 'POST',
+                body: JSON.stringify(formProps),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
             });
-        });
-    }
 
-    form.addEventListener("submit", handleSubmit);
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                successMessage.classList.remove("hidden");
+                form.style.display = "none";
+            } else {
+                // Show error message from the server
+                errorDetails.textContent = result.message || "An unknown server error occurred.";
+                errorMessage.classList.remove("hidden");
+                // Re-enable the button
+                submitButton.disabled = false;
+                submitButton.textContent = "Send Message";
+                submitButton.classList.remove("opacity-50", "cursor-not-allowed");
+            }
+        } catch (error) {
+            // Handle network errors
+            console.error('Network Error:', error);
+            errorDetails.textContent = "A network error occurred. Please check your connection.";
+            errorMessage.classList.remove("hidden");
+            // Re-enable the button
+            submitButton.disabled = false;
+            submitButton.textContent = "Send Message";
+            submitButton.classList.remove("opacity-50", "cursor-not-allowed");
+        }
+    });
 </script>
 
-  <!-- Module 10: Footer Section -->
-  <footer class="bg-black/95 border-t border-green-400 py-8">
-    <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">
-      &copy; 2025 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.
-    </div>
-  </footer>
-
-  <script>
-    // Matrix Rain Effect
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
-    const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = Array(columns).fill(0);
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      const newColumns = Math.floor(canvas.width / fontSize);
-      if (newColumns !== columns) {
-        drops.length = newColumns;
-        drops.fill(0);
-      }
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-
-    function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#56e98f';
-      ctx.font = fontSize + 'px monospace';
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 33);
-
-    // Typewriter Effect with Loading
-    const text = "Initializing Executive Mind... System online. Welcome to the Agent-built realm.";
-    let index = 0;
-    const output = document.getElementById('typewriter-output');
-    const cursor = document.getElementById('cursor');
-
-    function type() {
-      if (index < text.length) {
-        output.innerHTML = text.substring(0, index + 1) + '<span id="cursor">_</span>';
-        index++;
-        setTimeout(type, 100);
-      } else {
-        cursor.style.animation = 'none';
-        cursor.style.opacity = 1;
-      }
-    }
-
-    type();
-
-    // Mobile Menu Toggle
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    });
-  </script>
 </body>
 </html>
