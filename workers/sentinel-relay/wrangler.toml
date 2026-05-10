@@ -1,0 +1,6 @@
+name = "sentinel-relay"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+SENTINEL_LOCAL_URL = "http://127.0.0.1:3456/"
