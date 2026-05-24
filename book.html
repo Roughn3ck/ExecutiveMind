@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Your AI C-Suite Session | Executive Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Book a personal AI C-Suite deployment session with Kris Racette. Hands-on installation of Claude, OpenClaw, Hermes, and multi-agent systems.">
+    <link rel="canonical" href="https://executivemind.io/book.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.15; }
+        .card { background: linear-gradient(145deg, #0a0a0a, #111); border: 1px solid #1a3a1a; }
+        .card:hover { border-color: #56e98f; transform: translateY(-4px); }
+        .popular { border: 2px solid #56e98f; box-shadow: 0 0 30px rgba(86, 233, 143, 0.2); }
+        .popular-badge { background: linear-gradient(90deg, #56e98f, #3d9e6b); }
+    </style>
+</head>
+<body class="min-h-screen">
+
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
+
+<header class="sticky top-0 bg-black/80 py-4 px-4 z-50">
+    <div class="flex justify-between items-center max-w-5xl mx-auto">
+        <a href="/" class="font-bold text-xl tracking-widest">
+            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        </a>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
+            <a href="/">Home</a>
+            <a href="/#services">Services</a>
+            <a href="/articles.html">Articles</a>
+            <a href="/#team">Team</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="py-16 text-center px-4">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Deploy Your <span class="text-green-400">AI C-Suite</span></h1>
+    <p class="text-xl text-green-300 max-w-2xl mx-auto mb-2">
+        Personal, hands-on installation with <strong>Kris Racette</strong>
+    </p>
+    <p class="text-green-500 max-w-xl mx-auto">
+        Not a course. Not a chatbot. A deployment partner who sets up your systems and trains your team.
+    </p>
+</section>
+
+<!-- Pricing Cards -->
+<section class="max-w-6xl mx-auto px-4 pb-12">
+    <div class="grid md:grid-cols-3 gap-6">
+        
+        <!-- Discovery Call -->
+        <div class="card rounded-xl p-6 transition-all duration-300">
+            <div class="text-green-400 text-sm uppercase tracking-wider mb-2">Discovery Call</div>
+            <div class="text-4xl font-bold mb-1">$150</div>
+            <div class="text-green-500 text-sm mb-6">1 Hour</div>
+            
+            <ul class="space-y-3 mb-8 text-sm">
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Needs assessment</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>AI readiness evaluation</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Model recommendations</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Deployment roadmap</span>
+                </li>
+            </ul>
+            
+            <button onclick="bookSession('discovery')" 
+                    class="w-full py-3 border border-green-500 rounded-lg hover:bg-green-500/20 transition font-bold">
+                Book Discovery Call
+            </button>
+        </div>
+        
+        <!-- Full-Day (Popular) -->
+        <div class="card rounded-xl p-6 transition-all duration-300 popular relative">
+            <div class="popular-badge text-black text-xs font-bold px-3 py-1 rounded-full absolute -top-3 left-1/2 -translate-x-1/2">
+                MOST POPULAR
+            </div>
+            
+            <div class="text-green-400 text-sm uppercase tracking-wider mb-2">Full-Day Deployment</div>
+            <div class="text-4xl font-bold mb-1">$850</div>
+            <div class="text-green-500 text-sm mb-6">8 Hours</div>
+            
+            <ul class="space-y-3 mb-8 text-sm">
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Complete system setup (OpenClaw/Claude/Hermes)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Multi-agent architecture</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Team training session</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Documentation delivery</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>30-day support included</span>
+                </li>
+            </ul>
+            
+            <button onclick="bookSession('fullday')" 
+                    class="w-full py-3 bg-green-500 hover:bg-green-600 text-black rounded-lg transition font-bold">
+                Book Full-Day
+            </button>
+        </div>
+        
+        <!-- C-Suite Package -->
+        <div class="card rounded-xl p-6 transition-all duration-300">
+            <div class="text-green-400 text-sm uppercase tracking-wider mb-2">C-Suite Package</div>
+            <div class="text-4xl font-bold mb-1">$1,600</div>
+            <div class="text-green-500 text-sm mb-6">16 Hours (2 Days)</div>
+            
+            <ul class="space-y-3 mb-8 text-sm">
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Full multi-agent deployment</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Custom agent personalities</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Governance frameworks</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>Security hardening</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400">✓</span>
+                    <span>90-day support included</span>
+                </li>
+            </ul>
+            
+            <button onclick="bookSession('csuite')" 
+                    class="w-full py-3 border border-green-500 rounded-lg hover:bg-green-500/20 transition font-bold">
+                Book C-Suite Package
+            </button>
+        </div>
+    </div>
+    
+    <!-- Enterprise -->
+    <div class="mt-8 card rounded-xl p-8 max-w-2xl mx-auto text-center">
+        <div class="text-green-400 text-sm uppercase tracking-wider mb-2">Enterprise Week</div>
+        <div class="text-4xl font-bold mb-1">$3,800</div>
+        <div class="text-green-500 text-sm mb-4">40 Hours (5 Days)</div>
+        <p class="text-green-300 text-sm mb-6">
+            Complete organizational transformation. Multi-department deployment, executive training, custom integrations, and 6-month support.
+        </p>
+        <button onclick="bookSession('enterprise')" 
+                class="py-3 px-8 border border-green-500 rounded-lg hover:bg-green-500/20 transition font-bold">
+            Contact for Enterprise
+        </button>
+    </div>
+</section>
+
+<!-- What You Get -->
+<section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-8 text-center">What Happens After You Book</h2>
+    
+    <div class="grid md:grid-cols-4 gap-4 text-center">
+        <div class="card rounded-lg p-4">
+            <div class="text-3xl mb-2">📅</div>
+            <div class="font-bold mb-1">Confirm</div>
+            <div class="text-green-500 text-sm">Calendar invite sent instantly</div>
+        </div>
+        <div class="card rounded-lg p-4">
+            <div class="text-3xl mb-2">📋</div>
+            <div class="font-bold mb-1">Prep List</div>
+            <div class="text-green-500 text-sm">Hardware & software checklist</div>
+        </div>
+        <div class="card rounded-lg p-4">
+            <div class="text-3xl mb-2">🛠️</div>
+            <div class="font-bold mb-1">Deploy</div>
+            <div class="text-green-500 text-sm">Hands-on installation day</div>
+        </div>
+        <div class="card rounded-lg p-4">
+            <div class="text-3xl mb-2">📚</div>
+            <div class="font-bold mb-1">Document</div>
+            <div class="text-green-500 text-sm">Custom setup guide delivered</div>
+        </div>
+    </div>
+</section>
+
+<!-- Pre-Deployment Profiles -->
+<section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-8 text-center">Pre-Deployment Profiles</h2>
+    <p class="text-green-500 text-center mb-8">Choose your AI stack before the session:</p>
+    
+    <div class="grid md:grid-cols-3 gap-4">
+        <div class="card rounded-lg p-4">
+            <div class="font-bold text-green-400 mb-2">🧠 Local-First</div>
+            <p class="text-sm text-green-500">Ollama + Hermes + Local models</p>
+            <p class="text-xs text-green-600 mt-2">Privacy-first, runs offline</p>
+        </div>
+        <div class="card rounded-lg p-4">
+            <div class="font-bold text-green-400 mb-2">☁️ Cloud-Hybrid</div>
+            <p class="text-sm text-green-500">Claude + OpenRouter + Gemini</p>
+            <p class="text-xs text-green-600 mt-2">Maximum capability, API-based</p>
+        </div>
+        <div class="card rounded-lg p-4">
+            <div class="font-bold text-green-400 mb-2">⚡ Full Stack</div>
+            <p class="text-sm text-green-500">OpenClaw + Multi-agent system</p>
+            <p class="text-xs text-green-600 mt-2">Complete AI C-Suite deployment</p>
+        </div>
+    </div>
+</section>
+
+<!-- Stripe Checkout Modal -->
+<div id="checkout-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+    <div class="card rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-xl font-bold mb-4">Complete Your Booking</h3>
+        <div id="booking-details" class="mb-6"></div>
+        
+        <form id="stripe-form">
+            <div class="mb-4">
+                <label class="block text-sm mb-2">Email</label>
+                <input type="email" id="customer-email" required
+                       class="w-full bg-black border border-green-500/30 rounded px-3 py-2 text-green-400 focus:border-green-500 focus:outline-none">
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-sm mb-2">Preferred Date</label>
+                <input type="date" id="preferred-date" required
+                       class="w-full bg-black border border-green-500/30 rounded px-3 py-2 text-green-400 focus:border-green-500 focus:outline-none">
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-sm mb-2">Notes (optional)</label>
+                <textarea id="booking-notes" rows="2"
+                          class="w-full bg-black border border-green-500/30 rounded px-3 py-2 text-green-400 focus:border-green-500 focus:outline-none"></textarea>
+            </div>
+            
+            <button type="submit" id="checkout-button"
+                    class="w-full py-3 bg-green-500 hover:bg-green-600 text-black rounded-lg transition font-bold">
+                Pay with Stripe
+            </button>
+        </form>
+        
+        <button onclick="closeModal()" class="mt-4 text-green-500 text-sm w-full text-center">
+            Cancel
+        </button>
+    </div>
+</div>
+
+<footer class="py-8 text-center text-green-600 text-sm border-t border-green-900/30">
+    <p>Executive Mind Pty Ltd | Brisbane, Queensland</p>
+    <p class="mt-2">Payment secured by Stripe. 30-day money-back guarantee.</p>
+</footer>
+
+<script>
+// Matrix rain background
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars = 'EXECMIND01アイウエオカキクケコ';
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#0f3d0f';
+    ctx.font = fontSize + 'px monospace';
+    
+    for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+    }
+}
+setInterval(drawMatrix, 50);
+
+// Booking configuration
+const packages = {
+    discovery: { name: 'Discovery Call', price: 150, hours: 1 },
+    fullday: { name: 'Full-Day Deployment', price: 850, hours: 8 },
+    csuite: { name: 'C-Suite Package', price: 1600, hours: 16 },
+    enterprise: { name: 'Enterprise Week', price: 3800, hours: 40 }
+};
+
+let selectedPackage = null;
+
+function bookSession(packageKey) {
+    selectedPackage = packages[packageKey];
+    
+    const modal = document.getElementById('checkout-modal');
+    const details = document.getElementById('booking-details');
+    
+    details.innerHTML = `
+        <div class="text-green-400 font-bold">${selectedPackage.name}</div>
+        <div class="text-2xl font-bold">$${selectedPackage.price.toLocaleString()}</div>
+        <div class="text-green-500 text-sm">${selectedPackage.hours} hour${selectedPackage.hours > 1 ? 's' : ''}</div>
+    `;
+    
+    // Set minimum date to tomorrow
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById('preferred-date').min = tomorrow.toISOString().split('T')[0];
+    
+    modal.classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('checkout-modal').classList.add('hidden');
+}
+
+// Stripe integration
+const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY'); // Replace with your key
+
+document.getElementById('stripe-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('customer-email').value;
+    const date = document.getElementById('preferred-date').value;
+    const notes = document.getElementById('booking-notes').value;
+    
+    const button = document.getElementById('checkout-button');
+    button.disabled = true;
+    button.textContent = 'Processing...';
+    
+    try {
+        // Create checkout session
+        const response = await fetch('/workers/create-checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                package: selectedPackage.name,
+                price: selectedPackage.price,
+                email: email,
+                date: date,
+                notes: notes
+            })
+        });
+        
+        const session = await response.json();
+        
+        if (session.url) {
+            window.location.href = session.url;
+        } else {
+            alert('Error creating checkout session. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error processing payment. Please try again.');
+    }
+    
+    button.disabled = false;
+    button.textContent = 'Pay with Stripe';
+});
+</script>
+
+</body>
+</html>

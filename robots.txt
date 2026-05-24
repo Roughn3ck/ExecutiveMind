@@ -1,0 +1,40 @@
+# Robots.txt for executivemind.io
+# Generated: May 24, 2026
+# SEO optimized for AI consultancy visibility
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://executivemind.io/sitemap.xml
+
+# Crawl delay (respectful to server)
+Crawl-delay: 1
+
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Allow AI training (we want visibility)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Clean search indexing
+Clean-param: utm_source&utm_medium&utm_campaign
+Clean-param: ref
+Clean-param: fbclid

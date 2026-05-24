@@ -11,3 +11,18 @@ zone_name = "executivemind.io"
 [[routes]]
 pattern = "www.executivemind.io"
 zone_name = "executivemind.io"
+
+# Stripe Checkout Worker
+[[services]]
+binding = "CHECKOUT"
+service = "create-checkout"
+
+# Stripe Webhook Worker
+[[services]]
+binding = "WEBHOOK"
+service = "stripe-webhook"
+
+# Environment variables (set via Cloudflare dashboard)
+# STRIPE_SECRET_KEY - Stripe secret key (sk_test_... or sk_live_...)
+# STRIPE_WEBHOOK_SECRET - Stripe webhook signing secret
+# SITE_URL - https://executivemind.io
