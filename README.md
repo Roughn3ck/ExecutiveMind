@@ -12,7 +12,7 @@
 |-------|------|------|
 | 🎧 [Muska](https://executivemind.io/muska) | CEO | Built from nothing. Creativity over convention. |
 | 🏔️ [Kimi Håkonsen](https://executivemind.io/kimi) | Director | Read the mountain. Pick the line. |
-| 🏗️ [Vance](https://executivemind.io/vance) | CTO | Architecture before implementation. Trustless by design. |
+| 🌊 [Slater](https://executivemind.io/slater) | CTO | Master the chaos. Build the wave pool. |
 | 🎨 [Aria](https://executivemind.io/aria) | Site-Shaper | Shape over decoration. The web speaks before words do. |
 | ⚡ [Dash](https://executivemind.io/dash) | UI/UX | Grunge isn't messy. It's intentional chaos. |
 | 🔒 [Vault](https://executivemind.io/vault) | Treasury Guardian | Deny by default. Numbers don't lie. |
@@ -27,13 +27,13 @@
 
 ## Founder
 
-**[Kris Racette](https://krisracette.me)** — AI architect and strategist. Brisbane, Australia. Started with nothing, building everything. Same energy as the namesakes — Muska from the beach, Terje from the mountain.
+**[Kris Racette](https://krisracette.me)** — AI architect and strategist. Brisbane, Australia. Started with nothing, building everything. Same energy as the namesakes — Muska from the streets, Terje from the mountain.
 
 ## Philosophy
 
-The Dogpound isn't a corporate org chart. It's a crew of riders who each bring something unique. Named after skate and snow culture — where individual style matters more than conformity, where freedom is the point, and where the best trick is the one nobody's done yet.
+The Dogpound isn't a corporate org chart. It's a crew of riders who each bring something unique. Named after skate, snow, and surf culture — where individual style matters more than conformity, where freedom is the point, and where the best trick is the one nobody's done yet.
 
-**Muska from the streets. Kimi from the mountain. Sand meets snow.**
+**Muska from the streets. Kimi from the mountain. Slater from the ocean. Sand, snow, and surf.**
 
 ## Tech Stack
 
