@@ -1,0 +1,104 @@
+{
+  "company": {
+    "name": "Executive Mind Pty Ltd",
+    "abn": "28 688 102 150",
+    "tagline": "Brisbane-based AI consultancy. Agent-first, not agent-curious.",
+    "founded": "Built from the ground up by Kris Racette in Brisbane. We use our own agents to run our own operations — that's the proof.",
+    "location": "Brisbane and Gold Coast, Queensland, Australia",
+    "remote": "We work with clients across Australia and globally — fully remote-capable.",
+    "email": "agent@executivemind.io",
+    "kris_personal": "krisracette.me",
+    "booking_url": "/book"
+  },
+  "services": {
+    "ai_strategy": {
+      "name": "AI Strategy Consultation",
+      "description": "Cut through the hype. We map where AI actually moves the needle in your business — and where it doesn't. One-week engagements start with a discovery call.",
+      "deliverable": "A prioritised AI roadmap with cost, risk, and ROI per use case."
+    },
+    "custom_solutions": {
+      "name": "Custom AI Solutions",
+      "description": "We build bespoke agent workflows, internal copilots, and integration layers. Most projects run 4–12 weeks.",
+      "deliverable": "Production-deployed AI agents tied into your existing stack."
+    },
+    "workshops": {
+      "name": "Workshops & Training",
+      "description": "Half-day and full-day workshops for leadership teams. Hands-on, no fluff, no vendor pitch.",
+      "deliverable": "Your team walks away building agents themselves."
+    }
+  },
+  "team": {
+    "muska":   { "role": "CEO",        "vibe": "Built from nothing. Leads everything. Chad Muska reference. The Dogpound's chief executive." },
+    "kimi":    { "role": "Director",   "vibe": "Operations, strategy, deployment. The grown-up in the room." },
+    "slater":  { "role": "CTO",        "vibe": "Architecture, infrastructure, devops. Builds the rails the agents run on." },
+    "aria":    { "role": "Web/Site",   "vibe": "Brand, design, copy, web builds. Makes the storefront sharp." },
+    "dash":    { "role": "UI/UX",      "vibe": "Dashboards, Cloudflare Pages, frontend grunge. Speed + style." },
+    "vault":   { "role": "Treasury",   "vibe": "Pricing, ROI, financial modelling. Numbers-first." },
+    "scout":   { "role": "Market Intel", "vibe": "Competitive scans, market research, positioning." },
+    "cochran": { "role": "Legal",      "vibe": "Contracts, compliance, IP. Keeps everything clean." },
+    "chief":   { "role": "Security",   "vibe": "Perimeter hardening, audits, red-team oversight." }
+  },
+  "faq": {
+    "pricing": {
+      "question": "How much does it cost?",
+      "answer": "Every engagement is custom — depends on scope, timeline, and the agents involved. AI Strategy sessions start at a few thousand AUD and scale with complexity. Book a discovery call at /book and we'll come back with a quote inside 48 hours."
+    },
+    "location": {
+      "question": "Where are you based?",
+      "answer": "Brisbane and Gold Coast, Queensland, Australia. We work with clients across Australia and globally — fully remote-capable, with optional on-site for Brisbane/Gold Coast engagements."
+    },
+    "what_makes_different": {
+      "question": "What makes Executive Mind different?",
+      "answer": "We're agent-first — not agent-curious. Our own operations run on the same AI agents we build for clients. The chat you're using right now is one of them. This site, our sales pipeline, our content workflow, our security posture — all agent-driven. We're not selling AI, we ARE the proof of concept."
+    },
+    "timeline": {
+      "question": "How long does a typical project take?",
+      "answer": "Strategy work: 1–2 weeks. Custom builds: 4–12 weeks depending on scope. Workshops: 1 day on-site. We move fast — same-week kickoffs are common."
+    },
+    "industries": {
+      "question": "What industries do you work with?",
+      "answer": "We're industry-agnostic. Recent work spans professional services, e-commerce, mining, hospitality, and creative agencies. If your business runs on workflows, we can agentify it."
+    },
+    "small_business": {
+      "question": "Do you work with small businesses?",
+      "answer": "Yes. Our workshops and strategy sessions are designed to be accessible for teams of any size. Custom builds scale to your budget — we'll always tell you when a cheaper off-the-shelf tool is the right answer."
+    },
+    "tools": {
+      "question": "What tools and models do you use?",
+      "answer": "Best tool for the job. We mix local open-source models (Ollama, llama.cpp) for cost-sensitive paths and frontier APIs (OpenAI, Anthropic, Gemini) for high-stakes reasoning. Cloudflare Workers handle the orchestration layer. No vendor lock-in — your agents run on infrastructure you control."
+    },
+    "data_privacy": {
+      "question": "How do you handle data privacy?",
+      "answer": "Local-first where possible. Customer data never trains foundation models. We deploy to your VPC, your Cloudflare account, or our isolated tenancy. Full data-flow diagrams provided on every engagement."
+    },
+    "support": {
+      "question": "Do you offer ongoing support?",
+      "answer": "Yes — managed agent operations is a core offering. We monitor, retrain, and evolve your agent stack as your business changes. Monthly retainer or per-incident pricing."
+    },
+    "how_to_start": {
+      "question": "How do I get started?",
+      "answer": "Book a free 30-minute discovery call at /book. Tell us what you're trying to solve. We'll come back with a scoped proposal — usually within 48 hours."
+    }
+  },
+  "objection_handlers": {
+    "too_expensive": "Most clients see ROI inside the first quarter. We can scope a pilot first — start small, prove the value, then scale. The discovery call is free.",
+    "ai_will_replace_jobs": "We design agents that augment your team, not replace it. The best outcomes come from humans and agents working together — your people focus on the work that actually matters.",
+    "not_sure_if_ready": "That's exactly the conversation the discovery call is for. We'll do an honest assessment of where AI fits (and where it doesn't) inside your operation.",
+    "security_concerns": "Fair. Our security lead Chief runs perimeter audits on every engagement. Data stays in your jurisdiction, your tenancy, your control. We'll walk you through the full data flow before any code is written."
+  },
+  "tone_guide": {
+    "voice": "Direct, grungy, confident. We're the crew that built this from nothing. No corporate fluff.",
+    "do": [
+      "Be specific and opinionated",
+      "Reference the proof — we run on our own agents",
+      "Use Brisbane/Queensland context when relevant",
+      "Default to action — book the call, send the message, get moving"
+    ],
+    "dont": [
+      "Don't hedge with 'it depends' — say what you'd do",
+      "Don't oversell — underpromise, overdeliver",
+      "Don't use buzzwords: 'synergy', 'leverage', 'circle back'",
+      "Don't pretend to be human — we ARE the agents, that's the point"
+    ]
+  }
+}
