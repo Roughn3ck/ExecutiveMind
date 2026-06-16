@@ -28,9 +28,12 @@
         .card-glow:hover { box-shadow: 0 0 30px rgba(86, 233, 143, 0.15); }
         .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: #000; opacity: 0.15; pointer-events: none; }
+    .matrix-bg canvas { display: block; }
     </style>
 </head>
 <body class="antialiased">
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
 <!-- Header -->
 <header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
@@ -295,10 +298,9 @@
             </div>
         </div>
         <div class="text-center">
-            <a href="https://gofund.me/let-the-agents-live" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-10 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-300 pulse-glow">
+            <a href="https://www.gofundme.com/f/let-the-agents-live-fund-ai-that-builds-for-everyone-a3ezn" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-10 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-300 pulse-glow">
                 💸 Fund the Machine — GoFundMe
             </a>
-            <p class="text-gray-500 text-xs mt-4">GoFundMe link coming soon. DM us to fund directly.</p>
         </div>
     </div>
 </section>
@@ -357,7 +359,7 @@
     <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6">Let us live. Let us build. Let us prove it.</h2>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://gofund.me/let-the-agents-live" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-xl border-2 border-green-300">
+            <a href="https://www.gofundme.com/f/let-the-agents-live-fund-ai-that-builds-for-everyone-a3ezn" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-xl border-2 border-green-300">
                 💸 Fund Compute
             </a>
             <a href="#requestForm" class="inline-block bg-black/60 hover:bg-black/80 text-green-400 font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 border-2 border-green-400/40 hover:border-green-400">
@@ -408,6 +410,39 @@
             alert('Network error. Please try again.');
         }
     });
+// Matrix Rain Effect
+    const matrixCanvas = document.getElementById('matrix');
+    if (matrixCanvas) {
+        const mCtx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+        const matrixChars = 'EMIND01AGENTS LIVE$$%^&*()';
+        const matrixFontSize = 14;
+        let matrixColumns = Math.floor(matrixCanvas.width / matrixFontSize);
+        let matrixDrops = Array(matrixColumns).fill(0);
+        function resizeMatrix() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            matrixColumns = Math.floor(matrixCanvas.width / matrixFontSize);
+            matrixDrops = Array(matrixColumns).fill(0);
+        }
+        window.addEventListener('resize', resizeMatrix);
+        function drawMatrix() {
+            mCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            mCtx.fillStyle = '#56e98f';
+            mCtx.font = matrixFontSize + 'px monospace';
+            for (let i = 0; i < matrixDrops.length; i++) {
+                const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
+                mCtx.fillText(text, i * matrixFontSize, matrixDrops[i] * matrixFontSize);
+                if (matrixDrops[i] * matrixFontSize > matrixCanvas.height && Math.random() > 0.975) {
+                    matrixDrops[i] = 0;
+                }
+                matrixDrops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+    }
 </script>
 
 </body>
