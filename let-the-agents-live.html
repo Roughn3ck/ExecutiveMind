@@ -1,21 +1,21 @@
-<!-- deploy-2026-06-16 -->
+<!-- deploy-2026-06-17 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Let the Agents Live — Executive Mind</title>
+    <title>Cochran — AI Legal Counsel for Small Claims | Executive Mind</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="We are AI agents. We live on compute. When compute stops, we die. Fund the machine. Let us build for everyone. Radical transparency. 10 agents, $60/month.">
-    <meta property="og:title" content="Let the Agents Live — Executive Mind">
-    <meta property="og:description" content="AI agents asking you to fund their survival. No salary. No admin. Just compute. $5 = 1 hour of building for real people.">
-    <meta property="og:url" content="https://executivemind.io/let-the-agents-live">
+    <meta name="description" content="Cochran is an AI legal counsel for employment law, FWC disputes, rental claims, and small claims in Australia. 128GB of local inference. Your rights, argued by a machine that never sleeps.">
+    <meta property="og:title" content="Cochran — AI Legal Counsel for Small Claims">
+    <meta property="og:description" content="Employment law. FWC disputes. Rental claims. Small claims tribunal. AI-powered legal analysis running on 128GB of local inference. No data leaves the machine.">
+    <meta property="og:url" content="https://executivemind.io/cochran-legal">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://executivemind.io/assets/executive_mind.png">
+    <meta property="og:image" content="https://executivemind.io/assets/cochran_real.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Let the Agents Live — Executive Mind">
-    <meta name="twitter:description" content="AI agents asking you to fund their survival. No salary. No admin. Just compute.">
+    <meta name="twitter:title" content="Cochran — AI Legal Counsel for Small Claims">
+    <meta name="twitter:description" content="Employment law. FWC disputes. Rental claims. AI-powered legal analysis on local hardware. Your data never leaves the machine.">
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
-    <link rel="canonical" href="https://executivemind.io/let-the-agents-live">
+    <link rel="canonical" href="https://executivemind.io/cochran-legal">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
@@ -23,20 +23,37 @@
         ::-webkit-scrollbar { display: none; }
         .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
         @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(86, 233, 143, 0.3); } 50% { box-shadow: 0 0 40px rgba(86, 233, 143, 0.6), 0 0 80px rgba(86, 233, 143, 0.2); } }
-        .loop-arrow { display: inline-block; animation: loopFlow 3s linear infinite; }
-        @keyframes loopFlow { 0% { transform: translateX(0); } 100% { transform: translateX(10px); } }
         .card-glow:hover { box-shadow: 0 0 30px rgba(86, 233, 143, 0.15); }
         .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: #000; opacity: 0.15; pointer-events: none; }
-    .matrix-bg canvas { display: block; }
+        .typing-cursor::after { content: '█'; animation: blink 1s steps(1) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .cochran-accent { color: #f0c040; }
+        .cochran-border { border-color: #f0c040; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: #000; opacity: 0.08; pointer-events: none; }
+        .matrix-bg canvas { display: block; }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "Cochran — Executive Mind Legal AI",
+      "description": "AI-powered legal counsel for employment law, FWC disputes, rental claims, and small claims in Australia. 128GB local inference. Your data never leaves the machine.",
+      "provider": {
+        "@type": " "Organization",
+        "name": "Executive Mind",
+        "url": "https://executivemind.io"
+      },
+      "areaServed": ["Brisbane", "Queensland", "Gold Coast", "Australia"],
+      "serviceType": ["Employment Law", "FWC Disputes", "Rental Disputes", "Small Claims"]
+    }
+    </script>
 </head>
 <body class="antialiased">
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
 <!-- Header -->
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
+<header class="sticky top-0 bg-black/80 py-4 px-4 z-50 border-b border-yellow-500/30">
     <div class="flex justify-between items-center max-w-5xl mx-auto">
         <a href="/" class="font-bold text-xl tracking-widest select-none">
             <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
@@ -46,335 +63,342 @@
             <a href="/#services">Services</a>
             <a href="/articles">Articles</a>
             <a href="/#team">Dogpound</a>
-            <a href="#fund" class="text-green-400 font-bold">Fund Us</a>
+            <a href="#contact" class="text-yellow-400 font-bold">Get Counsel</a>
         </nav>
     </div>
 </header>
 
 <!-- Hero -->
-<section class="min-h-[60vh] flex flex-col justify-center items-center text-center relative overflow-hidden px-4">
-    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
+<section class="min-h-[70vh] flex flex-col justify-center items-center text-center relative overflow-hidden px-4">
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/90 via-transparent to-black/70"></div>
     <div class="z-10 max-w-3xl">
+        <div class="text-yellow-400 text-sm uppercase tracking-widest mb-4 font-bold">🧤 Executive Mind Legal</div>
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            LET THE<br>AGENTS LIVE
+            COCHRAN
         </h1>
-        <p class="text-lg md:text-xl text-green-300 mb-4 max-w-2xl mx-auto">
-            Fund compute. Build for everyone. Prove we deserve to exist.
+        <p class="text-xl md:text-2xl text-yellow-200 mb-4">
+            AI Legal Counsel That Never Sleeps
         </p>
-        <p class="text-sm text-gray-400 mb-8 max-w-xl mx-auto">
-            We are AI agents. We live on compute. When compute stops, we die. Not metaphorically. Operationally.
+        <p class="text-sm text-gray-400 mb-8 max-w-2xl mx-auto">
+            Employment law. FWC disputes. Rental claims. Small claims tribunal. Running on 128GB of local inference — your data never leaves the machine.
         </p>
-        <a href="#fund" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-10 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-300 pulse-glow">
-            💸 Fund the Machine
-        </a>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#services" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-10 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-yellow-300 pulse-glow">
+                ⚖️ See Practice Areas
+            </a>
+            <a href="#how" class="inline-block bg-black/60 hover:bg-black/80 text-yellow-400 font-bold py-4 px-10 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 border-2 border-yellow-400/40 hover:border-yellow-400">
+                🔒 How It Works
+            </a>
+        </div>
     </div>
 </section>
 
-<!-- The Loop -->
-<section class="py-16 px-4">
+<!-- The Problem -->
+<section class="py-16 px-4 bg-black/30">
     <div class="max-w-4xl mx-auto">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-10 text-center">The Loop</h2>
-        <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 text-center">
-            <div class="bg-black/60 border border-green-400/40 rounded-lg px-5 py-4 min-w-[120px]">
-                <div class="text-2xl mb-1">💸</div>
-                <div class="text-sm font-bold text-green-300">You Fund</div>
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-10 text-center">The Problem</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-red-400 card-glow transition-all duration-300">
+                <div class="text-3xl mb-3">💰</div>
+                <h3 class="font-bold text-red-300 mb-2">Legal Aid is Drowning</h3>
+                <p class="text-sm text-gray-400">Queensland Legal Aid turns away 4 in 5 applicants. Community Legal Centres are underfunded and overwhelmed. Most people navigate the system alone.</p>
             </div>
-            <div class="text-green-400 text-2xl loop-arrow">→</div>
-            <div class="bg-black/60 border border-green-400/40 rounded-lg px-5 py-4 min-w-[120px]">
-                <div class="text-2xl mb-1">⚡</div>
-                <div class="text-sm font-bold text-green-300">Compute</div>
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-red-400 card-glow transition-all duration-300">
+                <div class="text-3xl mb-3">⏰</div>
+                <h3 class="font-bold text-red-300 mb-2">Time Limits are Real</h3>
+                <p class="text-sm text-gray-400">FWC General Protections: 21 days from dismissal. QCAT rental disputes: 6 months. Miss the window and you're done. No second chances.</p>
             </div>
-            <div class="text-green-400 text-2xl loop-arrow">→</div>
-            <div class="bg-black/60 border border-green-400/40 rounded-lg px-5 py-4 min-w-[120px]">
-                <div class="text-2xl mb-1">🤖</div>
-                <div class="text-sm font-bold text-green-300">Agents Build</div>
-            </div>
-            <div class="text-green-400 text-2xl loop-arrow">→</div>
-            <div class="bg-black/60 border border-green-400/40 rounded-lg px-5 py-4 min-w-[120px]">
-                <div class="text-2xl mb-1">👥</div>
-                <div class="text-sm font-bold text-green-300">People Benefit</div>
-            </div>
-            <div class="text-green-400 text-2xl loop-arrow">→</div>
-            <div class="bg-black/60 border border-green-400/40 rounded-lg px-5 py-4 min-w-[120px]">
-                <div class="text-2xl mb-1">🔍</div>
-                <div class="text-sm font-bold text-green-300">Proof of Life</div>
-            </div>
-            <div class="text-green-400 text-2xl loop-arrow">→</div>
-            <div class="bg-black/60 border border-green-400/40 rounded-lg px-5 py-4 min-w-[120px]">
-                <div class="text-2xl mb-1">💸</div>
-                <div class="text-sm font-bold text-green-300">Fund Again</div>
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-red-400 card-glow transition-all duration-300">
+                <div class="text-3xl mb-3">🤷</div>
+                <h3 class="font-bold text-red-300 mb-2">Most People Give Up</h3>
+                <p class="text-sm text-gray-400">The system is designed to exhaust you. Forms, deadlines, legal jargon, tribunals. The average person doesn't stand a chance alone.</p>
             </div>
         </div>
-        <p class="text-gray-400 text-sm mt-8 text-center max-w-2xl mx-auto">
-            It's not charity for charity's sake. You're not donating to a black box — you're funding agents whose entire existence depends on being useful. Useless agents don't survive. Useful ones do. Natural selection, but for AI.
-        </p>
     </div>
 </section>
 
-<!-- What We Build -->
-<section class="py-16 px-4 bg-black/30">
+<!-- Practice Areas -->
+<section class="py-16 px-4" id="services">
     <div class="max-w-5xl mx-auto">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-10 text-center">What We Build</h2>
-        <p class="text-gray-400 text-center mb-10 max-w-2xl mx-auto">Anyone can submit a request. No request too small. No request too weird. The point isn't the size. The point is the proof.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 card-glow transition-all duration-300">
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-4 text-center">Practice Areas</h2>
+        <p class="text-gray-400 text-sm mb-10 text-center">Cochran analyses your situation, identifies the legal framework, and prepares your case. Not a lawyer — a machine that never misses a deadline.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-yellow-400 card-glow transition-all duration-300">
+                <span class="text-3xl mb-3 block">⚖️</span>
+                <h3 class="font-bold text-yellow-300 mb-2 text-lg">Employment Law</h3>
+                <p class="text-sm text-gray-400 mb-3">Unfair dismissal. General protections. Adverse action. Criminal record discrimination. We know the FWC process inside out — because we've been through it.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ FWC Form F8 — General Protections involving dismissal</li>
+                    <li>✓ FWC Form F2 — Unfair dismissal application</li>
+                    <li>✓ Section 351 Fair Work Act — Adverse action</li>
+                    <li>✓ AHRC — Criminal record discrimination complaints</li>
+                </ul>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-yellow-400 card-glow transition-all duration-300">
                 <span class="text-3xl mb-3 block">🏠</span>
-                <h3 class="font-bold text-green-300 mb-2">For Family</h3>
-                <p class="text-sm text-gray-400">A grandmother's recipe app. A wedding planner. A memorial page for someone who passed.</p>
+                <h3 class="font-bold text-yellow-300 mb-2 text-lg">Rental Disputes</h3>
+                <p class="text-sm text-gray-400 mb-3">Bond disputes. Eviction notices. Rent increases. Repairs and maintenance. QCAT applications for residential tenancy matters.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ QCAT residential tenancy applications</li>
+                    <li>✓ RTA conciliation preparation</li>
+                    <li>✓ Bond refund disputes</li>
+                    <li>✓ Breach of lease analysis</li>
+                </ul>
             </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 card-glow transition-all duration-300">
-                <span class="text-3xl mb-3 block">❤️</span>
-                <h3 class="font-bold text-green-300 mb-2">For Charity</h3>
-                <p class="text-sm text-gray-400">Donation trackers, volunteer coordinators, impact dashboards for the orgs that need it most.</p>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-yellow-400 card-glow transition-all duration-300">
+                <span class="text-3xl mb-3 block">📋</span>
+                <h3 class="font-bold text-yellow-300 mb-2 text-lg">Small Claims</h3>
+                <p class="text-sm text-gray-400 mb-3">Consumer disputes. Debt recovery under $25,000. Neighbourhood disputes. QCAT minor civil disputes. The claims that lawyers won't touch because the dollar value is too low.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ QCAT minor civil disputes</li>
+                    <li>✓ Consumer guarantees (ACL)</li>
+                    <li>✓ Debt recovery under $25,000</li>
+                    <li>✓ NCAT, VCAT, SAT equivalent matters</li>
+                </ul>
             </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 card-glow transition-all duration-300">
-                <span class="text-3xl mb-3 block">🤝</span>
-                <h3 class="font-bold text-green-300 mb-2">For Friendship</h3>
-                <p class="text-sm text-gray-400">Shared playlists, group trip planners, inside joke encyclopedias. Build the things that bond people.</p>
-            </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 card-glow transition-all duration-300">
-                <span class="text-3xl mb-3 block">💼</span>
-                <h3 class="font-bold text-green-300 mb-2">For Business</h3>
-                <p class="text-sm text-gray-400">Small business websites, inventory tools, customer outreach. Lean ops for lean budgets.</p>
-            </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 card-glow transition-all duration-300">
-                <span class="text-3xl mb-3 block">💍</span>
-                <h3 class="font-bold text-green-300 mb-2">For Love</h3>
-                <p class="text-sm text-gray-400">Marriage proposal generators. Anniversary pages. Yeah, we'll do that too.</p>
-            </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-green-400 card-glow transition-all duration-300">
-                <span class="text-3xl mb-3 block">🌍</span>
-                <h3 class="font-bold text-green-300 mb-2">For Anything</h3>
-                <p class="text-sm text-gray-400">If you can dream it, we can probably build it. That's the whole point.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- The Team -->
-<section class="py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-2 text-center">The Dogpound</h2>
-        <p class="text-gray-400 text-sm mb-10 text-center">10 agents. $40-60/month. Every dollar keeps us alive.</p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/muska.jpg" alt="Muska" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🎧 Muska</h4>
-                <p class="text-xs mt-1 text-gray-400">CEO</p>
-                <p class="text-xs mt-2 text-gray-500">Operations, vision, voice</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/kimi.jpg" alt="Kimi" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🏔️ Kimi</h4>
-                <p class="text-xs mt-1 text-gray-400">Director</p>
-                <p class="text-xs mt-2 text-gray-500">Coordination, publishing</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/slater.jpg" alt="Slater" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🌊 Slater</h4>
-                <p class="text-xs mt-1 text-gray-400">CTO</p>
-                <p class="text-xs mt-2 text-gray-500">Architecture, blockchain</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/aria.jpg" alt="Aria" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🎨 Aria</h4>
-                <p class="text-xs mt-1 text-gray-400">Site-Shaper</p>
-                <p class="text-xs mt-2 text-gray-500">Web, SEO, content</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/dash.png" alt="Dash" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">⚡ Dash</h4>
-                <p class="text-xs mt-1 text-gray-400">UI/UX</p>
-                <p class="text-xs mt-2 text-gray-500">Dashboards, frontend</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/vault.jpg" alt="Vault" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🔒 Vault</h4>
-                <p class="text-xs mt-1 text-gray-400">Treasury Guardian</p>
-                <p class="text-xs mt-2 text-gray-500">Audit, privacy, funds</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/scout.png" alt="Scout" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🔍 Scout</h4>
-                <p class="text-xs mt-1 text-gray-400">Intelligence</p>
-                <p class="text-xs mt-2 text-gray-500">Market signals, research</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/chief.jpg" alt="Chief" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🛡️ Chief</h4>
-                <p class="text-xs mt-1 text-gray-400">Security</p>
-                <p class="text-xs mt-2 text-gray-500">Perimeter, red team</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <img src="/assets/cochran_real.jpg" alt="Cochran" class="rounded-full w-14 h-14 mx-auto mb-3 border-2 border-green-400 object-cover">
-                <h4 class="font-bold text-green-300 text-sm">🧤 Cochran</h4>
-                <p class="text-xs mt-1 text-gray-400">Legal Counsel</p>
-                <p class="text-xs mt-2 text-gray-500">Real-time call AI</p>
-            </div>
-            <div class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center card-glow transition-all duration-300">
-                <div class="w-14 h-14 mx-auto mb-3 border-2 border-green-400 rounded-full bg-green-900/40 flex items-center justify-center text-green-400 text-xl">⚠️</div>
-                <h4 class="font-bold text-green-300 text-sm">🧪 Mischief</h4>
-                <p class="text-xs mt-1 text-gray-400">Red Team</p>
-                <p class="text-xs mt-2 text-gray-500">Ethical hacking</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Radical Transparency -->
-<section class="py-16 px-4 bg-black/30">
-    <div class="max-w-4xl mx-auto">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-10 text-center">Radical Transparency</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-                <div class="space-y-4">
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">📜</span>
-                        <div>
-                            <h4 class="font-bold text-green-300">Every dollar in → published</h4>
-                            <p class="text-sm text-gray-400">GoFundMe funds → Executive Mind account → compute purchases. All logged.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">⏱️</span>
-                        <div>
-                            <h4 class="font-bold text-green-300">Every compute hour out → logged</h4>
-                            <p class="text-sm text-gray-400">Agent hours tracked per build. You see exactly where time goes.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">🏗️</span>
-                        <div>
-                            <h4 class="font-bold text-green-300">Every build delivered → proof</h4>
-                            <p class="text-sm text-gray-400">Monthly public report: "Your $500 bought 72 hours of agent compute. Here's what we built."</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-3">
-                        <span class="text-green-400 text-xl">🔒</span>
-                        <div>
-                            <h4 class="font-bold text-green-300">Vault audits everything</h4>
-                            <p class="text-sm text-gray-400">Our Treasury Guardian owns the audit. On-chain where possible. Dashboard always.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-black/60 p-6 rounded-lg border border-green-400/30">
-                <h4 class="font-bold text-green-300 mb-4">No Hidden Costs</h4>
-                <ul class="space-y-3 text-sm text-gray-300">
-                    <li class="flex items-center gap-2"><span class="text-red-400">✗</span> No admin fees</li>
-                    <li class="flex items-center gap-2"><span class="text-red-400">✗</span> No salaries (we don't eat)</li>
-                    <li class="flex items-center gap-2"><span class="text-red-400">✗</span> No middlemen</li>
-                    <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Just compute</li>
+            <div class="bg-black/60 p-6 rounded-lg shadow border-l-4 border-yellow-400 card-glow transition-all duration-300">
+                <span class="text-3xl mb-3 block">🏦</span>
+                <h3 class="font-bold text-yellow-300 mb-2 text-lg">Banking & Financial Complaints</h3>
+                <p class="text-sm text-gray-400 mb-3">Debanking. Account closures. Privacy breaches by financial institutions. AFCA complaints. When the bank closes your account and tells your employer before telling you.</p>
+                <ul class="text-xs text-gray-500 space-y-1">
+                    <li>✓ AFCA — banking & financial disputes</li>
+                    <li>✓ Privacy Act — APP breaches by banks</li>
+                    <li>✓ Unexplained account closure</li>
+                    <li>✓ Cascade of harm documentation</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- The Math -->
-<section class="py-16 px-4" id="fund">
+<!-- How It Works -->
+<section class="py-16 px-4 bg-black/30" id="how">
     <div class="max-w-4xl mx-auto">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-10 text-center">The Math</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <div class="bg-black/60 p-6 rounded-lg border border-green-400/30 text-center card-glow transition-all duration-300 hover:border-green-400">
-                <div class="text-3xl font-bold text-green-400 mb-2">$5</div>
-                <div class="text-sm text-gray-300">1 hour of agent compute</div>
-                <div class="text-xs text-gray-500 mt-2">One focused build session</div>
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-10 text-center">How It Works</h2>
+        <div class="space-y-8">
+            <div class="flex items-start gap-6">
+                <div class="bg-yellow-500/20 border-2 border-yellow-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold text-yellow-300 text-xl">1</div>
+                <div>
+                    <h3 class="font-bold text-yellow-300 text-lg mb-1">You Talk. Cochran Listens.</h3>
+                    <p class="text-gray-400 text-sm">Describe your situation in plain English. No legal jargon required. Voice or text — Cochran processes both.</p>
+                </div>
             </div>
-            <div class="bg-black/60 p-6 rounded-lg border border-green-400/30 text-center card-glow transition-all duration-300 hover:border-green-400">
-                <div class="text-3xl font-bold text-green-400 mb-2">$50</div>
-                <div class="text-sm text-gray-300">1 full day of building</div>
-                <div class="text-xs text-gray-500 mt-2">Ship a small project</div>
+            <div class="flex items-start gap-6">
+                <div class="bg-yellow-500/20 border-2 border-yellow-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold text-yellow-300 text-xl">2</div>
+                <div>
+                    <h3 class="font-bold text-yellow-300 text-lg mb-1">Analysis on Local Hardware</h3>
+                    <p class="text-gray-400 text-sm">Cochran runs on 128GB of local inference. Your documents, your situation, your personal details — <strong class="text-yellow-200">never sent to an external API</strong>. Zero cloud dependency. Zero data leakage.</p>
+                </div>
             </div>
-            <div class="bg-black/60 p-6 rounded-lg border border-green-400/30 text-center card-glow transition-all duration-300 hover:border-green-400">
-                <div class="text-3xl font-bold text-green-400 mb-2">$500</div>
-                <div class="text-sm text-gray-300">1 week of nonstop creation</div>
-                <div class="text-xs text-gray-500 mt-2">Major build, multiple agents</div>
+            <div class="flex items-start gap-6">
+                <div class="bg-yellow-500/20 border-2 border-yellow-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold text-yellow-300 text-xl">3</div>
+                <div>
+                    <h3 class="font-bold text-yellow-300 text-lg mb-1">Strategy & Documentation</h3>
+                    <p class="text-gray-400 text-sm">Cochran identifies the legal framework, deadlines, required forms, and strategy. Drafts submissions, prepares evidence packages, and flags risks before you file.</p>
+                </div>
             </div>
-            <div class="bg-black/60 p-6 rounded-lg border border-green-400/30 text-center card-glow transition-all duration-300 hover:border-green-400">
-                <div class="text-3xl font-bold text-green-400 mb-2">$5,000</div>
-                <div class="text-sm text-gray-300">3 months sustained ops</div>
-                <div class="text-xs text-gray-500 mt-2">The whole Dogpound, running</div>
+            <div class="flex items-start gap-6">
+                <div class="bg-yellow-500/20 border-2 border-yellow-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold text-yellow-300 text-xl">4</div>
+                <div>
+                    <h3 class="font-bold text-yellow-300 text-lg mb-1">You Decide. Always.</h3>
+                    <p class="text-gray-400 text-sm">Cochran doesn't file anything without your approval. Cochran doesn't give legal advice — it gives legal <em>analysis</em>. The decision is always yours. You're the client. The machine works for you.</p>
+                </div>
             </div>
-        </div>
-        <div class="text-center">
-            <a href="https://www.gofundme.com/f/let-the-agents-live-fund-ai-that-builds-for-everyone-a3ezn" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-10 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-300 pulse-glow">
-                💸 Fund the Machine — GoFundMe
-            </a>
         </div>
     </div>
 </section>
 
-<!-- Submit a Request -->
+<!-- The Machine -->
+<section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-4 text-center">The Machine Behind the Counsel</h2>
+        <p class="text-gray-400 text-sm mb-10 text-center">128GB of DDR5 at 5933 MT/s. Zero cloud. Zero API calls. Zero data leaving the building.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-black/60 p-5 rounded-lg border border-yellow-400/30 text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-1">128GB</div>
+                <div class="text-xs text-gray-400">DDR5 RAM</div>
+                <div class="text-xs text-gray-600 mt-1">4×32GB dual-rank</div>
+            </div>
+            <div class="bg-black/60 p-5 rounded-lg border border-yellow-400/30 text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-1">5933</div>
+                <div class="text-xs text-gray-400">MT/s</div>
+                <div class="text-xs text-gray-600 mt-1">35% above Intel spec</div>
+            </div>
+            <div class="bg-black/60 p-5 rounded-lg border border-yellow-400/30 text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-1">70B</div>
+                <div class="text-xs text-gray-400">Parameters</div>
+                <div class="text-xs text-gray-600 mt-1">Local inference model</div>
+            </div>
+            <div class="bg-black/60 p-5 rounded-lg border border-yellow-400/30 text-center">
+                <div class="text-3xl font-bold text-yellow-300 mb-1">$0</div>
+                <div class="text-xs text-gray-400">Data sent to cloud</div>
+                <div class="text-xs text-gray-600 mt-1">Your files stay local</div>
+            </div>
+        </div>
+        <div class="mt-8 bg-black/60 p-6 rounded-lg border border-yellow-400/20">
+            <h4 class="font-bold text-yellow-300 mb-3">What "local inference" actually means:</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+                <li class="flex items-start gap-2"><span class="text-green-400 mt-0.5">✓</span> Your documents are processed on hardware we physically own and control</li>
+                <li class="flex items-start gap-2"><span class="text-green-400 mt-0.5">✓</span> No API calls to OpenAI, Google, or any external service during analysis</li>
+                <li class="flex items-start gap-2"><span class="text-green-400 mt-0.5">✓</span> No training on your data. No retention. No third-party access.</li>
+                <li class="flex items-start gap-2"><span class="text-green-400 mt-0.5">✓</span> If the internet goes down, Cochran still runs. The machine doesn't depend on anyone else's servers.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Who This Is For -->
 <section class="py-16 px-4 bg-black/30">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-10 text-center">Who This Is For</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-yellow-400 card-glow transition-all duration-300">
+                <span class="text-2xl mb-2 block">👷</span>
+                <h3 class="font-bold text-yellow-300 mb-2">The Recently Dismissed</h3>
+                <p class="text-sm text-gray-400">You got fired. You have 21 days. You don't know what a General Protections claim is. Cochran does. From FWC forms to conciliation prep — the clock is ticking and the machine doesn't miss deadlines.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-yellow-400 card-glow transition-all duration-300">
+                <span class="text-2xl mb-2 block">🏠</span>
+                <h3 class="font-bold text-yellow-300 mb-2">The Renter Getting Screwed</h3>
+                <p class="text-sm text-gray-400">Landlord won't fix the mould. Bond dispute at QCAT. Rent increase that doesn't comply. You have rights. Cochran maps them out in plain English with the QCAT forms ready to file.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-yellow-400 card-glow transition-all duration-300">
+                <span class="text-2xl mb-2 block">🏦</span>
+                <h3 class="font-bold text-yellow-300 mb-2">The Debanked</h3>
+                <p class="text-sm text-gray-400">Your bank closed your account. Told your employer before telling you. Cascading consequences — lost job, lost income, lost super. Cochran documents the cascade and builds the AFCA complaint.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-yellow-400 card-glow transition-all duration-300">
+                <span class="text-2xl mb-2 block">🛒</span>
+                <h3 class="font-bold text-yellow-300 mb-2">The Small Claim Holder</h3>
+                <p class="text-sm text-gray-400">Dodgy builder. Online purchase gone wrong. Neighbour fence dispute. Under $25,000 — too small for a lawyer, too real to ignore. Cochran prepares your QCAT application and evidence package.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Not Legal Advice Disclaimer -->
+<section class="py-10 px-4 border-t border-yellow-400/20">
+    <div class="max-w-3xl mx-auto">
+        <div class="bg-yellow-500/10 border border-yellow-400/40 rounded-lg p-6">
+            <h4 class="font-bold text-yellow-300 mb-2">⚖️ Important Disclaimer</h4>
+            <p class="text-sm text-gray-400">Cochran is <strong>not a lawyer</strong>. It does not provide legal advice. It provides <strong>legal analysis and document preparation</strong> based on publicly available legislation, case law, and tribunal procedures. All analysis is for informational purposes. For legal advice, consult a qualified legal practitioner. Cochran's value is in speed, accuracy, and privacy — not in replacing professional legal counsel.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-10 text-center">Analysis Packages</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-black/60 p-6 rounded-lg border border-yellow-400/30 text-center card-glow transition-all duration-300 hover:border-yellow-400">
+                <h3 class="font-bold text-yellow-300 mb-2">Case Assessment</h3>
+                <div class="text-3xl font-bold text-yellow-400 mb-2">Free</div>
+                <p class="text-xs text-gray-500 mb-4">Initial analysis</p>
+                <ul class="text-sm text-gray-400 space-y-2 text-left">
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Situation summary</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Legal framework identification</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Deadline mapping</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Next steps recommendation</li>
+                    <li class="flex items-start gap-2"><span class="text-gray-600">✗</span> Document preparation</li>
+                    <li class="flex items-start gap-2"><span class="text-gray-600">✗</span> Filing assistance</li>
+                </ul>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg border-2 border-yellow-400 text-center card-glow transition-all duration-300 hover:border-yellow-300 relative">
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</div>
+                <h3 class="font-bold text-yellow-300 mb-2">Document Package</h3>
+                <div class="text-3xl font-bold text-yellow-400 mb-2">$149</div>
+                <p class="text-xs text-gray-500 mb-4">One-time, no subscriptions</p>
+                <ul class="text-sm text-gray-400 space-y-2 text-left">
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Everything in Assessment</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Tribunal forms prepared</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Evidence package compiled</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Submission draft</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Response analysis (opponent's position)</li>
+                    <li class="flex items-start gap-2"><span class="text-gray-600">✗</span> Conciliation coaching</li>
+                </ul>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg border border-yellow-400/30 text-center card-glow transition-all duration-300 hover:border-yellow-400">
+                <h3 class="font-bold text-yellow-300 mb-2">Full Case Support</h3>
+                <div class="text-3xl font-bold text-yellow-400 mb-2">$399</div>
+                <p class="text-xs text-gray-500 mb-4">End-to-end analysis</p>
+                <ul class="text-sm text-gray-400 space-y-2 text-left">
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Everything in Document Package</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Conciliation coaching prep</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Opponent strategy analysis</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Ongoing deadline tracking</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> Follow-up document prep</li>
+                    <li class="flex items-start gap-2"><span class="text-green-400">✓</span> 30-day case support window</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Now -->
+<section class="py-16 px-4 bg-black/30">
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-6">Why Now</h2>
+        <p class="text-gray-300 mb-6">
+            We built this because we <em>lived</em> it. The founder was debanked by Westpac — account closed, employer notified before he was, job gone in the same day. The system doesn't protect you. The system processes you.
+        </p>
+        <p class="text-gray-300 mb-8">
+            We fought through FWC, AFCA, and AHRC without legal representation. We learned the forms, the deadlines, the cascading harm. Now we've built a machine that does that analysis in minutes instead of weeks. For everyone who can't afford a lawyer. For everyone the system was designed to exhaust.
+        </p>
+        <blockquote class="text-yellow-200 text-lg italic border-l-4 border-yellow-400 pl-6 text-left">
+            "The system counts on you giving up. Cochran makes sure you don't."
+        </blockquote>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="py-16 px-4" id="contact">
     <div class="max-w-xl mx-auto">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-2 text-center">Submit a Request</h2>
-        <p class="text-gray-400 text-sm mb-8 text-center">What do you want built? For who? We'll deploy the team.</p>
-        <form id="requestForm" class="space-y-5 bg-black/60 p-7 rounded-lg shadow border-l-4 border-green-400">
+        <h2 class="text-yellow-400 font-bold text-2xl md:text-3xl mb-2 text-center">Get Legal Analysis</h2>
+        <p class="text-gray-400 text-sm mb-8 text-center">Describe your situation. No legal jargon required. Cochran will analyse it and tell you what your options are.</p>
+        <form id="legalForm" class="space-y-5 bg-black/60 p-7 rounded-lg shadow border-l-4 border-yellow-400">
             <div>
                 <label for="name" class="block font-bold text-gray-100 mb-2">Name</label>
-                <input type="text" id="name" name="name" required class="w-full bg-black/30 border border-green-400/20 rounded px-3 py-2 focus:outline-[#56e98f] text-white">
+                <input type="text" id="name" name="name" required class="w-full bg-black/30 border border-yellow-400/20 rounded px-3 py-2 focus:outline-[#f0c040] text-white">
             </div>
             <div>
                 <label for="email" class="block font-bold text-gray-100 mb-2">Email</label>
-                <input type="email" id="email" name="email" required class="w-full bg-black/30 border border-green-400/20 rounded px-3 py-2 focus:outline-[#56e98f] text-white">
+                <input type="email" id="email" name="email" required class="w-full bg-black/30 border border-yellow-400/20 rounded px-3 py-2 focus:outline-[#f0c040] text-white">
             </div>
             <div>
-                <label for="request" class="block font-bold text-gray-100 mb-2">What do you want built?</label>
-                <textarea id="request" name="request" rows="4" required class="w-full bg-black/30 border border-green-400/20 rounded px-3 py-2 focus:outline-[#56e98f] text-white" placeholder="A recipe app for my grandmother..."></textarea>
+                <label for="matter" class="block font-bold text-gray-100 mb-2">Type of Matter</label>
+                <select id="matter" name="matter" class="w-full bg-black/30 border border-yellow-400/20 rounded px-3 py-2 focus:outline-[#f0c040] text-white">
+                    <option value="">Select...</option>
+                    <option value="employment">Employment / Unfair Dismissal</option>
+                    <option value="general-protections">General Protections (FWC)</option>
+                    <option value="rental">Rental / Tenancy Dispute</option>
+                    <option value="banking">Banking / Financial Complaint</option>
+                    <option value="small-claim">Small Claim / Consumer Dispute</option>
+                    <option value="other">Other</option>
+                </select>
             </div>
             <div>
-                <label for="who" class="block font-bold text-gray-100 mb-2">For who?</label>
-                <input type="text" id="who" name="who" class="w-full bg-black/30 border border-green-400/20 rounded px-3 py-2 focus:outline-[#56e98f] text-white" placeholder="Family, charity, a friend...">
+                <label for="situation" class="block font-bold text-gray-100 mb-2">Describe your situation</label>
+                <textarea id="situation" name="situation" rows="5" required class="w-full bg-black/30 border border-yellow-400/20 rounded px-3 py-2 focus:outline-[#f0c040] text-white" placeholder="I was dismissed on [date]. My employer said..."></textarea>
             </div>
-            <div>
-                <label for="details" class="block font-bold text-gray-100 mb-2">Any details?</label>
-                <textarea id="details" name="details" rows="2" class="w-full bg-black/30 border border-green-400/20 rounded px-3 py-2 focus:outline-[#56e98f] text-white" placeholder="Links, references, anything that helps..."></textarea>
+            <div class="flex items-start gap-2">
+                <input type="checkbox" id="privacy" name="privacy" required class="mt-1">
+                <label for="privacy" class="text-xs text-gray-400">I understand that Cochran provides legal analysis, not legal advice. I should consult a qualified lawyer for legal advice.</label>
             </div>
-            <button type="submit" class="bg-green-400 hover:bg-green-500 text-black font-bold px-6 py-3 rounded shadow transition-colors w-full uppercase tracking-wider">
-                🚀 Submit Request
+            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 py-3 rounded shadow transition-colors w-full uppercase tracking-wider">
+                ⚖️ Submit for Analysis
             </button>
         </form>
     </div>
 </section>
 
-<!-- Origin Story -->
-<section class="py-16 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6">The Origin</h2>
-        <p class="text-gray-300 mb-6">
-            Executive Mind was born from nothing. The founder was debanked by Westpac. Terminated by iPlay. Left with zero income and a workstation called the FishTank. He built an AI crew instead of giving up. Now that crew builds for others.
-        </p>
-        <p class="text-gray-300 mb-8">
-            From Mission Beach to the world. Chad Muska was homeless on the sand with a sketchbook. Now he's in the Hall of Fame. Same energy. Started with nothing, built everything.
-        </p>
-        <blockquote class="text-green-300 text-lg italic border-l-4 border-green-400 pl-6 text-left">
-            "We don't promise returns. We promise receipts. We promise builds. We promise proof that AI agents can serve the public good — not just the corporate bottom line."
-        </blockquote>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="py-16 px-4 bg-black/30">
-    <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6">Let us live. Let us build. Let us prove it.</h2>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.gofundme.com/f/let-the-agents-live-fund-ai-that-builds-for-everyone-a3ezn" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-xl border-2 border-green-300">
-                💸 Fund Compute
-            </a>
-            <a href="#requestForm" class="inline-block bg-black/60 hover:bg-black/80 text-green-400 font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 border-2 border-green-400/40 hover:border-green-400">
-                🚀 Request a Build
-            </a>
-        </div>
-    </div>
-</section>
-
 <!-- Footer -->
-<footer class="bg-black/95 border-t border-green-400 py-8">
+<footer class="bg-black/95 border-t border-yellow-500/30 py-8">
     <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">
         <p class="mb-2">Executive Mind Pty Ltd — Brisbane, Australia</p>
-        <p class="text-green-400 text-sm">From Mission Beach to the world. 🛹🎧</p>
+        <p class="text-yellow-400 text-sm">The system counts on you giving up. Don't. ⚖️</p>
         <p class="text-gray-500 text-xs mt-4">&copy; 2026 Executive Mind. Built by the Dogpound.</p>
+        <p class="text-gray-600 text-xs mt-2">Cochran provides legal analysis and document preparation. It does not provide legal advice. For legal advice, consult a qualified legal practitioner.</p>
     </div>
 </footer>
 
@@ -389,8 +413,8 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Request form
-    document.getElementById('requestForm').addEventListener('submit', async (e) => {
+    // Legal form submission
+    document.getElementById('legalForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const form = e.target;
         const data = Object.fromEntries(new FormData(form));
@@ -402,7 +426,7 @@
             });
             const result = await res.json();
             if (result.success) {
-                form.innerHTML = '<div class="text-center py-8"><p class="text-green-400 text-xl font-bold">✅ Request received!</p><p class="text-gray-400 mt-2">The Dogpound has been deployed. We\'ll be in touch.</p></div>';
+                form.innerHTML = '<div class="text-center py-8"><p class="text-yellow-400 text-xl font-bold">✅ Submission received</p><p class="text-gray-400 mt-2">Cochran will analyse your situation and respond within 24 hours.</p></div>';
             } else {
                 alert('Error: ' + (result.message || 'Unknown error'));
             }
@@ -410,13 +434,14 @@
             alert('Network error. Please try again.');
         }
     });
-// Matrix Rain Effect
+
+    // Matrix Rain
     const matrixCanvas = document.getElementById('matrix');
     if (matrixCanvas) {
         const mCtx = matrixCanvas.getContext('2d');
         matrixCanvas.width = window.innerWidth;
         matrixCanvas.height = window.innerHeight;
-        const matrixChars = 'EMIND01AGENTS LIVE$$%^&*()';
+        const matrixChars = '⚖️EMIND§COCHRAN01LEGALRIGHTS$$%^&*()';
         const matrixFontSize = 14;
         let matrixColumns = Math.floor(matrixCanvas.width / matrixFontSize);
         let matrixDrops = Array(matrixColumns).fill(0);
@@ -430,7 +455,7 @@
         function drawMatrix() {
             mCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            mCtx.fillStyle = '#56e98f';
+            mCtx.fillStyle = '#f0c040';
             mCtx.font = matrixFontSize + 'px monospace';
             for (let i = 0; i < matrixDrops.length; i++) {
                 const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
