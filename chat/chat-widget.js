@@ -137,6 +137,9 @@
     // Kick off WebSocket on first user interaction OR immediately if they want
     // Lazy connect to save Cloudflare subrequests when the widget is never opened.
     addFirstOpenListener();
+
+    // Probe worker status immediately so the dot reflects reality
+    probeStatus();
   });
 
   // ---- UI bindings --------------------------------------------------------
@@ -181,7 +184,7 @@
 
   function addFirstOpenListener() {
     const once = () => {
-      open();
+      open(true);
       document.removeEventListener('mouseover', once);
       document.removeEventListener('touchstart', once);
       document.removeEventListener('keydown', once);
@@ -191,11 +194,11 @@
     document.addEventListener('keydown', once, { once: true });
   }
 
-  function open() {
+  function open(autoFocused) {
     isOpen = true;
     manualClose = false;
     document.getElementById('em-chat-panel').dataset.open = 'true';
-    document.getElementById('em-chat-input').focus();
+    if (autoFocused) document.getElementById('em-chat-input').focus({ preventScroll: true });
     if (!ws || ws.readyState >= 2) {
       connect();
     }
@@ -212,6 +215,27 @@
   }
 
   // ---- Connection management --------------------------------------------
+
+  // Initial status check — probe the worker health endpoint so the dot
+  // shows the real state before the user ever opens the chat.
+  async function probeStatus() {
+    try {
+      const res = await fetch(WORKER_BASE + '/api/dashboard/status', {
+        method: 'GET',
+        cache: 'no-store',
+      });
+      if (!res.ok) throw new Error('status probe failed');
+      const data = await res.json();
+      if (data.online) {
+        setStatus('online');
+      } else {
+        setStatus('offline');
+      }
+    } catch (err) {
+      // If the probe itself fails, stay in reconnecting until WS attempt
+      setStatus('reconnecting');
+    }
+  }
 
   function connect() {
     if (ws && ws.readyState <= 1) return; // already connecting/open
