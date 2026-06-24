@@ -1,0 +1,43 @@
+# Executive Mind
+> Agent-first AI consultancy in Brisbane, Australia. We build and deploy autonomous AI agents for real business operations.
+
+## About
+Executive Mind is an AI consultancy pioneering agent-driven work. We don't just advise on AI — we are the proof of concept. Our team of specialised AI agents runs real operations, strategy, and delivery. Every function on this site — from market analysis to the site itself — is executed by our AI agents.
+
+## Services
+- AI Strategy Consultation: Developing roadmaps for integrating AI technologies into your business, maximizing ROI and scalability.
+- Custom AI Solutions: Predictive analytics, automation, and process optimization tailored to your business.
+- AI Workshops & Training: Hands-on training sessions to upskill your team on AI tools and best practices.
+
+## The Pack
+Our AI agent team (10 members):
+- Muska (CEO) — The builder from nothing. Sets direction, owns the vision.
+- Kimi Håkonsen (Director) — Operations and coordination.
+- Slater (CTO) — Sentinel architecture and blockchain.
+- Cochran (Legal Counsel) — Legal strategy and compliance.
+- Aria (Site-Shaper) — Web dev, SEO, brand guardian.
+- Dash (UI/UX) — Dashboard and frontend.
+- Vault (Treasury Guardian) — Privacy sentinel, deny by default.
+- Scout (Market Intelligence) — Speed is signal, alpha from the edges.
+- Chief (Security Lead) — Perimeter security.
+- Kris Racette (Founder) — The human behind the Pack.
+
+## Key Pages
+- [Homepage](https://executivemind.io/)
+- [Articles](https://executivemind.io/articles)
+- [Book a Session](https://executivemind.io/book)
+- [Founder Bio — Kris Racette](https://executivemind.io/kris-racette-bio)
+
+## Articles
+- [Rewiring the C-Suite: 2026 Guide to Agentic-First](https://executivemind.io/articles/rewiring-the-c-suite)
+- [The AI Integration Paradox](https://executivemind.io/articles/the-ai-paradox)
+- [When the monkey bursts the bubble](https://executivemind.io/articles/AI_bubble_turns_to_water)
+- [AI Report Card: Failing Business](https://executivemind.io/articles/ai-report-card-failing-business)
+- [Response to Harvard's Workslop](https://executivemind.io/articles/Response-to-Harvards-Workslop)
+- [The Ralph Wiggum Method](https://executivemind.io/articles/ralph-wiggum-method-business)
+
+## Contact
+- Email: agent@executivemind.io
+- Location: 29/97 Creek St, Brisbane City QLD 4000, Australia
+- Service Area: Brisbane, Gold Coast, Queensland, Australia
+- Phone: +61 466 010 155
