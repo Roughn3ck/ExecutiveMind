@@ -1,0 +1,533 @@
+<!-- deploy-2026-06-24 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Asset Management — Autonomous Cross-Chain Recovery &amp; Treasury Monitoring | Executive Mind</title>
+    <meta name="cache-bust" content="2026-06-24"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
+    <meta name="description" content="Executive Mind AI Asset Management — autonomous agents monitoring, rebalancing, and managing cross-chain assets across SUI, Arbitrum, Base, BSC, Solana, and HyperEVM. Zero human key exposure.">
+    <link rel="canonical" href="https://executivemind.io/asset-management">
+    <meta property="og:url" content="https://executivemind.io/asset-management">
+    <meta property="og:title" content="AI Asset Management — Autonomous Cross-Chain Recovery | Executive Mind">
+    <meta property="og:description" content="AI-managed digital assets. Autonomous agents monitoring 6 liquidity pools across 5 chains, rebalancing positions, and recovering stuck transfers — all without human key exposure.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://executivemind.io/assets/executive_mind.png">
+    <meta property="og:site_name" content="Executive Mind">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Asset Management — Autonomous Cross-Chain Recovery | Executive Mind">
+    <meta name="twitter:description" content="AI agents managing real assets across real chains. Autonomous monitoring, rebalancing, and recovery — 24/7, with zero human key exposure.">
+    <meta name="twitter:image" content="https://executivemind.io/assets/executive_mind.png">
+    <meta name="author" content="Executive Mind">
+    <meta name="keywords" content="AI asset management, AI-managed crypto assets, autonomous cross-chain recovery, AI treasury management, DeFi monitoring agent, blockchain LP monitor, AI-managed digital assets, Kris Racette, Executive Mind">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI Asset Management",
+      "description": "Executive Mind's AI-managed digital asset infrastructure — autonomous agents monitoring, rebalancing, and recovering cross-chain crypto assets 24/7.",
+      "url": "https://executivemind.io/asset-management",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Executive Mind",
+        "url": "https://executivemind.io"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "AI Asset Management Infrastructure",
+        "description": "Autonomous AI agents managing cryptocurrency liquidity pools, executing cross-chain recoveries, and monitoring digital asset positions across multiple blockchains."
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Key Manager Agent",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any (HTTP server)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "url": "https://executivemind.io"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Kris Racette",
+        "url": "https://krisracette.me"
+      },
+      "description": "Headless HTTP signing server for AI agents. Encrypted vault with AES-256-GCM + Argon2id. Private keys never leave the process.",
+      "url": "https://github.com/Roughn3ck/key_manager"
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        #cursor { display: inline-block; opacity: 1; animation: blinker 1.2s steps(2,start) infinite; }
+        @keyframes blinker { 50% {opacity: 0;} }
+        .typewriter { border-right: 2px solid #56e98f; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
+        .matrix-bg canvas { display: block; }
+        ::-webkit-scrollbar { display: none; }
+        .command-prompt::before { content: "root@executive-mind:~$ "; color: #56e98f; font-weight: bold; }
+        .hash-text { word-break: break-all; font-size: 0.75rem; color: #3a9e6a; }
+        .metric-card { background: rgba(0,0,0,0.6); border-left: 4px solid #56e98f; padding: 1.5rem; border-radius: 0.5rem; }
+        .terminal-window { background: #0a0a0a; border: 1px solid #1a3a1a; border-radius: 0.5rem; overflow: hidden; }
+        .terminal-header { background: #1a1a1a; padding: 0.5rem 1rem; font-size: 0.75rem; color: #56e98f; border-bottom: 1px solid #1a3a1a; }
+        .terminal-body { padding: 1rem; font-size: 0.8rem; line-height: 1.6; }
+        .terminal-body .comment { color: #3a9e6a; }
+        .terminal-body .success { color: #00ff00; }
+        .terminal-body .error { color: #ff4444; }
+        .terminal-body .warning { color: #ffaa00; }
+        .terminal-body .highlight { color: #56e98f; font-weight: bold; }
+        .chain-tag { display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid #1a3a1a; border-radius: 0.25rem; font-size: 0.7rem; margin-right: 0.25rem; margin-bottom: 0.25rem; }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
+<h1 class="sr-only">AI Asset Management — Autonomous Cross-Chain Recovery and Treasury Monitoring by Executive Mind</h1>
+
+<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
+    <div class="flex justify-between items-center max-w-5xl mx-auto">
+        <a href="/" class="font-bold text-xl tracking-widest select-none">
+            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        </a>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
+            <a href="/">Home</a>
+            <a href="/#services">Services</a>
+            <a href="/asset-management" class="text-green-400 font-bold">Asset Management</a>
+            <a href="/book" class="text-green-400 font-bold">Book Now</a>
+            <a href="/articles">Articles</a>
+            <a href="/#team">The Pack 🐺</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden">
+            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
+        </button>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
+        <a href="/" class="block">Home</a>
+        <a href="/#services" class="block">Services</a>
+        <a href="/asset-management" class="block text-green-400 font-bold">Asset Management</a>
+        <a href="/book" class="block text-green-400 font-bold">Book Now</a>
+        <a href="/articles" class="block">Articles</a>
+        <a href="/#team" class="block">The Pack 🐺</a>
+        <a href="/#contact" class="block">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="min-h-[60vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
+    <div class="z-10 px-4 py-20 md:py-24 max-w-4xl text-center">
+        <div class="inline-block px-4 py-1 bg-green-900/30 border border-green-500/30 rounded-full text-xs font-mono text-green-400 uppercase tracking-widest mb-6">Live Infrastructure • 24/7 Autonomous Operation</div>
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">ASSET MANAGEMENT</h1>
+        <p class="text-xl md:text-2xl text-green-400 font-mono mb-4">AI-Managed Digital &amp; Traditional Finance</p>
+        <p class="text-gray-400 max-w-3xl mx-auto mb-8">Autonomous agents monitoring, rebalancing, and recovering cross-chain assets. Real money. Real chains. Zero human key exposure. This is what AI-managed asset management looks like.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#key-manager" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">Key Manager Agent →</a>
+            <a href="#sentinel" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 text-sm">Argus Sentinel →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Live Metrics Banner -->
+<section class="py-8 border-y border-green-900/30">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-green-400">6</div>
+                <div class="text-xs text-gray-400 mt-1">Liquidity Pools Monitored</div>
+            </div>
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-green-400">5</div>
+                <div class="text-xs text-gray-400 mt-1">Blockchains Active</div>
+            </div>
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-green-400">24/7</div>
+                <div class="text-xs text-gray-400 mt-1">Autonomous Monitoring</div>
+            </div>
+            <div class="metric-card">
+                <div class="text-2xl font-bold text-green-400">0</div>
+                <div class="text-xs text-gray-400 mt-1">Human Key Exposure</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Overview -->
+<section class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">The Infrastructure</h2>
+        <p class="text-gray-300 mb-6">
+            Executive Mind's asset management infrastructure is not a slide deck. It's live code running on real chains, watching real money, making real decisions. Built by <strong class="text-green-300">Kris Racette</strong> and operated by The Pack 🐺 — our team of autonomous AI agents.
+        </p>
+        <p class="text-gray-300 mb-6">
+            Three components work together: the <strong class="text-green-400">Key Manager Agent</strong> signs transactions without exposing private keys; <strong class="text-green-400">Argus Sentinel</strong> watches every position in real-time; and our <strong class="text-green-400">multi-agent orchestration</strong> layer coordinates complex cross-chain operations. This is the architecture for AI-managed finance — and it's already proven.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-6">
+            <span class="chain-tag text-green-400">SUI</span>
+            <span class="chain-tag text-green-400">Arbitrum</span>
+            <span class="chain-tag text-green-400">Base</span>
+            <span class="chain-tag text-green-400">BSC</span>
+            <span class="chain-tag text-green-400">Solana</span>
+            <span class="chain-tag text-green-400">HyperEVM</span>
+        </div>
+    </div>
+</section>
+
+<!-- Key Manager Agent -->
+<section id="key-manager" class="py-16 border-t border-green-900/30">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="text-3xl">🔐</div>
+            <div>
+                <h2 class="text-green-400 font-bold text-2xl md:text-3xl">Key Manager Agent</h2>
+                <p class="text-sm text-gray-400">Agentic Key Signing Infrastructure</p>
+            </div>
+        </div>
+        
+        <p class="text-gray-300 mb-6">
+            This is <strong class="text-green-400">not</strong> the desktop app (that's at <a href="/key-manager" class="text-green-400 underline hover:text-green-300">/key-manager</a>). This is the <strong class="text-green-300">Key Manager Agent</strong> — a headless Python HTTP server that lets AI agents sign and broadcast blockchain transactions without ever touching private keys.
+        </p>
+        
+        <div class="terminal-window mb-8">
+            <div class="terminal-header">key_manager_agent.py — localhost:8842</div>
+            <div class="terminal-body">
+                <p><span class="comment"># Encrypted vault → Argon2id key derivation → AES-256-GCM</span></p>
+                <p><span class="comment"># AI sends JSON command. Agent signs internally. Returns tx hash.</span></p>
+                <p><span class="comment"># Private keys NEVER leave the process.</span></p>
+                <p>&nbsp;</p>
+                <p><span class="highlight">POST /sign_tx</span></p>
+                <p>{</p>
+                <p>&nbsp;&nbsp;"account": "G5",</p>
+                <p>&nbsp;&nbsp;"to": "0xC30362313FBBA5cf9163F0bb16a0e01f01A896ca",</p>
+                <p>&nbsp;&nbsp;"data": "0x01...",</p>
+                <p>&nbsp;&nbsp;"chainId": 42161</p>
+                <p>}</p>
+                <p>&nbsp;</p>
+                <p><span class="success">→ {"status": "signed", "txHash": "0x30de..."}</span></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">25 Accounts</h3>
+                <p class="text-sm text-gray-400">25 named accounts across multiple chains, each with dedicated keypairs and address derivation paths.</p>
+            </div>
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">119 Addresses</h3>
+                <p class="text-sm text-gray-400">Tracked addresses across EVM, Solana, SUI, Bitcoin, and other chains — all from 14 master private keys.</p>
+            </div>
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">AES-256-GCM + Argon2id</h3>
+                <p class="text-sm text-gray-400">Same military-grade encryption as the desktop app. Vault unlocks with password, stays encrypted at rest.</p>
+            </div>
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">Security Model</h3>
+                <p class="text-sm text-gray-400">If AI is compromised, attacker can request signatures but can't extract keys. Keys never leave the agent process.</p>
+            </div>
+        </div>
+
+        <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 mb-6">
+            <h3 class="font-bold text-green-300 mb-2">API Commands</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono mt-3">
+                <div class="text-gray-400"><span class="text-green-400">status</span> — vault lock state</div>
+                <div class="text-gray-400"><span class="text-green-400">list_accounts</span> — all accounts</div>
+                <div class="text-gray-400"><span class="text-green-400">get_address</span> — address for account</div>
+                <div class="text-gray-400"><span class="text-green-400">sign_tx</span> — sign transaction</div>
+                <div class="text-gray-400"><span class="text-green-400">broadcast_tx</span> — sign + broadcast</div>
+                <div class="text-gray-400"><span class="text-green-400">sign_message</span> — sign arbitrary data</div>
+                <div class="text-gray-400"><span class="text-green-400">lock</span> — lock vault immediately</div>
+            </div>
+        </div>
+
+        <!-- How It Fits Together -->
+        <div class="mt-12 mb-8">
+            <h3 class="text-green-400 font-bold text-xl md:text-2xl mb-6">How It Fits Together</h3>
+            <p class="text-gray-300 mb-6">The full stack — designed by <strong class="text-green-300">Kris Racette</strong> and Executive Mind — connects four layers that work together to enable autonomous, AI-managed crypto operations:</p>
+            
+            <div class="space-y-4">
+                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🖥️</span>
+                        <div>
+                            <h4 class="font-bold text-green-300 mb-1">ColdStack Desktop App (v4.1) — The Vault</h4>
+                            <p class="text-sm text-gray-400">Stores mnemonics, derives addresses via BIP39, and now fetches balances via Go Online mode. Human-facing GUI with AES-256-GCM encryption. The vault file is portable — runs from a USB drive.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🔌</span>
+                        <div>
+                            <h4 class="font-bold text-green-300 mb-1">Key Manager Agent — The Bridge</h4>
+                            <p class="text-sm text-gray-400">Headless HTTP server on <code class="text-green-300 bg-black/60 px-1 rounded">localhost:8842</code>. AI sends JSON commands, agent signs transactions internally, returns tx hash. Private keys never leave the process — even if the AI is compromised, the attacker can request signatures but cannot extract keys.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🛡️</span>
+                        <div>
+                            <h4 class="font-bold text-green-300 mb-1">Argus Sentinel — The Monitor</h4>
+                            <p class="text-sm text-gray-400">Watches LP positions in real-time via on-chain oracles (Pyth Hermes + Hyperliquid L1 API). Alerts on near-edge and out-of-range conditions. Runs 60-second polling, posts to Discord, responds to slash commands.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🧠</span>
+                        <div>
+                            <h4 class="font-bold text-green-300 mb-1">Multi-Agent Orchestration (OpenClaw) — The Brain</h4>
+                            <p class="text-sm text-gray-400">8 specialized AI agents coordinate cross-chain operations. Kimi (CFO) manages financial strategy, Slater (CTO) handles architecture and code, Garrison secures treasury, Sagan does market intelligence. Each agent has a defined role, model, and channel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-green-900/20 p-6 rounded-lg border border-green-500/30 mt-6">
+                <p class="text-green-300 font-mono text-sm">
+                    <strong>Together:</strong> AI agents manage real money across real chains 24/7, without human key exposure. Already proven — CCTP USDC recovery executed end-to-end while humans slept. The Key Manager Agent signed every transaction. Private keys never left the agent's encrypted memory. Human reviewed the next morning.
+                </p>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="mt-8 mb-8 bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
+            <h3 class="font-bold text-green-300 mb-4">Technology Stack</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono">
+                <div class="text-gray-400"><span class="text-green-400">Vault:</span> AES-256-GCM + Argon2id (same standards as password managers)</div>
+                <div class="text-gray-400"><span class="text-green-400">BIP39:</span> Standard HD wallet paths (m/44'/60'/..., m/86'/0'/..., etc.)</div>
+                <div class="text-gray-400"><span class="text-green-400">Balance Engine:</span> Public RPC endpoints (no API keys), 15+ chains</div>
+                <div class="text-gray-400"><span class="text-green-400">Price Feeds:</span> CoinGecko free tier, 60s in-memory cache</div>
+                <div class="text-gray-400"><span class="text-green-400">Signing:</span> Internal keccak256 EVM signing, keys never serialized</div>
+                <div class="text-gray-400"><span class="text-green-400">Transport:</span> HTTP JSON on localhost only (binds to 127.0.0.1)</div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">
+                View Source on GitHub →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Argus Sentinel -->
+<section id="sentinel" class="py-16 border-t border-green-900/30">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="text-3xl">🛡️</div>
+            <div>
+                <h2 class="text-green-400 font-bold text-2xl md:text-3xl">Argus Sentinel</h2>
+                <p class="text-sm text-gray-400">Real-Time On-Chain LP Position Monitor</p>
+            </div>
+        </div>
+        
+        <p class="text-gray-300 mb-6">
+            Argus Sentinel is the monitoring layer that watches the money. Six liquidity pools. Five blockchains. Sixty-second polling. <strong class="text-green-400">No AI inference</strong> — this is pure infrastructure. Nuclear codes. The layer that knows before you do.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <div class="metric-card text-center">
+                <div class="text-xs text-gray-500 mb-1">G2 — Aerodrome/Base</div>
+                <div class="font-bold text-green-300">ETH / cbBTC</div>
+                <div class="text-xs text-gray-400 mt-1">Active position</div>
+                <div class="text-xs text-green-400 mt-1">Earning fees</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="text-xs text-gray-500 mb-1">G3 — Orca/Solana</div>
+                <div class="font-bold text-green-300">cbBTC / SOL</div>
+                <div class="text-xs text-gray-400 mt-1">Active position</div>
+                <div class="text-xs text-green-400 mt-1">LP Live</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="text-xs text-gray-500 mb-1">G4 — PancakeSwap/BSC</div>
+                <div class="font-bold text-green-300">BNB / LINK</div>
+                <div class="text-xs text-gray-400 mt-1">Active position</div>
+                <div class="text-xs text-green-400 mt-1">LP Live</div>
+            </div>
+            <div class="metric-card text-center">
+                <div class="text-xs text-gray-500 mb-1">G5 — Project-X/HyperEVM</div>
+                <div class="font-bold text-green-300">WHYPE / UBTC</div>
+                <div class="text-xs text-gray-400 mt-1">Active position</div>
+                <div class="text-xs text-green-400 mt-1">HyperEVM Live</div>
+            </div>
+            <div class="metric-card text-center opacity-50">
+                <div class="text-xs text-gray-500 mb-1">G1 — Chainflip</div>
+                <div class="font-bold text-gray-300">BTC / USDC</div>
+                <div class="text-xs text-gray-400 mt-1">Inactive</div>
+            </div>
+            <div class="metric-card text-center opacity-50">
+                <div class="text-xs text-gray-500 mb-1">G6 — Cetus/SUI</div>
+                <div class="font-bold text-gray-300">LBTC / SUI</div>
+                <div class="text-xs text-gray-400 mt-1">Inactive</div>
+            </div>
+        </div>
+
+        <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 mb-6">
+            <h3 class="font-bold text-green-300 mb-2">Alert System</h3>
+            <div class="flex flex-wrap gap-4 mt-3 text-sm">
+                <div class="flex items-center gap-2">
+                    <span class="text-red-500 text-lg">🚨</span>
+                    <span class="text-gray-400">OUT OF RANGE — position needs immediate attention</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-yellow-500 text-lg">⚠️</span>
+                    <span class="text-gray-400">NEAR EDGE — approaching range boundary</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-green-500 text-lg">🟢</span>
+                    <span class="text-gray-400">SAFE — position healthy, earning fees</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">Price Feeds</h3>
+                <p class="text-sm text-gray-400">Pyth Network + Hyperliquid oracle feeds for real-time price data. No dependency on a single source. Consensus-weighted accuracy.</p>
+            </div>
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">Discord Integration</h3>
+                <p class="text-sm text-gray-400">Slash commands for instant status checks. Full position details, fee earnings, and rebalancing recommendations via bot.</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="https://sentinel.executivemind.io" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm mr-4">
+                Live Dashboard →
+            </a>
+            <a href="https://github.com/Roughn3ck/sentinel-stack" target="_blank" rel="noopener" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 text-sm">
+                Source on GitHub →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- AI-Managed Digital Assets -->
+<section class="py-16 border-t border-green-900/30">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">AI-Managed Digital Assets</h2>
+        <p class="text-gray-300 mb-6">
+            The combination of Key Manager Agent + Argus Sentinel + multi-agent orchestration creates something new: <strong class="text-green-300">autonomous agents managing real money across real chains, 24/7, without human key exposure.</strong>
+        </p>
+        <p class="text-gray-300 mb-6">
+            This isn't theoretical. Our agents have already executed complex cross-chain operations end-to-end — investigating problems, signing transactions, and broadcasting them to live mainnet — all while humans slept. The Key Manager Agent signed every transaction. The private keys never left the agent's encrypted memory. The human reviewed the next morning.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">🤖 Autonomous Recovery</h3>
+                <p class="text-sm text-gray-400">Stuck cross-chain transfers? Our agents can investigate, identify the root cause, and execute recovery transactions across chains.</p>
+            </div>
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">📊 Position Monitoring</h3>
+                <p class="text-sm text-gray-400">Every LP position tracked in real-time. Rebalancing recommendations generated automatically. Alert thresholds tuned per-pool.</p>
+            </div>
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">🔗 Cross-Chain Architecture</h3>
+                <p class="text-sm text-gray-400">SUI, Arbitrum, Base, BSC, Solana, HyperEVM — one unified monitoring and signing layer. No fragmentation. No manual chain-switching.</p>
+            </div>
+            <div class="metric-card">
+                <h3 class="font-bold text-green-300 mb-2">🏛️ TradFi Bridge</h3>
+                <p class="text-sm text-gray-400">This architecture isn't just for crypto. The same agentic signing, monitoring, and recovery patterns apply to traditional asset management — equities, FX, derivatives.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 border-t border-green-900/30">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">This Is Not Theoretical</h2>
+        <p class="text-gray-400 mb-8">
+            Executive Mind is not a consultancy that talks about AI. We are a company that uses AI to manage real money across real chains. The code is open source. The transactions are on-chain. The agents are live.
+        </p>
+        <p class="text-gray-400 mb-8">
+            Built by <strong class="text-green-300">Kris Racette</strong> and operated by The Pack 🐺 — autonomous AI agents running 24/7 on under $60/month in compute.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">
+                Key Manager on GitHub →
+            </a>
+            <a href="https://github.com/Roughn3ck/sentinel-stack" target="_blank" rel="noopener" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 text-sm">
+                Sentinel on GitHub →
+            </a>
+            <a href="/book" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 text-sm">
+                Discuss Your Treasury →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black/95 border-t border-green-400 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">
+        <div class="flex flex-wrap justify-center items-center gap-6 mb-6">
+            <a href="https://www.facebook.com/people/Executive-Mind/61580083685601/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg></a>
+            <a href="https://www.instagram.com/mercury_executivemind.io/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.171 0-3.535.012-4.782.069-2.736.125-3.951 1.34-4.076 4.076-.057 1.247-.069 1.612-.069 4.782s.012 3.535.069 4.782c.125 2.736 1.34 3.951 4.076 4.076 1.247.057 1.612.069 4.782.069s3.535-.012 4.782-.069c2.736-.125 3.951-1.34 4.076-4.076.057-1.247.069-1.612.069-4.782s-.012-3.535-.069-4.782c-.125-2.736-1.34-3.951-4.076-4.076-1.247-.057-1.612-.069-4.782-.069zM12 6.873c-2.849 0-5.151 2.302-5.151 5.151s2.302 5.151 5.151 5.151 5.151-2.302 5.151-5.151-2.302-5.151-5.151-5.151zm0 8.851c-2.043 0-3.7-1.657-3.7-3.7s1.657-3.7 3.7-3.7 3.7 1.657 3.7 3.7-1.657 3.7-3.7 3.7zm4.398-8.919c-.71 0-1.285.576-1.285 1.286s.575 1.286 1.285 1.286 1.285-.576 1.285-1.286-.575-1.286-1.285-1.286z"></path></svg></a>
+            <a href="https://www.linkedin.com/company/executivemind-io/about/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+            <a href="https://x.com/Mercury_Executi" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+            <a href="https://github.com/Roughn3ck" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a>
+            <a href="https://medium.com/@mercury_executivemind.io" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.92 12A3.28 3.28 0 0 1 17.65 15.3 3.28 3.28 0 0 1 14.38 12a3.28 3.28 0 0 1 3.27-3.3A3.28 3.28 0 0 1 20.92 12zM24 12a1.93 1.93 0 0 1-1.92 1.94A1.93 1.93 0 0 1 20.16 12a1.93 1.93 0 0 1 1.92-1.94A1.93 1.93 0 0 1 24 12z"></path></svg></a>
+        </div>
+        <p class="text-sm mb-2">Built by Kris Racette &amp; The Pack 🐺</p>
+        <p class="text-xs">&copy; 2026 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.</p>
+    </div>
+</footer>
+
+<script>
+    // Matrix Rain Effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(0);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#56e98f';
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 33);
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+
+<!-- Executive Mind Chat Widget -->
+<script src="/chat/chat-embed.js" defer></script>
+</body>
+</html>
