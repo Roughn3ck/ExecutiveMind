@@ -239,7 +239,10 @@
 
   function connect() {
     if (ws && ws.readyState <= 1) return; // already connecting/open
-    setStatus('reconnecting');
+    // Only show reconnecting if we haven't already confirmed online via probe
+    if (status !== 'online') {
+      setStatus('reconnecting');
+    }
     const path = encodeURIComponent(window.location.pathname);
     const url = `${WS_BASE}/api/chat/ws?path=${path}`;
     try {

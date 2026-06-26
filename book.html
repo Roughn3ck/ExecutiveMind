@@ -11,7 +11,8 @@
     <script src="https://js.stripe.com/v3/"></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; }
-        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.15; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
+        .matrix-bg canvas { display: block; }
         .card { background: linear-gradient(145deg, #0a0a0a, #111); border: 1px solid #1a3a1a; }
         .card:hover { border-color: #56e98f; transform: translateY(-4px); }
         .popular { border: 2px solid #56e98f; box-shadow: 0 0 30px rgba(86, 233, 143, 0.2); }
@@ -274,25 +275,35 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const chars = 'EXECMIND01アイウエオカキクケコ';
+const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
 const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+let columns = Math.floor(canvas.width / fontSize);
+let drops = Array(columns).fill(0);
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    columns = Math.floor(canvas.width / fontSize);
+    drops = Array(columns).fill(0);
+}
+window.addEventListener('resize', resizeCanvas);
 
 function drawMatrix() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#0f3d0f';
+    ctx.fillStyle = '#56e98f';
     ctx.font = fontSize + 'px monospace';
     
     for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
+        const text = chars.charAt(Math.floor(Math.random() * chars.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
         drops[i]++;
     }
 }
-setInterval(drawMatrix, 50);
+setInterval(drawMatrix, 33);
 
 // Booking configuration
 const packages = {
