@@ -56,6 +56,8 @@
   let manualClose = false;
   let agentBuffer = '';   // streaming buffer for the current agent reply
   let agentBufferEl = null; // DOM element we are streaming into
+  let lastPositiveProbeMs = 0; // timestamp of last successful /api/dashboard/status online response
+  let probeTimer = null; // periodic re-probe while panel is open
 
   // ---- DOM construction ---------------------------------------------------
 
@@ -227,6 +229,7 @@
       if (!res.ok) throw new Error('status probe failed');
       const data = await res.json();
       if (data.online) {
+        lastPositiveProbeMs = Date.now();
         setStatus('online');
       } else {
         setStatus('offline');
@@ -237,10 +240,22 @@
     }
   }
 
+  // Start a periodic re-probe so a degraded WebSocket doesn't leave the dot
+  // stuck on yellow/red while the gateway is actually reachable.
+  function startProbeLoop() {
+    if (probeTimer) return;
+    probeTimer = setInterval(() => {
+      if (isOpen) probeStatus();
+    }, 20000);
+  }
+  startProbeLoop();
+
   function connect() {
     if (ws && ws.readyState <= 1) return; // already connecting/open
-    // Only show reconnecting if we haven't already confirmed online via probe
-    if (status !== 'online') {
+    // Trust a recent positive probe — don't downgrade to yellow while it's fresh.
+    // This prevents the race where lazy-open listeners fire before probeStatus() resolves.
+    const recentlyOnline = (Date.now() - lastPositiveProbeMs) < 30000;
+    if (!recentlyOnline && status !== 'online') {
       setStatus('reconnecting');
     }
     const path = encodeURIComponent(window.location.pathname);

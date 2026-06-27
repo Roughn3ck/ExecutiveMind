@@ -86,6 +86,7 @@
   box-shadow: 0 0 6px rgba(86, 233, 143, 0.8);
 }
 
+#em-chat-status-dot[data-status="online"]        { background: var(--em-c-fg);      box-shadow: 0 0 6px rgba(86, 233, 143, 0.8); }
 #em-chat-status-dot[data-status="reconnecting"] { background: var(--em-c-yellow); box-shadow: 0 0 6px rgba(255, 214, 10, 0.8); }
 #em-chat-status-dot[data-status="offline"]      { background: var(--em-c-red);    box-shadow: 0 0 6px rgba(255, 77, 109, 0.8); }
 
@@ -171,6 +172,7 @@
   background: var(--em-c-fg);
   box-shadow: 0 0 4px var(--em-c-fg);
 }
+.em-chat-subtitle .em-mini-dot[data-status="online"]        { background: var(--em-c-fg);      box-shadow: 0 0 4px var(--em-c-fg); }
 .em-chat-subtitle .em-mini-dot[data-status="reconnecting"] { background: var(--em-c-yellow); box-shadow: 0 0 4px var(--em-c-yellow); }
 .em-chat-subtitle .em-mini-dot[data-status="offline"]      { background: var(--em-c-red);    box-shadow: 0 0 4px var(--em-c-red); }
 
