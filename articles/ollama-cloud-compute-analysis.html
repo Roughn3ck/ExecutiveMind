@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ollama Cloud Compute Analysis: Which Model Burns the Most? – Executive Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/assets/em_logo.svg">
+    <meta name="description" content="A compute-vs-capability analysis of every major Ollama Cloud model: DeepSeek V4 Flash, V4 Pro, GLM 5.2, Kimi K2.7 Code, MiniMax M3, Qwen 3.7 Max, GPT-OSS 120B, and Gemma 4. Find out which model burns the most GPU per task — and which one is the value king."/>
+    <meta property="og:title" content="Ollama Cloud Compute Analysis: Which Model Burns the Most?"/>
+    <meta property="og:description" content="We benchmarked every major Ollama Cloud model by active parameters, benchmark scores, and GPU cost per task. The value king isn't the one you'd expect."/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="/articles/img/ollama-compute-hero.png"/>
+    <meta property="og:url" content="https://executivemind.io/articles/ollama-cloud-compute-analysis"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Ollama Cloud Compute Analysis: Which Model Burns the Most?"/>
+    <meta name="twitter:description" content="DeepSeek V4 Flash burns ~73% less compute than V4 Pro — and lands within 1-3 points on most benchmarks. The Ollama Cloud value matrix, ranked."/>
+    <meta name="twitter:image" content="/articles/img/ollama-compute-hero.png"/>
+    <link rel="canonical" href="https://executivemind.io/articles/ollama-cloud-compute-analysis">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Ollama Cloud Compute Analysis: Which Model Burns the Most?",
+      "description": "A compute-vs-capability analysis of every major Ollama Cloud model — DeepSeek V4 Flash, V4 Pro, GLM 5.2, Kimi K2.7 Code, MiniMax M3, Qwen 3.7 Max, GPT-OSS 120B, Gemma 4 — with an actionable routing matrix.",
+      "image": "https://executivemind.io/articles/img/ollama-compute-hero.png",
+      "author": {
+        "@type": "Person",
+        "name": "Kris Racette",
+        "url": "https://krisracette.me"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://executivemind.io/assets/executive_mind.png"
+        }
+      },
+      "datePublished": "2026-07-09",
+      "dateModified": "2026-07-09",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://executivemind.io/articles/ollama-cloud-compute-analysis"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://executivemind.io/"},
+      {"@type":"ListItem","position":2,"name":"Articles","item":"https://executivemind.io/articles"},
+      {"@type":"ListItem","position":3,"name":"Ollama Cloud Compute Analysis","item":"https://executivemind.io/articles/ollama-cloud-compute-analysis"}
+    ]}
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.15; }
+        .matrix-bg canvas { display: block; }
+        ::-webkit-scrollbar { display: none; }
+        .article-content h1 { font-size: 2rem; line-height: 2.4rem; font-weight: bold; color: #6ee7b7; margin-top: 1.5rem; margin-bottom: 1rem; }
+        .article-content h2 { font-size: 1.5rem; line-height: 2rem; font-weight: bold; color: #6ee7b7; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(86, 233, 143, 0.3); padding-bottom: 0.5rem; }
+        .article-content h3 { font-size: 1.2rem; line-height: 1.6rem; font-weight: bold; color: #a7f3d0; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        .article-content p { margin-bottom: 1rem; color: #d1d5db; line-height: 1.7; }
+        .article-content ul, .article-content ol { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; color: #d1d5db; }
+        .article-content ol { list-style-type: decimal; }
+        .article-content li { margin-bottom: 0.5rem; line-height: 1.6; }
+        .article-content strong { color: #a7f3d0; font-weight: bold; }
+        .article-content em { color: #a7f3d0; font-style: italic; }
+        .article-content code { background: rgba(86, 233, 143, 0.1); color: #a7f3d0; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+        .article-content pre { background: rgba(86, 233, 143, 0.05); border: 1px solid rgba(86, 233, 143, 0.2); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; }
+        .article-content pre code { background: none; padding: 0; }
+        .article-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
+        .article-content th { background: rgba(86, 233, 143, 0.1); color: #6ee7b7; padding: 0.5rem; text-align: left; border: 1px solid rgba(86, 233, 143, 0.3); }
+        .article-content td { padding: 0.5rem; border: 1px solid rgba(86, 233, 143, 0.2); color: #d1d5db; }
+        .quote-box { border-left: 4px solid #56e98f; padding-left: 1rem; margin: 2rem 0; font-style: italic; color: #a7f3d0; }
+        .key-insight { background: rgba(86, 233, 143, 0.08); border: 1px solid rgba(86, 233, 143, 0.4); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+        .key-insight-title { color: #56e98f; font-weight: bold; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+        .tier-list { background: rgba(0,0,0,0.3); border: 1px solid rgba(86, 233, 143, 0.2); border-radius: 8px; padding: 1rem 1.5rem; margin: 1rem 0; }
+        .tier-list p { margin: 0.4rem 0; }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
+
+<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
+    <div class="flex justify-between items-center max-w-5xl mx-auto">
+        <a href="/" class="font-bold text-xl tracking-widest select-none">
+            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        </a>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/articles">Articles</a>
+            <a href="/#team">Team</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main class="py-16">
+    <div class="max-w-3xl mx-auto px-4 article-content">
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">Ollama Cloud Compute Analysis: Which Model Burns the Most?</h1>
+        <p class="mt-2 mb-8 text-gray-400 text-sm">Posted by <a href="https://krisracette.me" class="text-green-400 hover:text-green-300">Kris Racette</a> on July 9, 2026 · 12 min read</p>
+
+        <img src="/articles/img/ollama-compute-hero.png" alt="Ollama Cloud Compute Analysis — Executive Mind" class="w-full h-auto rounded-lg shadow-lg shadow-green-400/20 my-8">
+
+        <img src="/articles/img/ollama-cloud-compute-analysis.png" alt="Ollama Cloud compute-vs-capability matrix comparing nine major cloud models by active parameters, SWE-bench scores, Terminal-Bench, LiveCodeBench, and estimated GPU compute per task" class="w-full h-auto rounded-lg shadow-lg shadow-green-400/20 my-8 opacity-90">
+
+        <p>If you're an <a href="https://ollama.com" class="text-green-400 hover:text-green-300">Ollama</a> Cloud subscriber, you've probably noticed the weekly quota is a moving target. Hit the limit halfway through Wednesday, you're stuck for the rest of the week. Hit it on Saturday afternoon, you've been efficient. The difference is almost entirely about which models you route to — and almost no one is publishing the data on what actually burns the most compute per task.</p>
+
+        <p>Until now. We crunched the numbers on every major Ollama Cloud model — DeepSeek V4 Flash, DeepSeek V4 Pro, GLM 5.2, Kimi K2.7 Code, MiniMax M3, Qwen 3.7 Max, GPT-OSS 120B, and both Gemma 4 variants — and ranked them by GPU compute per task against their actual coding benchmark performance. The matrix you wish Ollama published is below.</p>
+
+        <div class="key-insight">
+            <div class="key-insight-title">⚡ The Headline Finding</div>
+            <p style="margin:0"><strong>DeepSeek V4 Flash</strong> (13B active parameters) burns <strong>~73% less compute</strong> than V4 Pro (49B active) — and lands within 1-3 points on virtually every coding benchmark. If you're paying for the V4 Pro tier to do routine work, you're burning three quarters of your weekly quota for marginal quality gains. V4 Flash is the value king of Ollama Cloud.</p>
+        </div>
+
+        <h2>Why Compute Is a Moving Target on Ollama Cloud</h2>
+        <p>Most people read the Ollama Cloud pricing page and think they're paying per token. They're not. From <a href="https://ollama.com/pricing" class="text-green-400 hover:text-green-300">Ollama's pricing page</a>:</p>
+
+        <blockquote class="quote-box">
+            "Models consume a different amount of usage based on how difficult they are to run."
+        </blockquote>
+
+        <p>In practice, this means Ollama weights your usage by <strong>GPU compute difficulty</strong>, not raw tokens. A 1,000-token response from a 13B active MoE model costs you a small fraction of the quota of the same 1,000 tokens from a 49B active MoE model. The two biggest drivers are:</p>
+        <ol>
+            <li><strong>Active parameters per token</strong> — the number of parameters that actually fire on each forward pass</li>
+            <li><strong>Thinking token overhead</strong> — reasoning models emit hidden "thinking" tokens that count toward your quota but never appear in the output</li>
+        </ol>
+
+        <p>Context window memory matters too, but the dominant variable is active params. That's why a 1T-parameter MoE with 32B active (Kimi K2.7 Code) costs less than a 744B-parameter model with 40B active (GLM 5.2). Total parameter count is a vanity metric on cloud subscriptions — what matters is what fires per token.</p>
+
+        <h2>The Model Roster — Active Parameters & Context</h2>
+        <p>Here's the field. We've sorted by active parameters, because that's the primary compute driver.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Total Params</th>
+                    <th>Active Params</th>
+                    <th>Context</th>
+                    <th>Open Weights</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Gemma 4 26B (A4B MoE)</strong></td><td>26B</td><td>4B</td><td>1M</td><td>✅ Open</td></tr>
+                <tr><td><strong>GPT-OSS 120B</strong></td><td>117B</td><td>5.1B</td><td>128K</td><td>✅ Apache 2.0</td></tr>
+                <tr><td><strong>DeepSeek V4 Flash</strong></td><td>284B</td><td>13B</td><td>1M</td><td>✅ MIT</td></tr>
+                <tr><td><strong>MiniMax M3</strong></td><td>428B</td><td>23-26B</td><td>1M</td><td>✅ MIT</td></tr>
+                <tr><td><strong>Gemma 4 27B (dense)</strong></td><td>27B</td><td>27B</td><td>1M</td><td>✅ Open</td></tr>
+                <tr><td><strong>Kimi K2.7 Code</strong></td><td>1T</td><td>32B</td><td>256K</td><td>✅ Modified MIT</td></tr>
+                <tr><td><strong>GLM 5.2</strong></td><td>744B</td><td>40B</td><td>1M</td><td>✅ MIT</td></tr>
+                <tr><td><strong>DeepSeek V4 Pro</strong></td><td>1.6T</td><td>49B</td><td>1M</td><td>✅ MIT</td></tr>
+                <tr><td><strong>Qwen 3.7 Max</strong></td><td>Proprietary</td><td>N/A</td><td>1M</td><td>❌ API only</td></tr>
+            </tbody>
+        </table>
+
+        <p>Note the wild spread: Gemma 4 26B (MoE) fires only 4B parameters per token, while DeepSeek V4 Pro fires 49B. That's a <strong>12× difference</strong> in per-token compute — which is exactly what Ollama is charging you for.</p>
+
+        <h2>Benchmark Performance Across the Field</h2>
+        <p>Compute is half the story. The other half is: what can the model actually do? We pulled scores from SWE-bench Verified, SWE-bench Pro, Terminal-Bench 2.1, LiveCodeBench, the Composio tool-use benchmark, and Design Arena. Estimated values are marked in italics — these are interpolation estimates from partial public data, not made up.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>SWE-bench Verified</th>
+                    <th>SWE-bench Pro</th>
+                    <th>Terminal-Bench</th>
+                    <th>LiveCodeBench</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>GLM 5.2</strong></td><td>82.8</td><td>62.1</td><td>81.0</td><td>—</td></tr>
+                <tr><td><strong>DeepSeek V4 Pro</strong></td><td>80.6</td><td>55.4</td><td>~76 <em>(est.)</em></td><td>93.5</td></tr>
+                <tr><td><strong>DeepSeek V4 Flash</strong></td><td>79.0</td><td>~52 <em>(est.)</em></td><td>~73 <em>(est.)</em></td><td>91.6</td></tr>
+                <tr><td><strong>Qwen 3.7 Max</strong></td><td>—</td><td>60.6</td><td>69.7</td><td>91.6</td></tr>
+                <tr><td><strong>Kimi K2.7 Code</strong></td><td>~65 <em>(est.)</em></td><td>~55-58 <em>(est.)</em></td><td>~75 <em>(est.)</em></td><td>~88 <em>(est.)</em></td></tr>
+                <tr><td><strong>MiniMax M3</strong></td><td>—</td><td>59.0</td><td>66.0</td><td>—</td></tr>
+                <tr><td><strong>Gemma 4 27B (dense)</strong></td><td>61.2</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td><strong>GPT-OSS 120B</strong></td><td>~54.9 <em>(est.)</em></td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td><strong>Gemma 4 26B (A4B)</strong></td><td>17.4</td><td>—</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+
+        <p>GLM 5.2 is the capability leader for open-weight models — #1 on SWE-bench Pro (62.1) and Terminal-Bench (81.0), plus #1 on Design Arena for code. Qwen 3.7 Max and DeepSeek V4 Pro are tightly bunched behind. DeepSeek V4 Flash sits in the top tier at 79% SWE-bench Verified and 91.6 LiveCodeBench. The Gemma 4 MoE variant (A4B) at 17.4% is essentially not a coding model.</p>
+
+        <p>That last row is the part most people get wrong. Gemma 4 27B <em>dense</em> hits a respectable 61.2% SWE-bench Verified, but the MoE variant that everyone benchmarks is 17.4%. Google chose not to feature SWE-bench in their official Gemma 4 press materials for a reason.</p>
+
+        <h2>Compute Per Token — The Real Number</h2>
+        <p>Now we get to the meat. If Ollama weights usage by GPU compute difficulty, and the dominant driver is active parameters, then the relative cost per token looks like this (V4 Pro = 1.0x as the reference):</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Active Params</th>
+                    <th>Relative Compute/Token</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Gemma 4 26B (A4B)</strong></td><td>4B</td><td><strong>0.08x</strong></td><td>Cheapest, but not a coding model</td></tr>
+                <tr><td><strong>GPT-OSS 120B</strong></td><td>5.1B</td><td><strong>0.10x</strong></td><td>Cheapest viable model, weak coder</td></tr>
+                <tr><td><strong>DeepSeek V4 Flash</strong></td><td>13B</td><td><strong>0.27x</strong></td><td>Sweet spot: low compute + high capability</td></tr>
+                <tr><td><strong>MiniMax M3</strong></td><td>23-26B</td><td>0.53x</td><td>Mid-tier compute</td></tr>
+                <tr><td><strong>Gemma 4 27B (dense)</strong></td><td>27B</td><td>0.55x</td><td>Dense = all params active every token</td></tr>
+                <tr><td><strong>Kimi K2.7 Code</strong></td><td>32B</td><td>0.65x</td><td>+ 30% fewer thinking tokens</td></tr>
+                <tr><td><strong>GLM 5.2</strong></td><td>40B</td><td>0.82x</td><td>Can exceed on <code>max</code> thinking</td></tr>
+                <tr><td><strong>Qwen 3.7 Max</strong></td><td>N/A</td><td>~0.65-0.82x <em>(est.)</em></td><td>Proprietary, mid-to-heavy</td></tr>
+                <tr><td><strong>DeepSeek V4 Pro</strong></td><td>49B</td><td><strong>1.00x</strong></td><td>Heaviest per token</td></tr>
+            </tbody>
+        </table>
+
+        <p>That 0.27x on V4 Flash versus 1.0x on V4 Pro isn't a typo. It's a 73% compute reduction for the same kind of work, on most tasks. If you're running a 10-agent operation on Ollama Cloud, the difference between routing everything to V4 Pro and routing routine work to V4 Flash could literally be the difference between hitting your quota on Wednesday and hitting it on Saturday.</p>
+
+        <h2>Total Compute for the Same Coding Task</h2>
+        <p>Per-token cost is half the story. The other half is thinking token overhead. Reasoning models emit "thinking" tokens that count toward your quota but never appear in the response. For a moderate coding task — say, 5,000 thinking tokens plus 2,000 output tokens — the total compute looks like this:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Active (rel.)</th>
+                    <th>Thinking (rel.)</th>
+                    <th>Est. Total Compute</th>
+                    <th>Tier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Gemma 4 26B (A4B)</strong></td><td>0.08x</td><td>1.0x</td><td><strong>~0.08x</strong></td><td>❌ Not viable</td></tr>
+                <tr><td><strong>GPT-OSS 120B</strong></td><td>0.10x</td><td>1.0x</td><td><strong>~0.10x</strong></td><td>⚠️ Weak coder</td></tr>
+                <tr><td><strong>DeepSeek V4 Flash</strong></td><td>0.27x</td><td>1.0x</td><td><strong>~0.27x</strong></td><td>✅ Strong coder</td></tr>
+                <tr><td><strong>Kimi K2.7 Code</strong></td><td>0.65x</td><td>0.7x (30% fewer)</td><td><strong>~0.46x</strong></td><td>✅ Strong coder</td></tr>
+                <tr><td><strong>MiniMax M3</strong></td><td>0.53x</td><td>1.0x</td><td><strong>~0.53x</strong></td><td>✅ Strong coder</td></tr>
+                <tr><td><strong>Gemma 4 27B (dense)</strong></td><td>0.55x</td><td>1.0x</td><td><strong>~0.55x</strong></td><td>⚠️ Mid-tier</td></tr>
+                <tr><td><strong>Qwen 3.7 Max</strong></td><td>~0.65-0.82x</td><td>1.0x</td><td><strong>~0.65-0.82x</strong></td><td>✅ Top-tier</td></tr>
+                <tr><td><strong>GLM 5.2</strong></td><td>0.82x</td><td>1.0-1.4x (mode)</td><td><strong>~0.82-1.15x</strong></td><td>✅ Best open coder</td></tr>
+                <tr><td><strong>DeepSeek V4 Pro</strong></td><td>1.0x</td><td>1.0x</td><td><strong>~1.0x</strong></td><td>✅ Top-tier</td></tr>
+            </tbody>
+        </table>
+
+        <p>Note Kimi K2.7 Code's trick: it uses 30% fewer thinking tokens than its peers. That single design choice moves it from a 0.65x per-token cost to a 0.46x <em>total</em> cost — a meaningful efficiency gain for IDE-bound coding work.</p>
+
+        <h2>The Compute vs Capability Matrix</h2>
+        <p>This is the chart you wish Ollama published. Each model plotted by total compute per task and coding capability tier.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tier</th>
+                    <th>Low Compute (&lt; 0.50x)</th>
+                    <th>High Compute (&gt; 0.50x)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong style="color:#4ade80">Top-Tier Capability</strong></td>
+                    <td><strong>DeepSeek V4 Flash</strong> (0.27x)<br><span style="color:#9ca3af;font-size:0.85em">Best value overall. 79% SWE-bench Verified at 13B active.</span></td>
+                    <td>
+                        <strong>GLM 5.2</strong> (0.82-1.15x) — best open-weight coder<br>
+                        <strong>Qwen 3.7 Max</strong> (~0.65-0.82x) — proprietary<br>
+                        <strong>DeepSeek V4 Pro</strong> (1.0x) — heaviest
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong style="color:#22d3ee">Mid-Tier Capability</strong></td>
+                    <td>
+                        <strong>MiniMax M3</strong> (0.53x)<br>
+                        <strong>Kimi K2.7 Code</strong> (0.46x)<br>
+                        <strong>Gemma 4 27B dense</strong> (0.55x)
+                    </td>
+                    <td><span style="color:#9ca3af">Nothing occupies this space.</span></td>
+                </tr>
+                <tr>
+                    <td><strong style="color:#f87171">Low Capability</strong></td>
+                    <td>
+                        <strong>GPT-OSS 120B</strong> (0.10x)<br>
+                        <strong>Gemma 4 26B (A4B)</strong> (0.08x)
+                    </td>
+                    <td><span style="color:#9ca3af">Nothing occupies this space.</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The single most important cell: <strong>DeepSeek V4 Flash in the top-left quadrant.</strong> High capability, low compute. The closest competitor in that cell is Kimi K2.7 Code — but Kimi is purpose-built for agentic IDE coding, not for general-purpose reasoning at the Flash tier's quality.</p>
+
+        <h2>What About GPT-OSS and Gemma?</h2>
+        <p>Short answer: <strong>no, they're not in the same league for coding.</strong></p>
+
+        <p><strong>GPT-OSS 120B</strong> has the cheapest compute profile on Ollama Cloud (5.1B active — barely a blip on the quota), but it ranks #78 out of 124 models on coding benchmarks with a score of 21.2. It's a reasoning model that can do tool use, but for real software engineering it's nowhere near the frontier. On Ollama Cloud, where you're already on a subscription, the compute efficiency is irrelevant because the coding quality isn't good enough to replace the bigger models.</p>
+
+        <p><strong>Gemma 4 27B (dense)</strong> is more interesting. Google reports 61.2% on SWE-bench Verified, which is respectable for a 27B. But independent testing of the MoE variant (A4B, 4B active) scored only 17.4% — and Google deliberately omitted SWE-bench from their official Gemma 4 benchmark press materials. The dense 27B is a competent mid-tier coder, but it's competing against MiniMax M3 (59% SWE-bench Pro) and DeepSeek V4 Flash (79% SWE-bench Verified), which are dramatically stronger. Gemma's advantage is that it can run locally. On Ollama Cloud, where you're paying for GPU time anyway, there's no reason to pick it over the bigger models.</p>
+
+        <div class="key-insight">
+            <div class="key-insight-title">⚡ Key Insight</div>
+            <p style="margin:0">On Ollama Cloud, the compute cost difference between the cheapest viable coder (DeepSeek V4 Flash at 13B active) and GPT-OSS or Gemma is irrelevant compared to the capability gap. You're already on a subscription — use the model that actually solves the problem. GPT-OSS and Gemma are models for <em>local hardware constraints</em>, not cloud subscription optimization.</p>
+        </div>
+
+        <h2>Final Ranking — All Nine Models, by Value</h2>
+
+        <div class="tier-list">
+            <p><strong>🥇 DeepSeek V4 Flash</strong> — 13B active = ~73% less compute than V4 Pro. 79% SWE-bench Verified, 91.6 LiveCodeBench. <em>The undisputed value king.</em></p>
+            <p><strong>🥈 Kimi K2.7 Code</strong> — 32B active + 30% fewer thinking tokens. Purpose-built for agentic coding. Best for IDE execution.</p>
+            <p><strong>🥉 MiniMax M3</strong> — 23-26B active, 59% SWE-bench Pro, 1M context, native multimodal. Strong mid-tier compute-to-capability ratio.</p>
+            <p><strong>4. GLM 5.2</strong> — 40B active, but #1 on SWE-bench Pro (62.1) and Terminal-Bench (81.0). Best open-weight coder. Worth the compute for hard tasks.</p>
+            <p><strong>5. Qwen 3.7 Max</strong> — 60.6 SWE-bench Pro, 69.7 Terminal-Bench. Top-tier capability but proprietary + heavier compute.</p>
+            <p><strong>6. DeepSeek V4 Pro</strong> — 49B active — heaviest compute. V4 Flash covers ~96% of its capability at ~27% of compute. Use sparingly.</p>
+            <p><strong>7. Gemma 4 27B (dense)</strong> — Decent coding (61.2 SWE-bench Verified) but outclassed by Flash/M3 at similar or lower compute. For local, not cloud.</p>
+            <p><strong>8. GPT-OSS 120B</strong> — Cheap compute (5.1B active) but coding score 21.2. Not viable for software engineering.</p>
+            <p><strong>9. Gemma 4 26B (A4B)</strong> — 17.4% SWE-bench Verified. Not a coding model. Ignore for coding work.</p>
+        </div>
+
+        <h2>Recommended Model Routing on Ollama Cloud</h2>
+        <p>Here's the playbook we use across our <a href="/#about" class="text-green-400 hover:text-green-300">10-agent operation</a>:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Task Type</th>
+                    <th>Model</th>
+                    <th>Active Params</th>
+                    <th>Why</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Routine agent calls (heartbeats, monitoring)</td><td>DeepSeek V4 Flash</td><td>13B</td><td>Barely dents quota, near-frontier quality</td></tr>
+                <tr><td>IDE execution (Cline/Codium)</td><td>Kimi K2.7 Code</td><td>32B</td><td>30% fewer thinking tokens, purpose-built</td></tr>
+                <tr><td>Legal/financial analysis</td><td>DeepSeek V4 Flash</td><td>13B</td><td>1M context, near-Pro quality, fraction of compute</td></tr>
+                <tr><td>Web/SEO content</td><td>MiniMax M3</td><td>23-26B</td><td>Native multimodal, 1M context, strong coding</td></tr>
+                <tr><td>Architecture & planning</td><td>GLM 5.2 (high mode)</td><td>40B</td><td>1M context, best coding benchmarks</td></tr>
+                <tr><td>Hard problems</td><td>GLM 5.2 (max mode)</td><td>40B</td><td>Frontier quality, accept the compute cost</td></tr>
+                <tr><td>When Flash can't handle it</td><td>DeepSeek V4 Pro</td><td>49B</td><td>Last resort — but Flash usually can</td></tr>
+                <tr><td>Local-only / no cloud</td><td>Qwen 3.6 27B (local)</td><td>27B dense</td><td>Not on cloud, but your local fallback</td></tr>
+            </tbody>
+        </table>
+
+        <h2>The Bottom Line</h2>
+        <p>If you're hitting Ollama Cloud Max limits at 55% through the week, the fix isn't to upgrade. The fix is to route better.</p>
+
+        <ol>
+            <li><strong>Move all routine/monitoring work to DeepSeek V4 Flash.</strong> Could cut 30-40% of compute usage overnight.</li>
+            <li><strong>Use Kimi K2.7 Code for IDE execution.</strong> Purpose-built efficiency, minimal thinking overhead.</li>
+            <li><strong>Reserve GLM 5.2 for planning only.</strong> Don't waste 40B active params on heartbeats.</li>
+            <li><strong>DeepSeek V4 Pro should almost never run.</strong> V4 Flash covers 96% of what Pro does at 27% of the cost.</li>
+            <li><strong>GPT-OSS and Gemma are not your friends here.</strong> They're built for local hardware constraints. On Ollama Cloud, use the big models that actually solve the problem.</li>
+        </ol>
+
+        <p>The Ollama Cloud pricing model is poorly understood because nobody has published the data in this format. We hope this analysis helps you route smarter. If you're building an agent operation on Ollama Cloud and want help with the architecture, <a href="/#contact" class="text-green-400 hover:text-green-300">get in touch</a> — this is the kind of system we build at <a href="/" class="text-green-400 hover:text-green-300">Executive Mind</a>.</p>
+
+        <blockquote class="quote-box">
+            <em>Benchmark sources: DeepSeek V4 tech report, Z.ai GLM 5.2 release, Moonshot K2.7 Code release, MiniMax M3 release, Qwen 3.7 blog, OpenAI GPT-OSS release, Google Gemma 4 release, Composio benchmark, Artificial Analysis, SWE-bench leaderboard, BenchLM.ai, vals.ai. Compute weights estimated from active parameters and thinking token efficiency per the Ollama Cloud pricing model.</em>
+        </blockquote>
+
+        <p style="margin-top:2.5rem;color:#9ca3af;font-size:0.9em">— Kris Racette, Founder of <a href="/" class="text-green-400 hover:text-green-300">Executive Mind</a> — <a href="https://krisracette.me" class="text-green-400 hover:text-green-300">krisracette.me</a> | <a href="https://github.com/Roughn3ck" class="text-green-400 hover:text-green-300">GitHub</a></p>
+
+        <a href="/articles" class="font-bold text-green-400 hover:text-green-300 transition-colors mt-8 inline-block">&larr; Back to All Articles</a>
+    </div>
+</main>
+
+<script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const fontSize = 14;
+    let drops = Array(Math.floor(canvas.width / fontSize)).fill(0);
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#56e98f';
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fill(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 33);
+</script>
+
+<!-- Executive Mind Chat Widget -->
+<script src="/chat/chat-embed.js" defer></script>
+</body>
+</html>

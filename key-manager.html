@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ColdStack — Secure Crypto Key Storage | Executive Mind Product</title>
+    <title>ColdStack — Multi-Chain Crypto Vault, LP & DeFi Portfolio Manager | Executive Mind</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
-    <meta name="description" content="ColdStack (formerly Key Manager) v4.1 — a freeware secure crypto key storage app by Kris Racette and Executive Mind. AES-256-GCM encryption + Argon2id key derivation + BIP39 mnemonic derivation engine + Go Online balance fetching + CoinGecko price feeds. Portable Windows app for wallet addresses, mnemonics, and private keys.">
+    <meta name="description" content="ColdStack (formerly Key Manager) — a freeware, portable, multi-chain crypto vault, LP position tracker, and DeFi portfolio manager by Kris Racette and Executive Mind. AES-256-GCM encryption + Argon2id key derivation + BIP39 mnemonic engine + Hyperliquid vault tracking + HyperEVM & 12-chain LP position aggregation via Krystal + CoinGecko price feeds + custom RPC endpoints. Always the latest release, always offline-by-default.">
     <link rel="canonical" href="https://executivemind.io/key-manager">
     <meta property="og:url" content="https://executivemind.io/key-manager">
-    <meta property="og:title" content="ColdStack — Secure Crypto Key Storage | Executive Mind">
-    <meta property="og:description" content="ColdStack v4.1 (formerly Key Manager) — freeware secure crypto vault. AES-256-GCM + Argon2id + BIP39 derivation engine + Go Online toggle for balance fetching and price feeds. Portable, self-contained Windows app. Built by Kris Racette.">
+    <meta property="og:title" content="ColdStack — Multi-Chain Crypto Vault, LP & DeFi Portfolio Manager | Executive Mind">
+    <meta property="og:description" content="ColdStack (formerly Key Manager) — freeware portable crypto vault with Hyperliquid vault tracking, multi-chain LP position aggregation (HyperEVM + 12 chains via Krystal), HyperEVM writer, BIP39 derivation, CoinGecko prices, and custom RPC endpoints. AES-256-GCM + Argon2id. Built by Kris Racette.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://executivemind.io/assets/key_manager_derivation.png">
     <meta property="og:site_name" content="Executive Mind">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ColdStack — Secure Crypto Key Storage | Executive Mind">
-    <meta name="twitter:description" content="ColdStack v4.1 (formerly Key Manager) — freeware secure crypto vault with Go Online toggle, balance fetching, and CoinGecko price feeds. AES-256-GCM + Argon2id + BIP39 derivation engine. Portable Windows app by Kris Racette.">
+    <meta name="twitter:title" content="ColdStack — Multi-Chain Crypto Vault, LP & DeFi Portfolio Manager | Executive Mind">
+    <meta name="twitter:description" content="ColdStack — portable crypto vault with Hyperliquid vault tracking, multi-chain LP aggregation (HyperEVM + Krystal), writer, BIP39 derivation, prices, custom RPCs. Offline by default. Built by Kris Racette.">
     <meta name="twitter:image" content="https://executivemind.io/assets/key_manager_derivation.png">
     <meta name="author" content="Executive Mind">
-    <meta name="keywords" content="ColdStack, Key Manager, Executive Mind, Kris Racette, crypto key storage, AES-256-GCM, Argon2id, BIP39, mnemonic derivation, HD wallet, cryptocurrency security, portable vault, freeware, check for updates, Go Online, wallet balance, CoinGecko, price feeds, ERC-20, multi-chain, HyperEVM, HYPE">
+    <meta name="keywords" content="ColdStack, Key Manager, Executive Mind, Kris Racette, crypto vault, AES-256-GCM, Argon2id, BIP39, mnemonic derivation, HD wallet, cryptocurrency security, portable vault, freeware, Hyperliquid, HyperEVM, LP positions, liquidity provision, Krystal, DeFi portfolio, vault tracker, wallet balance, CoinGecko, price feeds, ERC-20, multi-chain, HYPE, WHYPE, UBTC, USDC, custom RPC, headless agent, AI signing, agentic signing">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -42,9 +42,28 @@
         "name": "Kris Racette",
         "url": "https://krisracette.me"
       },
-      "description": "ColdStack (formerly Key Manager) v4.1 — secure crypto key storage app with AES-256-GCM encryption, Argon2id key derivation, BIP39 mnemonic derivation engine, and Go Online toggle for wallet balance fetching and CoinGecko price feeds. Portable Windows application, ~45MB self-contained EXE.",
-      "softwareVersion": "4.1",
-      "featureList": ["AES-256-GCM Encryption", "Argon2id Key Derivation", "BIP39 Mnemonic Derivation", "Check for Updates (User-Initiated)", "Portable USB Deployment", "Auto-Lock Security", "Multi-Chain Support", "Co-Located Vault"],
+      "description": "ColdStack (formerly Key Manager) is a freeware, portable, self-contained Windows application that combines encrypted crypto key storage (AES-256-GCM + Argon2id), a BIP39 mnemonic derivation engine, multi-chain wallet balance fetching, CoinGecko price feeds, Hyperliquid vault tracking, multi-chain LP position aggregation (HyperEVM + 12 chains via Krystal), a read-write Hyperliquid venue writer, customizable RPC endpoints, and a headless HTTP signing agent for AI-driven workflows. Always the latest release on GitHub. Built by Kris Racette.",
+      "softwareVersion": "latest",
+      "featureList": [
+        "AES-256-GCM Authenticated Encryption",
+        "Argon2id Key Derivation (64MB / 3 iter / 4 lanes)",
+        "BIP39 Mnemonic Derivation Engine (7 chains)",
+        "Portable USB Deployment (~45MB self-contained EXE)",
+        "Auto-Lock on Idle (with optional disable)",
+        "Customizable RPC Endpoints (Standard / Advanced mode)",
+        "Multi-Chain Balance Fetching (EVM, BTC, SOL, SUI, DASH, HyperEVM, Hyperliquid L1)",
+        "HyperEVM ERC-20 Token Balances (USDC, WHYPE, UBTC)",
+        "CoinGecko Price Feeds (60s in-memory cache, no API key)",
+        "Hyperliquid L1 Vault Tracker (TVL, APR, age, P&L)",
+        "Multi-Chain LP Position Aggregation (HyperEVM + 12 chains via Krystal)",
+        "HyperEVM & Hyperliquid L1 LP Reader (static collect() fee reading)",
+        "Hyperliquid Writer — wrap, approve, open, collect, close LP positions",
+        "Saved Vaults + Saved Pools (encrypted, persistent)",
+        "Headless Signing Agent (HTTP on localhost:8842)",
+        "Check for Updates (User-Initiated, Offline by Default)",
+        "CSV / Excel Bulk Import",
+        "20+ Predefined Chains + Custom Labels"
+      ],
       "url": "https://github.com/Roughn3ck/key_manager"
     }
     </script>
@@ -61,7 +80,7 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<h1 class="sr-only">ColdStack (formerly Key Manager) — Secure Crypto Key Storage by Executive Mind and Kris Racette</h1>
+<h1 class="sr-only">ColdStack (formerly Key Manager) — Multi-Chain Crypto Vault, LP & DeFi Portfolio Manager by Executive Mind and Kris Racette</h1>
 
 <header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
     <div class="flex justify-between items-center max-w-5xl mx-auto">
@@ -71,7 +90,7 @@
         <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
             <a href="/">Home</a>
             <a href="/key-manager" class="text-green-400 font-bold">ColdStack</a>
-            <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="text-green-400">GitHub →</a>
+            <a href="https://github.com/Roughn3ck/key_manager/releases/latest" target="_blank" rel="noopener" class="text-green-400">Download →</a>
         </nav>
         <button id="mobile-menu-btn" class="md:hidden">
             <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
@@ -80,7 +99,7 @@
     <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
         <a href="/" class="block">Home</a>
         <a href="/key-manager" class="block text-green-400 font-bold">ColdStack</a>
-        <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="block text-green-400">GitHub →</a>
+        <a href="https://github.com/Roughn3ck/key_manager/releases/latest" target="_blank" rel="noopener" class="block text-green-400">Download →</a>
     </nav>
 </header>
 
@@ -88,26 +107,27 @@
 <section class="min-h-[60vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
     <div class="z-10 px-4 py-20 md:py-24 max-w-3xl text-center">
-        <div class="inline-block px-4 py-1 bg-green-900/30 border border-green-500/30 rounded-full text-xs font-mono text-green-400 uppercase tracking-widest mb-6">Executive Mind Product • Freeware • v4.1</div>
+        <div class="inline-block px-4 py-1 bg-green-900/30 border border-green-500/30 rounded-full text-xs font-mono text-green-400 uppercase tracking-widest mb-6">Executive Mind Product • Freeware • Always Latest</div>
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">COLDSTACK</h1>
-        <p class="text-xl md:text-2xl text-green-400 font-mono mb-2">Secure Crypto Key Storage</p>
+        <p class="text-xl md:text-2xl text-green-400 font-mono mb-2">Multi-Chain Crypto Vault • LP & DeFi Portfolio Manager</p>
         <p class="text-xs text-gray-500 mt-2">Formerly Key Manager — now ColdStack</p>
-        <p class="text-gray-400 max-w-2xl mx-auto mb-8 mt-4">A portable, self-contained ~45MB Windows application for encrypting and managing cryptocurrency wallet information. Built by <strong class="text-green-300">Kris Racette</strong> with military-grade encryption standards. Now with a user-initiated Check for Updates feature — offline by default, zero telemetry.</p>
+        <p class="text-gray-400 max-w-2xl mx-auto mb-8 mt-4">A portable, self-contained Windows application that does what no browser extension, no cloud service, and no third-party platform will let you do: <strong class="text-green-300">own your keys, watch your vaults, read your LP positions across 12+ chains, and write back to Hyperliquid</strong> — all from one encrypted offline-by-default vault. Built by <strong class="text-green-300">Kris Racette</strong> with the same military-grade encryption standards trusted by exchanges and governments.</p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://github.com/Roughn3ck/key_manager/releases/tag/v4.1" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
-                Download ColdStack v4.1 →
+            <a href="https://github.com/Roughn3ck/key_manager/releases/latest" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
+                Download Latest Release →
             </a>
             <a href="#features" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300">
                 Explore Features
             </a>
         </div>
+        <p class="text-xs text-gray-500 mt-4 font-mono">No installation • No Python • No telemetry • Offline by default</p>
     </div>
 </section>
 
 <!-- Screenshots -->
 <section class="py-12" aria-label="ColdStack Screenshots">
     <div class="max-w-5xl mx-auto px-4">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8 text-center">ColdStack v4.1 — Inside the Vault</h2>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8 text-center">Inside the Vault</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-black/60 border border-green-900/30 rounded-lg p-4">
                 <img src="/assets/key_manager_initialise.png" alt="ColdStack Vault Initialisation — Create your master password" class="w-full rounded border border-slate-700">
@@ -142,22 +162,22 @@
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">What is ColdStack?</h2>
         <p class="mb-6 text-gray-300">
-            <strong class="text-green-300">ColdStack</strong> (formerly Key Manager) is a secure application developed by <strong class="text-green-300">Kris Racette</strong> and released under the Executive Mind banner for storing and managing cryptocurrency wallet information. It encrypts your data with <strong class="text-green-400">AES-256-GCM</strong> authenticated encryption and <strong class="text-green-400">Argon2id</strong> key derivation — the same standards used by password managers and crypto exchanges.
+            <strong class="text-green-300">ColdStack</strong> (formerly Key Manager) is a secure, portable Windows application developed by <strong class="text-green-300">Kris Racette</strong> and released under the Executive Mind banner. It started as a hardened crypto key vault — wallet addresses, 24-word mnemonics, private keys, all encrypted with <strong class="text-green-400">AES-256-GCM</strong> authenticated encryption and <strong class="text-green-400">Argon2id</strong> key derivation. It has since grown into something larger: a <strong class="text-green-300">multi-chain DeFi portfolio manager</strong> that combines encrypted key storage with on-chain read and write operations across Hyperliquid, HyperEVM, and 12+ chains via the Krystal aggregator.
         </p>
         <p class="mb-6 text-gray-300">
-            No installation required. No Python dependencies. Just copy the ~45MB self-contained <code class="text-green-300 bg-black/60 px-1 rounded">coldstack.exe</code> to a USB drive and run it. Your encrypted vault is co-located in the same directory, so it travels with you. Everything stays local — no telemetry, no background polling, no data ever leaves your computer without your explicit action. This is the security-first philosophy that defines every Executive Mind product.
+            No installation required. No Python dependencies. Just copy the self-contained <code class="text-green-300 bg-black/60 px-1 rounded">coldstack.exe</code> to a USB drive or any folder and run it. Your encrypted vault is co-located in the same directory, so it travels with you. Everything stays local — no telemetry, no background polling, no data ever leaves your computer without your explicit action. The <strong class="text-green-300">Go Online</strong> toggle is OFF by default and only enables read-only balance and price fetches; the embedded <strong class="text-green-300">Hyperliquid writer</strong> is opt-in per operation with a confirmation dialog. This is the security-first philosophy that defines every Executive Mind product.
         </p>
         <p class="mb-6 text-gray-300">
-            Version 4.1 adds a <strong class="text-green-300">Go Online</strong> toggle — when enabled, ColdStack fetches wallet balances via public RPC endpoints and live crypto prices via CoinGecko's free API. Balance fetching supports 15+ chains including EVM (Ethereum, Arbitrum, Base, BSC, Polygon, Optimism, HyperEVM/HYPE), BTC, SOL, DASH, SUI, ZEC, XRP, ADA, ATOM, SCRT, and RUNE. Prices are cached in-memory for 60 seconds and never written to disk. <strong class="text-green-300">Offline by default</strong> — zero network requests unless you explicitly enable it. The CLI EXE has been deprecated; CLI mode remains available via <code class="text-green-300 bg-black/60 px-1 rounded">python src/main.py</code> for development and scripting.
+            The current release tracks every meaningful position across the chains you actually use: native and ERC-20 balances across 15+ chains (Ethereum, Arbitrum, Base, BSC, Polygon, Optimism, HyperEVM, BTC, SOL, SUI, DASH), <strong class="text-green-300">Hyperliquid L1 vault positions</strong> (TVL, APR, deposit age, unrealized P&L), <strong class="text-green-300">LP positions across HyperEVM and 12 chains via the Krystal aggregator</strong> (with live uncollected fees read directly from the Project X PositionManager), and a <strong class="text-green-300">read-write Hyperliquid adapter</strong> that wraps and unwraps HYPE, opens and closes LP positions, and compounds fees — all signed through the embedded key-manager agent on <code class="text-green-300 bg-black/60 px-1 rounded">localhost:8842</code> so private keys never leave the encrypted vault.
         </p>
         <div class="flex flex-col md:flex-row items-center gap-8 mt-8">
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 w-full md:w-auto flex-1">
                 <h3 class="font-bold text-green-300 mb-2">Zero Trust by Design</h3>
-                <p class="text-sm text-gray-400">Your master password is never stored. It exists only in memory during your active session. After 5 minutes of inactivity, the vault auto-locks and sensitive data is cleared.</p>
+                <p class="text-sm text-gray-400">Your master password is never stored. It exists only in memory during your active session. Auto-lock clears sensitive data, and every write operation — collect fees, open LP, close LP, compound — requires explicit GUI confirmation. Writer signs via an internal headless agent, never holds private keys directly.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 w-full md:w-auto flex-1">
                 <h3 class="font-bold text-green-300 mb-2">Truly Portable</h3>
-                <p class="text-sm text-gray-400">The encrypted vault lives next to <code class="text-green-300 bg-black/60 px-1 rounded">coldstack.exe</code> in the same folder. Put both on a USB drive, and your encrypted data goes wherever you go. No registry entries. No system dependencies. No <code class="text-green-300 bg-black/60 px-1 rounded">~/.key_manager/</code> hidden directories.</p>
+                <p class="text-sm text-gray-400">The encrypted vault lives next to <code class="text-green-300 bg-black/60 px-1 rounded">coldstack.exe</code> in the same folder. Put both on a USB drive, and your encrypted data — keys, mnemonics, saved vaults, saved pools, custom RPC endpoints — goes wherever you go. No registry entries. No system dependencies. No <code class="text-green-300 bg-black/60 px-1 rounded">~/.key_manager/</code> hidden directories.</p>
             </div>
         </div>
     </div>
@@ -166,77 +186,145 @@
 <!-- Features Grid -->
 <section id="features" class="py-16" aria-label="ColdStack Features">
     <div class="max-w-5xl mx-auto px-4">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Features</h2>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-3">Features</h2>
+        <p class="text-sm text-gray-400 mb-8">Encrypted storage, on-chain reads, and on-chain writes — all from one offline-by-default vault. Every release ships new capabilities; the page below mirrors the latest build.</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+
+            <!-- Core Security -->
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🔐</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">AES-256-GCM Encryption</h3>
-                <p class="text-sm text-gray-400">Military-grade authenticated encryption. Your data is protected with the same standard used by governments and financial institutions worldwide.</p>
+                <p class="text-sm text-gray-400">Military-grade authenticated encryption. Your data is protected with the same standard used by governments and financial institutions worldwide. Every vault file is tamper-evident — any modification invalidates the authentication tag.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🗝️</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Argon2id Key Derivation</h3>
-                <p class="text-sm text-gray-400">Winner of the Password Hashing Competition. 64MB memory, 3 iterations, 4 lanes — resistant to brute-force and side-channel attacks.</p>
-            </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
-                <span class="inline-block mb-2 text-green-400 text-2xl">💾</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Portable — USB Ready</h3>
-                <p class="text-sm text-gray-400">Self-contained ~45MB <code class="text-green-300 bg-black/60 px-1 rounded">coldstack.exe</code>. No installation. No Python runtime needed. Copy to a USB drive and your vault goes where you go.</p>
+                <p class="text-sm text-gray-400">Winner of the Password Hashing Competition. 64MB memory, 3 iterations, 4 lanes — resistant to GPU/ASIC brute-force and side-channel attacks. Your password becomes an encryption key in ~1 second: fast enough for you, too slow for attackers.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">⏱️</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Auto-Lock on Idle</h3>
-                <p class="text-sm text-gray-400">5-minute inactivity timeout automatically locks the vault. Sensitive data is cleared from memory. Re-entry requires your master password.</p>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Auto-Lock + Manual Override</h3>
+                <p class="text-sm text-gray-400">5-minute inactivity timeout automatically locks the vault. A "Do not autolock" checkbox in the status bar keeps you in for long sessions. Show/hide password eye toggle on the login screen. Reveal-sensitive-data operations require password re-entry every time.</p>
+            </div>
+
+            <!-- Storage & Portability -->
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">💾</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Portable — USB Ready</h3>
+                <p class="text-sm text-gray-400">Self-contained ~45MB <code class="text-green-300 bg-black/60 px-1 rounded">coldstack.exe</code>. No installation. No Python runtime needed. Copy to a USB drive and your vault — keys, saved pools, saved vaults, custom RPC config — goes where you go. Works on any Windows 10/11 machine.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">📋</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">CSV / Excel Import</h3>
-                <p class="text-sm text-gray-400">Bulk-import addresses from CSV or Excel files. Supports 20+ predefined chains plus custom labels. Format guide built into the app.</p>
+                <p class="text-sm text-gray-400">Bulk-import addresses from CSV or Excel files. Supports 20+ predefined chains plus custom labels. Format guide built into the app. Review the import summary before committing — addresses added, skipped, errors.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">👁️</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Masked by Default</h3>
-                <p class="text-sm text-gray-400">Mnemonics and private keys are hidden by default. Reveal on demand with password re-entry. Auto-hide after 5 minutes of inactivity.</p>
+                <p class="text-sm text-gray-400">Mnemonics and private keys are hidden by default. Reveal on demand with password re-entry. Auto-hide after 5 minutes of inactivity. The vault never displays a sensitive value unless you explicitly ask for it.</p>
             </div>
+
+            <!-- Derivation & Keys -->
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🌱</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">BIP39 Derivation Engine</h3>
-                <p class="text-sm text-gray-400">Derive addresses and private keys directly from 24-word mnemonics. Supports EVM, BTC (Taproot/SegWit/Legacy), SOL, DASH, and SUI with standard HD wallet paths (BIP-32/BIP-44). No browser, no external tool — derivation happens locally inside the encrypted vault.</p>
-            </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
-                <span class="inline-block mb-2 text-green-400 text-2xl">🔄</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Check for Updates <span class="text-xs text-green-500 font-mono ml-1">NEW</span></h3>
-                <p class="text-sm text-gray-400">User-initiated update check via a single GitHub API call. Offline by default — only fires when you click the button. Runs in a background thread so the GUI stays responsive. No auto-updates, no background polling, no telemetry.</p>
+                <p class="text-sm text-gray-400">Derive addresses and private keys directly from 24-word mnemonics. Supports EVM, BTC (Taproot / SegWit / Legacy), SOL, DASH, and SUI with standard HD wallet paths (BIP-32 / BIP-44). No browser, no external tool — derivation happens locally inside the encrypted vault. Verified against Ian Coleman's BIP39 reference test vectors.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🔑</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Enhanced Key Management</h3>
-                <p class="text-sm text-gray-400">Private keys are now derived per-chain from your mnemonic, not stored as static entries. View individual chain keys or the master key. Each key is encrypted at rest and masked by default.</p>
+                <p class="text-sm text-gray-400">Private keys are derived per-chain from your mnemonic, not stored as static entries. View individual chain keys or the master key. Each key is encrypted at rest, masked by default, and tagged with its derivation path and source.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🧠</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Headless Signing Agent</h3>
+                <p class="text-sm text-gray-400">An embedded HTTP signing server (port 8842, localhost-only) lets AI agents and scripts sign transactions without ever holding your private keys. Sends <code class="text-green-300 bg-black/60 px-1 rounded">sign_tx</code> or <code class="text-green-300 bg-black/60 px-1 rounded">broadcast_tx</code>, gets back signed hex. Binds to 127.0.0.1 — no external network access. The exact same agent powers the Hyperliquid writer inside the GUI.</p>
+            </div>
+
+            <!-- Network & Balances -->
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🌐</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Go Online Toggle <span class="text-xs text-green-500 font-mono ml-1">NEW</span></h3>
-                <p class="text-sm text-gray-400">Offline by default. When enabled, unlocks read-only balance fetching and price feeds. Your keys never leave the vault. Online/Offline indicator in the status bar shows green Online or grey Offline.</p>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Go Online Toggle</h3>
+                <p class="text-sm text-gray-400">Offline by default. When you enable it, ColdStack fetches wallet balances via public RPC endpoints and live crypto prices via CoinGecko. Your keys never leave the vault. Online/Offline indicator in the status bar makes the state visible at all times.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">💰</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Wallet Balance Fetching <span class="text-xs text-green-500 font-mono ml-1">NEW</span></h3>
-                <p class="text-sm text-gray-400">Check balances inline on each address card. Supports 15+ chains including EVM (ETH, ARB, BASE, BSC, POLY, OPT), BTC, SOL, SUI, DASH, ZEC, XRP, ADA, ATOM, SCRT, RUNE, and HyperEVM (HYPE). Per-card Check Balance button.</p>
-            </div>
-            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
-                <span class="inline-block mb-2 text-green-400 text-2xl">📊</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">CoinGecko Price Feeds <span class="text-xs text-green-500 font-mono ml-1">NEW</span></h3>
-                <p class="text-sm text-gray-400">Live crypto prices via CoinGecko's free API. 60-second in-memory cache. No API key required. Choose USD, AUD, CAD, EUR, or CHF as your default currency. Fiat equivalent shown alongside native balance.</p>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Multi-Chain Balance Fetching</h3>
+                <p class="text-sm text-gray-400">Check balances inline on each address card. Supports 15+ chains: EVM (ETH, ARB, BASE, BSC, POLY, OPT), BTC, SOL, SUI, DASH, ZEC, XRP, ADA, ATOM, SCRT, RUNE, and HyperEVM (HYPE). Per-card Check Balance button — offline-aware, no background polling.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🪙</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">ERC-20 Token Support <span class="text-xs text-green-500 font-mono ml-1">NEW</span></h3>
-                <p class="text-sm text-gray-400">Fetch ERC-20 token balances alongside native chain balances. Configurable token contract addresses per chain. All EVM chains supported — Ethereum, Arbitrum, Base, BSC, Polygon, Optimism, and HyperEVM.</p>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">HyperEVM ERC-20 Tokens</h3>
+                <p class="text-sm text-gray-400">Fetches ERC-20 token balances on HyperEVM (chain ID 999) — USDC, WHYPE, and UBTC confirmed via Circle developer docs and on-chain resolution. The combined "Hyperliquid (HL1 & HyperEVM)" chain option queries HyperEVM gas + ERC-20 + Hyperliquid L1 spot in a single pass.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">📊</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">CoinGecko Price Feeds</h3>
+                <p class="text-sm text-gray-400">Live crypto prices via CoinGecko's free API. 60-second in-memory cache. No API key required. Choose USD, AUD, CAD, EUR, or CHF as your default currency. Fiat equivalent shown alongside native balance. Stablecoin → fiat conversion uses live CoinGecko USDC price, not a 1:1 USD assumption.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">⚙️</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Customizable RPC Endpoints</h3>
+                <p class="text-sm text-gray-400">Standard / Advanced mode toggle. Standard users get the locked-down defaults; Advanced users get a full RPC endpoint editor across 17 chains with per-chain fallback URLs. <code class="text-green-300 bg-black/60 px-1 rounded">rpc_endpoints.json</code> lives next to the EXE for portability — public URLs only, never API keys.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🔐</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">API Key Vault</h3>
+                <p class="text-sm text-gray-400">Helius, Infura, Alchemy, Quicknode keys stored encrypted inside the vault — never written to <code class="text-green-300 bg-black/60 px-1 rounded">rpc_endpoints.json</code>. The JSON file holds public URLs with <code class="text-green-300 bg-black/60 px-1 rounded">"auth": "helius"</code> references; the gateway injects the key at runtime from the vault. Cleared on lock.</p>
+            </div>
+
+            <!-- Hyperliquid Stack -->
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🏦</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Hyperliquid L1 Vault Tracker</h3>
+                <p class="text-sm text-gray-400">Read-only Hyperliquid vault positions via the <code class="text-green-300 bg-black/60 px-1 rounded">/info</code> API. Each vault card shows name, address, TVL, APR, vault age, deposit age, deposited, current value, and unrealized P&L. Save / Delete buttons persist full snapshots inside the encrypted vault — saved vaults render instantly on reopen without a network refresh.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">📈</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">LP Positions — HyperEVM & Hyperliquid L1</h3>
+                <p class="text-sm text-gray-400">Aggregates concentrated-liquidity LP positions from HyperEVM (Project X WHYPE/UBTC pools) and Hyperliquid L1. Each card shows pair, range, value, PnL, token holdings, and a strategy suggestion (Hold / Rebalance / Withdraw). Uncollected fees are read via a static <code class="text-green-300 bg-black/60 px-1 rounded">collect()</code> eth_call on the Project X PositionManager — values match the Project X UI tooltip within expected drift. Spot positions and closed LP positions (liquidity = 0) are filtered out automatically.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🌐</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Multi-Chain LP via Krystal</h3>
+                <p class="text-sm text-gray-400">The Krystal Cloud adapter reads LP positions across <strong class="text-green-300">12 chains and 28 DEX protocols</strong> — Ethereum, Arbitrum, Optimism, Base, Polygon, BNB, Avalanche, and more. Runs in parallel with the native HyperEVM scan; results are merged and deduplicated. HyperEVM (chain 999) is intentionally excluded from the Krystal path so the native adapter keeps accurate fee reads. API key stored encrypted inside the vault.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">✍️</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Hyperliquid Writer</h3>
+                <p class="text-sm text-gray-400">Wrap / unwrap HYPE, approve tokens, open, increase, decrease, collect, and close LP positions on HyperEVM. Every write operation requires an explicit GUI confirmation dialog. The writer signs through the embedded key-manager agent on <code class="text-green-300 bg-black/60 px-1 rounded">localhost:8842</code> — it is a tool, not an autonomous agent. No bots. No auto-rebalancing. The strategy engine <em>suggests</em>; you decide.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">💎</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Compound & Collect Fees</h3>
+                <p class="text-sm text-gray-400">Collect uncollected fees from any Project X HyperEVM position with one click — tested and confirmed working end-to-end on mainnet. Compound Fees snapshots balances, batches the multi-transaction flow, and tracks nonces correctly across receipts. Each operation is signed through the headless agent and confirmed in the GUI before broadcast.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">💾</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Saved Pools & Saved Vaults</h3>
+                <p class="text-sm text-gray-400">Save interesting LP positions and Hyperliquid vaults to your encrypted vault. They render instantly on next open — no waiting for a full wallet rescan. Public identifiers only, no private keys, stored alongside your other encrypted data. Saved-pools counter updates in real time as you add or remove.</p>
+            </div>
+
+            <!-- Operations & Updates -->
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🔄</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Check for Updates</h3>
+                <p class="text-sm text-gray-400">User-initiated update check via a single GitHub API call. Offline by default — only fires when you click the button. Runs in a background thread so the GUI stays responsive. No auto-updates, no background polling, no telemetry. The page you're reading always points to <code class="text-green-300 bg-black/60 px-1 rounded">releases/latest</code> — whatever is shipping now is what's on the page.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">📐</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Compact Card Layout <span class="text-xs text-green-500 font-mono ml-1">NEW</span></h3>
-                <p class="text-sm text-gray-400">Redesigned address cards showing coin + chain + derivation on one line, with balances appearing only when fetched. Reduced vertical space per card. Notes only shown when present.</p>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Compact Card Layout</h3>
+                <p class="text-sm text-gray-400">Redesigned address cards showing coin + chain + derivation on one line, with balances appearing only when fetched. Notes only when present. EVM chain progress display updates in real time as each chain is queried. Designed for high-density portfolio views without sacrificing readability.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🔒</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Offline-Aware Everywhere</h3>
+                <p class="text-sm text-gray-400">Every online feature respects the Go Online toggle. LP tab and HL1 Vaults tab disable refresh and show an offline banner when networking is off. Balance fetches and price feeds only fire when explicitly enabled. The writer is unreachable when the vault is locked.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🛠️</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Schema-Versioned Vaults</h3>
+                <p class="text-sm text-gray-400">Every new field is additive. Old vaults open in the latest build without migration. New vaults get the current schema version. Backward compatibility is the rule — your data is never invalidated by an upgrade.</p>
             </div>
         </div>
     </div>
@@ -250,7 +338,7 @@
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 text-center">
                 <div class="text-3xl mb-3">📍</div>
                 <h3 class="font-bold text-green-300 mb-2">Wallet Addresses</h3>
-                <p class="text-sm text-gray-400">Organized by account and chain. 20+ predefined chains including BTC, EVM, SOL, ZEC, XMR, and more.</p>
+                <p class="text-sm text-gray-400">Organized by account and chain. 20+ predefined chains including BTC, EVM, SOL, ZEC, XMR, and more. Plus any custom chain you want to track.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 text-center">
                 <div class="text-3xl mb-3">📝</div>
@@ -260,7 +348,7 @@
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 text-center">
                 <div class="text-3xl mb-3">🔑</div>
                 <h3 class="font-bold text-green-300 mb-2">Private Keys</h3>
-                <p class="text-sm text-gray-400">Multiple chain-specific keys per account. Labeled and organized. Protected with the same encryption as everything else.</p>
+                <p class="text-sm text-gray-400">Multiple chain-specific keys per account. Labeled and organized. Protected with the same encryption as everything else. Derivation metadata stored alongside.</p>
             </div>
         </div>
     </div>
@@ -281,7 +369,7 @@
             </div>
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
                 <h3 class="font-bold text-green-300 mb-2">Session Management</h3>
-                <p class="text-sm text-gray-400">No password is ever written to disk. It exists only in volatile memory during your session. Auto-lock after 5 minutes of inactivity clears all sensitive data. Reveal-sensitive-data operations require password re-entry every time.</p>
+                <p class="text-sm text-gray-400">No password is ever written to disk. It exists only in volatile memory during your session. Auto-lock after 5 minutes of inactivity clears all sensitive data. Reveal-sensitive-data operations require password re-entry every time. The headless signing agent binds to <code class="text-green-300 bg-black/60 px-1 rounded">127.0.0.1</code> only — no external network access to the signing service.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
                 <h3 class="font-bold text-green-300 mb-2">Zero Telemetry</h3>
@@ -290,6 +378,10 @@
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
                 <h3 class="font-bold text-green-300 mb-2">Go Online Security</h3>
                 <p class="text-sm text-gray-400">Go Online is OFF by default — zero network requests unless you explicitly enable it. Only public addresses are queried — private keys and mnemonics NEVER leave the vault. Prices cached in-memory only (60s TTL), never written to disk. Online mode and currency settings stored in the encrypted vault alongside your other data.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
+                <h3 class="font-bold text-green-300 mb-2">Writer Security Boundary</h3>
+                <p class="text-sm text-gray-400">The Hyperliquid writer never holds private keys. All signing goes through the embedded key-manager agent on <code class="text-green-300 bg-black/60 px-1 rounded">localhost:8842</code>. Every write operation — wrap, approve, open, increase, decrease, collect, close, rebalance — requires an explicit GUI confirmation dialog. No auto-trading, no bots, no autonomous rebalancing. The strategy engine <em>suggests</em>; you <em>decide</em>.</p>
             </div>
         </div>
     </div>
@@ -321,6 +413,7 @@
             <span class="px-3 py-1 bg-black/60 border border-green-900/50 rounded text-xs font-mono text-green-400">SCRT</span>
             <span class="px-3 py-1 bg-black/60 border border-green-500/50 rounded text-xs font-mono text-green-400">+ Custom</span>
         </div>
+        <p class="text-sm text-gray-400 mt-6">Plus live reads for: <strong class="text-green-300">Hyperliquid L1</strong> (perpetuals, spot, vault positions) and <strong class="text-green-300">HyperEVM</strong> (chain ID 999 — gas, ERC-20 tokens USDC/WHYPE/UBTC, and concentrated-liquidity LP positions). LP position aggregation also covers 12 chains and 28 DEX protocols through the optional Krystal Cloud adapter.</p>
     </div>
 </section>
 
@@ -328,9 +421,9 @@
 <section class="py-16" aria-label="Download ColdStack">
     <div class="max-w-3xl mx-auto px-4 text-center">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Get ColdStack</h2>
-        <p class="text-gray-400 mb-8">Freeware. Open source. No installation. Download the v4.1 release from GitHub and start securing your crypto keys today.</p>
-        <a href="https://github.com/Roughn3ck/key_manager/releases/tag/v4.1" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
-            Download ColdStack v4.1 →
+        <p class="text-gray-400 mb-8">Freeware. Open source. No installation. Always the latest release on GitHub — download, run, own your keys.</p>
+        <a href="https://github.com/Roughn3ck/key_manager/releases/latest" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
+            Download Latest Release →
         </a>
         <p class="text-xs text-gray-500 mt-4 font-mono">Built by Kris Racette • Released as freeware • Source available on GitHub</p>
     </div>
@@ -345,10 +438,10 @@
                 <strong class="text-green-300">Kris Racette</strong> (also known as Kristopher Racette and Kristopher Marc Racette) is the Founder of Executive Mind and the creator of <strong class="text-green-300">ColdStack</strong> (formerly Key Manager). With 18+ years of accounting experience and a Master of Commerce from the University of New South Wales, Kris brings a unique perspective to security tooling — one that bridges financial rigor with technical implementation.
             </p>
             <p class="text-gray-300 mb-4">
-                ColdStack was built to solve a real problem: securely storing cryptocurrency wallet information without relying on cloud services, browser extensions, or third-party apps that could be compromised. Every design decision prioritizes security, portability, and user control.
+                ColdStack was built to solve a real problem: securely storing cryptocurrency wallet information without relying on cloud services, browser extensions, or third-party apps that could be compromised — and then extended into a multi-chain DeFi portfolio manager that reads on-chain state and writes back to Hyperliquid without ever surrendering custody of the keys. Every design decision prioritizes security, portability, and user control.
             </p>
             <p class="text-gray-300">
-                The source code is available for audit and contribution on GitHub. Executive Mind believes in open-source security — when the code is public, the security claims are verifiable.
+                The source code is available for audit and contribution on GitHub. Executive Mind believes in open-source security — when the code is public, the security claims are verifiable. The same vault powers Executive Mind's own agentic signing infrastructure: AI agents request signed transactions through the headless agent on <code class="text-green-300 bg-black/60 px-1 rounded">localhost:8842</code>, never touching the keys themselves.
             </p>
         </div>
     </div>
@@ -360,6 +453,7 @@
         <div class="flex flex-wrap justify-center gap-6 text-sm font-mono">
             <a href="https://krisracette.me/key-manager" class="text-gray-500 hover:text-green-400 transition">Kris Racette →</a>
             <a href="https://github.com/Roughn3ck/key_manager" class="text-gray-500 hover:text-green-400 transition">GitHub Repository →</a>
+            <a href="https://github.com/Roughn3ck/key_manager/releases/latest" class="text-gray-500 hover:text-green-400 transition">Latest Release →</a>
             <a href="/" class="text-gray-500 hover:text-green-400 transition">Executive Mind Home →</a>
         </div>
     </div>
@@ -371,6 +465,7 @@
         <p class="mb-4 text-sm">ColdStack — Your crypto keys, encrypted, portable, yours.</p>
         <div class="flex flex-wrap justify-center gap-6 mb-6 text-sm">
             <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="hover:text-green-400 transition-colors">GitHub</a>
+            <a href="https://github.com/Roughn3ck/key_manager/releases/latest" target="_blank" rel="noopener" class="hover:text-green-400 transition-colors">Download</a>
             <a href="https://krisracette.me/key-manager" class="hover:text-green-400 transition-colors">Kris Racette</a>
             <a href="/" class="hover:text-green-400 transition-colors">Executive Mind</a>
         </div>
