@@ -1,0 +1,16 @@
+# Cloudflare Pages redirects for executivemind.io
+# Generated: 2026-07-11
+
+# Force non-www (canonical is non-www)
+https://www.executivemind.io/* https://executivemind.io/:splat 301!
+
+# /krisracette and /krisracette.html canonicalize to the bio page
+/krisracette /kris-racette-bio 301
+/krisracette.html /kris-racette-bio 301
+
+# Cochran marketing page → cochran agent profile
+/cochran-legal /cochran 301
+/cochran-legal.html /cochran 301
+
+# Trailing-slash normalization
+/articles/ /articles 301
