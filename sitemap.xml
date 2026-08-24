@@ -8,9 +8,15 @@
     </url>
     <url>
         <loc>https://executivemind.io/kris-racette-bio</loc>
-        <lastmod>2026-07-11</lastmod>
+        <lastmod>2026-07-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://executivemind.io/author/kris-racette</loc>
+        <lastmod>2026-07-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://executivemind.io/let-the-agents-live</loc>
@@ -39,6 +45,12 @@
     <url>
         <loc>https://executivemind.io/key-manager</loc>
         <lastmod>2026-07-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://executivemind.io/armchair</loc>
+        <lastmod>2026-08-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

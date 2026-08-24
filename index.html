@@ -12,7 +12,8 @@
     <meta name="ICBM" content="-27.4698, 153.0251">
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
     <meta name="description" content="Executive Mind - Leading Business AI and Artificial Intelligence Consultancy in Brisbane, Queensland & Gold Coast. Custom AI solutions, strategies, and consulting for enterprises."/>
-    <link rel="canonical" href="https://executivemind.io/">
+    <!-- 2026-08-20 SEO: strip trailing slash for consistency with all EM subpage canonicals. See aria/seo/search-console-canonical-fix-2026-08-20.md -->
+    <link rel="canonical" href="https://executivemind.io">
     <meta property="og:url" content="https://executivemind.io/">
     <meta property="og:title" content="Executive Mind — Agent-First AI Consultancy in Brisbane">
     <meta property="og:description" content="We don't just advise on AI — we are the proof. Autonomous AI agents run our entire operation. Custom AI strategy, solutions, and training for Brisbane, Gold Coast, and Australia.">
@@ -77,8 +78,9 @@
       "foundingDate": "2024",
       "founder": {
         "@type": "Person",
+        "@id": "https://executivemind.io/author/kris-racette#author",
         "name": "Kris Racette",
-        "url": "https://krisracette.me"
+        "url": "https://executivemind.io/author/kris-racette"
       },
       "address": {
         "@type": "PostalAddress",
@@ -111,19 +113,13 @@
     <script type="application/ld+json">
     { "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Executive Mind", "description": "Agent-first AI consultancy in Brisbane providing custom AI strategy, solutions, and training.", "url": "https://executivemind.io", "logo": "https://executivemind.io/assets/executive_mind.png", "image": "https://executivemind.io/assets/AI_business_view.avif", "address": { "@type": "PostalAddress", "addressLocality": "Brisbane", "addressRegion": "QLD", "addressCountry": "AU" }, "geo": { "@type": "GeoCoordinates", "latitude": -27.4698, "longitude": 153.0251 }, "telephone": "+61466010155", "priceRange": "$$", "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" }, "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"], "founder": { "@type": "Person", "name": "Kris Racette" } }
     </script>
-    <script type="application/ld+json">
-    { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-      { "@type": "Question", "name": "How does Executive Mind approach client projects?", "acceptedAnswer": { "@type": "Answer", "text": "We partner closely with clients, from scoping initial requirements to deploying scalable solutions that drive real business value. Our agent-first approach means autonomous AI agents handle real operations, strategy, and delivery." } },
-      { "@type": "Question", "name": "Do you offer ongoing support after implementation?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We provide maintenance, updates, and training to ensure your AI initiatives stay on track." } },
-      { "@type": "Question", "name": "How long does a typical AI project take?", "acceptedAnswer": { "@type": "Answer", "text": "Project timelines depend on complexity, but most are completed within 4-8 weeks from kickoff." } },
-      { "@type": "Question", "name": "What types of data do you require for AI models?", "acceptedAnswer": { "@type": "Answer", "text": "We work with structured numerical data, images, text, and more. Part of our core offering includes parsing OneDrive, Google Doc, email archives, and other databases to train your agent on company specifics." } }
-    ] }
-    </script>
+    <!-- 2026-08-20 SEO: removed duplicate FAQPage JSON-LD block (was a copy of the first one with minor text tweaks). Only one FAQPage now remains above. See aria/seo/search-console-canonical-fix-2026-08-20.md -->
     <script type="application/ld+json">
     [
       { "@context": "https://schema.org", "@type": "Service", "serviceType": "AI Strategy Consultation", "provider": { "@type": "Organization", "name": "Executive Mind", "url": "https://executivemind.io" }, "description": "Developing a roadmap for integrating AI technologies into your business, maximizing ROI and scalability.", "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"] },
       { "@context": "https://schema.org", "@type": "Service", "serviceType": "Custom AI Solutions", "provider": { "@type": "Organization", "name": "Executive Mind", "url": "https://executivemind.io" }, "description": "Predictive analytics, automation, and process optimization tailored to your business.", "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"] },
-      { "@context": "https://schema.org", "@type": "Service", "serviceType": "AI Workshops & Training", "provider": { "@type": "Organization", "name": "Executive Mind", "url": "https://executivemind.io" }, "description": "Hands-on training sessions to upskill your team on AI tools and best practices.", "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"] }
+      { "@context": "https://schema.org", "@type": "Service", "serviceType": "AI Workshops & Training", "provider": { "@type": "Organization", "name": "Executive Mind", "url": "https://executivemind.io" }, "description": "Hands-on training sessions to upskill your team on AI tools and best practices.", "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"] },
+      { "@context": "https://schema.org", "@type": "Service", "serviceType": "Agent In The Armchair — Real-Time Teams Voice Agent", "provider": { "@type": "Organization", "name": "Executive Mind", "url": "https://executivemind.io" }, "description": "Real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Invisible to Teams (no bot joins the meeting). Runs entirely on local hardware. Transcribes meetings with speaker diarization. Speaks when directly addressed using British RP TTS voice. Open source (MIT).", "url": "https://executivemind.io/armchair", "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"] }
     ]
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -135,6 +131,7 @@
         .typewriter { border-right: 2px solid #56e98f; }
         .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
         .matrix-bg canvas { display: block; }
+        .chair-glow { filter: drop-shadow(0 0 8px rgba(0, 255, 200, 0.3)); }
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
@@ -254,8 +251,8 @@
 <section id="services" class="py-16" aria-label="Our AI Consulting Services">
     <div class="max-w-5xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Services</h2>
-        <p class="text-gray-400 mb-10 max-w-3xl">We offer three core services, each delivered through a combination of AI agent execution and human oversight. Every engagement starts with a free 30-minute discovery call to assess your needs and identify where AI can deliver the most impact.</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <p class="text-gray-400 mb-10 max-w-3xl">We deliver three core consulting services — each powered by our own AI agents in production — and we ship open-source products that prove the architecture works in the wild. Every engagement starts with a free 30-minute discovery call to assess your needs and identify where AI can deliver the most impact.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M15.75 6h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-3" stroke="#56e98f" stroke-width="2" fill="none"/><path d="M6.25 10V8a2 2 0 0 1 2-2h4l7 7v2" stroke="#56e98f" stroke-width="2"/></svg></span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">AI Strategy Consultation</h3>
@@ -271,6 +268,12 @@
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Workshops & Training</h3>
                 <p>Hands-on training sessions to upskill your team on <strong>AI tools</strong> and best practices. We cover technology selection, data management, security, prompt engineering, and building internal AI capabilities. Tailored to your team's skill level.</p>
             </div>
+            <a href="/armchair" class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group block">
+                <span class="inline-block mb-2 text-green-400 text-xl"><svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke="#56e98f" stroke-width="2" fill="none"/><path d="M6 11h12v6H6z" stroke="#56e98f" stroke-width="2" fill="none"/><path d="M9 11V7a3 3 0 0 1 6 0v4" stroke="#56e98f" stroke-width="2" fill="none"/></svg></span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Agent In The Armchair 🪑</h3>
+                <p>Real-time streaming <strong>Voice-to-Text + AI Agent</strong> for Microsoft Teams. Invisible to Teams — no bot joins the meeting. Runs entirely on local hardware. Transcribes with speaker diarization, speaks only when directly addressed. <em>Invisible. Local. Free.</em></p>
+                <span class="inline-block mt-3 text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded">Learn More →</span>
+            </a>
         </div>
     </div>
 </section>
@@ -475,7 +478,7 @@
                 <!-- Cochran — Featured Project -->
                 <a href="https://github.com/Roughn3ck/Cochran" target="_blank" rel="noopener noreferrer" class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group block bg-black/60">
                     <div class="p-5 flex flex-col items-center justify-center h-40 bg-gradient-to-br from-green-900/40 to-black/80">
-                        <img src="/assets/cochran_real.jpg" alt="Cochran Logo" class="w-12 h-12 mb-2 object-contain">
+                        <img src="/assets/cochran.jpg" alt="Cochran Logo" class="w-12 h-12 mb-2 object-contain">
                         <h4 class="font-bold text-green-300 mb-1 text-center group-hover:text-white transition-colors">Cochran</h4>
                         <p class="text-xs text-gray-400 text-center">Live Call AI Agent</p>
                     </div>
@@ -483,6 +486,20 @@
                         <h4 class="font-bold text-green-300 mb-2 group-hover:text-green-400 transition-colors">Cochran — Live Call AI</h4>
                         <p class="text-sm">Sits in on calls and provides real-time Listen → Think → Speak capability. Any conversation where an intelligent second voice matters — from formal proceedings to personal matters. Real-time transcription → strategic analysis → natural voice output.</p>
                         <span class="inline-block mt-3 text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded">Open Source → GitHub</span>
+                    </div>
+                </a>
+
+                <!-- Armchair — Featured Project -->
+                <a href="/armchair" class="rounded-lg overflow-hidden shadow hover:-translate-y-2 transition-transform duration-300 border-l-4 border-green-400 group block bg-black/60">
+                    <div class="p-5 flex flex-col items-center justify-center h-40 bg-gradient-to-br from-green-900/40 to-black/80">
+                        <img src="/assets/armchair-logo.jpg" alt="Agent In The Armchair logo" class="w-16 h-16 mb-2 object-contain chair-glow">
+                        <h4 class="font-bold text-green-300 mb-1 text-center group-hover:text-white transition-colors">Agent In The Armchair</h4>
+                        <p class="text-xs text-gray-400 text-center">Invisible Teams AI Agent</p>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-green-300 mb-2 group-hover:text-green-400 transition-colors">Agent In The Armchair — Real-Time Teams Voice Agent 🪑</h4>
+                        <p class="text-sm">Real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Sits in your meetings, transcribes with speaker labels, speaks when directly addressed. Invisible to Teams (no bot joins), runs entirely on local hardware, zero per-hour cost. Silero VAD → faster-whisper → pyannote diarization → Ollama LLM gate → Piper TTS (British RP). <em>Invisible. Local. Free.</em></p>
+                        <span class="inline-block mt-3 text-xs font-bold text-green-400 bg-green-400/10 px-3 py-1 rounded">Learn More → Local Landing</span>
                     </div>
                 </a>
 

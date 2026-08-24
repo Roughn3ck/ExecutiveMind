@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <title>Agent In The Armchair — Real-Time Teams Voice Agent | Executive Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="geo.region" content="AU-QLD">
+    <meta name="geo.placement" content="Brisbane">
+    <meta name="geo.position" content="-27.4698;153.0251">
+    <meta name="ICBM" content="-27.4698, 153.0251">
+    <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
+    <meta name="description" content="Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Invisible to Teams, runs on your hardware, zero per-hour cost. Silero VAD → faster-whisper → pyannote diarization → Ollama LLM gate → Piper TTS. Open source (MIT). Built by Kris Racette at Executive Mind.">
+    <link rel="canonical" href="https://executivemind.io/armchair">
+    <meta property="og:url" content="https://executivemind.io/armchair">
+    <meta property="og:title" content="Agent In The Armchair — Real-Time Teams Voice Agent | Executive Mind">
+    <meta property="og:description" content="Invisible. Local. Free. A real-time streaming Voice-to-Text + AI Agent for Microsoft Teams that runs on a single workstation. Sits in your meetings, transcribes with speaker labels, speaks when directly addressed. Open source (MIT).">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://executivemind.io/assets/armchair-banner.jpg">
+    <meta property="og:site_name" content="Executive Mind">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Agent In The Armchair — Real-Time Teams Voice Agent | Executive Mind">
+    <meta name="twitter:description" content="Invisible to Teams. Local. Free. Real-time streaming VTT + AI Agent for Microsoft Teams. Silero VAD → faster-whisper → pyannote → Ollama → Piper TTS.">
+    <meta name="twitter:image" content="https://executivemind.io/assets/armchair-banner.jpg">
+    <meta name="author" content="Executive Mind">
+    <meta name="keywords" content="Agent In The Armchair, Microsoft Teams, voice agent, voice to text, VTT, speaker diarization, real-time transcription, Silero VAD, faster-whisper, pyannote, Ollama, Piper TTS, AI agent, local AI, open source, MIT, Executive Mind, Kris Racette, Brisbane, AI consultancy, The Pack">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Agent In The Armchair",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows, WSL (Ubuntu)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "url": "https://executivemind.io"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Kris Racette",
+        "url": "https://krisracette.me"
+      },
+      "description": "Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Invisible to Teams (no bot joins the meeting), runs entirely on local hardware, transcribes meetings with speaker diarization, speaks when directly addressed using a British RP TTS voice. Open source (MIT).",
+      "featureList": [
+        "Real-Time Streaming Voice-to-Text",
+        "Speaker Diarization (pyannote-audio)",
+        "Silero VAD (skip silence, near-zero cost)",
+        "faster-whisper incremental transcription",
+        "LLM gate (Ollama) for direct-address detection",
+        "Piper TTS (British RP default)",
+        "Live Web Dashboard (localhost:8765)",
+        "One-Click Launcher (start_armchair.bat)",
+        "Session Archiving (transcript + audio + speaker data)",
+        "Invisible to Microsoft Teams (no bot)",
+        "Local-first — zero per-hour cost",
+        "MIT licensed, open source"
+      ],
+      "url": "https://executivemind.io/armchair",
+      "downloadUrl": "https://github.com/Roughn3ck/Armchair"
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        ::-webkit-scrollbar { display: none; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
+        .matrix-bg canvas { display: block; }
+        .chair-glow { filter: drop-shadow(0 0 12px rgba(0, 255, 200, 0.35)); }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
+
+<h1 class="sr-only">Agent In The Armchair — Real-Time Teams Voice Agent by Executive Mind</h1>
+
+<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
+    <div class="flex justify-between items-center max-w-5xl mx-auto">
+        <a href="/" class="font-bold text-xl tracking-widest select-none">
+            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        </a>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
+            <a href="/">Home</a>
+            <a href="/key-manager" class="text-green-400">ColdStack</a>
+            <a href="/gym-tracker" class="text-green-400">Gym Tracker</a>
+            <a href="/armchair" class="text-green-400 font-bold">Armchair</a>
+            <a href="https://github.com/Roughn3ck/Armchair" target="_blank" rel="noopener" class="text-green-400">GitHub →</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden">
+            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
+        </button>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
+        <a href="/" class="block">Home</a>
+        <a href="/key-manager" class="block text-green-400">ColdStack</a>
+        <a href="/gym-tracker" class="block text-green-400">Gym Tracker</a>
+        <a href="/armchair" class="block text-green-400 font-bold">Armchair</a>
+        <a href="https://github.com/Roughn3ck/Armchair" target="_blank" rel="noopener" class="block text-green-400">GitHub →</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
+    <img src="/assets/armchair-banner.jpg" alt="Agent In The Armchair — director's chair with audio waveform" class="absolute right-0 top-0 h-full w-full object-cover opacity-30 pointer-events-none" style="mask-image: linear-gradient(to left, transparent, black 30%, black 60%, transparent); -webkit-mask-image: linear-gradient(to left, transparent, black 30%, black 60%, transparent);">
+    <div class="z-10 px-4 py-20 md:py-24 max-w-3xl text-center">
+        <div class="inline-block px-4 py-1 bg-green-900/30 border border-green-500/30 rounded-full text-xs font-mono text-green-400 uppercase tracking-widest mb-6">Executive Mind Product • Open Source (MIT) • v2 Streaming</div>
+        <img src="/assets/armchair-logo.jpg" alt="Agent In The Armchair logo" class="chair-glow w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 rounded-xl">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">AGENT IN THE<br>ARMCHAIR</h1>
+        <p class="text-xl md:text-2xl text-green-400 font-mono mb-2">Real-time streaming VTT + AI Agent for Microsoft Teams</p>
+        <p class="text-gray-400 max-w-2xl mx-auto mb-8 mt-4">Sits in your meetings, transcribes with speaker labels, speaks only when directly addressed. <strong class="text-green-300">Invisible. Local. Free.</strong> No bot joins the meeting. Teams doesn't know it's there.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://github.com/Roughn3ck/Armchair" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
+                View on GitHub →
+            </a>
+            <a href="#how-it-works" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300">
+                How It Works
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- The Problem: SaaS Surveillance -->
+<section class="py-16" aria-label="The Problem">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">The Problem — Meeting AI Costs Money and Trust</h2>
+        <p class="mb-6 text-gray-300">
+            Every "AI meeting assistant" on the market does the same thing: a <strong class="text-green-300">bot joins your call</strong>, captures every word, ships it to a third-party cloud, and bills you per-seat per-month. Your conversation leaves your machine. Your data trains someone else's model. The vendor can read every confidential word, every private moment, every trade secret.
+        </p>
+        <p class="mb-6 text-gray-300">
+            And the bot — it shows up. In the meeting. As a participant. <em>"Hi, I'm Otter, can I record?"</em> It changes the room. People self-censor. Off-the-record moments get recorded anyway. The whole dynamic shifts when a corporate eavesdropper has a seat at the table.
+        </p>
+        <p class="mb-6 text-gray-300">
+            None of that is necessary. The microphone already hears the meeting. The audio already plays through your speakers. The LLM can already run on your GPU. The whole stack can be local, free, and invisible — if you build it that way.
+        </p>
+    </div>
+</section>
+
+<!-- The Solution -->
+<section id="how-it-works" class="py-16" aria-label="How Armchair Works">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">The Solution — Hardware Capture, Local Inference, Zero Cloud</h2>
+        <p class="mb-6 text-gray-300">
+            <strong class="text-green-300">Agent In The Armchair</strong> doesn't ask Teams for permission. It listens to the audio your computer already plays — through a virtual audio cable (VB-Cable) — and mixes in your microphone. Teams never sees a bot. The meeting never knows. The transcript never leaves your machine.
+        </p>
+        <p class="mb-6 text-gray-300">
+            A streaming pipeline picks up the mixed audio, runs <strong class="text-green-300">Silero VAD</strong> to detect speech (silence is free), feeds it to <strong class="text-green-300">faster-whisper</strong> for incremental transcription with word timestamps, then runs <strong class="text-green-300">pyannote-audio</strong> every 10 seconds on a 16-second rolling buffer to attach speaker labels. The result: a live, labeled transcript on a local dashboard.
+        </p>
+        <p class="mb-6 text-gray-300">
+            In <strong class="text-green-300">Talk mode</strong>, a local LLM (Ollama) decides whether the agent is being <em>directly addressed</em> — not just mentioned, not just present. If yes, <strong class="text-green-300">Piper TTS</strong> synthesises a response in a British RP voice and plays it back into the meeting through CABLE-A. If no, the agent stays silent. LLM gate, not keyword matching.
+        </p>
+        <div class="flex flex-col md:flex-row items-center gap-8 mt-8">
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 w-full md:w-auto flex-1">
+                <h3 class="font-bold text-green-300 mb-2">The Capture Layer</h3>
+                <p class="text-sm text-gray-400">VB-Cable on Windows. ffmpeg amix meeting audio + local mic into one 16kHz mono PCM stream. No software hooks into Teams. No API access needed. The audio already plays through your speakers — Armchair just listens to the same stream.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 w-full md:w-auto flex-1">
+                <h3 class="font-bold text-green-300 mb-2">The Intelligence Layer</h3>
+                <p class="text-sm text-gray-400">Silero VAD → faster-whisper (CUDA) → pyannote speaker diarization (CUDA) → Ollama LLM gate → Piper TTS. Every component runs on local hardware. NVIDIA GPU strongly recommended. No third-party APIs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Grid -->
+<section id="features" class="py-16" aria-label="Agent In The Armchair Features">
+    <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🎙️</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Real-Time Streaming VTT</h3>
+                <p class="text-sm text-gray-400">Silero VAD detects speech and skips silence (nearly free on GPU). faster-whisper with incremental transcription and word timestamps. ~0.3s end-to-end latency in Listen mode.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">👥</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Speaker Diarization</h3>
+                <p class="text-sm text-gray-400">pyannote-audio on a 16s rolling buffer (runs every 10s). Per-segment speaker labels matched to Whisper word timestamps. Handles mid-utterance speaker switches. Name speakers in the dashboard — labels apply retroactively.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🗣️</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Talk / Listen Mode</h3>
+                <p class="text-sm text-gray-400">🔇 Listen: pure VTT with speaker labels. 🎤 Talk: VTT + LLM + TTS — agent responds when directly addressed. The LLM decides "direct address vs mention" and returns [SILENCE] for mentions. No keyword matching.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🇬🇧</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Piper TTS (British RP)</h3>
+                <p class="text-sm text-gray-400">Alan (British RP) is the default voice — fast, ~1s generation. Configurable speed (--length-scale). Voice selectable from the dashboard dropdown. American, Northern English, and other voices available.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🖥️</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Live Web Dashboard</h3>
+                <p class="text-sm text-gray-400">Local browser dashboard at http://localhost:8765. Live labeled transcript, speaker naming, agent name config, mode toggle (Listen / Talk), voice selection. No cloud, no auth, no telemetry.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">📁</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Session Archiving</h3>
+                <p class="text-sm text-gray-400">Each session archived to its own folder: transcript.txt, speaker_names.json, detected_speakers.json, audio.raw. Clean start each time — no bleed between sessions. Ctrl+C stops and saves.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">⚡</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">One-Click Launcher</h3>
+                <p class="text-sm text-gray-400">Double-click <code class="text-green-300 bg-black/60 px-1 rounded">start_armchair.bat</code> — audio capture, dashboard, browser, and pipeline all start. No manual orchestration. Windows-native.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">🫥</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Invisible to Teams</h3>
+                <p class="text-sm text-gray-400">No bot joins the meeting. No API access. No participant slot. No "Hi, I'm recording." Hardware audio capture only. Teams cannot block it because Teams doesn't know it exists.</p>
+            </div>
+            <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
+                <span class="inline-block mb-2 text-green-400 text-2xl">💸</span>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Zero Per-Hour Cost</h3>
+                <p class="text-sm text-gray-400">No subscriptions. No API keys. No cloud bills. No per-seat pricing. One-time setup, infinite meetings. The GPU is already on your desk.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Architecture / Latency -->
+<section class="py-16" aria-label="Latency and Architecture">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Latency</h2>
+        <p class="text-gray-400 mb-6">Built for real-time conversation, not batch transcripts. The numbers below are the actual pipeline timings on a single NVIDIA workstation.</p>
+        <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
+            <div class="space-y-4 font-mono text-sm">
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">VAD (Silero)</span>
+                    <span class="text-green-400">~0ms (nearly free)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Whisper (CUDA)</span>
+                    <span class="text-green-400">~0.3s</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">pyannote (CUDA)</span>
+                    <span class="text-green-400">~1.5s (every 10s)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">LLM gate (Ollama)</span>
+                    <span class="text-green-400">~1-2s</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Piper TTS</span>
+                    <span class="text-green-400">~1s</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Audio playback</span>
+                    <span class="text-green-400">~0.5s</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400 font-bold">Total (Listen mode)</span>
+                    <span class="text-green-400 font-bold">~0.3s</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400 font-bold">Total (Talk mode)</span>
+                    <span class="text-green-400 font-bold">~3-4s</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="py-16" aria-label="Tech Stack">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Tech Stack</h2>
+        <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
+            <div class="space-y-4 font-mono text-sm">
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Audio Capture (Windows)</span>
+                    <span class="text-green-400">VB-Cable (CABLE-A) + ffmpeg amix</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">VAD</span>
+                    <span class="text-green-400">Silero VAD</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Transcription</span>
+                    <span class="text-green-400">faster-whisper (CUDA, incremental)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Speaker Diarization</span>
+                    <span class="text-green-400">pyannote-audio (CUDA, 16s rolling buffer)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">LLM (Talk mode)</span>
+                    <span class="text-green-400">Ollama (local, http://localhost:11434)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">TTS (Talk mode)</span>
+                    <span class="text-green-400">Piper (Alan / British RP default)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Dashboard</span>
+                    <span class="text-green-400">Local HTTP server (localhost:8765)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Runtime</span>
+                    <span class="text-green-400">Python 3.12+ (WSL) + Windows ffmpeg</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Launcher</span>
+                    <span class="text-green-400">start_armchair.bat (Windows)</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">License</span>
+                    <span class="text-green-400">MIT (Open Source)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why This Is an Executive Mind Product -->
+<section class="py-16" aria-label="Why Agent In The Armchair">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Why This Is an Executive Mind Product</h2>
+        <p class="mb-6 text-gray-300">
+            Every product we ship is built on the same principle: <strong class="text-green-300">own the stack</strong>. No SaaS vendor in the middle. No per-hour billing. No third-party model reading your private conversations. If we wouldn't run it on our own workstation, we don't ship it.
+        </p>
+        <p class="mb-6 text-gray-300">
+            <strong class="text-green-300">Agent In The Armchair</strong> is part of <a href="/" class="text-green-400 hover:text-green-300 underline">The Pack</a> — the same architecture that runs Executive Mind's own operations. If it can't survive our own meetings, it doesn't ship. If it can't run on a single NVIDIA workstation, it doesn't ship. The bar is what we trust for ourselves.
+        </p>
+        <p class="mb-6 text-gray-300">
+            The marketing copy says <em>"Invisible. Local. Free."</em> That's not a tagline. It's a constraint. Every component of the pipeline is local. Every model runs on your hardware. The MIT license means zero per-hour cost. The architecture means Teams can't see it. Those aren't features — they're the design brief.
+        </p>
+    </div>
+</section>
+
+<!-- GitHub CTA -->
+<section class="py-16" aria-label="Get Agent In The Armchair">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Get Agent In The Armchair</h2>
+        <p class="text-gray-400 mb-8">Open source (MIT). No subscriptions. No per-hour billing. Clone the repo, run <code class="text-green-300 bg-black/60 px-1 rounded">start_armchair.bat</code>, and the agent is in the room — listening.</p>
+        <a href="https://github.com/Roughn3ck/Armchair" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
+            View on GitHub →
+        </a>
+        <p class="text-xs text-gray-500 mt-4 font-mono">Built by Kris Racette • Released under MIT • Source available on GitHub</p>
+    </div>
+</section>
+
+<!-- About the Developer -->
+<section class="py-16" aria-label="About Kris Racette">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">About the Developer</h2>
+        <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
+            <p class="text-gray-300 mb-4">
+                <strong class="text-green-300">Kris Racette</strong> (also known as Kristopher Racette and Kristopher Marc Racette) is the Founder of <a href="https://executivemind.io" class="text-green-400 hover:text-green-300 underline">Executive Mind</a> and the creator of <strong class="text-green-300">Agent In The Armchair</strong>. With 18+ years of accounting experience and a Master of Commerce from the University of New South Wales, Kris brings the same engineering rigour to local AI systems that he brings to financial architecture.
+            </p>
+            <p class="text-gray-300 mb-4">
+                Agent In The Armchair is part of The Pack — the open-source ecosystem built and run by Executive Mind. <a href="/gym-tracker" class="text-green-400 hover:text-green-300 underline">Gym Tracker</a> handles the data athlete. <a href="/key-manager" class="text-green-400 hover:text-green-300 underline">ColdStack</a> handles the crypto vault. <strong class="text-green-300">Armchair</strong> handles the meeting room. Same philosophy across all three: <em>local, open, no lock-in, your hardware, your data.</em>
+            </p>
+            <p class="text-gray-300">
+                The source code is available for audit and contribution on GitHub. Executive Mind believes the same thing about meeting audio as it does about training data and vault data: <em>inspectable, portable, and yours.</em>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Backlinks -->
+<section class="py-8">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-6 text-sm font-mono">
+            <a href="https://krisracette.me/armchair" class="text-gray-500 hover:text-green-400 transition">Kris Racette →</a>
+            <a href="https://github.com/Roughn3ck/Armchair" class="text-gray-500 hover:text-green-400 transition">GitHub Repository →</a>
+            <a href="/" class="text-gray-500 hover:text-green-400 transition">Executive Mind Home →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black/95 border-t border-green-400 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">
+        <p class="mb-4 text-sm">Agent In The Armchair — Invisible. Local. Free.</p>
+        <div class="flex flex-wrap justify-center gap-6 mb-6 text-sm">
+            <a href="https://github.com/Roughn3ck/Armchair" target="_blank" rel="noopener" class="hover:text-green-400 transition-colors">GitHub</a>
+            <a href="https://krisracette.me/armchair" class="hover:text-green-400 transition-colors">Kris Racette</a>
+            <a href="/" class="hover:text-green-400 transition-colors">Executive Mind</a>
+        </div>
+        <p class="text-xs">&copy; 2026 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Matrix Rain Effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(0);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#56e98f';
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 33);
+</script>
+
+</body>
+</html>
