@@ -9,7 +9,7 @@
     <meta name="geo.position" content="-27.4698;153.0251">
     <meta name="ICBM" content="-27.4698, 153.0251">
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
-    <meta name="description" content="Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Invisible to Teams, runs on your hardware, zero per-hour cost. Silero VAD → faster-whisper → pyannote diarization → Ollama LLM gate → Piper TTS. Open source (MIT). Built by Kris Racette at Executive Mind.">
+    <meta name="description" content="Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Invisible to Teams, runs on your hardware, zero per-hour cost. Silero VAD → faster-whisper → pyannote diarization → Ollama LLM gate → any Piper or Kokoro TTS voice. Open source (MIT). Built by Kris Racette at Executive Mind.">
     <link rel="canonical" href="https://executivemind.io/armchair">
     <meta property="og:url" content="https://executivemind.io/armchair">
     <meta property="og:title" content="Agent In The Armchair — Real-Time Teams Voice Agent | Executive Mind">
@@ -19,10 +19,10 @@
     <meta property="og:site_name" content="Executive Mind">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Agent In The Armchair — Real-Time Teams Voice Agent | Executive Mind">
-    <meta name="twitter:description" content="Invisible to Teams. Local. Free. Real-time streaming VTT + AI Agent for Microsoft Teams. Silero VAD → faster-whisper → pyannote → Ollama → Piper TTS.">
+    <meta name="twitter:description" content="Invisible to Teams. Local. Free. Real-time streaming VTT + AI Agent for Microsoft Teams. Silero VAD → faster-whisper → pyannote → Ollama → any Piper or Kokoro TTS voice. Open source (MIT).">
     <meta name="twitter:image" content="https://executivemind.io/assets/armchair-banner.jpg">
     <meta name="author" content="Executive Mind">
-    <meta name="keywords" content="Agent In The Armchair, Microsoft Teams, voice agent, voice to text, VTT, speaker diarization, real-time transcription, Silero VAD, faster-whisper, pyannote, Ollama, Piper TTS, AI agent, local AI, open source, MIT, Executive Mind, Kris Racette, Brisbane, AI consultancy, The Pack">
+    <meta name="keywords" content="Agent In The Armchair, Microsoft Teams, voice agent, voice to text, VTT, speaker diarization, real-time transcription, Silero VAD, faster-whisper, pyannote, Ollama, Piper TTS, Kokoro TTS, Kokoro-82M, hexgrad, OHF-Voice, piper1-gpl, TTS voice, custom voice, AI agent, local AI, open source, MIT, Executive Mind, Kris Racette, Brisbane, AI consultancy, The Pack">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -45,14 +45,15 @@
         "name": "Kris Racette",
         "url": "https://krisracette.me"
       },
-      "description": "Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Invisible to Teams (no bot joins the meeting), runs entirely on local hardware, transcribes meetings with speaker diarization, speaks when directly addressed using a British RP TTS voice. Open source (MIT).",
+      "description": "Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent for Microsoft Teams. Invisible to Teams (no bot joins the meeting), runs entirely on local hardware, transcribes meetings with speaker diarization, speaks when directly addressed using any local TTS voice (Piper, Kokoro, or any compatible local engine). Open source (MIT).",
       "featureList": [
         "Real-Time Streaming Voice-to-Text",
         "Speaker Diarization (pyannote-audio)",
         "Silero VAD (skip silence, near-zero cost)",
         "faster-whisper incremental transcription",
         "LLM gate (Ollama) for direct-address detection",
-        "Piper TTS (British RP default)",
+        "Pluggable Local TTS (Piper or Kokoro-82M)",
+        "Piper TTS (any voice — Alan/British RP, Aru, US, Northern, etc.)",
         "Live Web Dashboard (localhost:8765)",
         "One-Click Launcher (start_armchair.bat)",
         "Session Archiving (transcript + audio + speaker data)",
@@ -153,7 +154,7 @@
             A streaming pipeline picks up the mixed audio, runs <strong class="text-green-300">Silero VAD</strong> to detect speech (silence is free), feeds it to <strong class="text-green-300">faster-whisper</strong> for incremental transcription with word timestamps, then runs <strong class="text-green-300">pyannote-audio</strong> every 10 seconds on a 16-second rolling buffer to attach speaker labels. The result: a live, labeled transcript on a local dashboard.
         </p>
         <p class="mb-6 text-gray-300">
-            In <strong class="text-green-300">Talk mode</strong>, a local LLM (Ollama) decides whether the agent is being <em>directly addressed</em> — not just mentioned, not just present. If yes, <strong class="text-green-300">Piper TTS</strong> synthesises a response in a British RP voice and plays it back into the meeting through CABLE-A. If no, the agent stays silent. LLM gate, not keyword matching.
+            In <strong class="text-green-300">Talk mode</strong>, a local LLM (Ollama) decides whether the agent is being <em>directly addressed</em> — not just mentioned, not just present. If yes, the TTS layer synthesises a response and plays it back into the meeting through CABLE-A. The TTS engine is <strong class="text-green-300">pluggable</strong> — by default <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Piper</a> (any of the free open-source voices, e.g. <a href="https://github.com/OHF-Voice/piper1-gpl/blob/main/VOICES.md" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Alan / British RP</a>, Aru, Northern English, US, etc.), or swap in <a href="https://github.com/hexgrad/kokoro" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Kokoro-82M</a> for 54 voices across 8 languages with sub-real-time generation. If no, the agent stays silent. LLM gate, not keyword matching.
         </p>
         <div class="flex flex-col md:flex-row items-center gap-8 mt-8">
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 w-full md:w-auto flex-1">
@@ -162,7 +163,7 @@
             </div>
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 w-full md:w-auto flex-1">
                 <h3 class="font-bold text-green-300 mb-2">The Intelligence Layer</h3>
-                <p class="text-sm text-gray-400">Silero VAD → faster-whisper (CUDA) → pyannote speaker diarization (CUDA) → Ollama LLM gate → Piper TTS. Every component runs on local hardware. NVIDIA GPU strongly recommended. No third-party APIs.</p>
+                <p class="text-sm text-gray-400">Silero VAD → faster-whisper (CUDA) → pyannote speaker diarization (CUDA) → Ollama LLM gate → pluggable local TTS (Piper, Kokoro, or any compatible engine). Every component runs on local hardware. NVIDIA GPU strongly recommended. No third-party APIs.</p>
             </div>
         </div>
     </div>
@@ -190,8 +191,8 @@
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🇬🇧</span>
-                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Piper TTS (British RP)</h3>
-                <p class="text-sm text-gray-400">Alan (British RP) is the default voice — fast, ~1s generation. Configurable speed (--length-scale). Voice selectable from the dashboard dropdown. American, Northern English, and other voices available.</p>
+                <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Pluggable Local TTS</h3>
+                <p class="text-sm text-gray-400">Default: <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Piper</a> — pick any of the free open-source voices (Alan / British RP, Aru, Northern English, US, etc.). Or swap in <a href="https://github.com/hexgrad/kokoro" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Kokoro-82M</a> for 54 voices across 8 languages with sub-real-time generation. Both local, both free, both no API keys. Voice selectable from the dashboard dropdown.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🖥️</span>
@@ -247,7 +248,7 @@
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span class="text-gray-400">Piper TTS</span>
-                    <span class="text-green-400">~1s</span>
+                    <span class="text-green-400">~1s (any Piper voice)</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span class="text-gray-400">Audio playback</span>
@@ -294,7 +295,7 @@
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span class="text-gray-400">TTS (Talk mode)</span>
-                    <span class="text-green-400">Piper (Alan / British RP default)</span>
+                    <span class="text-green-400">Piper (any voice) · Kokoro-82M (54 voices / 8 langs)</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span class="text-gray-400">Dashboard</span>
