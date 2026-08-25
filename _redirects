@@ -1,8 +1,10 @@
 # Cloudflare Pages redirects for executivemind.io
 # Generated: 2026-07-11
 
-# Force non-www (canonical is non-www)
-https://www.executivemind.io/* https://executivemind.io/:splat 301!
+# www → apex redirect: handled at Cloudflare zone level (Dynamic Redirect Rule)
+# The Pages _redirects full-URL syntax doesn't work for custom domains.
+# Zone-level rule: http.host eq "www.executivemind.io" → 301 to https://executivemind.io
+# Created: 2026-08-20
 
 # /krisracette and /krisracette.html canonicalize to the bio page
 /krisracette /kris-racette-bio 301
