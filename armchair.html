@@ -9,17 +9,17 @@
     <meta name="geo.position" content="-27.4698;153.0251">
     <meta name="ICBM" content="-27.4698, 153.0251">
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
-    <meta name="description" content="Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent. Built for Microsoft Teams, runs on every audio app your machine plays through — WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord. Invisible to the host app, runs on your hardware, zero per-hour cost. Pluggable local TTS (Piper, Kokoro, or any compatible engine). Open source (MIT). Built by Kris Racette at Executive Mind.">
+    <meta name="description" content="Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent, invisible on any call app. Local. Free. Runs on Teams, WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord — anything that pipes audio through your sound card. Windows-native, runs on your hardware, zero per-hour cost. Pluggable local TTS (Piper, Kokoro, Chatterbox) with mid-call hot-swap. Open source (MIT). Built by Kris Racette at Executive Mind.">
     <link rel="canonical" href="https://executivemind.io/armchair">
     <meta property="og:url" content="https://executivemind.io/armchair">
     <meta property="og:title" content="Agent In The Armchair — Real-Time Local AI Voice Agent | Executive Mind">
-    <meta property="og:description" content="Invisible. Local. Free. A real-time streaming Voice-to-Text + AI Agent built for Microsoft Teams that runs on every audio app your machine plays through. Sits in on calls, transcribes with speaker labels, speaks when directly addressed. Open source (MIT).">
+    <meta property="og:description" content="Invisible on any call app. Local. Free. A real-time streaming Voice-to-Text + AI Agent that runs on Teams, WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord — anything that pipes audio through your sound card. Pluggable local TTS (Piper, Kokoro, Chatterbox) with mid-call hot-swap. Windows-native, zero per-hour cost. Open source (MIT).">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://executivemind.io/assets/armchair-banner.jpg">
     <meta property="og:site_name" content="Executive Mind">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Agent In The Armchair — Real-Time Local AI Voice Agent | Executive Mind">
-    <meta name="twitter:description" content="Invisible to every audio app. Local. Free. Real-time streaming VTT + AI Agent. Built for Microsoft Teams, runs on WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord — anything that pipes audio through your sound card. Silero VAD → faster-whisper → pyannote → Ollama → any Piper or Kokoro TTS voice. Open source (MIT).">
+    <meta name="twitter:description" content="Invisible on any call app. Local. Free. Real-time streaming VTT + AI Agent. Runs on Teams, WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord. Silero VAD → faster-whisper → pyannote → Ollama → Piper / Kokoro / Chatterbox TTS (hot-swap mid-call). Windows-native, zero per-hour cost. Open source (MIT).">
     <meta name="twitter:image" content="https://executivemind.io/assets/armchair-banner.jpg">
     <meta name="author" content="Executive Mind">
     <meta name="keywords" content="Agent In The Armchair, Microsoft Teams, Teams voice agent, voice agent, voice to text, VTT, speaker diarization, real-time transcription, Silero VAD, faster-whisper, pyannote, Ollama, Piper TTS, Kokoro TTS, Kokoro-82M, Chatterbox TTS, resemble-ai, voice cloning, zero-shot voice cloning, hexgrad, OHF-Voice, piper1-gpl, TTS voice, custom voice, multilingual TTS, paralinguistic tags, AI agent, local AI, open source, MIT, Executive Mind, Kris Racette, Brisbane, AI consultancy, The Pack">
@@ -29,7 +29,7 @@
       "@type": "SoftwareApplication",
       "name": "Agent In The Armchair",
       "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Windows, WSL (Ubuntu)",
+      "operatingSystem": "Windows",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -45,7 +45,7 @@
         "name": "Kris Racette",
         "url": "https://krisracette.me"
       },
-      "description": "Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent. Built for Microsoft Teams, runs on every audio app your machine plays through (WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord). Invisible to the host app (no bot joins the call), runs entirely on local hardware, transcribes with speaker diarization, speaks when directly addressed using any local TTS voice (Piper, Kokoro, or any compatible local engine). Open source (MIT).",
+      "description": "Agent In The Armchair — a real-time streaming Voice-to-Text + AI Agent, invisible on any call app. Runs on Teams, WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord — anything that pipes audio through your sound card. Invisible to the host app (no bot joins the call), runs entirely on local hardware (Windows-native Python 3.12+), transcribes with speaker diarization, speaks when directly addressed using any local TTS voice (Piper, Kokoro, or Chatterbox) with mid-call hot-swap. Open source (MIT).",
       "featureList": [
         "Real-Time Streaming Voice-to-Text",
         "Speaker Diarization (pyannote-audio)",
@@ -56,6 +56,10 @@
         "Piper TTS (any voice — Alan/British RP, Aru, US, Northern, etc.)",
         "Live Web Dashboard (localhost:8765)",
         "One-Click Launcher (start_armchair.bat)",
+        "Self-Healing Launcher — cleans stale processes, health-checks dashboard port, opens Piper voices catalog on first run",
+        "Mid-Call TTS Hot-Swap — engine, voice, and reference WAV switch between utterances; worker pool keeps engines loaded",
+        "Pre-Warm (⚡ Activate) — Chatterbox ~8s cold-start, ~2.4s warm after",
+        "Agent Memory — point at any folder of .md/.txt files for persona brain loaded into system prompt",
         "Session Archiving (transcript + audio + speaker data)",
         "Invisible to the host app (no bot) — works on every audio app",
         "Local-first — zero per-hour cost",
@@ -73,6 +77,8 @@
         .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
         .matrix-bg canvas { display: block; }
         .chair-glow { filter: drop-shadow(0 0 12px rgba(0, 255, 200, 0.35)); }
+            /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
+        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
     </style>
 </head>
 <body class="antialiased">
@@ -83,8 +89,8 @@
 
 <header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
     <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none">
-            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
+            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
         </a>
         <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
             <a href="/">Home</a>
@@ -114,7 +120,7 @@
         <div class="inline-block px-4 py-1 bg-green-900/30 border border-green-500/30 rounded-full text-xs font-mono text-green-400 uppercase tracking-widest mb-6">Executive Mind Product • Open Source (MIT) • v2 Streaming</div>
         <img src="/assets/armchair-logo.jpg" alt="Agent In The Armchair logo" class="chair-glow w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 rounded-xl">
         <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">AGENT IN THE<br>ARMCHAIR</h1>
-        <p class="text-xl md:text-2xl text-green-400 font-mono mb-2">Real-time streaming VTT + AI Agent — built for Microsoft Teams, runs on every audio app your machine plays through</p>
+        <p class="text-xl md:text-2xl text-green-400 font-mono mb-2">Real-time streaming VTT + AI Agent — invisible on any call app. Local. Free.</p>
         <p class="text-gray-400 max-w-2xl mx-auto mb-8 mt-4">Sits in your calls, transcribes with speaker labels, speaks only when directly addressed. <strong class="text-green-300">Invisible. Local. Free.</strong> No bot joins. The host app never knows it's there. Works on Teams, WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord — anything that pipes audio through your sound card.</p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="https://github.com/Roughn3ck/Armchair" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
@@ -154,7 +160,7 @@
             A streaming pipeline picks up the mixed audio, runs <strong class="text-green-300">Silero VAD</strong> to detect speech (silence is free), feeds it to <strong class="text-green-300">faster-whisper</strong> for incremental transcription with word timestamps, then runs <strong class="text-green-300">pyannote-audio</strong> every 10 seconds on a 16-second rolling buffer to attach speaker labels. The result: a live, labeled transcript on a local dashboard.
         </p>
         <p class="mb-6 text-gray-300">
-            In <strong class="text-green-300">Talk mode</strong>, a local LLM (Ollama) decides whether the agent is being <em>directly addressed</em> — not just mentioned, not just present. If yes, the TTS layer synthesises a response and plays it back into the meeting through CABLE-A. The TTS engine is <strong class="text-green-300">pluggable</strong> — by default <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Piper</a> (any of the free open-source voices, e.g. <a href="https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/VOICES.md" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Alan / British RP</a>, Aru, Northern English, US, etc.), or swap in <a href="https://github.com/hexgrad/kokoro" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Kokoro-82M</a> for 54 voices across 8 languages with sub-real-time generation. Or fire up <a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Chatterbox</a> by Resemble AI for zero-shot voice cloning from a ~10s reference clip — your own voice, anyone’s voice, with paralinguistic tags like <code class="text-green-300 bg-black/60 px-1 rounded">[laugh]</code>. Three engines, one pluggable interface, near-unlimited voice options. If no, the agent stays silent. LLM gate, not keyword matching.
+            In <strong class="text-green-300">Talk mode</strong>, a local LLM (Ollama) decides whether the agent is being <em>directly addressed</em> — not just mentioned, not just present. If yes, the TTS layer synthesises a response and plays it back into the meeting through CABLE-A. The TTS engine is <strong class="text-green-300">pluggable</strong> — by default <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Piper</a> (any of the free open-source voices, e.g. <a href="https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/VOICES.md" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Alan / British RP</a>, Aru, Northern English, US, etc.), or swap in <a href="https://github.com/hexgrad/kokoro" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Kokoro-82M</a> for 54 voices across 8 languages with sub-real-time generation. Or fire up <a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Chatterbox</a> by Resemble AI for zero-shot voice cloning from a <strong class="text-green-300">10–25 second</strong> reference clip — your own voice, anyone’s voice, with paralinguistic tags like <code class="text-green-300 bg-black/60 px-1 rounded">[laugh]</code>. <strong class="text-green-300">All three hot-swap mid-call</strong> from the dashboard — engine, voice, and reference WAV all switch on the next utterance; the worker pool keeps used engines loaded so switching back is instant. Hit the dashboard’s <strong class="text-green-300">⚡ Activate</strong> button to pre-warm an engine before a call (Chatterbox cold-start ~8s for the first utterance, ~2.4s warm after). The agent can also carry a <strong class="text-green-300">persona brain</strong> — point the dashboard at any folder of <code class="text-green-300 bg-black/60 px-1 rounded">.md</code> files and the agent calls with that persona’s memory loaded into the system prompt, not just its voice. Three engines, one pluggable interface, near-unlimited voice options. If no, the agent stays silent. LLM gate, not keyword matching.
         </p>
         <div class="flex flex-col md:flex-row items-center gap-8 mt-8">
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 w-full md:w-auto flex-1">
@@ -192,7 +198,7 @@
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🇬🇧</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">Pluggable Local TTS</h3>
-                <p class="text-sm text-gray-400">Default: <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Piper</a> — pick any of the free open-source voices (Alan / British RP, Aru, Northern English, US, etc.). Or swap in <a href="https://github.com/hexgrad/kokoro" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Kokoro-82M</a> for 54 voices across 8 languages with sub-real-time generation. Or fire up <a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Chatterbox</a> for zero-shot voice cloning from a ~10s reference clip — your voice, anyone's voice, with paralinguistic tags. Near-unlimited voice options. All local, all free, all no API keys. Voice selectable from the dashboard dropdown.</p>
+                <p class="text-sm text-gray-400">Default: <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Piper</a> — pick any of the free open-source voices (Alan / British RP, Aru, Northern English, US, etc.). Or swap in <a href="https://github.com/hexgrad/kokoro" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Kokoro-82M</a> for 54 voices across 8 languages with sub-real-time generation. Or fire up <a href="https://github.com/resemble-ai/chatterbox" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300 underline">Chatterbox</a> for zero-shot voice cloning from a 10–25 second reference clip — your voice, anyone's voice, with paralinguistic tags. <strong class="text-green-300">All three hot-swap mid-call</strong> from the dashboard (engine, voice, reference WAV); the worker pool keeps used engines loaded. Hit <strong class="text-green-300">⚡ Activate</strong> to pre-warm before a call (Chatterbox ~8s cold, ~2.4s warm). All local, all free, no API keys.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🖥️</span>
@@ -207,7 +213,7 @@
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">⚡</span>
                 <h3 class="font-bold text-green-300 mb-2 group-hover:text-green-400">One-Click Launcher</h3>
-                <p class="text-sm text-gray-400">Double-click <code class="text-green-300 bg-black/60 px-1 rounded">start_armchair.bat</code> — audio capture, dashboard, browser, and pipeline all start. No manual orchestration. Windows-native.</p>
+                <p class="text-sm text-gray-400">Double-click <code class="text-green-300 bg-black/60 px-1 rounded">start_armchair.bat</code> — audio capture, dashboard, browser, and pipeline all start. The launcher <strong class="text-green-300">self-cleans</strong> stale processes, health-checks the dashboard port, and opens the Piper voices catalog on first run if no models are found. No manual orchestration. Windows-native.</p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg shadow hover:-translate-y-2 transition-transform duration-300 cursor-pointer border-l-4 border-green-400 group">
                 <span class="inline-block mb-2 text-green-400 text-2xl">🫥</span>
@@ -249,6 +255,14 @@
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span class="text-gray-400">Piper TTS</span>
                     <span class="text-green-400">~1s (any Piper voice)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Kokoro TTS</span>
+                    <span class="text-green-400">~1.6s (warm, premium quality)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Chatterbox TTS</span>
+                    <span class="text-green-400">~2.4s warm (zero-shot clone) · ~8s cold</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span class="text-gray-400">Audio playback</span>
@@ -303,11 +317,19 @@
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span class="text-gray-400">Runtime</span>
-                    <span class="text-green-400">Python 3.12+ (WSL) + Windows ffmpeg</span>
+                    <span class="text-green-400">Python 3.12+ (Windows-native)</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Installer</span>
+                    <span class="text-green-400">install.bat (venvs + ffmpeg + Piper auto-download)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span class="text-gray-400">Audio Setup</span>
+                    <span class="text-green-400">setup_audio.ps1 (automated routing)</span>
+                </div>
+                <div class="flex justify-between">
                     <span class="text-gray-400">Launcher</span>
-                    <span class="text-green-400">start_armchair.bat (Windows)</span>
+                    <span class="text-green-400">start_armchair.bat (self-healing — cleans stale procs, health-checks dashboard port, opens Piper voices catalog on first run)</span>
                 </div>
                 <div class="flex justify-between">
                     <span class="text-gray-400">License</span>
@@ -338,7 +360,9 @@
 <section class="py-16" aria-label="Get Agent In The Armchair">
     <div class="max-w-3xl mx-auto px-4 text-center">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Get Agent In The Armchair</h2>
-        <p class="text-gray-400 mb-8">Open source (MIT). No subscriptions. No per-hour billing. Clone the repo, run <code class="text-green-300 bg-black/60 px-1 rounded">start_armchair.bat</code>, and the agent is in the room — listening.</p>
+        <p class="text-gray-400 mb-8">Open source (MIT). No subscriptions. No per-hour billing. Four commands on Windows, one reboot (VB-Cable):</p>
+        <p class="font-mono text-sm bg-black/60 px-4 py-3 rounded border border-green-900/40 mb-8 inline-block text-green-300">git clone → .\install.bat → .\setup_audio.ps1 → .\start_armchair.bat</p>
+        <p class="text-gray-400 mb-8">Then the agent is in the room — listening.</p>
         <a href="https://github.com/Roughn3ck/Armchair" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300">
             View on GitHub →
         </a>

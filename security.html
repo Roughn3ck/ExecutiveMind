@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <title>Security Achievements | Executive Mind — Brisbane AI Consultancy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/assets/em_logo.svg">
+    <meta name="description" content="Live security work from the Executive Mind Pack — privacy-first tooling, local-first architectures, and verified findings. Each entry documents what we built, how we tested it, and what it does in production."/>
+    <link rel="canonical" href="https://executivemind.io/security">
+    <meta property="og:url" content="https://executivemind.io/security">
+    <meta property="og:title" content="Security Achievements | Executive Mind">
+    <meta property="og:description" content="Live security work from the Executive Mind Pack — privacy-first tooling, local-first architectures, and verified findings.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta property="og:site_name" content="Executive Mind">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Security Achievements | Executive Mind">
+    <meta name="twitter:description" content="Live security work from the Executive Mind Pack — privacy-first tooling, local-first architectures, and verified findings.">
+    <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta name="geo.region" content="AU-QLD">
+    <meta name="geo.placename" content="Brisbane">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Security Achievements — Executive Mind",
+      "description": "Live security work from the Executive Mind Pack — privacy-first tooling, local-first architectures, and verified findings. Each entry documents what we built, how we tested it, and what it does in production.",
+      "url": "https://executivemind.io/security",
+      "isPartOf": {"@type": "WebSite", "name": "Executive Mind", "url": "https://executivemind.io"},
+      "publisher": {"@type": "Organization", "name": "Executive Mind", "url": "https://executivemind.io"},
+      "author": {"@type": "Person", "name": "Kris Racette", "url": "https://executivemind.io/author/kris-racette"}
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
+        .matrix-bg canvas { display: block; }
+        ::-webkit-scrollbar { display: none; }
+        .security-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            margin-right: 6px;
+            border: 1px solid;
+        }
+        .badge-open { color: #6ee7b7; border-color: rgba(110, 231, 183, 0.5); background: rgba(110, 231, 183, 0.08); }
+        .badge-verified { color: #fcd34d; border-color: rgba(252, 211, 77, 0.5); background: rgba(252, 211, 77, 0.08); }
+        .badge-pending { color: #94a3b8; border-color: rgba(148, 163, 184, 0.5); background: rgba(148, 163, 184, 0.08); }
+            /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
+        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
+
+<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
+    <div class="flex justify-between items-center max-w-5xl mx-auto">
+        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
+            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
+        </a>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/articles">Articles</a>
+            <a href="/security" class="text-green-400 font-bold">Security</a>
+            <a href="/#team">Team</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#testimonials">Testimonials</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden">
+            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
+        </button>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
+        <a href="/#about" class="block">About</a>
+        <a href="/#services" class="block">Services</a>
+        <a href="/articles" class="block">Articles</a>
+        <a href="/security" class="block text-green-400 font-bold">Security</a>
+        <a href="/#team" class="block">Team</a>
+        <a href="/#portfolio" class="block">Portfolio</a>
+        <a href="/#testimonials" class="block">Testimonials</a>
+        <a href="/#faq" class="block">FAQ</a>
+        <a href="/#contact" class="block">Contact</a>
+    </nav>
+</header>
+
+<main class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">Security Achievements</h1>
+        <p class="mt-2 mb-12 text-gray-300">Live security work from the Executive Mind Pack — privacy-first tooling, local-first architectures, and verified findings. Each entry documents what we built, how we tested it, and what it does in production. This page grows as we ship new work.</p>
+
+        <div class="space-y-12">
+
+            <!-- Achievement 1 — OpenAnt + Ollama Local SAST -->
+            <div class="bg-black/60 p-6 rounded-lg shadow-lg border-l-4 border-green-400 group transition-all hover:border-green-300 hover:shadow-green-400/10">
+                <div class="md:flex md:space-x-6 items-center">
+                    <div class="md:w-1/4 mb-4 md:mb-0">
+                        <a href="/security/openant-ollama-local-sast">
+                            <div class="w-full aspect-square rounded-lg bg-gradient-to-br from-green-900/40 via-black to-green-900/20 flex items-center justify-center border border-green-500/30 group-hover:border-green-400 transition-colors">
+                                <span class="text-5xl">🛡️</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="md:w-3/4">
+                        <div class="mb-3">
+                            <span class="security-badge badge-verified">Verified · Live</span>
+                            <span class="security-badge badge-open">Open Source · Apache 2.0</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-2">August 25, 2026</p>
+                        <a href="/security/openant-ollama-local-sast">
+                            <h2 class="font-bold text-green-300 mb-2 text-2xl group-hover:text-green-400 transition-colors">Running OpenAnt Fully Local: The Ollama Adapter</h2>
+                        </a>
+                        <p class="text-sm mb-4 text-gray-400">We built a first-class Ollama adapter for OpenAnt — an open-source LLM-assisted SAST scanner — so vulnerability scans run against local models. No cloud, no API keys, no source code leaving the machine. Verified live: both planted SQL injection findings (CWE-89) detected via local <code class="text-green-300">mistral-small3.2</code> running on commodity hardware. Upstream PR pending.</p>
+                        <a href="/security/openant-ollama-local-sast" class="font-bold text-green-400 hover:text-green-300 transition-colors">Read the technical writeup &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder slot for future achievements -->
+            <div class="bg-black/30 p-6 rounded-lg border border-dashed border-green-900/40 text-center">
+                <p class="text-xs font-mono uppercase tracking-widest text-green-700 mb-1">Next achievement · in progress</p>
+                <p class="text-sm text-gray-500">This is a working corner. Each milestone we ship against the Cyber Navigators BD pipeline — and every privacy-first capability we land for client engagements — drops in here.</p>
+            </div>
+
+        </div>
+
+        <div class="mt-16 p-6 bg-black/40 rounded-lg border border-green-900/30">
+            <h2 class="font-bold text-green-300 mb-3 text-lg">Why this page exists</h2>
+            <p class="text-sm text-gray-400 leading-relaxed mb-3">
+                Most "security" pages on AI consultancies are marketing copy. This one is a build log. We only publish work we've actually shipped and verified against real test corpora — with the failure modes documented, not airbrushed out.
+            </p>
+            <p class="text-sm text-gray-400 leading-relaxed">
+                If you're evaluating us for a security-sensitive engagement — air-gapped infrastructure, regulated data, or code that simply shouldn't leave your perimeter — <a href="/#contact" class="text-green-400 hover:text-green-300 underline">get in touch</a>. This is the work we do.
+            </p>
+        </div>
+
+    </div>
+</main>
+
+<footer class="py-12 text-center bg-black/70 mt-16">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://github.com/Roughn3ck" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a>
+            <a href="https://x.com/executivemindio" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+            <a href="https://www.linkedin.com/company/executive-mind-io/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
+            <a href="https://medium.com/@mercury_executivemind.io" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.92 12A3.28 3.28 0 0 1 17.65 15.3 3.28 3.28 0 0 1 14.38 12a3.28 3.28 0 0 1 3.27-3.3A3.28 3.28 0 0 1 20.92 12zM24 12a1.93 1.93 0 0 1-1.92 1.94A1.93 1.93 0 0 1 20.16 12a1.93 1.93 0 0 1 1.92-1.94A1.93 1.93 0 0 1 24 12z"></path></svg></a>
+            <a href="https://substack.com/@mercuryexecutivemind" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.532 2.468H1.468V4.93h21.064V2.468zM1.468 11.299h21.064v2.468H1.468v-2.468zm0 8.831h21.064v2.468H1.468v-2.468z"></path></svg></a>
+        </div>
+        &copy; 2025 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.
+    </div>
+</footer>
+
+<script>
+    // --- JAVASCRIPT FOR MATRIX EFFECT ---
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(0);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#56e98f';
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 33);
+    
+    // Mobile menu toggle script
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+
+<!-- Executive Mind Chat Widget -->
+<script src="/chat/chat-embed.js" defer></script>
+</body>
+</html>

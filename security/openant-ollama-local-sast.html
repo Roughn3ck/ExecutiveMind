@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <title>Running OpenAnt Fully Local: The Ollama Adapter | Executive Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/assets/em_logo.svg">
+    <meta name="description" content="We extended OpenAnt (open-source LLM-assisted SAST) with a first-class Ollama adapter so vulnerability scans run against local models. No cloud, no API keys, no source code leaving the machine. Verified end-to-end: both planted SQLi findings (CWE-89) detected via local mistral-small3.2."/>
+    <link rel="canonical" href="https://executivemind.io/security/openant-ollama-local-sast">
+    <meta property="og:url" content="https://executivemind.io/security/openant-ollama-local-sast">
+    <meta property="og:title" content="Running OpenAnt Fully Local: The Ollama Adapter | Executive Mind">
+    <meta property="og:description" content="Privacy-first SAST: extended OpenAnt with a first-class Ollama adapter so vulnerability scans run fully local. No cloud, no API keys, no code leaving the machine. Verified.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta property="og:site_name" content="Executive Mind">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Running OpenAnt Fully Local: The Ollama Adapter">
+    <meta name="twitter:description" content="OpenAnt + Ollama = LLM-assisted SAST with zero cloud egress. Both planted SQLi findings detected via local mistral-small3.2. Verified end-to-end.">
+    <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta name="geo.region" content="AU-QLD">
+    <meta name="geo.placename" content="Brisbane">
+    <meta property="article:published_time" content="2026-08-25">
+    <meta property="article:modified_time" content="2026-08-25">
+    <meta property="article:author" content="Kris Racette">
+    <meta property="article:section" content="Security">
+    <meta property="article:publisher" content="https://executivemind.io">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Running OpenAnt Fully Local: The Ollama Adapter",
+      "description": "How we extended OpenAnt (open-source LLM-assisted SAST) with a first-class Ollama adapter so vulnerability scans run against local models — no cloud, no API keys, no code leaving the machine. Verified end-to-end with planted SQLi findings (CWE-89) detected via local mistral-small3.2.",
+      "image": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg",
+      "author": {
+        "@type": "Person",
+        "id": "https://executivemind.io/author/kris-racette#author",
+        "name": "Kris Racette",
+        "url": "https://executivemind.io/author/kris-racette",
+        "sameAs": ["https://krisracette.me", "https://krisracette.me/disambiguation", "https://www.wikidata.org/wiki/Q140051012", "https://www.linkedin.com/in/krisracette/", "https://x.com/R0ughnek", "https://github.com/Roughn3ck"]
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg"
+        }
+      },
+      "datePublished": "2026-08-25",
+      "dateModified": "2026-08-25",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://executivemind.io/security/openant-ollama-local-sast"
+      },
+      "about": [
+        {"@type": "SoftwareApplication", "name": "OpenAnt", "applicationCategory": "SecurityApplication", "url": "https://github.com/knostic/OpenAnt"},
+        {"@type": "SoftwareApplication", "name": "Ollama", "applicationCategory": "DeveloperApplication", "url": "https://ollama.com"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://executivemind.io/"},
+      {"@type":"ListItem","position":2,"name":"Security","item":"https://executivemind.io/security"},
+      {"@type":"ListItem","position":3,"name":"OpenAnt + Ollama Local SAST","item":"https://executivemind.io/security/openant-ollama-local-sast"}
+    ]}
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.15; }
+        .matrix-bg canvas { display: block; }
+        ::-webkit-scrollbar { display: none; }
+        .article-content h1 { font-size: 2rem; line-height: 2.4rem; font-weight: bold; color: #6ee7b7; margin-top: 1.5rem; margin-bottom: 1rem; }
+        .article-content h2 { font-size: 1.5rem; line-height: 2rem; font-weight: bold; color: #6ee7b7; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(86, 233, 143, 0.3); padding-bottom: 0.5rem; }
+        .article-content h3 { font-size: 1.2rem; line-height: 1.6rem; font-weight: bold; color: #a7f3d0; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+        .article-content p { margin-bottom: 1rem; color: #d1d5db; line-height: 1.7; }
+        .article-content ul, .article-content ol { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; color: #d1d5db; }
+        .article-content ol { list-style-type: decimal; }
+        .article-content li { margin-bottom: 0.5rem; line-height: 1.6; }
+        .article-content strong { color: #a7f3d0; font-weight: bold; }
+        .article-content em { color: #a7f3d0; font-style: italic; }
+        .article-content code { background: rgba(86, 233, 143, 0.1); color: #a7f3d0; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+        .article-content pre { background: rgba(86, 233, 143, 0.05); border: 1px solid rgba(86, 233, 143, 0.2); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; }
+        .article-content pre code { background: none; padding: 0; }
+        .article-content a { color: #6ee7b7; text-decoration: underline; text-decoration-color: rgba(110, 231, 183, 0.4); }
+        .article-content a:hover { color: #a7f3d0; text-decoration-color: #a7f3d0; }
+        .quote-box { border-left: 4px solid #56e98f; padding-left: 1rem; margin: 2rem 0; font-style: italic; color: #a7f3d0; }
+        .key-insight { background: rgba(86, 233, 143, 0.08); border: 1px solid rgba(86, 233, 143, 0.4); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+        .key-insight-title { color: #56e98f; font-weight: bold; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+        .finding-card { background: rgba(0, 0, 0, 0.4); border-left: 4px solid #fcd34d; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 6px 6px 0; }
+        .finding-card .cwe { color: #fcd34d; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .finding-card .result { color: #6ee7b7; font-weight: bold; }
+        .security-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            font-size: 0.7rem;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 3px;
+            margin-right: 6px;
+            border: 1px solid;
+        }
+        .badge-verified { color: #fcd34d; border-color: rgba(252, 211, 77, 0.5); background: rgba(252, 211, 77, 0.08); }
+        .badge-open { color: #6ee7b7; border-color: rgba(110, 231, 183, 0.5); background: rgba(110, 231, 183, 0.08); }
+        .badge-pending { color: #94a3b8; border-color: rgba(148, 163, 184, 0.5); background: rgba(148, 163, 184, 0.08); }
+    </style>
+</head>
+<body class="antialiased">
+
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
+
+<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
+    <div class="flex justify-between items-center max-w-5xl mx-auto">
+        <a href="/" class="font-bold text-xl tracking-widest select-none">
+            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="h-10 inline-block" width="1920" height="815"></picture>
+        </a>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/articles">Articles</a>
+            <a href="/security" class="text-green-400 font-bold">Security</a>
+            <a href="/#team">Team</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#testimonials">Testimonials</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#contact">Contact</a>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden">
+            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
+        </button>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
+        <a href="/#about" class="block">About</a>
+        <a href="/#services" class="block">Services</a>
+        <a href="/articles" class="block">Articles</a>
+        <a href="/security" class="block text-green-400 font-bold">Security</a>
+        <a href="/#team" class="block">Team</a>
+        <a href="/#portfolio" class="block">Portfolio</a>
+        <a href="/#testimonials" class="block">Testimonials</a>
+        <a href="/#faq" class="block">FAQ</a>
+        <a href="/#contact" class="block">Contact</a>
+    </nav>
+</header>
+
+<main class="py-16">
+    <div class="max-w-3xl mx-auto px-4 article-content">
+        <div class="mb-6">
+            <span class="security-badge badge-verified">Verified · Live</span>
+            <span class="security-badge badge-open">Open Source · Apache 2.0</span>
+            <span class="security-badge badge-pending">Upstream PR · pending</span>
+        </div>
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">Running OpenAnt Fully Local: The Ollama Adapter</h1>
+        <p class="mt-2 mb-8 text-gray-400 text-sm">Posted by <a href="https://executivemind.io/author/kris-racette" class="text-green-400 hover:text-green-300">Kris Racette</a> on August 25, 2026 · 8 min read · <a href="/security" class="text-green-400 hover:text-green-300">Security Achievements</a></p>
+
+        <p class="text-lg text-gray-300 leading-relaxed"><em>How we extended <a href="https://github.com/knostic/OpenAnt" target="_blank" rel="noopener">OpenAnt</a> so SAST scans run against local models — no cloud, no API keys, no source code leaving the machine.</em></p>
+
+        <h2>Why this matters</h2>
+        <p>Static application security testing (SAST) tools increasingly use LLMs to cut false positives and explain findings. The catch: most integrations assume a cloud LLM. That means your source code — sometimes your crown jewels — gets shipped to a third-party API to be analysed for vulnerabilities.</p>
+        <p>For security-conscious teams that's a non-starter. Air-gapped environments, regulated data, client confidentiality agreements, or just plain principle: the code shouldn't leave the box.</p>
+        <p>So we built a first-class <strong>Ollama adapter</strong> for OpenAnt.</p>
+
+        <div class="key-insight">
+            <div class="key-insight-title">⚡ The Headline</div>
+            <p style="margin:0">Open-source, LLM-assisted SAST — running entirely on local hardware. Source code stays on the box. Scans stay accurate. Air-gapped and regulated-friendly by design.</p>
+        </div>
+
+        <h2>What we built</h2>
+        <ul>
+            <li><strong>Provider adapter</strong> (<code>openant-core/utilities/llm/providers/ollama.py</code>): a thin delegation over OpenAnt's existing OpenAI-compatible helpers. Ollama exposes an OpenAI-compatible endpoint at <code>http://localhost:11434/v1</code>, so the adapter slots into OpenAnt's provider architecture cleanly. API key is optional (it's local), and configuration is fully supported in the setup wizard.</li>
+            <li><strong>Setup wizard integration</strong>: Ollama appears as a first-class provider choice, with connectivity probing and sensible model defaults per tier (e.g. <a href="https://ollama.com/library/qwen3.8" target="_blank" rel="noopener">Qwen3.8</a> — current gen).</li>
+            <li><strong>Model registry entries</strong> in <code>models.json</code>.</li>
+            <li><strong>Full test coverage</strong>: a contract-test factory plus a dedicated adapter test suite, consistent with how every other provider is tested upstream.</li>
+            <li><strong>Documentation</strong> (<code>OLLAMA.md</code>) covering install, model selection, and warm-up behaviour.</li>
+        </ul>
+        <p>Everything is Apache 2.0, matching upstream, and structured as an upstream contribution rather than a fork.</p>
+
+        <h2>Verified end-to-end</h2>
+        <p>We validated the whole pipeline on a developer workstation:</p>
+        <ul>
+            <li>OpenAnt CLI installed, wizard configured with <code>provider=ollama</code></li>
+            <li><code>mistral-small3.2</code> (15 GB) running locally via Ollama</li>
+            <li>Scanned a repository with planted vulnerabilities</li>
+            <li><strong>Both planted SQL injection findings (CWE-89) detected correctly</strong> — with zero network egress beyond the local machine</li>
+        </ul>
+        <p>No cloud calls. No keys leaving the box. The scan results were accurate against a local model on commodity hardware.</p>
+
+        <div class="finding-card">
+            <p class="cwe">CWE-89 · SQL Injection · Planted</p>
+            <p><span class="result">✓ Detected</span> — Local Ollama model identified both planted SQL injection findings in the test corpus. Verifier confirmed against planted sink/source pairs.</p>
+        </div>
+
+        <h2>Practical notes from real usage</h2>
+        <p>Things we learned that aren't in the docs:</p>
+        <ul>
+            <li><strong>Use chat models.</strong> Base completion models reject <code>/chat/completions</code> endpoints — pick instruct/chat variants.</li>
+            <li><strong>Mind cold loads.</strong> Large models (15 GB+) take several minutes to load on first inference. Warm up before demos or CI runs. Very large models can wedge slower machines entirely — size your model to your hardware.</li>
+            <li><strong>Probe timeouts</strong>: slow cold starts can exceed default probe timeouts — worth documenting or bumping for big local models.</li>
+        </ul>
+
+        <h2>Where this fits</h2>
+        <p>This is the kind of work we build for clients who can't ship their code to a vendor cloud — defence, healthcare, finance, legal, infrastructure operators, and any team with a hardened perimeter. Privacy-first security tooling isn't a marketing line for us; it's the default.</p>
+        <p>If you need SAST, code analysis, or any LLM-assisted security tooling that runs on your hardware and nowhere else, <a href="/#contact">get in touch</a>. The same architecture extends to dependency review, secret scanning, threat-modelling copilots, and code-review agents.</p>
+
+        <h2>What's next</h2>
+        <ul>
+            <!-- TODO: insert upstream PR URL once merged -->
+            <li>Upstream PR to <a href="https://github.com/knostic/OpenAnt" target="_blank" rel="noopener">OpenAnt</a> so every user gets native Ollama support — <em>pending, link goes live once merged</em></li>
+            <li>More local-model benchmarks across finding precision/recall</li>
+            <li>Deployment guides for air-gapped and regulated environments</li>
+        </ul>
+
+        <blockquote class="quote-box">
+            Fully local, LLM-assisted SAST is practical today. Your codebase stays yours.
+        </blockquote>
+
+        <div class="mt-12 p-6 bg-black/40 rounded-lg border border-green-900/30">
+            <p class="text-sm text-gray-400 mb-3"><strong class="text-green-300">Build credit:</strong> Garrison, Executive Mind's Security &amp; Treasury agent. The Ollama-enabled fork is public at <a href="https://github.com/Roughn3ck/OpenAnt" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300">github.com/Roughn3ck/OpenAnt</a>.</p>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Related links</p>
+            <ul class="text-sm text-gray-300 mt-2 space-y-1">
+                <li>→ <a href="https://github.com/knostic/OpenAnt" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300">OpenAnt upstream (Apache 2.0)</a></li>
+                <li>→ <a href="https://github.com/Roughn3ck/OpenAnt" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300">Our Ollama-enabled fork — Roughn3ck/OpenAnt</a></li>
+                <li>→ <a href="https://ollama.com" target="_blank" rel="noopener" class="text-green-400 hover:text-green-300">Ollama — local model runtime</a></li>
+                <li>→ <a href="/security" class="text-green-400 hover:text-green-300">All Security Achievements</a></li>
+                <li>→ <a href="/#contact" class="text-green-400 hover:text-green-300">Talk to us about privacy-first security tooling</a></li>
+            </ul>
+        </div>
+
+    </div>
+</main>
+
+<footer class="py-12 text-center bg-black/70 mt-16">
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://github.com/Roughn3ck" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a>
+            <a href="https://x.com/executivemindio" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+            <a href="https://www.linkedin.com/company/executive-mind-io/" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
+            <a href="https://medium.com/@mercury_executivemind.io" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.92 12A3.28 3.28 0 0 1 17.65 15.3 3.28 3.28 0 0 1 14.38 12a3.28 3.28 0 0 1 3.27-3.3A3.28 3.28 0 0 1 20.92 12zM24 12a1.93 1.93 0 0 1-1.92 1.94A1.93 1.93 0 0 1 20.16 12a1.93 1.93 0 0 1 1.92-1.94A1.93 1.93 0 0 1 24 12z"></path></svg></a>
+            <a href="https://substack.com/@mercuryexecutivemind" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.532 2.468H1.468V4.93h21.064V2.468zM1.468 11.299h21.064v2.468H1.468v-2.468zm0 8.831h21.064v2.468H1.468v-2.468z"></path></svg></a>
+        </div>
+        &copy; 2025 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.
+    </div>
+</footer>
+
+<script>
+    // --- JAVASCRIPT FOR MATRIX EFFECT ---
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(0);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(0);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#56e98f';
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 33);
+    
+    // Mobile menu toggle script
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
+
+<!-- Executive Mind Chat Widget -->
+<script src="/chat/chat-embed.js" defer></script>
+</body>
+</html>

@@ -17,12 +17,12 @@
     <meta property="og:title" content="AI Asset Management — Autonomous Cross-Chain Recovery | Executive Mind">
     <meta property="og:description" content="AI-managed digital assets. Autonomous agents monitoring 6 liquidity pools across 5 chains, rebalancing positions, and recovering stuck transfers — all without human key exposure.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://executivemind.io/assets/executive_mind.png">
+    <meta property="og:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
     <meta property="og:site_name" content="Executive Mind">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Asset Management — Autonomous Cross-Chain Recovery | Executive Mind">
     <meta name="twitter:description" content="AI agents managing real assets across real chains. Autonomous monitoring, rebalancing, and recovery — 24/7, with zero human key exposure.">
-    <meta name="twitter:image" content="https://executivemind.io/assets/executive_mind.png">
+    <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
     <meta name="author" content="Executive Mind">
     <meta name="keywords" content="AI asset management, AI-managed crypto assets, autonomous cross-chain recovery, AI treasury management, DeFi monitoring agent, blockchain LP monitor, AI-managed digital assets, Kris Racette, Executive Mind">
     <script type="application/ld+json">
@@ -92,6 +92,8 @@
         .terminal-body .warning { color: #ffaa00; }
         .terminal-body .highlight { color: #56e98f; font-weight: bold; }
         .chain-tag { display: inline-block; padding: 0.25rem 0.5rem; border: 1px solid #1a3a1a; border-radius: 0.25rem; font-size: 0.7rem; margin-right: 0.25rem; margin-bottom: 0.25rem; }
+            /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
+        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
     </style>
 </head>
 <body class="antialiased">
@@ -101,8 +103,8 @@
 
 <header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
     <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none">
-            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
+            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
         </a>
         <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
             <a href="/">Home</a>
@@ -110,6 +112,7 @@
             <a href="/asset-management" class="text-green-400 font-bold">Asset Management</a>
             <a href="/book" class="text-green-400 font-bold">Book Now</a>
             <a href="/articles">Articles</a>
+            <a href="/security">Security</a>
             <a href="/#team">The Pack 🐺</a>
             <a href="/#contact">Contact</a>
         </nav>
@@ -123,6 +126,7 @@
         <a href="/asset-management" class="block text-green-400 font-bold">Asset Management</a>
         <a href="/book" class="block text-green-400 font-bold">Book Now</a>
         <a href="/articles" class="block">Articles</a>
+        <a href="/security" class="block">Security</a>
         <a href="/#team" class="block">The Pack 🐺</a>
         <a href="/#contact" class="block">Contact</a>
     </nav>

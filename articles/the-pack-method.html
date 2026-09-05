@@ -36,7 +36,7 @@
         "name": "Executive Mind",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://executivemind.io/assets/executive_mind.png"
+          "url": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg"
         }
       },
       "datePublished": "2026-06-20",
@@ -66,6 +66,8 @@
         .article-content pre { background: #111; padding: 1rem; border-radius: 6px; overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid #222; }
         .article-content pre code { background: none; padding: 0; }
         .drop-cap::first-letter { font-size: 3.5rem; float: left; line-height: 1; padding-right: 0.5rem; color: #56e98f; font-weight: bold; }
+            /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
+        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
     </style>
     <meta property="article:published_time" content="2026-06-20">
     <meta property="article:modified_time" content="2026-06-20">
@@ -79,8 +81,8 @@
 
 <header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
     <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none">
-            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
+            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
         </a>
         <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
             <a href="/#about">About</a>

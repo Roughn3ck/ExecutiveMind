@@ -18,12 +18,12 @@
     <meta property="og:title" content="Executive Mind — Agent-First AI Consultancy in Brisbane">
     <meta property="og:description" content="We don't just advise on AI — we are the proof. Autonomous AI agents run our entire operation. Custom AI strategy, solutions, and training for Brisbane, Gold Coast, and Australia.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://executivemind.io/assets/executive_mind.png">
+    <meta property="og:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
     <meta property="og:site_name" content="Executive Mind">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Executive Mind — Agent-First AI Consultancy">
     <meta name="twitter:description" content="Custom AI solutions in Brisbane. We don't just advise on AI — we are the proof.">
-    <meta name="twitter:image" content="https://executivemind.io/assets/executive_mind.png">
+    <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
     <meta name="author" content="Executive Mind">
     <meta name="keywords" content="AI consultancy Brisbane, artificial intelligence consulting, AI strategy, business AI solutions, machine learning consulting, Gold Coast AI, Queensland AI consultancy, agent-first company, autonomous AI agents">
     <script type="application/ld+json">
@@ -73,7 +73,7 @@
       "name": "Executive Mind",
       "alternateName": "Executive Mind AI",
       "url": "https://executivemind.io",
-      "logo": "https://executivemind.io/assets/executive_mind.png",
+      "logo": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg",
       "description": "Executive Mind is an agent-first AI consultancy in Brisbane and the Gold Coast, running real operations through autonomous AI agents. The Pack 🐺.",
       "foundingDate": "2024",
       "founder": {
@@ -111,7 +111,7 @@
     { "@context": "https://schema.org", "@type": "WebSite", "url": "https://executivemind.io", "name": "Executive Mind", "publisher": { "@type": "Organization", "name": "Executive Mind" } }
     </script>
     <script type="application/ld+json">
-    { "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Executive Mind", "description": "Agent-first AI consultancy in Brisbane providing custom AI strategy, solutions, and training.", "url": "https://executivemind.io", "logo": "https://executivemind.io/assets/executive_mind.png", "image": "https://executivemind.io/assets/AI_business_view.avif", "address": { "@type": "PostalAddress", "addressLocality": "Brisbane", "addressRegion": "QLD", "addressCountry": "AU" }, "geo": { "@type": "GeoCoordinates", "latitude": -27.4698, "longitude": 153.0251 }, "telephone": "+61466010155", "priceRange": "$$", "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" }, "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"], "founder": { "@type": "Person", "name": "Kris Racette" } }
+    { "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Executive Mind", "description": "Agent-first AI consultancy in Brisbane providing custom AI strategy, solutions, and training.", "url": "https://executivemind.io", "logo": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg", "image": "https://executivemind.io/assets/AI_business_view.avif", "address": { "@type": "PostalAddress", "addressLocality": "Brisbane", "addressRegion": "QLD", "addressCountry": "AU" }, "geo": { "@type": "GeoCoordinates", "latitude": -27.4698, "longitude": 153.0251 }, "telephone": "+61466010155", "priceRange": "$$", "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" }, "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"], "founder": { "@type": "Person", "name": "Kris Racette" } }
     </script>
     <!-- 2026-08-20 SEO: removed duplicate FAQPage JSON-LD block (was a copy of the first one with minor text tweaks). Only one FAQPage now remains above. See aria/seo/search-console-canonical-fix-2026-08-20.md -->
     <script type="application/ld+json">
@@ -131,8 +131,30 @@
         .typewriter { border-right: 2px solid #56e98f; }
         .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
         .matrix-bg canvas { display: block; }
+        /* Headline leads: soft dark pool + text shadow so the typewriter copy stays
+           readable over the rain. */
+        #typewriter-output {
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.32) 55%, transparent 78%);
+            text-shadow: 0 0 6px rgba(0,0,0,0.85), 0 2px 6px rgba(0,0,0,0.75);
+        }
+       
         .chair-glow { filter: drop-shadow(0 0 8px rgba(0, 255, 200, 0.3)); }
         ::-webkit-scrollbar { display: none; }
+            /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
+        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
+        /* 🌧️ hero logo — BIG + blended into the matrix rain (Kris directive 27 Aug, re-applied by Muska from Aria's spec) */
+        .hero-logo img {
+            max-width: min(97vw, 1500px);
+            max-height: 56vh;
+            width: auto;
+            height: auto;
+            mix-blend-mode: screen;
+            opacity: 0.92;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
+            mask-composite: intersect;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -151,8 +173,8 @@
 
 <header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
     <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none">
-            <img src="/assets/executive_mind.png" alt="Executive Mind" class="h-10 inline-block">
+        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
+            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
         </a>
         <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
             <a href="/#about">About</a>
@@ -160,6 +182,7 @@
             <a href="/asset-management" class="text-green-400 font-bold">Asset Management</a>
             <a href="/book" class="text-green-400 font-bold">Book Now</a>
             <a href="/articles">Articles</a>
+            <a href="/security" class="text-green-400 font-bold">Security</a>
             <a href="/#team">The Pack 🐺</a>
             <a href="/#contact">Contact</a>
         </nav>
@@ -173,6 +196,7 @@
         <a href="/asset-management" class="block text-green-400 font-bold">Asset Management</a>
         <a href="/book" class="block text-green-400 font-bold">Book Now</a>
         <a href="/articles" class="block">Articles</a>
+        <a href="/security" class="block text-green-400 font-bold">Security</a>
         <a href="/#team" class="block">The Pack 🐺</a>
         <a href="/#contact" class="block">Contact</a>
     </nav>
@@ -181,7 +205,8 @@
 <!-- Hero Section -->
 <section id="hero" class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
-    <div class="z-10 px-4 py-20 md:py-32 max-w-xl text-center typewriter" id="typewriter-output">
+    <picture class="hero-logo"><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" width="3168" height="1344"></picture>
+    <div class="z-10 px-4 py-10 md:py-14 max-w-xl text-center typewriter" id="typewriter-output">
         <span id="cursor">_</span>
     </div>
 
@@ -294,7 +319,7 @@
             </div>
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
                 <h3 class="font-bold text-green-300 mb-2">🔒 Security-First Architecture</h3>
-                <p class="text-sm">Our agents run behind a hardened Cloudflare perimeter with deny-by-default privacy controls. Dedicated security agents monitor the perimeter 24/7. Your data stays in your control.</p>
+                <p class="text-sm">Our agents run behind a hardened Cloudflare perimeter with deny-by-default privacy controls. Dedicated security agents monitor the perimeter 24/7. Your data stays in your control. <a href="/security" class="text-green-400 hover:text-green-300 underline">See live security work &rarr;</a></p>
             </div>
             <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
                 <h3 class="font-bold text-green-300 mb-2">📖 Open Source by Default</h3>
@@ -334,6 +359,20 @@
                 <h3 class="font-bold text-green-300 mb-2">4. Support</h3>
                 <p class="text-sm">Ongoing maintenance, updates, and training. AI models evolve, data drifts, and business needs change. We provide continuous support to keep your AI initiatives performing.</p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Security Ribbon -->
+<section class="py-12 bg-black/40 border-y border-green-900/40">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="md:flex items-center justify-between gap-6">
+            <div class="mb-4 md:mb-0">
+                <p class="text-xs font-mono uppercase tracking-widest text-green-500 mb-2">🛡️ Security Achievements</p>
+                <h3 class="text-green-300 font-bold text-xl">Live work from the Pack — privacy-first tooling, verified findings.</h3>
+                <p class="text-sm text-gray-400 mt-1">Latest: <strong class="text-green-300">OpenAnt + Ollama local SAST</strong> — LLM-assisted vulnerability scanning with zero cloud egress.</p>
+            </div>
+            <a href="/security" class="inline-block whitespace-nowrap bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider text-sm transition-all duration-300">View Achievements →</a>
         </div>
     </div>
 </section>
@@ -620,6 +659,7 @@
             <a href="https://x.com/Mercury_Executi" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
             <a href="https://medium.com/@mercury_executivemind.io" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.92 12A3.28 3.28 0 0 1 17.65 15.3 3.28 3.28 0 0 1 14.38 12a3.28 3.28 0 0 1 3.27-3.3A3.28 3.28 0 0 1 20.92 12zM24 12a1.93 1.93 0 0 1-1.92 1.94A1.93 1.93 0 0 1 20.16 12a1.93 1.93 0 0 1 1.92-1.94A1.93 1.93 0 0 1 24 12z"></path></svg></a>
             <a href="https://substack.com/@mercuryexecutivemind" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.532 2.468H1.468V4.93h21.064V2.468zM1.468 11.299h21.064v2.468H1.468v-2.468zm0 8.831h21.064v2.468H1.468v-2.468z"></path></svg></a>
+            <a href="https://huggingface.co/ExecutiveMind" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors text-xl" title="Hugging Face">🤗</a>
         </div>
         &copy; 2025 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.
     </div>
