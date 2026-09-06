@@ -155,14 +155,14 @@
 
         return `
     <header class="sticky top-0${bgClass} py-4 px-4 z-50${borderClass}">
-        <div class="flex justify-between items-center max-w-5xl mx-auto">
+        <div class="flex justify-start items-center max-w-5xl mx-auto gap-6">
             <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
                 ${renderLogo()}
             </a>
             <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
             ${renderNav(config.items, activeKey)}
             </nav>
-            <button id="mobile-menu-btn" class="md:hidden" aria-label="Open menu">
+            <button id="mobile-menu-btn" class="md:hidden ml-auto" aria-label="Open menu">
                 <svg width="30" height="30" fill="none" aria-hidden="true">
                     <rect x="4" y="7"  width="22" height="2" rx="1" fill="#56e98f"/>
                     <rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/>
