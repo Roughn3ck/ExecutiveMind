@@ -55,7 +55,10 @@
     ]}
     </script>
     
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -95,25 +98,11 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/#team">Team</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-    </div>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
 
 <main class="py-16">
     <div class="max-w-3xl mx-auto px-4 article-content">
-        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">Ollama Cloud Compute Analysis: Which Model Burns the Most?</h1>
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl reveal reveal-scale">Ollama Cloud Compute Analysis: Which Model Burns the Most?</h1>
         <p class="mt-2 mb-8 text-gray-400 text-sm">Posted by <a href="https://krisracette.me" class="text-green-400 hover:text-green-300">Kris Racette</a> on July 9, 2026 · 12 min read</p>
 
         <img src="/articles/img/ollama-compute-hero.png" alt="Ollama Cloud Compute Analysis — Executive Mind" class="w-full h-auto rounded-lg shadow-lg shadow-green-400/20 my-8">
@@ -129,7 +118,7 @@
             <p style="margin:0"><strong>DeepSeek V4 Flash</strong> (13B active parameters) burns <strong>~73% less compute</strong> than V4 Pro (49B active) — and lands within 1-3 points on virtually every coding benchmark. If you're paying for the V4 Pro tier to do routine work, you're burning three quarters of your weekly quota for marginal quality gains. V4 Flash is the value king of Ollama Cloud.</p>
         </div>
 
-        <h2>Why Compute Is a Moving Target on Ollama Cloud</h2>
+        <h2 class="reveal">Why Compute Is a Moving Target on Ollama Cloud</h2>
         <p>Most people read the Ollama Cloud pricing page and think they're paying per token. They're not. From <a href="https://ollama.com/pricing" class="text-green-400 hover:text-green-300">Ollama's pricing page</a>:</p>
 
         <blockquote class="quote-box">
@@ -144,7 +133,7 @@
 
         <p>Context window memory matters too, but the dominant variable is active params. That's why a 1T-parameter MoE with 32B active (Kimi K2.7 Code) costs less than a 744B-parameter model with 40B active (GLM 5.2). Total parameter count is a vanity metric on cloud subscriptions — what matters is what fires per token.</p>
 
-        <h2>The Model Roster — Active Parameters & Context</h2>
+        <h2 class="reveal">The Model Roster — Active Parameters & Context</h2>
         <p>Here's the field. We've sorted by active parameters, because that's the primary compute driver.</p>
 
         <table>
@@ -172,7 +161,7 @@
 
         <p>Note the wild spread: Gemma 4 26B (MoE) fires only 4B parameters per token, while DeepSeek V4 Pro fires 49B. That's a <strong>12× difference</strong> in per-token compute — which is exactly what Ollama is charging you for.</p>
 
-        <h2>Benchmark Performance Across the Field</h2>
+        <h2 class="reveal">Benchmark Performance Across the Field</h2>
         <p>Compute is half the story. The other half is: what can the model actually do? We pulled scores from SWE-bench Verified, SWE-bench Pro, Terminal-Bench 2.1, LiveCodeBench, the Composio tool-use benchmark, and Design Arena. Estimated values are marked in italics — these are interpolation estimates from partial public data, not made up.</p>
 
         <table>
@@ -202,7 +191,7 @@
 
         <p>That last row is the part most people get wrong. Gemma 4 27B <em>dense</em> hits a respectable 61.2% SWE-bench Verified, but the MoE variant that everyone benchmarks is 17.4%. Google chose not to feature SWE-bench in their official Gemma 4 press materials for a reason.</p>
 
-        <h2>Compute Per Token — The Real Number</h2>
+        <h2 class="reveal">Compute Per Token — The Real Number</h2>
         <p>Now we get to the meat. If Ollama weights usage by GPU compute difficulty, and the dominant driver is active parameters, then the relative cost per token looks like this (V4 Pro = 1.0x as the reference):</p>
 
         <table>
@@ -229,7 +218,7 @@
 
         <p>That 0.27x on V4 Flash versus 1.0x on V4 Pro isn't a typo. It's a 73% compute reduction for the same kind of work, on most tasks. If you're running a 10-agent operation on Ollama Cloud, the difference between routing everything to V4 Pro and routing routine work to V4 Flash could literally be the difference between hitting your quota on Wednesday and hitting it on Saturday.</p>
 
-        <h2>Total Compute for the Same Coding Task</h2>
+        <h2 class="reveal">Total Compute for the Same Coding Task</h2>
         <p>Per-token cost is half the story. The other half is thinking token overhead. Reasoning models emit "thinking" tokens that count toward your quota but never appear in the response. For a moderate coding task — say, 5,000 thinking tokens plus 2,000 output tokens — the total compute looks like this:</p>
 
         <table>
@@ -257,7 +246,7 @@
 
         <p>Note Kimi K2.7 Code's trick: it uses 30% fewer thinking tokens than its peers. That single design choice moves it from a 0.65x per-token cost to a 0.46x <em>total</em> cost — a meaningful efficiency gain for IDE-bound coding work.</p>
 
-        <h2>The Compute vs Capability Matrix</h2>
+        <h2 class="reveal">The Compute vs Capability Matrix</h2>
         <p>This is the chart you wish Ollama published. Each model plotted by total compute per task and coding capability tier.</p>
 
         <table>
@@ -300,7 +289,7 @@
 
         <p>The single most important cell: <strong>DeepSeek V4 Flash in the top-left quadrant.</strong> High capability, low compute. The closest competitor in that cell is Kimi K2.7 Code — but Kimi is purpose-built for agentic IDE coding, not for general-purpose reasoning at the Flash tier's quality.</p>
 
-        <h2>What About GPT-OSS and Gemma?</h2>
+        <h2 class="reveal">What About GPT-OSS and Gemma?</h2>
         <p>Short answer: <strong>no, they're not in the same league for coding.</strong></p>
 
         <p><strong>GPT-OSS 120B</strong> has the cheapest compute profile on Ollama Cloud (5.1B active — barely a blip on the quota), but it ranks #78 out of 124 models on coding benchmarks with a score of 21.2. It's a reasoning model that can do tool use, but for real software engineering it's nowhere near the frontier. On Ollama Cloud, where you're already on a subscription, the compute efficiency is irrelevant because the coding quality isn't good enough to replace the bigger models.</p>
@@ -312,7 +301,7 @@
             <p style="margin:0">On Ollama Cloud, the compute cost difference between the cheapest viable coder (DeepSeek V4 Flash at 13B active) and GPT-OSS or Gemma is irrelevant compared to the capability gap. You're already on a subscription — use the model that actually solves the problem. GPT-OSS and Gemma are models for <em>local hardware constraints</em>, not cloud subscription optimization.</p>
         </div>
 
-        <h2>Final Ranking — All Nine Models, by Value</h2>
+        <h2 class="reveal">Final Ranking — All Nine Models, by Value</h2>
 
         <div class="tier-list">
             <p><strong>🥇 DeepSeek V4 Flash</strong> — 13B active = ~73% less compute than V4 Pro. 79% SWE-bench Verified, 91.6 LiveCodeBench. <em>The undisputed value king.</em></p>
@@ -326,7 +315,7 @@
             <p><strong>9. Gemma 4 26B (A4B)</strong> — 17.4% SWE-bench Verified. Not a coding model. Ignore for coding work.</p>
         </div>
 
-        <h2>Recommended Model Routing on Ollama Cloud</h2>
+        <h2 class="reveal">Recommended Model Routing on Ollama Cloud</h2>
         <p>Here's the playbook we use across our <a href="/#about" class="text-green-400 hover:text-green-300">10-agent operation</a>:</p>
 
         <table>
@@ -350,7 +339,7 @@
             </tbody>
         </table>
 
-        <h2>The Bottom Line</h2>
+        <h2 class="reveal">The Bottom Line</h2>
         <p>If you're hitting Ollama Cloud Max limits at 55% through the week, the fix isn't to upgrade. The fix is to route better.</p>
 
         <ol>

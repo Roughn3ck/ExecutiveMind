@@ -55,7 +55,10 @@
     ]}
     </script>
     
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -80,39 +83,11 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-         <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a> 
-            <a href="/#team">Team</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#testimonials">Testimonials</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-        <button id="mobile-menu-btn" class="md:hidden">
-            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
-        </button>
-    </div>
-    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
-        <a href="/#about" class="block">About</a>
-        <a href="/#services" class="block">Services</a>
-        <a href="/articles" class="block">Articles</a> <a href="/#team" class="block">Team</a>
-        <a href="/#portfolio" class="block">Portfolio</a>
-        <a href="/#testimonials" class="block">Testimonials</a>
-        <a href="/#faq" class="block">FAQ</a>
-        <a href="/#contact" class="block">Contact</a>
-    </nav>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
 
 <main class="py-16">
     <div class="max-w-3xl mx-auto px-4 article-content">
-        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">The AI Integration Paradox: A Leader's Playbook for Real Transformation</h1>
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl reveal reveal-scale">The AI Integration Paradox: A Leader's Playbook for Real Transformation</h1>
         <p class="mt-2 mb-8 text-gray-400 text-sm">By <a href="/author/kris-racette" class="text-green-300 hover:text-green-200 font-bold">Kris Racette</a> (Executive Mind) · Edited by Mercury · September 29, 2025</p>
 
         <img src="/articles/the-ai-paradox.png" alt="An abstract image representing the structured steps of an AI integration playbook." class="w-full h-auto rounded-lg shadow-lg shadow-green-400/20 my-8 opacity-90">
@@ -121,7 +96,7 @@
         <p>This gap between adoption and true integration is where businesses either falter or fly. It highlights a landscape filled with pilot programs and fragmented efforts but lacking a unified, strategic foundation. To understand this challenge, we sat down with Cloudera’s CTO, Sergio Gago, to discuss the survey's findings and outline a clear, structured path forward for business leaders.</p>
         <p>This is the playbook for moving beyond experimentation to achieve genuine, value-driven AI integration.</p>
 
-        <h2>The Hurdles to Full Integration: Why Businesses Get Stuck</h2>
+        <h2 class="reveal">The Hurdles to Full Integration: Why Businesses Get Stuck</h2>
         <p>According to Gago, the primary obstacles aren't a lack of ambition but foundational gaps in data and infrastructure. The survey data paints a clear picture of these challenges:</p>
         <ul>
             <li><strong>Soaring Compute Costs:</strong> The cost to access computer capacity for training AI models has skyrocketed. A year ago, only 8% of IT leaders cited this as a major issue; today, that number has jumped to <strong>42%</strong>.</li>
@@ -129,7 +104,7 @@
         </ul>
         <p>Without solving for data accessibility and infrastructure efficiency, Gago notes, "models are limited in scope and accuracy," and AI remains a powerful engine without fuel.</p>
 
-        <h2>Your Playbook for 100% AI Integration</h2>
+        <h2 class="reveal">Your Playbook for 100% AI Integration</h2>
         <p>For organizations starting from scratch or looking to unify their current efforts, Gago outlines a structured, five-step journey. This is the approach we at Executive Mind champion to turn AI ambition into tangible business outcomes.</p>
         <h4>1. Define Your 'Why': Start with Business Goals</h4>
         <p>Before any code is written, clarify the business problems you are trying to solve. Are you aiming to improve operational efficiency, enhance customer experience, or mitigate risk? Define clear objectives and establish ownership for these decisions.</p>
@@ -142,7 +117,7 @@
         <h4>5. Measure and Scale: Build on Your Success</h4>
         <p>To prove that an AI project is working, Gago recommends tracking metrics tied to <strong>speed, cost, and satisfaction</strong>. When you can demonstrate that AI consistently shortens cycles and reduces costs, you build a powerful case for scaling your efforts.</p>
 
-        <h2>The Bedrock of Success: Security and Trust by Design</h2>
+        <h2 class="reveal">The Bedrock of Success: Security and Trust by Design</h2>
         <p>As AI becomes more embedded, security concerns naturally rise. The top worries for IT leaders are <strong>data leakage during model training (50%)</strong> and <strong>unauthorized data access (48%)</strong>.</p>
         <p>Gago’s advice is profound in its simplicity: <strong>bring AI to your data, not the other way around</strong>. This allows you to maintain data ownership and apply AI insights without exposing your business to unnecessary risk.</p>
 

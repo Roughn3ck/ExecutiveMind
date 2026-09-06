@@ -64,7 +64,10 @@
       ]
     }
     </script>
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: #56e98f; text-decoration: none; }
@@ -78,28 +81,12 @@
 <body>
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="h-10 inline-block" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/#team">Team</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#testimonials">Testimonials</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-    </div>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="about"></div>
 
 <main class="py-16">
     <div class="max-w-3xl mx-auto px-4">
         <p class="text-green-400 font-mono text-xs uppercase tracking-widest mb-2">Author</p>
-        <h1 class="text-green-400 font-bold text-4xl md:text-5xl tracking-tight">Kris Racette</h1>
+        <h1 class="text-green-400 font-bold text-4xl md:text-5xl tracking-tight reveal reveal-scale">Kris Racette</h1>
         <p class="text-green-300 text-lg md:text-xl font-mono mt-3">
             AI Director // Founder &amp; CEO // Executive Mind
         </p>
@@ -112,7 +99,7 @@
         </div>
 
         <section aria-label="Articles by Kris Racette">
-            <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6">Articles by Kris Racette</h2>
+            <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6 reveal">Articles by Kris Racette</h2>
             <ul class="space-y-4 text-sm">
                 <li class="bio-card p-4 rounded">
                     <a href="/articles/rewiring-the-c-suite" class="font-bold text-green-300 hover:text-green-200">Rewiring the C-Suite: The 2026 Guide to Becoming Agentic-First</a>
@@ -158,7 +145,7 @@
         </section>
 
         <section class="mt-12 bio-card p-6 rounded-lg" aria-label="About the author">
-            <h2 class="text-green-400 font-bold text-lg mb-3">About the author</h2>
+            <h2 class="text-green-400 font-bold text-lg mb-3 reveal">About the author</h2>
             <p class="text-sm text-gray-300 leading-relaxed">
                 Kris Racette is an AI Director and Founder of <a href="https://executivemind.io" rel="noopener noreferrer">Executive Mind</a>, a Brisbane-based AI consultancy that operates as a living proof-of-concept for human-agent collaboration. Kris holds a Master of Commerce (MComm) and has 18+ years of experience across accounting, financial operations, and trust management. He writes about agentic AI, the operating model of the post-prompt enterprise, and the messy reality of running a business on AI. Find him on <a href="https://www.linkedin.com/in/krisracette/" rel="noopener noreferrer">LinkedIn</a>, <a href="https://x.com/R0ughnek" rel="noopener noreferrer">X</a>, and at <a href="https://krisracette.me" rel="noopener noreferrer">krisracette.me</a>.
             </p>

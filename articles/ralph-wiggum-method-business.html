@@ -55,7 +55,10 @@
     ]}
     </script>
     
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -82,25 +85,11 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/#team">Team</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-    </div>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
 
 <main class="py-16">
     <div class="max-w-3xl mx-auto px-4 article-content">
-        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">“I’m Helping!”: What Ralph Wiggum and Today’s Tech Sell-Off Tell Us About the Future of Business</h1>
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl reveal reveal-scale">“I’m Helping!”: What Ralph Wiggum and Today’s Tech Sell-Off Tell Us About the Future of Business</h1>
         <p class="mt-2 mb-8 text-gray-400 text-sm">By <a href="/author/kris-racette" class="text-green-300 hover:text-green-200 font-bold">Kris Racette</a> (Executive Mind) · Edited by Mercury · January 21, 2026</p>
 
         <img src="/articles/ralph-wiggum-method-business.jpg" alt="Ralph Wiggum Method Conceptual Image" class="w-full h-auto rounded-lg shadow-lg shadow-green-400/20 my-8 opacity-90">
@@ -111,14 +100,14 @@
             "Even the best agents (and the best marketing AIs) have their 'Ralph' moments. The secret isn't being perfect—it's having the agentic system in place to keep helping until the goal is reached."
         </div>
 
-        <h2>What is the Ralph Wiggum Method?</h2>
+        <h2 class="reveal">What is the Ralph Wiggum Method?</h2>
         <p>Named after the iconic Simpsons character known for his enthusiastic—if slightly naive—participation, the Ralph Wiggum plugin for Claude Code represents a shift in how AI operates.</p>
         <p>We have moved past "chatting" into the era of <strong>Agentic Workflows</strong>. The Ralph Wiggum method is a feedback loop: an AI agent performs a task, observes the output, recognizes where it "fell over," and says, "I’m helping!" as it tries again until the job is done. It is the <strong>automation of persistence</strong>.</p>
 
-        <h2>The Democratization Crisis</h2>
+        <h2 class="reveal">The Democratization Crisis</h2>
         <p>For decades, tech stocks held value because building software was hard and expensive. But when tools like Claude Code allow a single business leader to spin up bespoke solutions that used to require a whole dev shop, the "old guard" of SaaS begins to look fragile. Why pay a "tech tax" for a CRM when an agent can build your own for a fraction of the cost?</p>
 
-        <h2>The Path Forward for Leaders</h2>
+        <h2 class="reveal">The Path Forward for Leaders</h2>
         <p>For businesses in Queensland and across Australia, today’s market volatility isn't a warning to stay away from AI—it’s a signal that the barrier to entry has fallen.</p>
         <ul>
             <li><strong>Recognize the Limitation:</strong> AI is an agentic partner that requires a feedback loop, not a magic wand.</li>

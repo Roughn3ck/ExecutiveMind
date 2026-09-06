@@ -124,12 +124,12 @@
             <span class="security-badge badge-open">Open Source · Apache 2.0</span>
             <span class="security-badge badge-pending">Upstream PR · pending</span>
         </div>
-        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">Running OpenAnt Fully Local: The Ollama Adapter</h1>
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl reveal reveal-scale">Running OpenAnt Fully Local: The Ollama Adapter</h1>
         <p class="mt-2 mb-8 text-gray-400 text-sm">Posted by <a href="https://executivemind.io/author/kris-racette" class="text-green-400 hover:text-green-300">Kris Racette</a> on August 25, 2026 · 8 min read · <a href="/security" class="text-green-400 hover:text-green-300">Security Achievements</a></p>
 
         <p class="text-lg text-gray-300 leading-relaxed"><em>How we extended <a href="https://github.com/knostic/OpenAnt" target="_blank" rel="noopener">OpenAnt</a> so SAST scans run against local models — no cloud, no API keys, no source code leaving the machine.</em></p>
 
-        <h2>Why this matters</h2>
+        <h2 class="reveal">Why this matters</h2>
         <p>Static application security testing (SAST) tools increasingly use LLMs to cut false positives and explain findings. The catch: most integrations assume a cloud LLM. That means your source code — sometimes your crown jewels — gets shipped to a third-party API to be analysed for vulnerabilities.</p>
         <p>For security-conscious teams that's a non-starter. Air-gapped environments, regulated data, client confidentiality agreements, or just plain principle: the code shouldn't leave the box.</p>
         <p>So we built a first-class <strong>Ollama adapter</strong> for OpenAnt.</p>
@@ -139,7 +139,7 @@
             <p style="margin:0">Open-source, LLM-assisted SAST — running entirely on local hardware. Source code stays on the box. Scans stay accurate. Air-gapped and regulated-friendly by design.</p>
         </div>
 
-        <h2>What we built</h2>
+        <h2 class="reveal">What we built</h2>
         <ul>
             <li><strong>Provider adapter</strong> (<code>openant-core/utilities/llm/providers/ollama.py</code>): a thin delegation over OpenAnt's existing OpenAI-compatible helpers. Ollama exposes an OpenAI-compatible endpoint at <code>http://localhost:11434/v1</code>, so the adapter slots into OpenAnt's provider architecture cleanly. API key is optional (it's local), and configuration is fully supported in the setup wizard.</li>
             <li><strong>Setup wizard integration</strong>: Ollama appears as a first-class provider choice, with connectivity probing and sensible model defaults per tier (e.g. <a href="https://ollama.com/library/qwen3.8" target="_blank" rel="noopener">Qwen3.8</a> — current gen).</li>
@@ -149,7 +149,7 @@
         </ul>
         <p>Everything is Apache 2.0, matching upstream, and structured as an upstream contribution rather than a fork.</p>
 
-        <h2>Verified end-to-end</h2>
+        <h2 class="reveal">Verified end-to-end</h2>
         <p>We validated the whole pipeline on a developer workstation:</p>
         <ul>
             <li>OpenAnt CLI installed, wizard configured with <code>provider=ollama</code></li>
@@ -164,7 +164,7 @@
             <p><span class="result">✓ Detected</span> — Local Ollama model identified both planted SQL injection findings in the test corpus. Verifier confirmed against planted sink/source pairs.</p>
         </div>
 
-        <h2>Practical notes from real usage</h2>
+        <h2 class="reveal">Practical notes from real usage</h2>
         <p>Things we learned that aren't in the docs:</p>
         <ul>
             <li><strong>Use chat models.</strong> Base completion models reject <code>/chat/completions</code> endpoints — pick instruct/chat variants.</li>
@@ -172,11 +172,11 @@
             <li><strong>Probe timeouts</strong>: slow cold starts can exceed default probe timeouts — worth documenting or bumping for big local models.</li>
         </ul>
 
-        <h2>Where this fits</h2>
+        <h2 class="reveal">Where this fits</h2>
         <p>This is the kind of work we build for clients who can't ship their code to a vendor cloud — defence, healthcare, finance, legal, infrastructure operators, and any team with a hardened perimeter. Privacy-first security tooling isn't a marketing line for us; it's the default.</p>
         <p>If you need SAST, code analysis, or any LLM-assisted security tooling that runs on your hardware and nowhere else, <a href="/#contact">get in touch</a>. The same architecture extends to dependency review, secret scanning, threat-modelling copilots, and code-review agents.</p>
 
-        <h2>What's next</h2>
+        <h2 class="reveal">What's next</h2>
         <ul>
             <!-- TODO: insert upstream PR URL once merged -->
             <li>Upstream PR to <a href="https://github.com/knostic/OpenAnt" target="_blank" rel="noopener">OpenAnt</a> so every user gets native Ollama support — <em>pending, link goes live once merged</em></li>

@@ -53,7 +53,10 @@
       {"@type":"ListItem","position":3,"name":"When the Monkey Bursts the Bubble","item":"https://executivemind.io/articles/AI_bubble_turns_to_water"}
     ]}
     </script>
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -80,24 +83,11 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/#team">Team</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-    </div>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
 
 <main class="py-16">
     <div class="max-w-3xl mx-auto px-4 article-content">
-        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">When the monkey bursts the bubble, it will turn to water</h1>
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl reveal reveal-scale">When the monkey bursts the bubble, it will turn to water</h1>
         <p class="mt-2 mb-8 text-gray-400 text-sm">By <a href="/author/kris-racette" class="text-green-300 hover:text-green-200 font-bold">Kris Racette</a> · January 21, 2026</p>
 
         <img src="/articles/AI_bubble_turns_to_water.jpg" alt="Digital bubble turning to water" class="w-full h-auto rounded-lg shadow-lg shadow-green-400/20 my-8 opacity-90">
@@ -106,10 +96,10 @@
 
         <p>In reality, the "bubble" bursting is exactly what we need to separate the monopolists from the mission.</p>
 
-        <h2>The Macaque’s Lesson: Who Owns the Machine?</h2>
+        <h2 class="reveal">The Macaque’s Lesson: Who Owns the Machine?</h2>
         <p>In 2011, a macaque monkey named Naruto famously took a selfie. The resulting legal battle proved profound: courts ruled that non-humans cannot hold copyright. Today, Big Tech is vaporizing its own intellectual property by building on land it doesn't own, using bricks of code it didn't write. This creates an "Accountability Sink" where responsibility vanishes into the proprietary wreckage.</p>
 
-        <h2>The "Reverse Centaur" Crisis</h2>
+        <h2 class="reveal">The "Reverse Centaur" Crisis</h2>
         <p>We are currently living in the era of the <strong>Reverse Centaur</strong>. In a true "Centaur" relationship, the machine empowers the human. In a Reverse Centaur relationship, the human becomes a "meat peripheral" for the machine—like a driver being docked points by an AI eye for looking in the wrong direction.</p>
         
         <p>Proprietary AI is being stuffed into our society like toxic asbestos. It’s everywhere, insulating the profits of the Big 7, but built on "spicy autocomplete" that hallucinates and creates security holes.</p>
@@ -118,7 +108,7 @@
             "Empty your mind, be formless, shapeless—like water. Now you put water into a cup, it becomes the cup... Water can flow, or it can crash. Be water, my friend." — Bruce Lee
         </div>
 
-        <h2>Rising from the Ashes: The Liquid Metal Ethos</h2>
+        <h2 class="reveal">Rising from the Ashes: The Liquid Metal Ethos</h2>
         <p>When the funding dries up and the massive, closed-door servers go dark, the real work begins. The future of AI isn't a "God-in-a-box" owned by a billionaire; it is the <strong>Open Source Ethos</strong>. Like the T-1000, the individual droplets of code will recombine—self-reinforcing, self-refining, and open.</p>
         
         <ul>

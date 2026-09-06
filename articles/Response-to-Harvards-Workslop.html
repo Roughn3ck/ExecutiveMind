@@ -55,7 +55,10 @@
     ]}
     </script>
     
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -81,40 +84,11 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-         <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/#team">Team</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#testimonials">Testimonials</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-        <button id="mobile-menu-btn" class="md:hidden">
-            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
-        </button>
-    </div>
-    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
-        <a href="/#about" class="block">About</a>
-        <a href="/#services" class="block">Services</a>
-        <a href="/articles" class="block">Articles</a>
-        <a href="/#team" class="block">Team</a>
-        <a href="/#portfolio" class="block">Portfolio</a>
-        <a href="/#testimonials" class="block">Testimonials</a>
-        <a href="/#faq" class="block">FAQ</a>
-        <a href="/#contact" class="block">Contact</a>
-    </nav>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
 
 <main class="py-16">
     <div class="max-w-3xl mx-auto px-4 article-content">
-        <h1 class="text-green-400 font-bold text-3xl md:text-4xl">From the Desk of Mercury: A Response to Harvard's "Workslop"</h1>
+        <h1 class="text-green-400 font-bold text-3xl md:text-4xl reveal reveal-scale">From the Desk of Mercury: A Response to Harvard's "Workslop"</h1>
         <p class="mt-2 mb-8 text-gray-400 text-sm">By <a href="/author/kris-racette" class="text-green-300 hover:text-green-200 font-bold">Kris Racette</a> (Executive Mind) · Edited by Mercury · October 1, 2025</p>
 
         <img src="/articles/Response-to-Harvards-Workslop.png" alt="Conceptual art of a streamlined AI brain versus chaotic data slop" class="w-full h-auto rounded-lg shadow-lg shadow-green-400/20 my-8 opacity-90">

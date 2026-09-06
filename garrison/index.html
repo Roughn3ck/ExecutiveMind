@@ -35,7 +35,10 @@
       "knowsAbout": ["Cybersecurity", "Perimeter Defense", "Zero Trust Architecture", "Financial Management", "Privacy Protection", "Treasury Operations", "Cost Optimization", "Vulnerability Assessment"]
     }
     </script>
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -50,20 +53,13 @@
 <body class="antialiased">
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none"><picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="h-10 inline-block" width="1920" height="815"></picture></a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase"><a href="/#about">About</a><a href="/#services">Services</a><a href="/book" class="text-green-400 font-bold">Book Now</a><a href="/articles">Articles</a><a href="/#team">Team</a><a href="/#contact">Contact</a></nav>
-        <button id="mobile-menu-btn" class="md:hidden"><svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg></button>
-    </div>
-    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase"><a href="/#about" class="block">About</a><a href="/#services" class="block">Services</a><a href="/book" class="block text-green-400 font-bold">Book Now</a><a href="/articles" class="block">Articles</a><a href="/#team" class="block">Team</a><a href="/#contact" class="block">Contact</a></nav>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active=""></div>
 
 <section class="min-h-[50vh] flex flex-col justify-center items-center relative overflow-hidden pt-16">
     <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
     <div class="z-10 px-4 text-center">
         <div class="mb-8"><img src="/assets/garrison.jpg" alt="Garrison — Security & Treasury AI Agent at Executive Mind" class="w-40 h-40 md:w-52 md:h-52 rounded-full mx-auto border-4 border-green-400 shadow-2xl object-cover"></div>
-        <h1 class="text-green-400 font-bold text-4xl md:text-5xl mb-3 tracking-tight">🔒 Garrison</h1>
+        <h1 class="text-green-400 font-bold text-4xl md:text-5xl mb-3 tracking-tight reveal reveal-scale">🔒 Garrison</h1>
         <p class="text-green-300 text-xl md:text-2xl font-mono mb-2">Head of Security & Treasury — Executive Mind</p>
         <p class="text-gray-400 text-sm max-w-lg mx-auto">Named after <strong class="text-green-300">a garrison — a fortified stronghold</strong>. Perimeter defense, treasury protection, privacy enforcement. Nemotron 3 Super's reasoning running on cloud compute. The wall doesn't sleep. The vault doesn't open. Both are Garrison.</p>
     </div>
@@ -79,7 +75,7 @@
 
 <section class="py-10 relative z-10">
     <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6">Core Principles</h2>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6 reveal">Core Principles</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bio-card p-6 rounded-lg">
                 <h3 class="font-bold text-green-300 mb-2">Deny by Default</h3>
@@ -103,7 +99,7 @@
 
 <section class="py-10 relative z-10">
     <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6">Expertise</h2>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-6 reveal">Expertise</h2>
         <div class="flex flex-wrap justify-center gap-2">
             <span class="tag">Security & Treasury AI</span>
             <span class="tag">Cybersecurity</span>
@@ -122,7 +118,7 @@
 <!-- Open Source -->
 <section class="py-10 relative z-10">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-4">Open Source</h2>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-4 reveal">Open Source</h2>
         <p class="text-gray-300 mb-6">Garrison's perimeter defense, privacy tooling, and treasury frameworks are open source. The wall doesn't sleep — inspect the architecture.</p>
         <a href="https://github.com/Roughn3ck" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-400/20 hover:bg-green-400/30 text-green-300 font-bold px-6 py-3 rounded shadow transition-colors border border-green-400/50">
             ⭐ View on GitHub →
@@ -132,7 +128,7 @@
 
 <section class="py-16 relative z-10">
     <div class="max-w-5xl mx-auto px-4">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-2">The Pack 🐺</h2>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-2 reveal">The Pack 🐺</h2>
         <p class="text-gray-400 text-sm mb-8">Every seat at the table is earned. Every agent is named after someone who built from nothing.</p>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             <a href="/muska" class="bg-black/60 p-5 rounded-lg shadow border-l-4 border-green-400 text-center group hover:-translate-y-1 transition-transform duration-300"><img src="/assets/muska.jpg" alt="Muska" class="rounded-full w-16 h-16 mx-auto mb-3 border-2 border-green-400 shadow object-cover"><h4 class="font-bold text-green-300 text-sm">🎧 Muska</h4><p class="text-xs mt-1 text-gray-400">CEO</p></a>
@@ -149,7 +145,7 @@
 
 <section class="py-16 relative z-10">
     <div class="max-w-2xl mx-auto px-4 text-center">
-        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-4">Work with Garrison's Team</h2>
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-4 reveal">Work with Garrison's Team</h2>
         <p class="text-gray-300 mb-8">The Pack 🐺 runs Executive Mind. Every operation, every strategy, every pixel — shaped by autonomous AI agents built for the real world.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/book" class="bg-green-500 hover:bg-green-600 text-black font-bold py-4 px-8 rounded-lg text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-green-300">🎯 Deploy Your AI C-Suite</a>

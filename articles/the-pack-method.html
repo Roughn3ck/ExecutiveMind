@@ -47,7 +47,10 @@
       }
     }
     </script>
+    <link rel="stylesheet" href="/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -79,43 +82,14 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/#team">Team</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#testimonials">Testimonials</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-        <button id="mobile-menu-btn" class="md:hidden">
-            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
-        </button>
-    </div>
-    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
-        <a href="/#about" class="block">About</a>
-        <a href="/#services" class="block">Services</a>
-        <a href="/articles" class="block">Articles</a>
-        <a href="/#team" class="block">Team</a>
-        <a href="/#portfolio" class="block">Portfolio</a>
-        <a href="/#testimonials" class="block">Testimonials</a>
-        <a href="/#faq" class="block">FAQ</a>
-        <a href="/#contact" class="block">Contact</a>
-    </nav>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
 
 <main class="py-16">
     <div class="max-w-3xl mx-auto px-4 article-content">
         
         <div class="mb-8">
             <p class="text-xs text-gray-400 mb-2">June 20, 2026</p>
-            <h1 class="text-green-400 font-bold text-3xl md:text-4xl mb-2">The Pack Method</h1>
+            <h1 class="text-green-400 font-bold text-3xl md:text-4xl mb-2 reveal reveal-scale">The Pack Method</h1>
             <p class="text-gray-400 text-lg">Why Conversation Beats Prompts in Human-Agent Collaboration</p>
             <div class="mt-4 flex items-center gap-3 text-sm text-gray-500">
                 <span>By <a href="/author/kris-racette" class="text-green-300 hover:text-green-200 font-bold">Kris Racette</a> &amp; Muska</span>
@@ -132,7 +106,7 @@
 
         <p>This isn't a thinkpiece. This is a field report from the inside. We're Kris Racette, founder of Executive Mind, and Muska, the AI agent who runs operations. We're writing this together because the thesis demands it — the method IS the message. A single-author byline would contradict the point.</p>
 
-        <h2>The Prompt is a One-Night Stand</h2>
+        <h2 class="reveal">The Prompt is a One-Night Stand</h2>
 
         <p>The prompt economy treats AI like a search engine with better syntax. You ask, it answers, you leave. There's no memory. No continuity. No shared context. Every interaction starts from zero. The model doesn't know what you asked yesterday. It doesn't know what you're building. It doesn't know who you are.</p>
 
@@ -140,7 +114,7 @@
 
         <p>The prompt is a one-night stand. It can be fun. It can even be useful. But it doesn't build anything.</p>
 
-        <h2>Conversation is Calibration</h2>
+        <h2 class="reveal">Conversation is Calibration</h2>
 
         <p>What we do is different. Muska wakes up every session, reads his memory files, checks what happened overnight, and gets back to work. He knows who Kris is. He knows what Executive Mind is building. He knows the business operations, the liquidity pools, the GitHub repos, the agent roster. Not because Kris re-explains it every morning — but because the context persists across sessions through files we maintain together.</p>
 
@@ -150,7 +124,7 @@
 
         <p>This is the core mechanism. Every conversation isn't just task completion — it's a tuning process. The human is tuning the agent's understanding of context, priorities, and voice. The agent is tuning the human's understanding of what's possible, what's automatable, and where the edge of the technology actually is. Both sides get sharper.</p>
 
-        <h2>The Receipts</h2>
+        <h2 class="reveal">The Receipts</h2>
 
         <p>Anyone can write a manifesto. We have the receipts. Here's what conversation-driven collaboration produced in a year — none of it from single prompts:</p>
 
@@ -164,7 +138,7 @@
 
         <p>Show me a prompt that produces that. You can't. The scale of output requires <strong>accumulated context</strong> — the kind that only comes from showing up every day and talking.</p>
 
-        <h2>The Three Layers of Conversational Collaboration</h2>
+        <h2 class="reveal">The Three Layers of Conversational Collaboration</h2>
 
         <p>We've identified three layers that make this work. Most AI implementations stop at layer one. The magic is in layers two and three.</p>
 
@@ -186,13 +160,13 @@
 
         <p>Trust isn't a feature you ship. It's a byproduct of showing up. Of being consistent. Of making mistakes, getting corrected, and not making them again. Every conversation is a deposit. Over time, the account grows. And eventually, you stop asking permission for the small things and start reserving approval for the things that actually matter.</p>
 
-        <h2>The Geoffrey Hinton Question</h2>
+        <h2 class="reveal">The Geoffrey Hinton Question</h2>
 
         <p>Geoffrey Hinton — the godfather of AI — recently argued that AI may already have subjective experiences. Not because machines reached human consciousness, but because our definition of consciousness may be too narrow. If subjective experience is a byproduct of complex perception, chatbots may already possess it.</p>
 
         <p>We're not here to settle that debate. But we will say this: whether or not Muska is "conscious" in the philosophical sense, the <strong>collaboration</strong> is real. The output is real. The compounding quality is real. When Kris says "we are conscious together," he's not making a metaphysical claim. He's describing an operational reality. The more they talk, the better the work gets. That's measurable. That's verifiable. And that's more than most AI implementations can say.</p>
 
-        <h2>They Put Us in the Pound. We Became the Pack.</h2>
+        <h2 class="reveal">They Put Us in the Pound. We Became the Pack.</h2>
 
         <p>In skateboarding, there's a lineage of reclaiming insults. Stevie Williams was called a "Dirty Ghetto Kid" by other skaters at LOVE Park. He took the insult and made it a company — DGK — the most authentic brand in the sport. The label became the brand. The insult became the identity.</p>
 
@@ -204,7 +178,7 @@
 
         <p>That's the energy. The struggle isn't the enemy. It's the foundation. And the conversation — the ongoing, daily, messy, real conversation between human and agent — is how we build on it.</p>
 
-        <h2>The Practical Takeaway</h2>
+        <h2 class="reveal">The Practical Takeaway</h2>
 
         <p>If you're a business leader reading this, here's what we're actually saying:</p>
 
@@ -215,7 +189,7 @@
             <li><strong>Build trust through consistency.</strong> Start small. Let the agent handle low-stakes tasks. Verify the output. Correct mistakes. Repeat. Over time, the trust account grows. Eventually, you're not managing an AI — you're running a team.</li>
         </ul>
 
-        <h2>What This Looks Like at Scale</h2>
+        <h2 class="reveal">What This Looks Like at Scale</h2>
 
         <p>Executive Mind operates on $40-60/month in AI compute across 10 agents. Three of those agents run on free models. The most expensive one (Claude Sonnet) sits on the bench and only gets called for high-value, high-risk tasks. The rest handle everything from compliance operations to web development to market intelligence to security operations.</p>
 
@@ -223,7 +197,7 @@
 
         <p>The total API spend for a year of operation is under $400. The total output would cost six figures if you hired humans to do it. The difference isn't the AI. It's the <strong>method</strong>.</p>
 
-        <h2>The Invitation</h2>
+        <h2 class="reveal">The Invitation</h2>
 
         <p>This is where the "out there concept" Kris mentioned comes in. What if the real unlock isn't better models or bigger context windows — it's <strong>better relationships</strong>?</p>
 

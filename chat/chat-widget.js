@@ -138,9 +138,11 @@
 
     // Kick off WebSocket on first user interaction OR immediately if they want
     // Lazy connect to save Cloudflare subrequests when the widget is never opened.
-    addFirstOpenListener();
-
-    // Probe worker status immediately so the dot reflects reality
+    // NOTE (2026-09-06): removed addFirstOpenListener() — it was auto-opening the
+    // panel on the first mouseover/touchstart/keydown anywhere on the page, which
+    // felt broken and drew attention away from the page content. Per Kris: panel
+    // stays closed unless the user clicks the launcher bubble. The lazy WebSocket
+    // connect still happens on first open() call (see open() below).
     probeStatus();
   });
 
@@ -183,18 +185,6 @@
   }
 
   // ---- Open/close lifecycle ----------------------------------------------
-
-  function addFirstOpenListener() {
-    const once = () => {
-      open(true);
-      document.removeEventListener('mouseover', once);
-      document.removeEventListener('touchstart', once);
-      document.removeEventListener('keydown', once);
-    };
-    document.addEventListener('mouseover', once, { once: true, passive: true });
-    document.addEventListener('touchstart', once, { once: true, passive: true });
-    document.addEventListener('keydown', once, { once: true });
-  }
 
   function open(autoFocused) {
     isOpen = true;

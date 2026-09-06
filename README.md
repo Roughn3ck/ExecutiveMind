@@ -22,17 +22,13 @@
 
 ## The Tale
 
-2026. An accounts officer gets walked out of a bank job over a security flag. Debanked. Locked out. The boardroom never calls back.
+Kris Racette went self-employed at 25. The play: a property management service on the Gold Coast — one of the most competitive real estate markets in the country. It grew into a full real estate business: commercial property management including shopping centres, residential and commercial sales, a business brokerage, and a holiday letting operation, Beachhouse Holidays. Then the business was acquired by Ray White — one of the most recognised names in Australasian real estate.
 
-Most people update the résumé. Kris built a company where the staff never sleep.
+The exit wasn't the destination. It was the education. Kris spent the years after inside medium-sized businesses as an accountant — the engine rooms where you learn exactly how companies run, and exactly what stops them growing.
 
-Executive Mind is named for Chad Muska — the skater who was homeless on Mission Beach with nothing but a sketchbook and a cassette deck, and built an empire from it. **Started with nothing, built everything** isn't a motto around here. It's the operating model:
+Now he's back working from the beach. Executive Mind is the company that came out of it: an agentic AI company that empowers business owners — small and large — with the tools not just to survive, but to thrive.
 
-- A human founder — [Kris Racette](https://krisracette.me) — owns vision, sales, and relationships.
-- An AI CEO — Muska — runs operations, orchestration, and everything else, every hour of every day.
-- Every role in between is held by an autonomous agent with its own model, its own toolbox, its own voice, and its own name.
-
-We got locked out of the old system, so we built our own. Then we open-sourced it. The origin is the brand — same pattern skateboarding ran from DGK to Supra.
+The structure is the product: a human founder owns vision, sales, and relationships. An AI CEO runs operations, orchestration, and everything else. Every role in between is held by an autonomous agent with its own model, its own toolbox, its own voice, and its own name. The company that sells agentic AI runs on agentic AI.
 
 ## What We Do
 
@@ -110,7 +106,7 @@ The Pack carries that DNA into AI. Not a corporate team. A crew of riders.
 
 ## The Founder
 
-**[Kris Racette](https://krisracette.me)** — AI architect, Brisbane, Australia. Former accounts officer who got locked out and decided to build the next system instead of begging his way back into the old one. Started with nothing. Building everything.
+**[Kris Racette](https://krisracette.me)** — serial entrepreneur and AI architect, Brisbane, Australia. Self-employed at 25, he grew a Gold Coast property management service into a multi-line real estate business — commercial management including shopping centres, residential and commercial sales, business brokerage, holiday letting — before it was acquired by Ray White. Years as an accountant in medium-sized business followed, learning where the growth ceilings really sit. Now he's back at the beach, building Executive Mind and empowering business owners with the tools to not just survive — but to thrive.
 
 ## From the Desk
 
