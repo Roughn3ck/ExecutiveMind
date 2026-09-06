@@ -51,6 +51,7 @@
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -58,7 +59,6 @@
         .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
         .matrix-bg canvas { display: block; }
             /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
-        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
     </style>
 </head>
 <body class="antialiased">
@@ -67,28 +67,7 @@
 
 <h1 class="sr-only">Gym Tracker — Open-Source Flutter Fitness App by Kris Racette and Executive Mind</h1>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/">Home</a>
-            <a href="/key-manager" class="text-green-400">ColdStack</a>
-            <a href="/gym-tracker" class="text-green-400 font-bold">Gym Tracker</a>
-            <a href="https://github.com/Roughn3ck/gym_tracker" target="_blank" rel="noopener" class="text-green-400">GitHub →</a>
-        </nav>
-        <button id="mobile-menu-btn" class="md:hidden">
-            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
-        </button>
-    </div>
-    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
-        <a href="/" class="block">Home</a>
-        <a href="/key-manager" class="block text-green-400">ColdStack</a>
-        <a href="/gym-tracker" class="block text-green-400 font-bold">Gym Tracker</a>
-        <a href="https://github.com/Roughn3ck/gym_tracker" target="_blank" rel="noopener" class="block text-green-400">GitHub →</a>
-    </nav>
-</header>
+<div data-nav-slot data-nav-flavour="coldstack" data-nav-active="gym"></div>
 
 <!-- Hero Section -->
 <section class="min-h-[60vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">

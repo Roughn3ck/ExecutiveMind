@@ -12,6 +12,7 @@
     <meta name="ICBM" content="-27.4698, 153.0251">
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
     <script src="https://js.stripe.com/v3/"></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; }
@@ -22,28 +23,13 @@
         .popular { border: 2px solid #56e98f; box-shadow: 0 0 30px rgba(86, 233, 143, 0.2); }
         .popular-badge { background: linear-gradient(90deg, #56e98f, #3d9e6b); }
             /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
-        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
     </style>
 </head>
 <body class="min-h-screen">
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/80 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/">Home</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/security">Security</a>
-            <a href="/#team">Team</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-    </div>
-</header>
+<div data-nav-slot data-nav-flavour="book" data-nav-active="book"></div>
 
 <!-- Hero -->
 <section class="py-16 text-center px-4">

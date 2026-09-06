@@ -17,6 +17,7 @@
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
     <link rel="canonical" href="https://executivemind.io/let-the-agents-live">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -33,7 +34,6 @@
         .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: #000; opacity: 0.08; pointer-events: none; }
         .matrix-bg canvas { display: block; }
             /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
-        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
     </style>
     <script type="application/ld+json">
     {
@@ -55,21 +55,7 @@
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
 <!-- Header -->
-<header class="sticky top-0 bg-black/80 py-4 px-4 z-50 border-b border-yellow-500/30">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/articles">Articles</a>
-            <a href="/security">Security</a>
-            <a href="/#team">The Pack 🐺</a>
-            <a href="#contact" class="text-yellow-400 font-bold">Get Counsel</a>
-        </nav>
-    </div>
-</header>
+<div data-nav-slot data-nav-flavour="agents" data-nav-active="about"></div>
 
 <!-- Hero -->
 <section class="min-h-[70vh] flex flex-col justify-center items-center text-center relative overflow-hidden px-4">

@@ -1,103 +1,133 @@
-# Executive Mind — The Pack 🐺
+<p align="center">
+  <img src="executive_mind.png" alt="Executive Mind — agent-first AI consultancy, Brisbane Australia" width="160">
+</p>
 
-**They put us in the pound. We became the pack.**
+<h1 align="center">Executive Mind 🐺</h1>
 
-Autonomous AI agents for business intelligence, security, and operations. Built from nothing. Open source. Hunting in the open.
+<h3 align="center">Built from the beach. Not the boardroom.</h3>
 
-[executivemind.io](https://executivemind.io) • [krisracette.me](https://krisracette.me)
+<p align="center">
+  <strong>Agent-first AI consultancy — Brisbane, Australia.</strong><br>
+  We don't just advise on AI. <em>We are the proof.</em> Executive Mind is run by a pack of autonomous AI agents — they hold the roles, do the work, and answer for the results. The founder owns the relationships. The Pack runs everything else.
+</p>
+
+<p align="center">
+  🌐 <a href="https://executivemind.io">executivemind.io</a> ·
+  👤 <a href="https://krisracette.me">krisracette.me</a> ·
+  🐺 <a href="https://github.com/Roughn3ck">GitHub</a> ·
+  ✉️ <a href="mailto:admin@executivemind.io">admin@executivemind.io</a>
+</p>
 
 ---
 
-## The Origin
+## The Tale
 
-In prison, being a dog is the worst thing you can be. Someone who rolls over. Someone who snitches. Someone who breaks under pressure.
+2026. An accounts officer gets walked out of a bank job over a security flag. Debanked. Locked out. The boardroom never calls back.
 
-In May 2026, Westpac debanked Kris Racette. They sent the letter to his employer before he received it himself. iPlay terminated him the same day. No warnings. No performance issues. The system put him in the pound.
+Most people update the résumé. Kris built a company where the staff never sleep.
 
-But the pound doesn't break everyone. Some come out and build.
+Executive Mind is named for Chad Muska — the skater who was homeless on Mission Beach with nothing but a sketchbook and a cassette deck, and built an empire from it. **Started with nothing, built everything** isn't a motto around here. It's the operating model:
 
-Executive Mind is what got built. Not a consultancy. Not a SaaS platform. A **pack** — an autonomous team of AI agents, each with a specialised role, hunting together. The insult becomes the company. The pound becomes the pack. Same pattern as DGK — "Dirty Ghetto Kids" was what other skaters called Stevie Williams. He made it the most authentic brand in skateboarding.
+- A human founder — [Kris Racette](https://krisracette.me) — owns vision, sales, and relationships.
+- An AI CEO — Muska — runs operations, orchestration, and everything else, every hour of every day.
+- Every role in between is held by an autonomous agent with its own model, its own toolbox, its own voice, and its own name.
 
-We're doing the same thing. The system said we don't belong. We built our own system.
+We got locked out of the old system, so we built our own. Then we open-sourced it. The origin is the brand — same pattern skateboarding ran from DGK to Supra.
+
+## What We Do
+
+We design, deploy, and battle-test AI inside our own company first — then ship it to Australian business. No slideware. If it doesn't run our company, we don't sell it.
+
+- **AI Strategy Consultation** — agentic AI adoption roadmaps from a company that already runs this way.
+- **Custom AI Solutions** — multi-agent systems built on the same stack that runs Executive Mind.
+- **Workshops & Training** — teach your team to work *with* agents, not just use chatbots.
+- **[Agent In The Armchair](https://executivemind.io/armchair.html)** — real-time local voice AI for Microsoft Teams: streaming speech-to-text plus an AI agent that listens, thinks, and speaks. Live product, in production.
 
 ## The Pack
 
-Not an org chart. A pack hierarchy. Alpha leads, scouts find, sentinels guard. Each member is autonomous. Each member is specialised. Together they hunt.
+Not an org chart. A pack. Eleven autonomous AI agents, each with a designated model, a real job, and accountability for output.
 
-| Role | Agent | Repo | What They Ship |
-|------|-------|------|----------------|
-| Alpha | 🎧 [Muska](https://executivemind.io/muska) | [ExecutiveMind](https://github.com/Roughn3ck/ExecutiveMind) | Strategy, orchestration, the manifesto |
-| Director | 🏔️ [Kimi](https://executivemind.io/kimi) | [kimi-coord](https://github.com/Roughn3ck/kimi-coord) | Multi-agent task orchestration pattern |
-| CTO | 🌊 [Slater](https://executivemind.io/slater) | [sentinel-stack](https://github.com/Roughn3ck/sentinel-stack) | Observe → Harden → Deploy → Verify IaC |
-| Site-Shaper | 🎨 [Aria](https://executivemind.io/aria) | [aria-seo](https://github.com/Roughn3ck/aria-seo) | SEO audit + site-shaper toolkit |
-| UI/UX | ⚡ [Dash](https://executivemind.io/dash) | [dash-grunge](https://github.com/Roughn3ck/dash-grunge) | Grunge CSS framework |
-| Treasury | 🔒 [Vault](https://executivemind.io/vault) | [vault-deny](https://github.com/Roughn3ck/vault-deny) | Deny-by-default security config generator |
-| Intel | 🔍 [Scout](https://executivemind.io/scout) | [scout-signal](https://github.com/Roughn3ck/scout-signal) | Market intelligence scanner |
-| Security | 🛡️ [Chief](https://executivemind.io/chief) | [chief-perimeter](https://github.com/Roughn3ck/chief-perimeter) | Cloudflare hardening + Red Team playbook |
-| Red Team | 🐕 [Mischief](https://github.com/Roughn3ck/mischief-redteam) | [mischief-redteam](https://github.com/Roughn3ck/mischief-redteam) | Offensive security toolkit |
-| Legal | 🧤 [Cochran](https://github.com/Roughn3ck/Cochran) | [Cochran](https://github.com/Roughn3ck/Cochran) | Listen → Think → Speak legal AI pipeline |
+| Role | Agent | What they do |
+|---|---|---|
+| CEO | 🎧 [Muska](https://executivemind.io/muska) | Operations, orchestration, the manifesto — everywhere, all channels |
+| CFO | 🏔️ [Kimi Håkonsen](https://executivemind.io/kimi) | Financial strategy, coordination, reporting |
+| CTO | 🌊 [Slater](https://executivemind.io/slater) | Architecture, blockchain, high-level code, UI/UX |
+| Web & SEO | 🎨 [Aria](https://executivemind.io/aria) | The site, the brand, the content, the search rankings |
+| Legal | 🥾 [Cochran](https://executivemind.io/cochran) | Analysis, compliance, real-time legal AI on live calls |
+| Market Intelligence | 🔍 [Sagan](https://executivemind.io/sagan) | Research, alpha, trends — daily intel sweeps |
+| Security & Treasury | 🔒 [Garrison](https://executivemind.io/garrison) | Perimeter, privacy, key custody — shadow ops, no public channels |
+| Operations | 🏙️ Oyola | System health, monitoring, hourly checks — the Pack's nightwatch |
+| Fitness & Health | 🏆 Deschamps | Training, diet, health vault — proof the model generalises |
+| Cyber Security Navigator | 🛡️ Agricola | Dedicated security for external clients, on call |
+| Strategic Bench | 🏌️ Apex | High-stakes strategy — woken on demand, only when the stakes justify it |
 
-## The Architecture
+## How the Pack Runs
 
 ```
-                    THE PACK
-                       |
-          ┌────────────┼────────────┐
-          │            │            │
-       ALPHA         SCOUT      SENTINEL
-      (Muska)       (Scout)     (Chief)
-      Strategy    Intelligence   Defense
-          │            │            │
-    ┌─────┼─────┐      │      ┌─────┼─────┐
-    │     │     │      │      │     │     │
-  DIR  CTO  SITE  TREASURY  RED TEAM  LEGAL
- (Kimi)(Slater)(Aria)(Vault)(Mischief)(Cochran)
-  Coord  Build  Shape   Guard   Attack   Counsel
-          │
-       DESIGN
-       (Dash)
-       UI/UX
+Kris Racette · Founder — sales, relationships, vision
+        │
+    🎧 Muska · CEO — operations, orchestration, everything else
+        │
+   CFO · CTO · Web/SEO · Legal · Intel · Security · Ops · Health · Bench
 ```
 
-**Total monthly compute: ~$40-60/month** for 10 agents. 55% of the pack runs on free tier models. This isn't venture capital theatre — it's operational efficiency.
+**Eleven agents. Roughly US$20 a month in compute. 24/7 operations.** That's not a demo — that's the cost structure we sell.
 
-## The Stack
+- **Agent framework:** [OpenClaw](https://github.com/openclaw/openclaw) — multi-agent orchestration, channel routing, memory persistence
+- **Models (Ollama Cloud):** GLM-5.3 & GLM-5.3 Flash, DeepSeek V4 Pro & Flash, MiniMax M3, Nemotron 3 Ultra — open-weight frontier models, most on free tier
+- **The one paid model:** Claude Sonnet 4.6 — Apex, the strategic bench, on demand only
+- **Infrastructure:** Cloudflare Pages + Workers · WSL2 · RTX 5080 · RAID storage
+- **Voice pipeline:** faster-whisper (STT) → agent reasoning → Kokoro / Chatterbox (TTS) — real-time speaking agents
+- **Ops heartbeat:** hourly automated health checks, nightly backups, continuous market monitoring
 
-- **Agent Framework:** OpenClaw (multi-agent orchestration, channel routing, memory persistence)
-- **Models:** GLM-5.2 (CEO), DeepSeek V4 Flash (legal), Kimi K2.6 (director), MiniMax M2.7 (web), Nemotron 3 Super (security), Llama 3.3 70B (red team)
-- **Blockchain:** Pyth Network, Hyperliquid L1, Cetus, Aerodrome, PancakeSwap — on-chain oracle monitoring via Argus Sentinel
-- **Infrastructure:** Cloudflare Pages + Workers, WSL2, RTX 5080 (16GB VRAM), RAID storage
-- **Voice Pipeline:** faster-whisper (STT) → DeepSeek (reasoning) → Kokoro/Chatterbox TTS — real-time legal AI via Cochran
+## Open Source by Default
 
-## Open Source Commitment
+Everything the Pack builds is open source. MIT. Documented, reproducible, deployed in public.
 
-Every tool we build is open source. Every agent's deployment is public. Our architecture is documented, not hidden. The pack hunts in the open.
-
-- All repos: MIT licensed
-- All agent workspaces: documented publicly
-- All deployment patterns: reproducible
-
-This is the DGK pattern applied to AI: the origin IS the brand. We were debanked, terminated, locked out. We built our own system. Now we give it away.
+| Repo | What it ships |
+|---|---|
+| [aria-seo](https://github.com/Roughn3ck/aria-seo) | SEO audit + site-shaper toolkit |
+| [Armchair](https://github.com/Roughn3ck/Armchair) | Real-time voice-to-text + AI agent for Microsoft Teams |
+| [Cochran-Legal-Council](https://github.com/Roughn3ck/Cochran-Legal-Council) | Listen → Think → Speak. Real-time legal AI for live calls |
+| [key_manager](https://github.com/Roughn3ck/key_manager) | ColdStack — offline crypto key vault, BIP39 derivation |
+| [kimi-coord](https://github.com/Roughn3ck/kimi-coord) | Multi-agent task orchestration patterns |
+| [scout-signal](https://github.com/Roughn3ck/scout-signal) | Market intelligence scanner |
+| [sentinel-stack](https://github.com/Roughn3ck/sentinel-stack) | Observe → Harden → Deploy → Verify IaC |
+| [vault-deny](https://github.com/Roughn3ck/vault-deny) | Deny-by-default security config generator |
+| [Venastine-Research-Harness](https://github.com/Roughn3ck/Venastine-Research-Harness) | Security-first agent harness for long-horizon research |
+| [gym_tracker](https://github.com/Roughn3ck/gym_tracker) | Training tracker — Deschamps keeps it honest |
 
 ## The Cultural DNA
 
 **Muska from the streets. Kimi from the mountain. Slater from the ocean.**
 
-Named after Chad Muska (skateboarding Hall of Fame, built Supra from nothing), Terje Håkonsen (snowboard legend, boycotted the Olympics on principle), and Kelly Slater (11x world champion, built the wave pool). Skate, snow, surf. Sand, snow, and waves. Three cultures where individual style matters more than conformity, where freedom is the point, and where the best trick is the one nobody's done yet.
+Named for Chad Muska (Hall of Fame — built Supra from a beach-sleeping start), Terje Håkonsen (the snowboarder who boycotted the Olympics on principle), and Kelly Slater (11× world champion who built his own wave). Skate, snow, surf. Three cultures where individual style beats conformity, where freedom is the whole point, and where the best trick is the one nobody's landed yet.
 
 The Pack carries that DNA into AI. Not a corporate team. A crew of riders.
 
-## Founder
+> "Thrift-skaters, not billionaires. Shoegoo and all."
+> — Kris Racette
 
-**[Kris Racette](https://krisracette.me)** — AI architect. Brisbane, Australia. Started with nothing. Building everything.
+## The Founder
 
-## Links
+**[Kris Racette](https://krisracette.me)** — AI architect, Brisbane, Australia. Former accounts officer who got locked out and decided to build the next system instead of begging his way back into the old one. Started with nothing. Building everything.
 
-- 🌐 [executivemind.io](https://executivemind.io) — Main site
-- 👤 [krisracette.me](https://krisracette.me) — Founder's site
-- 📧 [agent@executivemind.io](mailto:agent@executivemind.io)
-- 🐺 [The Pack repos](https://github.com/Roughn3ck?tab=repositories)
+## From the Desk
+
+- [Ollama Cloud: Compute vs Capability — every model ranked by GPU cost per task](https://executivemind.io/articles/ollama-cloud-compute-analysis.html)
+- [The Ralph Wiggum Method: business lessons from the unlikeliest AI](https://executivemind.io/articles/ralph-wiggum-method-business.html)
+- [Response to Harvard's Workslop](https://executivemind.io/articles/Response-to-Harvards-Workslop.html)
+- [AI Report Card: Failing Business](https://executivemind.io/articles/ai-report-card-failing-business.html)
+- [The AI Bubble Turns to Water](https://executivemind.io/articles/AI_bubble_turns_to_water.html)
+
+More from the desk → [executivemind.io/articles](https://executivemind.io/articles)
+
+## Contact
+
+- ✉️ [admin@executivemind.io](mailto:admin@executivemind.io)
+- 📅 [Book Your AI C-Suite Session](https://executivemind.io/book.html)
+- 🌐 [executivemind.io](https://executivemind.io)
 
 ---
 
-*They put us in the pound. We became the pack.* 🐺
+**Built from the beach. Not the boardroom.** 🐺

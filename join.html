@@ -18,6 +18,7 @@
     <meta name="twitter:description" content="Join the Executive Mind team. We are looking for talented individuals passionate about AI and machine intelligence.">
     <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -25,41 +26,13 @@
         .matrix-bg canvas { display: block; }
         ::-webkit-scrollbar { display: none; }
             /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
-        .nav-logo { display: inline-block; height: 2.5rem; width: auto; max-width: 100%; object-fit: contain; object-position: left center; mix-blend-mode: screen; opacity: 0.95; }
     </style>
 </head>
 <body class="antialiased">
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
-<header class="sticky top-0 bg-black/70 py-4 px-4 z-50">
-    <div class="flex justify-between items-center max-w-5xl mx-auto">
-        <a href="/" class="font-bold text-xl tracking-widest select-none shrink-0">
-            <picture><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" class="nav-logo" width="1920" height="815"></picture>
-        </a>
-        <nav class="hidden md:flex space-x-6 font-mono text-sm uppercase">
-            <a href="/#about">About</a>
-            <a href="/#services">Services</a>
-            <a href="/#team">Team</a>
-            <a href="/#portfolio">Portfolio</a>
-            <a href="/#testimonials">Testimonials</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contact">Contact</a>
-        </nav>
-        <button id="mobile-menu-btn" class="md:hidden">
-            <svg width="30" height="30" fill="none"><rect x="4" y="7" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="15" width="22" height="2" rx="1" fill="#56e98f"/><rect x="4" y="23" width="22" height="2" rx="1" fill="#56e98f"/></svg>
-        </button>
-    </div>
-    <nav id="mobile-menu" class="md:hidden hidden mt-2 space-y-2 text-center font-mono uppercase">
-        <a href="/#about" class="block">About</a>
-        <a href="/#services" class="block">Services</a>
-        <a href="/#team" class="block">Team</a>
-        <a href="/#portfolio" class="block">Portfolio</a>
-        <a href="/#testimonials" class="block">Testimonials</a>
-        <a href="/#faq" class="block">FAQ</a>
-        <a href="/#contact" class="block">Contact</a>
-    </nav>
-</header>
+<div data-nav-slot data-nav-flavour="main" data-nav-active="about"></div>
 
 <section id="join-form" class="py-16 bg-gradient-to-br from-black/90 via-transparent to-green-950">
     <div class="max-w-xl mx-auto px-4">
