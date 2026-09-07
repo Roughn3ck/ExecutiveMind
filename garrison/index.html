@@ -39,6 +39,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/assets/nav.js" defer></script>
     <script src="/assets/reveal.js" defer></script>
+    <script src="/assets/footer.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -154,9 +155,7 @@
     </div>
 </section>
 
-<footer class="bg-black/95 border-t border-green-400 py-8">
-    <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">&copy; 2025 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.</div>
-</footer>
+<div data-footer-slot></div>
 
 <script>
     const canvas = document.getElementById('matrix'); const ctx = canvas.getContext('2d'); canvas.width = window.innerWidth; canvas.height = window.innerHeight; const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()'; const fontSize = 14; let columns = Math.floor(canvas.width / fontSize); let drops = Array(columns).fill(0); function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; columns = Math.floor(canvas.width / fontSize); drops = Array(columns).fill(0); } window.addEventListener('resize', resizeCanvas); function draw() { ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle = '#56e98f'; ctx.font = fontSize + 'px monospace'; for(let i=0;i<drops.length;i++){const text=chars.charAt(Math.floor(Math.random()*chars.length));ctx.fillText(text,i*fontSize,drops[i]*fontSize);if(drops[i]*fontSize>canvas.height&&Math.random()>0.975){drops[i]=0;}drops[i]++;} } setInterval(draw, 33); document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });

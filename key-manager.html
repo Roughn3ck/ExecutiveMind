@@ -75,6 +75,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/assets/nav.js" defer></script>
     <script src="/assets/reveal.js" defer></script>
+    <script src="/assets/footer.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
@@ -449,18 +450,7 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg-black/95 border-t border-green-400 py-8">
-    <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">
-        <p class="mb-4 text-sm">ColdStack — Your crypto keys, encrypted, portable, yours.</p>
-        <div class="flex flex-wrap justify-center gap-6 mb-6 text-sm">
-            <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="hover:text-green-400 transition-colors">GitHub</a>
-            <a href="https://github.com/Roughn3ck/key_manager/releases/latest" target="_blank" rel="noopener" class="hover:text-green-400 transition-colors">Download</a>
-            <a href="https://krisracette.me/key-manager" class="hover:text-green-400 transition-colors">Kris Racette</a>
-            <a href="/" class="hover:text-green-400 transition-colors">Executive Mind</a>
-        </div>
-        <p class="text-xs">&copy; 2026 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.</p>
-    </div>
-</footer>
+<div data-footer-slot></div>
 
 <script>
     document.getElementById('mobile-menu-btn').addEventListener('click', () => {
