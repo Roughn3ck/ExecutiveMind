@@ -122,10 +122,10 @@
       { "@context": "https://schema.org", "@type": "Service", "serviceType": "Agent In The Armchair — Real-Time Local AI Voice Agent", "provider": { "@type": "Organization", "name": "Executive Mind", "url": "https://executivemind.io" }, "description": "Real-time streaming Voice-to-Text + AI Agent. Built for Microsoft Teams, runs on every audio app your machine plays through — WhatsApp, Signal, Messenger, Webex, WeChat, Zoom, Discord. Invisible to the host app (no bot joins). Runs entirely on local hardware. Transcribes with speaker diarization. Speaks when directly addressed using pluggable local TTS (Piper, Kokoro, or Chatterbox voice cloning). Open source (MIT).", "url": "https://executivemind.io/armchair", "areaServed": ["Brisbane","Gold Coast","Queensland","Australia"] }
     ]
     </script>
-    <link rel="stylesheet" href="/assets/em-reveal.css">
+    <link rel="stylesheet" href="/assets/reveal.v2.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/assets/nav.js" defer></script>
-    <script src="/assets/reveal.js" defer></script>
+    <script src="/assets/reveal.v2.js" defer></script>
     <script src="/assets/footer.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
@@ -164,7 +164,7 @@
 
 <div class="matrix-bg"><canvas id="matrix"></canvas></div>
 <h1 class="sr-only">Executive Mind — AI Consultancy Brisbane | Agent-First Business AI Solutions</h1>
-<!-- Visible H1 deferred to <main> hero below; this sr-only H1 is the primary semantic H1 for SEO/accessibility. -->
+<!-- Visible H1 deferred to <main class="reveal-section"> hero below; this sr-only H1 is the primary semantic H1 for SEO/accessibility. -->
 <noscript>
     <div class="px-4 py-20 md:py-32 max-w-xl text-center relative z-10">
         <h2 class="text-2xl md:text-4xl font-bold text-green-400 mb-4">Executive Mind — Agent-First AI Consultancy</h2>
@@ -177,7 +177,7 @@
 <div data-nav-slot data-nav-flavour="main" data-nav-active="about"></div>
 
 <!-- Hero Section -->
-<section id="hero" class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
+<section id="hero" class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden reveal-section">
     <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
     <picture class="hero-logo"><source srcset="/assets/em-logo-grunge-dark-wide-alt.webp" type="image/webp"><img src="/assets/em-logo-grunge-dark-wide-alt.jpg" alt="Executive Mind" width="3168" height="1344"></picture>
     <div class="z-10 px-4 py-10 md:py-14 max-w-xl text-center typewriter" id="typewriter-output">
@@ -223,7 +223,7 @@
 </section>
 
 <!-- About Section -->
-<section id="about" class="py-16 relative z-10" aria-label="About Executive Mind">
+<section id="about" class="py-16 relative z-10 reveal-section" aria-label="About Executive Mind">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">About Executive Mind</h2>
 <p class="mb-6">
@@ -247,7 +247,7 @@
 </section>
 
 <!-- Services Section -->
-<section id="services" class="py-16" aria-label="Our AI Consulting Services">
+<section id="services" class="py-16 reveal-section" aria-label="Our AI Consulting Services">
     <div class="max-w-5xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8 reveal">Services</h2>
         <p class="text-gray-400 mb-10 max-w-3xl reveal">We deliver three core consulting services — each powered by our own AI agents in production — and we ship open-source products that prove the architecture works in the wild. Every engagement starts with a free 30-minute discovery call to assess your needs and identify where AI can deliver the most impact.</p>
@@ -278,7 +278,7 @@
 </section>
 
 <!-- Why Choose Us Section -->
-<section id="why-us" class="py-16" aria-label="Why Choose Executive Mind">
+<section id="why-us" class="py-16 reveal-section" aria-label="Why Choose Executive Mind">
     <div class="max-w-5xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">Why Choose Executive Mind</h2>
         <p class="text-gray-400 mb-10 max-w-3xl">We're not a traditional consultancy that talks about AI. We are an AI company. The distinction matters.</p>
@@ -312,7 +312,7 @@
 </section>
 
 <!-- Methodology Section -->
-<section id="methodology" class="py-16" aria-label="Our Methodology">
+<section id="methodology" class="py-16 reveal-section" aria-label="Our Methodology">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5">How We Work</h2>
         <p class="text-gray-400 mb-10">Every engagement follows a proven four-phase methodology. No black boxes, no surprise invoices.</p>
@@ -338,7 +338,7 @@
 </section>
 
 <!-- Security Ribbon -->
-<section class="py-12 bg-black/40 border-y border-green-900/40">
+<section class="py-12 bg-black/40 border-y border-green-900/40 reveal-section">
     <div class="max-w-5xl mx-auto px-4">
         <div class="md:flex items-center justify-between gap-6">
             <div class="mb-4 md:mb-0">
@@ -352,7 +352,7 @@
 </section>
 
 <!-- Articles Section -->
-<section id="articles" class="py-16">
+<section id="articles" class="py-16 reveal-section">
     <div class="max-w-5xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8 reveal">Latest Articles</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-7 reveal-stagger">
@@ -387,7 +387,7 @@
 </section>
 
 <!-- Team Section — The Pack 🐺 -->
-<section id="team" class="py-16" aria-label="The Pack — Our AI Agent Team">
+<section id="team" class="py-16 reveal-section" aria-label="The Pack — Our AI Agent Team">
     <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-2">The Pack 🐺</h2>
         <p class="text-gray-400 text-sm mb-10">Built from nothing. Every seat at the table is earned, not inherited.</p>
@@ -469,7 +469,7 @@
 
 
 <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16" aria-label="Portfolio of AI Work">
+    <section id="portfolio" class="py-16 reveal-section" aria-label="Portfolio of AI Work">
         <div class="max-w-5xl mx-auto px-4">
             <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Portfolio</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -560,7 +560,7 @@
 <!-- Testimonials removed — fabricated content. Replace with real case studies when available. -->
 
 <!-- FAQ Section -->
-    <section id="faq" class="py-16">
+    <section id="faq" class="py-16 reveal-section">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8">Frequently Asked Questions</h2>
             <div id="faq-list" class="space-y-5">
@@ -587,7 +587,7 @@
 
 
 <!-- Contact Section -->
-<section id="contact" class="py-16" aria-label="Contact Executive Mind">
+<section id="contact" class="py-16 reveal-section" aria-label="Contact Executive Mind">
     <div class="max-w-xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal reveal-scale">Contact Us</h2>
 

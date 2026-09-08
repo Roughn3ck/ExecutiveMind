@@ -41,9 +41,33 @@
 .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.90s; }
 .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 1.10s; }
 
+/* ===== Section-level fade-in (added 2026-09-08) =====
+   Whole <section> fades in as one unit when it scrolls into view.
+   Softer + slower than block-level reveals so big containers feel
+   like they're settling into place, not snapping in. Tuned for the
+   "WordPress/Wix section fade" feel: gentle rise + tiny scale-up.
+   Triggers early (threshold 0.08) so the fade begins as the section
+   peeks into the viewport, not after it's fully visible.
+   The IntersectionObserver in reveal.js picks up .reveal-section
+   via the .reveal selector list (one observer entry per element).
+   Internal .reveal / .reveal-stagger children still fire on their own
+   as the user scrolls deeper into the section. */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(80px) scale(0.96);
+  transform-origin: center top;
+  transition: opacity 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 /* Accessibility: respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-stagger > * {
+  .reveal, .reveal-section, .reveal-stagger > * {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

@@ -69,10 +69,10 @@
       "downloadUrl": "https://github.com/Roughn3ck/Armchair"
     }
     </script>
-    <link rel="stylesheet" href="/assets/em-reveal.css">
+    <link rel="stylesheet" href="/assets/reveal.v2.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/assets/nav.js" defer></script>
-    <script src="/assets/reveal.js" defer></script>
+    <script src="/assets/reveal.v2.js" defer></script>
     <script src="/assets/footer.js" defer></script>
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
@@ -93,7 +93,7 @@
 <div data-nav-slot data-nav-flavour="coldstack" data-nav-active="armchair"></div>
 
 <!-- Hero Section -->
-<section class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden">
+<section class="min-h-[70vh] flex flex-col justify-center items-center text-green-400 relative overflow-hidden reveal-section">
     <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-black/80 via-transparent to-black/60"></div>
     <img src="/assets/armchair-banner.jpg" alt="Agent In The Armchair — director's chair with audio waveform" class="absolute right-0 top-0 h-full w-full object-cover opacity-30 pointer-events-none" style="mask-image: linear-gradient(to left, transparent, black 30%, black 60%, transparent); -webkit-mask-image: linear-gradient(to left, transparent, black 30%, black 60%, transparent);">
     <div class="z-10 px-4 py-20 md:py-24 max-w-3xl text-center">
@@ -114,7 +114,7 @@
 </section>
 
 <!-- The Problem: SaaS Surveillance -->
-<section class="py-16" aria-label="The Problem">
+<section class="py-16 reveal-section" aria-label="The Problem">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">The Problem — Meeting AI Costs Money and Trust</h2>
         <p class="mb-6 text-gray-300">
@@ -130,7 +130,7 @@
 </section>
 
 <!-- The Solution -->
-<section id="how-it-works" class="py-16" aria-label="How Armchair Works">
+<section id="how-it-works" class="py-16 reveal-section" aria-label="How Armchair Works">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">The Solution — Hardware Capture, Local Inference, Zero Cloud</h2>
         <p class="mb-6 text-gray-300">
@@ -156,7 +156,7 @@
 </section>
 
 <!-- Features Grid -->
-<section id="features" class="py-16" aria-label="Agent In The Armchair Features">
+<section id="features" class="py-16 reveal-section" aria-label="Agent In The Armchair Features">
     <div class="max-w-5xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-8 reveal">Features</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
@@ -210,7 +210,7 @@
 </section>
 
 <!-- Architecture / Latency -->
-<section class="py-16" aria-label="Latency and Architecture">
+<section class="py-16 reveal-section" aria-label="Latency and Architecture">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">Latency</h2>
         <p class="text-gray-400 mb-6">Built for real-time conversation, not batch transcripts. The numbers below are the actual pipeline timings on a single NVIDIA workstation.</p>
@@ -262,7 +262,7 @@
 </section>
 
 <!-- Tech Stack -->
-<section class="py-16" aria-label="Tech Stack">
+<section class="py-16 reveal-section" aria-label="Tech Stack">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">Tech Stack</h2>
         <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
@@ -321,7 +321,7 @@
 </section>
 
 <!-- Why This Is an Executive Mind Product -->
-<section class="py-16" aria-label="Why Agent In The Armchair">
+<section class="py-16 reveal-section" aria-label="Why Agent In The Armchair">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">Why This Is an Executive Mind Product</h2>
         <p class="mb-6 text-gray-300">
@@ -337,7 +337,7 @@
 </section>
 
 <!-- GitHub CTA -->
-<section class="py-16" aria-label="Get Agent In The Armchair">
+<section class="py-16 reveal-section" aria-label="Get Agent In The Armchair">
     <div class="max-w-3xl mx-auto px-4 text-center">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">Get Agent In The Armchair</h2>
         <p class="text-gray-400 mb-8">Open source (MIT). No subscriptions. No per-hour billing. Four commands on Windows, one reboot (VB-Cable):</p>
@@ -351,7 +351,7 @@
 </section>
 
 <!-- About the Developer -->
-<section class="py-16" aria-label="About Kris Racette">
+<section class="py-16 reveal-section" aria-label="About Kris Racette">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">About the Developer</h2>
         <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
@@ -369,7 +369,7 @@
 </section>
 
 <!-- Backlinks -->
-<section class="py-8">
+<section class="py-8 reveal-section">
     <div class="max-w-4xl mx-auto px-4">
         <div class="flex flex-wrap justify-center gap-6 text-sm font-mono">
             <a href="https://krisracette.me/armchair" class="text-gray-500 hover:text-green-400 transition">Kris Racette →</a>
