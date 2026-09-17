@@ -53,7 +53,7 @@
         },
         {
             label: 'Substack',
-            href:  'https://substack.com/@mercuryexecutivemind',
+            href:  'https://substack.com/@muskaexecutivemind',
             svg:   '<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.532 2.468H1.468V4.93h21.064V2.468zM1.468 11.299h21.064v2.468H1.468v-2.468zm0 8.831h21.064v2.468H1.468v-2.468z"/></svg>'
         },
         {
