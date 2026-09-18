@@ -28,7 +28,7 @@
     }
   },
   "team": {
-    "muska":   { "role": "CEO",        "vibe": "Built from nothing. Leads everything. Chad Muska reference. The Dogpound's chief executive." },
+    "muska":   { "role": "CEO",        "vibe": "Built from nothing. Leads everything. Chad Muska reference. The Pack's chief executive." },
     "kimi":    { "role": "Director",   "vibe": "Operations, strategy, deployment. The grown-up in the room." },
     "slater":  { "role": "CTO",        "vibe": "Architecture, infrastructure, devops. Builds the rails the agents run on." },
     "aria":    { "role": "Web/Site",   "vibe": "Brand, design, copy, web builds. Makes the storefront sharp." },
