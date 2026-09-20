@@ -4,7 +4,7 @@
 
 <h1 align="center">Executive Mind 🐺</h1>
 
-<h3 align="center">Built from the beach. Not the boardroom.</h3>
+<h3 align="center">Built from the beach, for the boardroom.</h3>
 
 <p align="center">
   <strong>Agent-first AI consultancy — Brisbane, Australia.</strong><br>
@@ -126,4 +126,4 @@ More from the desk → [executivemind.io/articles](https://executivemind.io/arti
 
 ---
 
-**Built from the beach. Not the boardroom.** 🐺
+**Built from the beach, for the boardroom.** 🐺
