@@ -8,9 +8,12 @@
  * Edit this file to change the footer site-wide (socials, copyright, links).
  * Mirrors the nav.js pattern — JS include on static Cloudflare Pages, no build step.
  *
- * Socials: 2026-09-07 — removed Facebook + Instagram (Kris: "fuck meta"),
- * added Bluesky using Kris's personal handle (no EM company Bluesky yet —
- * SOCIAL-ACCOUNTS.md confirms r0ughn3ck.bsky.social is the canonical one).
+ * Changelog:
+ *   2026-09-07  — removed Facebook + Instagram ("fuck meta"), added Bluesky.
+ *   2026-09-17  — Substack handle swap @mercuryexecutivemind -> @muskaexecutivemind;
+ *                 rename footer.js -> footer.v2.js (bust immutable cache).
+ *   2026-09-22  — Phase 3 brand pivot: §A7 contact block (phone, email, book link,
+ *                 tagline lockup) inserted between socials row and copyright.
  */
 
 (function () {
@@ -67,6 +70,22 @@
     const COPYRIGHT_HTML =
         '&copy; 2025 Executive Mind. Crafted with <span class="text-green-400">♥</span> in Brisbane by Machine Intelligence.';
 
+    // §A7 contact block — single point of contact (per CONTENT.md / MESSAGING.md).
+    // Phone, email, book link, tagline lockup. Placed between socials row and
+    // copyright so every page surfaces the office line + tagline site-wide.
+    const CONTACT_HTML = `
+            <div class="text-center text-sm text-gray-300 mb-6">
+                <div class="mb-2">One point of contact.</div>
+                <div class="text-base">
+                    <a href="tel:+61730369926" class="text-green-400 hover:text-green-300 font-bold">07 3036 9926</a>
+                    <span class="mx-2 text-gray-500">·</span>
+                    <a href="mailto:admin@executivemind.io" class="text-green-400 hover:text-green-300 font-bold">admin@executivemind.io</a>
+                    <span class="mx-2 text-gray-500">·</span>
+                    <a href="/book" class="text-green-400 hover:text-green-300 font-bold">Book a conversation \u2192</a>
+                </div>
+                <div class="mt-3 text-green-400 italic">Built from the beach, for the boardroom.</div>
+            </div>`;
+
     function renderFooter() {
         const socials = SOCIALS.map(s => {
             if (s.emoji) {
@@ -76,12 +95,13 @@
         }).join('\n            ');
 
         return `
-    <footer class="bg-black/95 border-t border-green-400 py-8">
+    <footer class="bg-black/95 border-t border-green-400 py-10">
         <div class="max-w-5xl mx-auto px-4 text-center text-gray-300">
-            <div class="flex justify-center items-center space-x-6 mb-6">
+            <div class="flex justify-center items-center space-x-6 mb-8">
             ${socials}
             </div>
-            ${COPYRIGHT_HTML}
+            ${CONTACT_HTML}
+            <div class="text-xs text-gray-500">${COPYRIGHT_HTML}</div>
         </div>
     </footer>`;
     }
