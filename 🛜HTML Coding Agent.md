@@ -88,7 +88,7 @@ Langflow is our **Orchestrator or "Agent Brain"**. This is where we will design 
     - Give it a simple prompt: Create a basic HTML5 boilerplate for a website titled "Executive Mind"
     - Copy the code it generates, paste it into your index.html, and see if it works with your Live Server
 9. **Connect to webhost via FTP
-	- VentraIP (my host) uses FTP over TLS (FTPS), so create the script to manage this (See in folder file called ftp_uploader.py) **Before sharing to any repo create example and use gitignore as file contains password info**
+	- Deploy lane (current, 2026-09): **Cloudflare Pages** — `wrangler pages deploy . --project-name executivemind-io` from the repo root (auth via CLOUDFLARE_API_TOKEN env). The old VentraIP FTP host (ftp.executivemind.io) is dead — NXDOMAIN since ~2026-08; ftp_uploader.py removed 2026-09-24. Do not use FTP.
 	- The root of the FTP folder is deliberately set to ./agent/ for branding purposes. This means all future links will need to consider this. *Note:* all files have to be in the "storeroom" at public_html to be outward facing so the root is actually /home/executiv/public_html
 	- As I'm hosting the website in a subfolder an .htaccess file is required at the root to tell the server to forward any visitors silently to the ./agent/index.html location
 # **✅Phase 3 - Langflow🧠 Mouth and Eyes 👄👀** 

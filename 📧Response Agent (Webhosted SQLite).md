@@ -25,19 +25,7 @@ python
         print(f"Error creating database: {e}")
     ```
 - Save this code as a Python file (e.g., `create_db.py`) and run it. It will create an empty SQLite database file named `executivemind.db` in the same directory.
-2. **Upload to FTP:** Use an FTP client (like FileZilla) to upload the `executivemind.db` file to the `agent` directory on your website.
-
-3. **Setting FTP Secrets in Google Cloud Secret Manager**
-
-- Go to Google Cloud Secret Manager in the Google Cloud Console.
-- Click "Create Secret."
-	- For the "Name" field, enter `ftp-host`.
-	- In the "Secret value" field, enter your FTP host (`ftp.executivemind.io`).
-	 - Click "Create Secret."
-	- Repeat steps 2-5 for the following secrets:
-    - Name: `ftp-user`, Value: `agent@executivemind.io`
-    - Name: `ftp-password`, Value: `<the ftp password>`
-    - Name: `ftp-remote-path`, Value: `agent`
+2. **Upload via Cloudflare Pages:** run `wrangler pages deploy . --project-name executivemind-io` from the repo root (wrangler 4.77+, auth via CLOUDFLARE_API_TOKEN env var). The legacy FTP path (ftp.executivemind.io + Google Cloud Secret Manager ftp-* secrets) is RETIRED — the FTP host no longer resolves.
 
 ### Setup Step 2: 🪜Deployment Steps 
  
@@ -78,11 +66,11 @@ gcloud artifacts repositories create process-contact-image \
 | **Entry Point**      | `process_http_request` **<-- This must exactly match your Python function name!** |
 | **Service account**  | Use the default (`...-compute@developer.gserviceaccount.com`).                    |
 - **Deploy the Modified Cloud Run Function:** Deploy the updated code to your Cloud Run service.
-- **Upload the Initial Database:** Upload the `nexus.db` file you created to your website's `agent` directory via FTP.
+- **Upload the Initial Database:** Upload the `nexus.db` file into the repo's `agent/` directory — it ships with the site via Cloudflare Pages deploy.
 - **Test:** Submit a contact form on your website and verify that:
 	- The email is sent to the customer with a CC to `admin@executivemind.io`.
 	- The inquiry is processed correctly.
-	- The database is updated with the new inquiry (you can download the database file from FTP to check).
+	- The database is updated with the new inquiry (you can pull the `nexus.db` from the repo after deploy to check).
 ### Setup Step 4: 🔗 Connect Your Website
 
 1. **Wait for Deployment:** Wait for the new service to show a green checkmark ✅. This means it deployed successfully!
