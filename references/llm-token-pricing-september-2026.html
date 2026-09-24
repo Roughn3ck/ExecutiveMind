@@ -1,0 +1,308 @@
+<!-- deploy-2026-09-24-llm-pricing -->
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <title>LLM Token Pricing Comparison — Reasoning-Capable Channels · Executive Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reference card for business readers: LLM token pricing across reasoning-capable channels — OpenAI, Anthropic, Google, DeepSeek, Z.ai, MiniMax, Moonshot AI, OpenRouter, Ollama Cloud. USD per 1M tokens in/out. September 2026.">
+    <meta name="geo.region" content="AU-QLD">
+    <meta name="geo.placename" content="Brisbane">
+    <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
+    <link rel="canonical" href="https://executivemind.io/references/llm-token-pricing-september-2026">
+    <meta property="og:url" content="https://executivemind.io/references/llm-token-pricing-september-2026">
+    <meta property="og:title" content="LLM Token Pricing Comparison — Reasoning-Capable Channels">
+    <meta property="og:description" content="Reference card: LLM token pricing across reasoning-capable channels. USD per 1M tokens in/out. Updated September 2026.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta property="og:site_name" content="Executive Mind">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LLM Token Pricing Comparison — Reasoning-Capable Channels">
+    <meta name="twitter:description" content="Reference card: LLM token pricing across reasoning-capable channels. USD per 1M tokens in/out. Updated September 2026.">
+    <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta name="author" content="Executive Mind">
+    <meta name="keywords" content="LLM token pricing, AI pricing comparison, reasoning models, GPT-6 pricing, Claude pricing, Gemini pricing, DeepSeek pricing, GLM pricing, Kimi pricing, OpenRouter, Ollama Cloud, AI cost, per million tokens, reference card, September 2026">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "LLM Token Pricing Comparison — Reasoning-Capable Channels",
+      "description": "Reference card: LLM token pricing across reasoning-capable channels — OpenAI, Anthropic, Google, DeepSeek, Z.ai, MiniMax, Moonshot AI, OpenRouter, Ollama Cloud. USD per 1M tokens in/out. Updated 24 September 2026.",
+      "image": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "url": "https://executivemind.io"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg"
+        }
+      },
+      "datePublished": "2026-09-24",
+      "dateModified": "2026-09-24",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://executivemind.io/references/llm-token-pricing-september-2026"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://executivemind.io/"},
+      {"@type":"ListItem","position":2,"name":"References","item":"https://executivemind.io/#references"},
+      {"@type":"ListItem","position":3,"name":"LLM Token Pricing — September 2026","item":"https://executivemind.io/references/llm-token-pricing-september-2026"}
+    ]}
+    </script>
+
+    <link rel="stylesheet" href="/assets/reveal.v2.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/reveal.v2.js" defer></script>
+    <script src="/assets/footer.v3.js" defer></script>
+    <style>
+        body { background-color: #000; color: #d1d5db; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: #56e98f; text-decoration: none; }
+        a:hover { color: #a7f3d0; text-decoration: underline; }
+        ::-webkit-scrollbar { display: none; }
+
+        /* Reference-card accents */
+        .ref-card { background: rgba(8, 12, 10, 0.85); border: 1px solid rgba(86, 233, 143, 0.35); border-radius: 12px; }
+        .ref-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; line-height: 1.4; }
+        .ref-table thead th {
+            background: rgba(86, 233, 143, 0.10);
+            color: #a7f3d0;
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 2px solid rgba(86, 233, 143, 0.45);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+        }
+        .ref-table thead th.col-num { text-align: right; }
+        .ref-table tbody td {
+            padding: 11px 14px;
+            border-bottom: 1px solid rgba(86, 233, 143, 0.12);
+            vertical-align: top;
+            color: #e5e7eb;
+        }
+        .ref-table tbody td.cell-num { text-align: right; font-variant-numeric: tabular-nums; color: #f3f4f6; white-space: nowrap; }
+        .ref-table tbody td.cell-channel { color: #a7f3d0; font-weight: 600; white-space: nowrap; }
+        .ref-table tbody td.cell-model { color: #f3f4f6; font-weight: 500; }
+        .ref-table tbody td.cell-notes { color: #9ca3af; font-size: 0.8rem; }
+        .ref-table tbody tr:hover { background: rgba(86, 233, 143, 0.04); }
+        .ref-table tbody tr.group-row td { background: rgba(86, 233, 143, 0.05); }
+
+        /* Horizontal scroll on small screens */
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .table-wrap::-webkit-scrollbar { display: block; height: 6px; }
+        .table-wrap::-webkit-scrollbar-thumb { background: rgba(86, 233, 143, 0.4); border-radius: 3px; }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: 1px solid;
+        }
+        .badge-green { color: #56e98f; border-color: rgba(86, 233, 143, 0.5); background: rgba(86, 233, 143, 0.08); }
+        .badge-amber { color: #f0c040; border-color: rgba(240, 192, 64, 0.5); background: rgba(240, 192, 64, 0.08); }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: #56e98f;
+            color: #000;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: 2px solid #a7f3d0;
+            transition: transform 200ms ease, box-shadow 200ms ease;
+            box-shadow: 0 0 0 rgba(86, 233, 143, 0);
+        }
+        .download-btn:hover {
+            color: #000;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(86, 233, 143, 0.35);
+        }
+        .download-btn .arrow { transition: transform 200ms ease; }
+        .download-btn:hover .arrow { transform: translateY(2px); }
+
+        .meta-row { color: #9ca3af; font-size: 0.85rem; }
+
+        /* Nav logo override — use the clean (square) grunge logo on this page */
+        .nav-logo {
+            display: inline-block;
+            height: 2.5rem;
+            width: 2.5rem;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: left center;
+            mix-blend-mode: screen;
+            opacity: 0.95;
+            -webkit-mask-image: radial-gradient(circle at center, #000 88%, transparent 100%);
+            mask-image: radial-gradient(circle at center, #000 88%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- Header / Nav -->
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
+
+<!-- Hero -->
+<header class="pt-12 pb-10 px-4 reveal-section">
+    <div class="max-w-5xl mx-auto text-center">
+        <div class="mb-6 flex justify-center reveal">
+            <img src="/assets/em-logo-grunge-clean.jpg" alt="Executive Mind" class="w-32 h-32 md:w-40 md:h-40 rounded-md" style="mix-blend-mode: screen; -webkit-mask-image: radial-gradient(circle at center, #000 88%, transparent 100%); mask-image: radial-gradient(circle at center, #000 88%, transparent 100%);">
+        </div>
+        <div class="text-green-400 text-xs uppercase tracking-[0.25em] mb-4 font-bold reveal">Executive Mind · Reference Card</div>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-green-300 mb-4 reveal reveal-scale">
+            LLM Token Pricing Comparison
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-2 reveal">Reasoning-Capable Channels</p>
+        <p class="meta-row reveal">Reference card · 24 September 2026 · USD per 1M tokens (input / output)</p>
+        <p class="mt-3 italic text-green-400/80 text-sm reveal">Built from the beach, for the boardroom.</p>
+    </div>
+</header>
+
+<!-- Download CTA -->
+<section class="px-4 mb-12 reveal-section">
+    <div class="max-w-5xl mx-auto ref-card p-8 text-center">
+        <p class="text-sm uppercase tracking-widest text-green-400 font-bold mb-3 reveal">Branded PDF · Download</p>
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-4 reveal">Take this card into the boardroom.</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto mb-6 reveal">
+            The same table, formatted for printing and sharing. Branded PDF, one page, ready for procurement conversations.
+        </p>
+        <a href="/assets/llm-pricing-sep-2026-em-reference.pdf" download class="download-btn reveal reveal-scale" aria-label="Download LLM Token Pricing PDF reference card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download PDF</span>
+            <span class="arrow">↓</span>
+        </a>
+        <p class="meta-row mt-4 reveal">File: <code class="text-green-300">llm-pricing-sep-2026-em-reference.pdf</code> · ~106 KB · 1 page</p>
+    </div>
+</section>
+
+<!-- Table -->
+<section class="px-4 pb-12 reveal-section">
+    <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-green-300 mb-4 reveal">The Numbers</h2>
+        <p class="text-gray-400 mb-6 reveal">All rates USD per 1M tokens. Cache rates noted where published.</p>
+
+        <div class="ref-card p-2 md:p-4 table-wrap reveal">
+            <table class="ref-table" aria-label="LLM token pricing for reasoning-capable channels, September 2026">
+                <thead>
+                    <tr>
+                        <th scope="col">Channel</th>
+                        <th scope="col">Model</th>
+                        <th scope="col" class="col-num">Input /1M</th>
+                        <th scope="col" class="col-num">Output /1M</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- OpenAI -->
+                    <tr><td class="cell-channel">OpenAI</td>           <td class="cell-model">GPT-6 Astra <span class="badge badge-amber">flagship</span></td>  <td class="cell-num">$10.00</td> <td class="cell-num">$50.00</td> <td class="cell-notes">Frontier</td></tr>
+                    <tr><td class="cell-channel">OpenAI</td>           <td class="cell-model">GPT-6 Sol</td>                                  <td class="cell-num">$2.00</td>  <td class="cell-num">$10.00</td> <td class="cell-notes">Cached in $0.20</td></tr>
+                    <tr><td class="cell-channel">OpenAI</td>           <td class="cell-model">GPT-6 Luna</td>                                 <td class="cell-num">$0.10</td>  <td class="cell-num">$0.50</td>  <td class="cell-notes">Cached in $0.01</td></tr>
+
+                    <!-- Anthropic -->
+                    <tr><td class="cell-channel">Anthropic</td>        <td class="cell-model">Claude Fable 5 <span class="badge badge-amber">frontier</span></td>  <td class="cell-num">$10.00</td> <td class="cell-num">$50.00</td> <td class="cell-notes">&nbsp;</td></tr>
+                    <tr><td class="cell-channel">Anthropic</td>        <td class="cell-model">Claude Opus 5</td>                             <td class="cell-num">$5.00</td>  <td class="cell-num">$25.00</td> <td class="cell-notes">&nbsp;</td></tr>
+                    <tr><td class="cell-channel">Anthropic</td>        <td class="cell-model">Claude Sonnet 5</td>                           <td class="cell-num">$2.00</td>  <td class="cell-num">$10.00</td> <td class="cell-notes">&nbsp;</td></tr>
+                    <tr><td class="cell-channel">Anthropic</td>        <td class="cell-model">Claude Haiku 4.5</td>                          <td class="cell-num">$1.00</td>  <td class="cell-num">$5.00</td>  <td class="cell-notes">&nbsp;</td></tr>
+
+                    <!-- Google -->
+                    <tr><td class="cell-channel">Google</td>           <td class="cell-model">Gemini 3.1 Pro</td>                            <td class="cell-num">$2.00</td>  <td class="cell-num">$12.00</td> <td class="cell-notes">≤200K ctx; $4/$18 &gt;200K</td></tr>
+                    <tr><td class="cell-channel">Google</td>           <td class="cell-model">Gemini 3.7 Flash</td>                          <td class="cell-num">$0.75</td>  <td class="cell-num">$3.75</td>  <td class="cell-notes">Intro thru Dec 31, then $1.50/$7.50</td></tr>
+                    <tr><td class="cell-channel">Google</td>           <td class="cell-model">Gemini 2.5 Flash-Lite</td>                      <td class="cell-num">$0.10</td>  <td class="cell-num">$0.40</td>  <td class="cell-notes">Thinking tokens bill as output</td></tr>
+
+                    <!-- DeepSeek -->
+                    <tr><td class="cell-channel">DeepSeek</td>         <td class="cell-model">V4-Flash</td>                                  <td class="cell-num">$0.14</td>  <td class="cell-num">$0.28</td>  <td class="cell-notes">Cache hit $0.0028; off-peak ≈ half</td></tr>
+                    <tr><td class="cell-channel">DeepSeek</td>         <td class="cell-model">V4-Pro</td>                                    <td class="cell-num">$0.435</td> <td class="cell-num">$0.87</td>  <td class="cell-notes">Cache hit $0.0036</td></tr>
+
+                    <!-- Z.ai -->
+                    <tr><td class="cell-channel">Z.ai</td>             <td class="cell-model">GLM-5.3-Flash</td>                             <td class="cell-num">$0.15</td>  <td class="cell-num">$0.50</td>  <td class="cell-notes">Cached in $0.03; 1M ctx; natively multimodal</td></tr>
+                    <tr><td class="cell-channel">Z.ai</td>             <td class="cell-model">GLM-5.3</td>                                   <td class="cell-num">$1.40</td>  <td class="cell-num">$4.40</td>  <td class="cell-notes">Cached in $0.26</td></tr>
+
+                    <!-- MiniMax -->
+                    <tr><td class="cell-channel">MiniMax</td>     <td class="cell-model">MiniMax-M3</td>                            <td class="cell-num">$0.30</td>  <td class="cell-num">$1.20</td>  <td class="cell-notes">≤512K ctx; $0.60/$2.40 &gt;512K; cache $0.06</td></tr>
+
+                    <!-- Moonshot AI -->
+                    <tr><td class="cell-channel">Moonshot AI</td>      <td class="cell-model">Kimi K3</td>                                   <td class="cell-num">$3.00</td>  <td class="cell-num">$15.00</td> <td class="cell-notes">1M ctx; cache-hit in $0.30; no reasoning surcharge</td></tr>
+                    <tr><td class="cell-channel">Moonshot AI</td>      <td class="cell-model">Kimi K2.7 Code</td>                            <td class="cell-num">$0.95</td>  <td class="cell-num">$4.00</td>  <td class="cell-notes">256K ctx; batch −40%</td></tr>
+                    <tr><td class="cell-channel">Moonshot AI</td>      <td class="cell-model">Kimi K2.5</td>                                 <td class="cell-num">$0.60</td>  <td class="cell-num">$3.00</td>  <td class="cell-notes">Value tier</td></tr>
+
+                    <!-- OpenRouter / Ollama -->
+                    <tr class="group-row"><td class="cell-channel">OpenRouter</td>     <td class="cell-model">(router — pass-through)</td>                   <td class="cell-num">provider rate</td> <td class="cell-num">+ 5.5% credit fee</td> <td class="cell-notes">BYOK 1M reqs/mo free; some models free</td></tr>
+                    <tr class="group-row"><td class="cell-channel">Ollama Cloud</td>   <td class="cell-model">Pro plan</td>                                  <td class="cell-num">$20/mo flat</td>     <td class="cell-num">—</td>                 <td class="cell-notes">Usage-credit pools + GPU-time quotas</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="meta-row mt-4 reveal">All rates USD per 1M tokens (input / output). Cache rates listed where published by the vendor. Verify against each provider's current pricing page before contracting.</p>
+    </div>
+</section>
+
+<!-- Reading the numbers -->
+<section id="reading" class="px-4 pb-16 reveal-section">
+    <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-green-300 mb-6 reveal">Reading the Numbers</h2>
+        <ul class="space-y-4 text-gray-200">
+            <li class="reveal">
+                <strong class="text-green-300">Cheapest real reasoning per token:</strong>
+                DeepSeek V4-Flash ($0.14/$0.28) and GPT-6 Luna ($0.10/$0.50) — frontier-family reasoning at flash pricing.
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">Batch APIs:</strong>
+                −50% on OpenAI, Anthropic, and Google; −40% on Moonshot (excluding K3).
+                <strong class="text-green-300"> Caching:</strong>
+                −90% on input (Anthropic), ~99.9% on cache hits (DeepSeek), $0.03 (GLM Flash), $0.30 (Kimi K3).
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">Watch:</strong>
+                Gemini bills thinking tokens at output rates; DeepSeek official docs now show a peak/off-peak split (peak = 2×).
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">OpenRouter is a router, not a model:</strong>
+                per-token price = underlying provider rate + fee. Value = failover + one API key.
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">Verify before contracting.</strong>
+                Prices as published late September 2026. Provider pricing pages move; the PDF is a snapshot, not a contract.
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Sources -->
+<section class="px-4 pb-16 reveal-section">
+    <div class="max-w-5xl mx-auto ref-card p-6 md:p-8">
+        <h2 class="text-xl font-bold text-green-300 mb-3 reveal">Sources</h2>
+        <p class="text-gray-300 reveal">
+            OpenAI pricing page and 23 September launch posts; Anthropic, Google, DeepSeek, Z.ai, MiniMax, and Moonshot official pricing via aggregators, September 2026.
+        </p>
+        <p class="meta-row mt-4 reveal">Compiled by Executive Mind · <a href="/" class="text-green-300 hover:text-green-200">executivemind.io</a></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<div data-footer-slot></div>
+
+</body>
+</html>
