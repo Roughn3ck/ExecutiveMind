@@ -666,8 +666,8 @@
     const errorMessage = document.getElementById("contactError");
     const errorDetails = document.getElementById("error-details");
 
-    // The URL to your new PHP backend script
-    const backendUrl = "/agent/send_form.php";
+    // The inquiry endpoint (Cloudflare Pages Function — POST /api/inquiry)
+    const backendUrl = "/api/inquiry";
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();

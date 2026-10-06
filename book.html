@@ -377,7 +377,7 @@
             <noscript>
                 <p class="text-green-300 text-xs text-center mt-3 reveal">
                     JavaScript is off? Email us directly:
-                    <a class="underline text-green-400" href="mailto:agent@executivemind.io?subject=Discovery%20Call%20Inquiry">agent@executivemind.io</a>
+                    <a class="underline text-green-400" href="mailto:admin@executivemind.io?subject=Discovery%20Call%20Inquiry">admin@executivemind.io</a>
                 </p>
             </noscript>
 
@@ -398,7 +398,7 @@
 <section class="max-w-2xl mx-auto px-4 pb-12 text-center reveal-section">
     <p class="text-green-500 text-sm">
         Prefer email or phone?
-        <a href="mailto:agent@executivemind.io?subject=Discovery%20Call%20Inquiry" class="text-green-400 underline hover:text-green-300">agent@executivemind.io</a>
+        <a href="mailto:admin@executivemind.io?subject=Discovery%20Call%20Inquiry" class="text-green-400 underline hover:text-green-300">admin@executivemind.io</a>
         &nbsp;·&nbsp;
         <a href="tel:+61730369926" class="text-green-400 underline hover:text-green-300">07 3036 9926</a>
     </p>
@@ -448,9 +448,9 @@ setInterval(drawMatrix, 33);
 
 // ============================================================
 // 🎨 Inquiry form — replaces Stripe checkout flow (dormant).
-// Routes to the same /agent/send_form.php backend that index.html
-// and let-the-agents-live.html already use; delivers to
-// agent@executivemind.io via PHPMailer.
+// Routes to the same /api/inquiry endpoint that index.html
+// and let-the-agents-live.html use; delivers to
+// admin@executivemind.io via the inquiry Pages Function.
 // ============================================================
 
 const PACKAGES = {
@@ -510,8 +510,8 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
     const message = (document.getElementById('message').value || '').trim();
 
     // Only email is required on the form (per launch-offer design).
-    // send_form.php also requires a non-empty message body, so we
-    // synthesise one from the form state if the user left it blank.
+    // The endpoint accepts an empty message, but we synthesise
+    // one from the form state when blank — it reads better in the inbox.
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         errorBox.textContent = 'Please enter a valid email address.';
         errorBox.classList.remove('hidden');
@@ -523,7 +523,7 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
     submit.textContent = 'Sending…';
     submit.classList.add('opacity-50', 'cursor-not-allowed');
 
-    // Build payload — send_form.php expects JSON {name, email, message}.
+    // Build payload — /api/inquiry expects JSON {name, email, message}.
     // We stuff package + phone + company into the message body so the
     // existing PHP handler (no schema changes) can deliver everything.
     const finalMessage = buildBody();
@@ -532,14 +532,14 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
         name: (document.getElementById('name').value || '').trim() || 'Anonymous',
         email,
         message: finalMessage,
-        // Custom fields — send_form.php preserves extra keys and embeds
-        // them in the email body via raw json_encode fallback. We
-        // append them to the message to keep the existing handler happy.
+        // Custom fields — /api/inquiry preserves extra keys and embeds
+        // them in the email body. We append them to the message
+        // so the emailed inquiry carries full context.
         subject: finalSubject
     };
 
     try {
-        const response = await fetch('/agent/send_form.php', {
+        const response = await fetch('/api/inquiry', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -551,7 +551,7 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
             document.getElementById('inquiry-success').classList.remove('hidden');
         } else {
             errorBox.textContent = (result && result.message)
-                || 'Submission failed. Please email agent@executivemind.io directly.';
+                || 'Submission failed. Please email admin@executivemind.io directly.';
             errorBox.classList.remove('hidden');
             submit.disabled = false;
             submit.textContent = 'Send inquiry';
@@ -560,7 +560,7 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
     } catch (err) {
         // Network / CORS / Workers fallback — hand off to mailto: with prefilled body.
         // This is also the primary path if the no-CPR Worker endpoint isn't deployed yet.
-        const mailto = `mailto:agent@executivemind.io?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(finalMessage)}`;
+        const mailto = `mailto:admin@executivemind.io?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(finalMessage)}`;
         errorBox.innerHTML =
             `We couldn't reach the form handler from here — ` +
             `<a href="${mailto}" class="underline text-green-400 font-bold">email us directly</a> instead. ` +

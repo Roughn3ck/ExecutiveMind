@@ -407,7 +407,7 @@
         const form = e.target;
         const data = Object.fromEntries(new FormData(form));
         try {
-            const res = await fetch('/agent/send_form.php', {
+            const res = await fetch('/api/inquiry', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: { 'Content-Type': 'application/json' }
