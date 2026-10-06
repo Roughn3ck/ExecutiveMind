@@ -17,7 +17,7 @@ require 'PHPMailer/src/SMTP.php';
 $email_server = "mail.executivemind.io";
 $smtp_port = 465;
 $sender_email = "agent@executivemind.io"; // This is the account that sends the email
-$sender_password = "3x3cut1veM1nd";
+$sender_password = "REDACTED-ROTATE-2026-10-06";
 $recipient_email = "agent@executivemind.io"; // The email is sent TO the agent's inbox
 
 header('Content-Type: application/json');
