@@ -2,21 +2,31 @@
 <html lang="en-AU">
 <head>
     <meta charset="UTF-8">
-    <title>Book Your AI C-Suite Session | Executive Mind</title>
+    <title>Book a Complimentary Discovery Call | Executive Mind</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Book a personal AI C-Suite deployment session with Kris Racette. Hands-on installation of Claude, OpenClaw, Hermes, and multi-agent systems.">
+    <meta name="description" content="Book a complimentary discovery call with Kris Racette. An agent assistant for every executive — process automation that frees your people for the work only they can do.">
     <link rel="canonical" href="https://executivemind.io/book">
     <meta name="geo.region" content="AU-QLD">
     <meta name="geo.placename" content="Brisbane">
     <meta name="geo.position" content="-27.4698;153.0251">
     <meta name="ICBM" content="-27.4698, 153.0251">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Book a Complimentary Discovery Call | Executive Mind">
+    <meta property="og:description" content="An agent assistant for every executive. Schedules managed. Deadlines remembered. Commitments kept. Security isn't the add-on — it's the starting point.">
+    <meta property="og:url" content="https://executivemind.io/book">
+    <meta property="og:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book a Complimentary Discovery Call | Executive Mind">
+    <meta name="twitter:description" content="An agent assistant for every executive. Schedules managed. Deadlines remembered. Commitments kept.">
+    <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
     <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
     <link rel="stylesheet" href="/assets/reveal.v2.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/assets/nav.js" defer></script>
     <script src="/assets/reveal.v2.js" defer></script>
     <script src="/assets/footer.v3.js" defer></script>
-    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Stripe removed: bookSession→checkout-modal wiring + js.stripe.com script tag (pk_test placeholder = dead).
+         Payment lane dormant — re-arm per-client Stripe links post-discovery (create-checkout worker stub preserved). -->
     <style>
         body { background-color: #000; color: #56e98f; font-family: 'Courier New', Courier, monospace; }
         .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
@@ -25,8 +35,94 @@
         .card:hover { border-color: #56e98f; transform: translateY(-4px); }
         .popular { border: 2px solid #56e98f; box-shadow: 0 0 30px rgba(86, 233, 143, 0.2); }
         .popular-badge { background: linear-gradient(90deg, #56e98f, #3d9e6b); }
-            /* 🎨 header logo — fixed aspect ratio + screen blend so the grunge box melts into the matrix rain */
+
+        /* 🎨 Launch offer banner — sticky ribbon under nav */
+        .launch-banner {
+            background: linear-gradient(90deg, rgba(86,233,143,0.12), rgba(86,233,143,0.04));
+            border-bottom: 1px solid rgba(86,233,143,0.35);
+            color: #b6f5cf;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 0.55rem 1rem;
+        }
+        .launch-banner strong { color: #56e98f; }
+
+        /* 🎨 Inquiry form — same monospace input feel as legacy Stripe modal */
+        .inquiry-input {
+            background: #000;
+            border: 1px solid rgba(86, 233, 143, 0.3);
+            border-radius: 6px;
+            padding: 0.55rem 0.75rem;
+            color: #56e98f;
+            font-family: 'Courier New', Courier, monospace;
+            width: 100%;
+            transition: border-color 150ms ease;
+        }
+        .inquiry-input:focus {
+            border-color: #56e98f;
+            outline: none;
+            box-shadow: 0 0 0 1px rgba(86, 233, 143, 0.3);
+        }
+        .inquiry-input::placeholder { color: rgba(86, 233, 143, 0.4); }
+        .inquiry-label {
+            display: block;
+            font-size: 0.78rem;
+            margin-bottom: 0.4rem;
+            color: #7fe6a8;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .field-required {
+            color: #56e98f;
+            margin-left: 2px;
+        }
+        .inquiry-card {
+            background: linear-gradient(145deg, #0a0a0a, #0d1410);
+            border: 1px solid #1f5a32;
+            border-radius: 14px;
+            padding: 1.75rem;
+        }
+        .form-success {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .form-success .check { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+        /* Small mobile type tightening */
+        @media (max-width: 480px) {
+            .launch-banner { font-size: 0.7rem; padding: 0.5rem 0.75rem; }
+        }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Executive AI Consultation",
+      "name": "Executive Mind — Complimentary Discovery Call",
+      "description": "A complimentary discovery call to scope process automation that frees your people for the work only they can do. Schedules managed. Deadlines remembered. Commitments kept. Security isn't the add-on — it's the starting point.",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Executive Mind Pty Ltd",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Brisbane",
+          "addressRegion": "QLD",
+          "addressCountry": "AU"
+        }
+      },
+      "areaServed": { "@type": "Place", "name": "Brisbane, Queensland" },
+      "offers": {
+        "@type": "Offer",
+        "name": "Complimentary Discovery Call",
+        "price": "0",
+        "priceCurrency": "AUD",
+        "description": "Launch offer — complimentary discovery call for a limited number of executive engagements."
+      }
+    }
+    </script>
 </head>
 <body class="min-h-screen">
 
@@ -34,27 +130,43 @@
 
 <div data-nav-slot data-nav-flavour="main" data-nav-active="book"></div>
 
+<!-- 🎨 Launch offer banner (sticky under nav, mobile-first) -->
+<div class="launch-banner" role="status">
+    <strong>LAUNCH OFFER · LIMITED SPOTS</strong> — Complimentary Discovery Call
+</div>
+
 <!-- Hero -->
-<section class="py-16 text-center px-4 reveal-section">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 reveal reveal-scale">Deploy Your <span class="text-green-400">AI C-Suite</span></h1>
-    <p class="text-xl text-green-300 max-w-2xl mx-auto mb-2">
-        Personal, hands-on installation with <strong>Kris Racette</strong>
+<section class="py-12 md:py-16 text-center px-4 reveal-section">
+    <h1 class="text-3xl md:text-5xl font-bold mb-4 reveal reveal-scale">
+        An agent assistant <span class="text-green-400">for every executive.</span>
+    </h1>
+    <p class="text-lg md:text-xl text-green-300 max-w-2xl mx-auto mb-2 reveal">
+        Process automation that frees your people for the work only they can do.
     </p>
-    <p class="text-green-500 max-w-xl mx-auto">
-        Not a course. Not a chatbot. A deployment partner who sets up your systems and trains your team.
+    <p class="text-green-500 max-w-xl mx-auto reveal reveal-line">
+        Schedules managed. Deadlines remembered. Commitments kept.
     </p>
+    <p class="text-green-400 max-w-xl mx-auto mt-4 reveal reveal-line font-bold">
+        Security isn't the add-on — it's the starting point.
+    </p>
+    <div class="mt-8 reveal">
+        <a href="#inquiry"
+           class="inline-block py-3 px-8 bg-green-500 hover:bg-green-600 text-black rounded-lg transition font-bold">
+            Book your complimentary discovery call
+        </a>
+    </div>
 </section>
 
-<!-- Pricing Cards -->
+<!-- Pricing Cards (kept as value anchors — discovery call is now complimentary during launch) -->
 <section class="max-w-6xl mx-auto px-4 pb-12 reveal-section">
     <div class="grid md:grid-cols-3 gap-6">
-        
-        <!-- Discovery Call -->
+
+        <!-- Discovery Call (LAUNCH OFFER) -->
         <div class="card rounded-xl p-6 transition-all duration-300">
-            <div class="text-green-400 text-sm uppercase tracking-wider mb-2">Discovery Call</div>
-            <div class="text-4xl font-bold mb-1">$150</div>
-            <div class="text-green-500 text-sm mb-6">1 Hour</div>
-            
+            <div class="text-green-400 text-xs sm:text-sm uppercase tracking-wider mb-2">Discovery Call</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1 text-green-400">Complimentary</div>
+            <div class="text-green-500 text-sm mb-6">— launch offer</div>
+
             <ul class="space-y-3 mb-8 text-sm">
                 <li class="flex items-start gap-2">
                     <span class="text-green-400">✓</span>
@@ -66,34 +178,36 @@
                 </li>
                 <li class="flex items-start gap-2">
                     <span class="text-green-400">✓</span>
-                    <span>Model recommendations</span>
+                    <span>Process automation scoping</span>
                 </li>
                 <li class="flex items-start gap-2">
                     <span class="text-green-400">✓</span>
-                    <span>Deployment roadmap</span>
+                    <span>Security posture review</span>
                 </li>
             </ul>
-            
-            <button onclick="bookSession('discovery')" 
+
+            <button type="button"
+                    data-package="Discovery Call"
+                    onclick="selectPackage('Discovery Call')"
                     class="w-full py-3 border border-green-500 rounded-lg hover:bg-green-500/20 transition font-bold">
                 Book Discovery Call
             </button>
         </div>
-        
+
         <!-- Full-Day (Popular) -->
         <div class="card rounded-xl p-6 transition-all duration-300 popular relative">
             <div class="popular-badge text-black text-xs font-bold px-3 py-1 rounded-full absolute -top-3 left-1/2 -translate-x-1/2">
                 MOST POPULAR
             </div>
-            
-            <div class="text-green-400 text-sm uppercase tracking-wider mb-2">Full-Day Deployment</div>
-            <div class="text-4xl font-bold mb-1">$850</div>
+
+            <div class="text-green-400 text-xs sm:text-sm uppercase tracking-wider mb-2">Full-Day Deployment</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1">$850</div>
             <div class="text-green-500 text-sm mb-6">8 Hours</div>
-            
+
             <ul class="space-y-3 mb-8 text-sm">
                 <li class="flex items-start gap-2">
                     <span class="text-green-400">✓</span>
-                    <span>Complete system setup (OpenClaw/Claude/Hermes)</span>
+                    <span>Complete system setup (OpenClaw / Claude / Hermes)</span>
                 </li>
                 <li class="flex items-start gap-2">
                     <span class="text-green-400">✓</span>
@@ -112,19 +226,21 @@
                     <span>30-day support included</span>
                 </li>
             </ul>
-            
-            <button onclick="bookSession('fullday')" 
+
+            <button type="button"
+                    data-package="Full-Day Deployment"
+                    onclick="selectPackage('Full-Day Deployment')"
                     class="w-full py-3 bg-green-500 hover:bg-green-600 text-black rounded-lg transition font-bold">
                 Book Full-Day
             </button>
         </div>
-        
+
         <!-- C-Suite Package -->
         <div class="card rounded-xl p-6 transition-all duration-300">
-            <div class="text-green-400 text-sm uppercase tracking-wider mb-2">C-Suite Package</div>
-            <div class="text-4xl font-bold mb-1">$1,600</div>
+            <div class="text-green-400 text-xs sm:text-sm uppercase tracking-wider mb-2">C-Suite Package</div>
+            <div class="text-3xl md:text-4xl font-bold mb-1">$1,600</div>
             <div class="text-green-500 text-sm mb-6">16 Hours (2 Days)</div>
-            
+
             <ul class="space-y-3 mb-8 text-sm">
                 <li class="flex items-start gap-2">
                     <span class="text-green-400">✓</span>
@@ -147,121 +263,150 @@
                     <span>90-day support included</span>
                 </li>
             </ul>
-            
-            <button onclick="bookSession('csuite')" 
+
+            <button type="button"
+                    data-package="C-Suite Package"
+                    onclick="selectPackage('C-Suite Package')"
                     class="w-full py-3 border border-green-500 rounded-lg hover:bg-green-500/20 transition font-bold">
                 Book C-Suite Package
             </button>
         </div>
     </div>
-    
+
     <!-- Enterprise -->
     <div class="mt-8 card rounded-xl p-8 max-w-2xl mx-auto text-center">
-        <div class="text-green-400 text-sm uppercase tracking-wider mb-2">Enterprise Week</div>
-        <div class="text-4xl font-bold mb-1">$3,800</div>
+        <div class="text-green-400 text-xs sm:text-sm uppercase tracking-wider mb-2">Enterprise Week</div>
+        <div class="text-3xl md:text-4xl font-bold mb-1">$3,800</div>
         <div class="text-green-500 text-sm mb-4">40 Hours (5 Days)</div>
         <p class="text-green-300 text-sm mb-6">
-            Complete organizational transformation. Multi-department deployment, executive training, custom integrations, and 6-month support.
+            Complete organisational transformation. Multi-department deployment, executive training, custom integrations, and 6-month support.
         </p>
-        <button onclick="bookSession('enterprise')" 
+        <button type="button"
+                data-package="Enterprise Week"
+                onclick="selectPackage('Enterprise Week')"
                 class="py-3 px-8 border border-green-500 rounded-lg hover:bg-green-500/20 transition font-bold">
             Contact for Enterprise
         </button>
     </div>
 </section>
 
-<!-- What You Get -->
+<!-- What You Get (kept — set expectations after the call) -->
 <section class="max-w-4xl mx-auto px-4 py-12 reveal-section">
     <h2 class="text-2xl font-bold mb-8 text-center reveal">What Happens After You Book</h2>
-    
+
     <div class="grid md:grid-cols-4 gap-4 text-center">
         <div class="card rounded-lg p-4">
             <div class="text-3xl mb-2">📅</div>
             <div class="font-bold mb-1">Confirm</div>
-            <div class="text-green-500 text-sm">Calendar invite sent instantly</div>
+            <div class="text-green-500 text-sm">Calendar invite sent</div>
         </div>
         <div class="card rounded-lg p-4">
-            <div class="text-3xl mb-2">📋</div>
-            <div class="font-bold mb-1">Prep List</div>
-            <div class="text-green-500 text-sm">Hardware & software checklist</div>
+            <div class="text-3xl mb-2">🔍</div>
+            <div class="font-bold mb-1">Scope</div>
+            <div class="text-green-500 text-sm">Process + security review</div>
         </div>
         <div class="card rounded-lg p-4">
             <div class="text-3xl mb-2">🛠️</div>
             <div class="font-bold mb-1">Deploy</div>
-            <div class="text-green-500 text-sm">Hands-on installation day</div>
+            <div class="text-green-500 text-sm">Hands-on installation</div>
         </div>
         <div class="card rounded-lg p-4">
             <div class="text-3xl mb-2">📚</div>
             <div class="font-bold mb-1">Document</div>
-            <div class="text-green-500 text-sm">Custom setup guide delivered</div>
+            <div class="text-green-500 text-sm">Custom setup guide</div>
         </div>
     </div>
 </section>
 
-<!-- Pre-Deployment Profiles -->
-<section class="max-w-4xl mx-auto px-4 py-12 reveal-section">
-    <h2 class="text-2xl font-bold mb-8 text-center reveal">Pre-Deployment Profiles</h2>
-    <p class="text-green-500 text-center mb-8">Choose your AI stack before the session:</p>
-    
-    <div class="grid md:grid-cols-3 gap-4">
-        <div class="card rounded-lg p-4">
-            <div class="font-bold text-green-400 mb-2">🧠 Local-First</div>
-            <p class="text-sm text-green-500">Ollama + Hermes + Local models</p>
-            <p class="text-xs text-green-600 mt-2">Privacy-first, runs offline</p>
-        </div>
-        <div class="card rounded-lg p-4">
-            <div class="font-bold text-green-400 mb-2">☁️ Cloud-Hybrid</div>
-            <p class="text-sm text-green-500">Claude + OpenRouter + Gemini</p>
-            <p class="text-xs text-green-600 mt-2">Maximum capability, API-based</p>
-        </div>
-        <div class="card rounded-lg p-4">
-            <div class="font-bold text-green-400 mb-2">⚡ Full Stack</div>
-            <p class="text-sm text-green-500">OpenClaw + Multi-agent system</p>
-            <p class="text-xs text-green-600 mt-2">Complete AI C-Suite deployment</p>
-        </div>
-    </div>
-</section>
+<!-- 🎨 Inquiry form (replaces Stripe checkout modal — same page, no friction) -->
+<section id="inquiry" class="max-w-2xl mx-auto px-4 pb-16 reveal-section scroll-mt-24">
+    <div class="inquiry-card">
+        <h2 class="text-2xl font-bold mb-2 text-center reveal">Book your complimentary discovery call</h2>
+        <p class="text-green-500 text-sm text-center mb-6 reveal">
+            Tell us a little about your business. We reply within one business day.
+        </p>
 
-<!-- Stripe Checkout Modal -->
-<div id="checkout-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
-    <div class="card rounded-xl p-8 max-w-md w-full">
-        <h3 class="text-xl font-bold mb-4">Complete Your Booking</h3>
-        <div id="booking-details" class="mb-6"></div>
-        
-        <form id="stripe-form">
-            <div class="mb-4">
-                <label class="block text-sm mb-2">Email</label>
-                <input type="email" id="customer-email" required
-                       class="w-full bg-black border border-green-500/30 rounded px-3 py-2 text-green-400 focus:border-green-500 focus:outline-none">
+        <form id="inquiry-form" novalidate>
+            <!-- Hidden package context — pre-filled by selectPackage() -->
+            <input type="hidden" id="package" name="package" value="">
+
+            <div class="mb-4 reveal">
+                <label for="name" class="inquiry-label">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name"
+                       class="inquiry-input"
+                       placeholder="Your name">
             </div>
-            
-            <div class="mb-4">
-                <label class="block text-sm mb-2">Preferred Date</label>
-                <input type="date" id="preferred-date" required
-                       class="w-full bg-black border border-green-500/30 rounded px-3 py-2 text-green-400 focus:border-green-500 focus:outline-none">
+
+            <div class="mb-4 reveal">
+                <label for="company" class="inquiry-label">Company</label>
+                <input type="text" id="company" name="company" autocomplete="organization"
+                       class="inquiry-input"
+                       placeholder="Company or organisation">
             </div>
-            
-            <div class="mb-6">
-                <label class="block text-sm mb-2">Notes (optional)</label>
-                <textarea id="booking-notes" rows="2"
-                          class="w-full bg-black border border-green-500/30 rounded px-3 py-2 text-green-400 focus:border-green-500 focus:outline-none"></textarea>
+
+            <div class="mb-4 reveal">
+                <label for="email" class="inquiry-label">Email<span class="field-required">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email"
+                       class="inquiry-input"
+                       placeholder="you@company.com">
             </div>
-            
-            <button type="submit" id="checkout-button"
-                    class="w-full py-3 bg-green-500 hover:bg-green-600 text-black rounded-lg transition font-bold">
-                Pay with Stripe
+
+            <div class="mb-4 reveal">
+                <label for="phone" class="inquiry-label">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel"
+                       class="inquiry-input"
+                       placeholder="Optional">
+            </div>
+
+            <div class="mb-6 reveal">
+                <label for="message" class="inquiry-label">How can we help your business?</label>
+                <textarea id="message" name="message" rows="4"
+                          class="inquiry-input"
+                          placeholder="e.g. the opportunities you see, what's threatening them, what's blocking implementation…"></textarea>
+            </div>
+
+            <button type="submit" id="inquiry-submit"
+                    class="w-full py-3 bg-green-500 hover:bg-green-600 text-black rounded-lg transition font-bold reveal">
+                Send inquiry
             </button>
+
+            <p class="text-green-600 text-xs text-center mt-4 reveal">
+                Sent securely to Executive Mind. No payment required at this stage.
+            </p>
+
+            <noscript>
+                <p class="text-green-300 text-xs text-center mt-3 reveal">
+                    JavaScript is off? Email us directly:
+                    <a class="underline text-green-400" href="mailto:agent@executivemind.io?subject=Discovery%20Call%20Inquiry">agent@executivemind.io</a>
+                </p>
+            </noscript>
+
+            <div id="inquiry-error" class="hidden mt-4 text-red-400 text-sm text-center"></div>
         </form>
-        
-        <button onclick="closeModal()" class="mt-4 text-green-500 text-sm w-full text-center">
-            Cancel
-        </button>
+
+        <div id="inquiry-success" class="hidden form-success">
+            <div class="check">✅</div>
+            <p class="text-green-400 text-xl font-bold mb-2">Inquiry received.</p>
+            <p class="text-green-500 text-sm">
+                We'll reply within one business day. Watch your inbox (and check spam).
+            </p>
+        </div>
     </div>
-</div>
+</section>
+
+<!-- 🎨 Direct-contact fallback for users who'd rather email or call -->
+<section class="max-w-2xl mx-auto px-4 pb-12 text-center reveal-section">
+    <p class="text-green-500 text-sm">
+        Prefer email or phone?
+        <a href="mailto:agent@executivemind.io?subject=Discovery%20Call%20Inquiry" class="text-green-400 underline hover:text-green-300">agent@executivemind.io</a>
+        &nbsp;·&nbsp;
+        <a href="tel:+61730369926" class="text-green-400 underline hover:text-green-300">07 3036 9926</a>
+    </p>
+</section>
 
 <footer class="py-8 text-center text-green-600 text-sm border-t border-green-900/30">
     <p>Executive Mind Pty Ltd | Brisbane, Queensland</p>
-    <p class="mt-2">Payment secured by Stripe. 30-day money-back guarantee.</p>
+    <p class="mt-2">No payment required for the discovery call. We'll scope and quote after the conversation.</p>
 </footer>
 
 <script>
@@ -289,7 +434,7 @@ function drawMatrix() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#56e98f';
     ctx.font = fontSize + 'px monospace';
-    
+
     for (let i = 0; i < drops.length; i++) {
         const text = chars.charAt(Math.floor(Math.random() * chars.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -301,82 +446,130 @@ function drawMatrix() {
 }
 setInterval(drawMatrix, 33);
 
-// Booking configuration
-const packages = {
-    discovery: { name: 'Discovery Call', price: 150, hours: 1 },
-    fullday: { name: 'Full-Day Deployment', price: 850, hours: 8 },
-    csuite: { name: 'C-Suite Package', price: 1600, hours: 16 },
-    enterprise: { name: 'Enterprise Week', price: 3800, hours: 40 }
+// ============================================================
+// 🎨 Inquiry form — replaces Stripe checkout flow (dormant).
+// Routes to the same /agent/send_form.php backend that index.html
+// and let-the-agents-live.html already use; delivers to
+// agent@executivemind.io via PHPMailer.
+// ============================================================
+
+const PACKAGES = {
+    'Discovery Call':       'Complimentary Discovery Call',
+    'Full-Day Deployment':  'Full-Day Deployment ($850)',
+    'C-Suite Package':      'C-Suite Package ($1,600)',
+    'Enterprise Week':      'Enterprise Week ($3,800)'
 };
 
-let selectedPackage = null;
+function selectPackage(pkgName) {
+    // Track which package the user clicked (for subject + body context)
+    const hidden = document.getElementById('package');
+    if (hidden) hidden.value = pkgName || '';
 
-function bookSession(packageKey) {
-    selectedPackage = packages[packageKey];
-    
-    const modal = document.getElementById('checkout-modal');
-    const details = document.getElementById('booking-details');
-    
-    details.innerHTML = `
-        <div class="text-green-400 font-bold">${selectedPackage.name}</div>
-        <div class="text-2xl font-bold">$${selectedPackage.price.toLocaleString()}</div>
-        <div class="text-green-500 text-sm">${selectedPackage.hours} hour${selectedPackage.hours > 1 ? 's' : ''}</div>
-    `;
-    
-    // Set minimum date to tomorrow
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    document.getElementById('preferred-date').min = tomorrow.toISOString().split('T')[0];
-    
-    modal.classList.remove('hidden');
+    // Smooth-scroll to form
+    const target = document.getElementById('inquiry');
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Focus email field once scroll lands — least-friction nudge
+        setTimeout(() => {
+            const email = document.getElementById('email');
+            if (email) email.focus({ preventScroll: true });
+        }, 600);
+    }
 }
 
-function closeModal() {
-    document.getElementById('checkout-modal').classList.add('hidden');
+function buildSubject() {
+    const pkg = (document.getElementById('package') || {}).value || '';
+    return pkg ? `Discovery Call Inquiry — ${pkg}` : 'Discovery Call Inquiry — Executive Mind';
 }
 
-// Stripe integration
-const stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY'); // Replace with your key
+function buildBody() {
+    const name    = (document.getElementById('name')    || {}).value || '';
+    const company = (document.getElementById('company') || {}).value || '';
+    const phone   = (document.getElementById('phone')   || {}).value || '';
+    const pkg     = (document.getElementById('package') || {}).value || '';
+    const msg     = (document.getElementById('message') || {}).value || '';
+    const lines = [];
+    lines.push(`Name: ${name}`);
+    lines.push(`Company: ${company}`);
+    lines.push(`Phone: ${phone}`);
+    lines.push(`Package of interest: ${pkg}`);
+    lines.push('');
+    lines.push('How can we help your business?');
+    lines.push(msg || '(no message provided)');
+    return lines.join('\n');
+}
 
-document.getElementById('stripe-form').addEventListener('submit', async (e) => {
+document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    const email = document.getElementById('customer-email').value;
-    const date = document.getElementById('preferred-date').value;
-    const notes = document.getElementById('booking-notes').value;
-    
-    const button = document.getElementById('checkout-button');
-    button.disabled = true;
-    button.textContent = 'Processing...';
-    
+
+    const errorBox = document.getElementById('inquiry-error');
+    errorBox.classList.add('hidden');
+    errorBox.textContent = '';
+
+    const email = document.getElementById('email').value.trim();
+    const message = (document.getElementById('message').value || '').trim();
+
+    // Only email is required on the form (per launch-offer design).
+    // send_form.php also requires a non-empty message body, so we
+    // synthesise one from the form state if the user left it blank.
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorBox.textContent = 'Please enter a valid email address.';
+        errorBox.classList.remove('hidden');
+        return;
+    }
+
+    const submit = document.getElementById('inquiry-submit');
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    submit.classList.add('opacity-50', 'cursor-not-allowed');
+
+    // Build payload — send_form.php expects JSON {name, email, message}.
+    // We stuff package + phone + company into the message body so the
+    // existing PHP handler (no schema changes) can deliver everything.
+    const finalMessage = buildBody();
+    const finalSubject = buildSubject();
+    const payload = {
+        name: (document.getElementById('name').value || '').trim() || 'Anonymous',
+        email,
+        message: finalMessage,
+        // Custom fields — send_form.php preserves extra keys and embeds
+        // them in the email body via raw json_encode fallback. We
+        // append them to the message to keep the existing handler happy.
+        subject: finalSubject
+    };
+
     try {
-        // Create checkout session
-        const response = await fetch('/workers/create-checkout', {
+        const response = await fetch('/agent/send_form.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                package: selectedPackage.name,
-                price: selectedPackage.price,
-                email: email,
-                date: date,
-                notes: notes
-            })
+            body: JSON.stringify(payload)
         });
-        
-        const session = await response.json();
-        
-        if (session.url) {
-            window.location.href = session.url;
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && result.success) {
+            document.getElementById('inquiry-form').classList.add('hidden');
+            document.getElementById('inquiry-success').classList.remove('hidden');
         } else {
-            alert('Error creating checkout session. Please try again.');
+            errorBox.textContent = (result && result.message)
+                || 'Submission failed. Please email agent@executivemind.io directly.';
+            errorBox.classList.remove('hidden');
+            submit.disabled = false;
+            submit.textContent = 'Send inquiry';
+            submit.classList.remove('opacity-50', 'cursor-not-allowed');
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error processing payment. Please try again.');
+    } catch (err) {
+        // Network / CORS / Workers fallback — hand off to mailto: with prefilled body.
+        // This is also the primary path if the no-CPR Worker endpoint isn't deployed yet.
+        const mailto = `mailto:agent@executivemind.io?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(finalMessage)}`;
+        errorBox.innerHTML =
+            `We couldn't reach the form handler from here — ` +
+            `<a href="${mailto}" class="underline text-green-400 font-bold">email us directly</a> instead. ` +
+            `Your message is already pre-filled.`;
+        errorBox.classList.remove('hidden');
+        submit.disabled = false;
+        submit.textContent = 'Send inquiry';
+        submit.classList.remove('opacity-50', 'cursor-not-allowed');
     }
-    
-    button.disabled = false;
-    button.textContent = 'Pay with Stripe';
 });
 </script>
 
