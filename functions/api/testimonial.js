@@ -284,7 +284,17 @@ export async function onRequestPost(context) {
     const bodyText = lines.join("\n");
 
     await smtpSend(secret, subject, bodyText);
-    return json({ success: true, message: "Thank you — your testimonial has been sent. It will appear on the wall once approved." });
+    const body = {
+      success: true,
+      message: "Thank you — your testimonial has been sent. It will appear on this wall very soon!",
+    };
+    if (rating === 5) {
+      body.google_review = {
+        url: "https://g.page/r/Cely2d4cnJ9TEAI/review",
+        prompt: "It means a lot that it landed a 5 — would you also leave a quick Google review? It helps Brisbane businesses find us.",
+      };
+    }
+    return json(body);
   } catch (err) {
     console.error("testimonial endpoint failure:", err && err.message);
     return json({ success: false, message: "We couldn't send your testimonial just now — please try again later." }, 502);

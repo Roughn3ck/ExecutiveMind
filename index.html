@@ -332,7 +332,11 @@
             </form>
             <div id="testimonial-success" class="hidden">
                 <p class="font-bold text-green-300 text-lg">Thank you.</p>
-                <p class="text-gray-300 mt-1">Your testimonial has been sent. We really appreciate you taking the time — it&rsquo;ll appear on this wall once approved.</p>
+                <p class="text-gray-300 mt-1">Your testimonial has been sent. We really appreciate you taking the time — it&rsquo;ll appear on this wall very soon!</p>
+                <div id="testimonial-google-cta" class="hidden mt-5 p-5 bg-green-500/10 border border-green-400/40 rounded-lg">
+                    <p id="t-google-prompt" class="text-gray-200 text-sm"></p>
+                    <a id="t-google-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 bg-green-400 hover:bg-green-500 text-black font-bold px-5 py-2 rounded shadow transition-colors">Leave a Google review →</a>
+                </div>
             </div>
             <div id="testimonial-error" class="hidden mt-4 p-4 text-center text-white bg-red-500/80 rounded-lg">
                 <p class="font-bold">Couldn&rsquo;t send just now.</p>
@@ -814,7 +818,15 @@
             const result = await response.json();
             if (response.ok && result.success) {
                 tForm.style.display = "none";
-                document.getElementById("testimonial-success").classList.remove("hidden");
+                const sucBox = document.getElementById("testimonial-success");
+                sucBox.classList.remove("hidden");
+                if (result.google_review) {
+                    const cta = document.getElementById("testimonial-google-cta");
+                    document.getElementById("t-google-prompt").textContent = result.google_review.prompt;
+                    const link = document.getElementById("t-google-link");
+                    link.href = result.google_review.url;
+                    cta.classList.remove("hidden");
+                }
             } else {
                 errDetails.textContent = result.message || "An unknown server error occurred.";
                 errBox.classList.remove("hidden");
