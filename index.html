@@ -158,8 +158,12 @@
             mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
             mask-composite: intersect;
         }
-        /* Testimonials — star picker (form POSTs /api/testimonial). Dim idle, green-400 lit. */
-        .t-star { color: rgba(86,233,143,0.22); transition: color .15s ease; letter-spacing: .12em; }
+        /* Testimonials — star picker (form POSTs /api/testimonial). Dim idle, green-400 lit.
+           .t-stars adds outer touch padding so each star's hit area clears the 44pt HIG / 48dp minimum
+           even though the glyph itself is ~30px. The .t-star horizontal padding keeps adjacent
+           tap zones separate so finger taps don't hit the wrong star. */
+        .t-stars { padding: 0 .5rem; }
+        .t-star { color: rgba(86,233,143,0.22); transition: color .15s ease; letter-spacing: .12em; padding: 0 .25rem; }
         .t-star:hover { color: rgba(86,233,143,0.6); }
         .t-star.on { color: #56e98f; }
     </style>
@@ -306,7 +310,7 @@
                 <div class="hidden" aria-hidden="true"><input type="text" name="website" id="t-website" tabindex="-1" autocomplete="off"></div>
                 <div class="mb-4">
                     <label for="t-rating" class="block font-bold text-gray-100 mb-2">How was it?</label>
-                    <div id="t-stars" class="text-3xl leading-none cursor-pointer select-none" role="radiogroup" aria-label="Star rating">
+                    <div id="t-stars" class="t-stars text-3xl leading-none cursor-pointer select-none" role="radiogroup" aria-label="Star rating">
                         <span class="t-star" data-v="1">★</span><span class="t-star" data-v="2">★</span><span class="t-star" data-v="3">★</span><span class="t-star" data-v="4">★</span><span class="t-star" data-v="5">★</span>
                     </div>
                     <input type="hidden" id="t-rating" name="rating" value="0">
