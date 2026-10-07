@@ -58,6 +58,7 @@
             items: [
                 { href: '/#about',         label: 'About',            key: 'about' },
                 { href: '/#services',      label: 'Services',         key: 'services' },
+                { href: '/#testimonials',  label: 'Testimonials',    key: 'testimonials' },
                 { href: '/asset-management', label: 'Asset Management', key: 'asset', cta: 'green' },
                 { href: '/book',           label: 'Book Now',         key: 'book',   cta: 'green' },
                 { href: '/articles',       label: 'Articles',         key: 'articles' },

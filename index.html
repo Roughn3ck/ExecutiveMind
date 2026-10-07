@@ -124,7 +124,7 @@
     </script>
     <link rel="stylesheet" href="/assets/reveal.v2.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/assets/nav.js" defer></script>
+    <script src="/assets/nav.js?v=20261007" defer></script>
     <script src="/assets/reveal.v2.js" defer></script>
     <script src="/assets/footer.v3.js" defer></script>
     <style>
@@ -158,6 +158,10 @@
             mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%), linear-gradient(to right, transparent 0%, #000 4%, #000 96%, transparent 100%);
             mask-composite: intersect;
         }
+        /* Testimonials — star picker (form POSTs /api/testimonial). Dim idle, green-400 lit. */
+        .t-star { color: rgba(86,233,143,0.22); transition: color .15s ease; letter-spacing: .12em; }
+        .t-star:hover { color: rgba(86,233,143,0.6); }
+        .t-star.on { color: #56e98f; }
     </style>
 </head>
 <body class="antialiased">
@@ -279,6 +283,58 @@
             </div>
         </div>
         <p class="text-center mt-10 text-gray-300 italic reveal"><a href="/book" class="text-green-400 hover:text-green-300 font-bold not-italic">Book a conversation</a> to scope any lane — fixed scope, clear deliverables.</p>
+    </div>
+</section>
+
+<!-- Testimonials — §A4b — real-submission model (TCN port 2026-10-07): the form emails admin@
+     via POST /api/testimonial; published quotes are curated by hand, never fabricated. -->
+<section id="testimonials" class="py-16 reveal-section" aria-label="Testimonials">
+    <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-3 reveal">Testimonials</h2>
+        <p class="text-gray-300 mb-2 max-w-3xl reveal">Real words from real engagements. Every testimonial on this wall was written by the person it&rsquo;s attributed to and approved before publishing — no invented quotes, ever.</p>
+        <p class="text-sm text-gray-500 mb-10 max-w-3xl reveal">The wall fills as clients put their names to their words. Have we worked together? Leave yours below.</p>
+
+        <!-- Curated wall — approved, attributed quotes are hand-added here (with the writer's star rating).
+             Deliberately empty until then: nothing auto-publishes; a human reads every submission first. -->
+        <div id="testimonial-wall" class="grid grid-cols-1 md:grid-cols-2 gap-7 reveal-stagger"></div>
+
+        <div id="testimonial-form-box" class="bg-black/60 p-6 md:p-8 rounded-lg shadow border-l-4 border-green-400 max-w-2xl mx-auto reveal reveal-scale">
+            <h3 class="font-bold text-green-300 mb-1 text-lg">Leave a testimonial</h3>
+            <p class="text-sm text-gray-400 mb-5">A line or two helps other businesses know what to expect.</p>
+            <form id="testimonial-form">
+                <!-- honeypot — hidden from humans; bots that fill it are quietly dropped -->
+                <div class="hidden" aria-hidden="true"><input type="text" name="website" id="t-website" tabindex="-1" autocomplete="off"></div>
+                <div class="mb-4">
+                    <label for="t-rating" class="block font-bold text-gray-100 mb-2">How was it?</label>
+                    <div id="t-stars" class="text-3xl leading-none cursor-pointer select-none" role="radiogroup" aria-label="Star rating">
+                        <span class="t-star" data-v="1">★</span><span class="t-star" data-v="2">★</span><span class="t-star" data-v="3">★</span><span class="t-star" data-v="4">★</span><span class="t-star" data-v="5">★</span>
+                    </div>
+                    <input type="hidden" id="t-rating" name="rating" value="0">
+                </div>
+                <div class="mb-4">
+                    <label for="t-name" class="block font-bold text-gray-100 mb-2">Your name</label>
+                    <input type="text" id="t-name" name="name" required maxlength="200" autocomplete="name" class="w-full bg-black/30 border-none rounded px-3 py-2 focus:outline-[#00ccff] text-white" placeholder="e.g. Jane Smith">
+                </div>
+                <div class="mb-4">
+                    <label for="t-role" class="block font-bold text-gray-100 mb-2">Role &amp; company <span class="text-gray-500 font-normal">(optional)</span></label>
+                    <input type="text" id="t-role" name="role" maxlength="200" autocomplete="organization" class="w-full bg-black/30 border-none rounded px-3 py-2 focus:outline-[#00ccff] text-white" placeholder="e.g. Finance Director, Acme Ltd">
+                </div>
+                <div class="mb-5">
+                    <label for="t-text" class="block font-bold text-gray-100 mb-2">Your words</label>
+                    <textarea id="t-text" name="text" rows="4" required maxlength="5000" class="w-full bg-black/30 border-none rounded px-3 py-2 focus:outline-[#00ccff] text-white" placeholder="What did we help with, and what changed?"></textarea>
+                </div>
+                <button type="submit" id="t-submit" class="bg-green-400 hover:bg-green-500 text-black font-bold px-6 py-2 rounded shadow transition-colors w-full">Send your testimonial</button>
+                <p class="text-xs text-gray-500 mt-3 text-center">Sent securely from the form — straight to our inbox, nothing stored on this site.</p>
+            </form>
+            <div id="testimonial-success" class="hidden">
+                <p class="font-bold text-green-300 text-lg">Thank you.</p>
+                <p class="text-gray-300 mt-1">Your testimonial has been sent. We really appreciate you taking the time — it&rsquo;ll appear on this wall once approved.</p>
+            </div>
+            <div id="testimonial-error" class="hidden mt-4 p-4 text-center text-white bg-red-500/80 rounded-lg">
+                <p class="font-bold">Couldn&rsquo;t send just now.</p>
+                <p id="t-error-details" class="text-sm mt-1">Please try again.</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -542,7 +598,7 @@
         </div>
     </section>
 
-<!-- Testimonials removed — fabricated content. Replace with real case studies when available. -->
+<!-- Testimonials now live as a real-submission section after "What we build" (id="testimonials") — hand-curated wall only, no fabricated quotes. -->
 
 <!-- FAQ Section -->
     <section id="faq" class="py-16 reveal-section">
@@ -713,6 +769,62 @@
             submitButton.disabled = false;
             submitButton.textContent = "Send Message";
             submitButton.classList.remove("opacity-50", "cursor-not-allowed");
+        }
+    });
+</script>
+
+<script>
+    // --- TESTIMONIAL FORM SCRIPT — POST /api/testimonial (Pages Function → admin@ inbox) ---
+    const tForm = document.getElementById("testimonial-form");
+    const tStars = document.getElementById("t-stars");
+    const tRating = document.getElementById("t-rating");
+    tStars.addEventListener("click", function (e) {
+        const v = e.target.getAttribute && e.target.getAttribute("data-v");
+        if (!v) return;
+        const rating = parseInt(v, 10);
+        tRating.value = rating;
+        [...tStars.children].forEach((s, i) => s.classList.toggle("on", i < rating));
+    });
+    tForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const btn = document.getElementById("t-submit");
+        const errBox = document.getElementById("testimonial-error");
+        const errDetails = document.getElementById("t-error-details");
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+        btn.classList.add("opacity-50", "cursor-not-allowed");
+        errBox.classList.add("hidden");
+        const payload = {
+            name: document.getElementById("t-name").value.trim(),
+            role: document.getElementById("t-role").value.trim(),
+            rating: tRating.value || "0",
+            text: document.getElementById("t-text").value.trim(),
+            website: document.getElementById("t-website").value,
+        };
+        try {
+            const response = await fetch("/api/testimonial", {
+                method: "POST",
+                body: JSON.stringify(payload),
+                headers: { "Content-Type": "application/json" },
+            });
+            const result = await response.json();
+            if (response.ok && result.success) {
+                tForm.style.display = "none";
+                document.getElementById("testimonial-success").classList.remove("hidden");
+            } else {
+                errDetails.textContent = result.message || "An unknown server error occurred.";
+                errBox.classList.remove("hidden");
+                btn.disabled = false;
+                btn.textContent = "Send your testimonial";
+                btn.classList.remove("opacity-50", "cursor-not-allowed");
+            }
+        } catch (error) {
+            console.error("Network Error:", error);
+            errDetails.textContent = "A network error occurred. Please check your connection.";
+            errBox.classList.remove("hidden");
+            btn.disabled = false;
+            btn.textContent = "Send your testimonial";
+            btn.classList.remove("opacity-50", "cursor-not-allowed");
         }
     });
 </script>
