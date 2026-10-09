@@ -1,3 +1,9 @@
 name = "executivemind-io"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "."
+
+# Durable rate-limit counters for /api/inquiry + /api/testimonial (Garrison
+# review batch 2026-10-09). Keys are SHA-256 hashes, TTL = 1h window.
+[[kv_namespaces]]
+binding = "RATE_KV"
+id = "409151f5d17d4c9f9846f62f24daf072"
