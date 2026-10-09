@@ -169,12 +169,41 @@ async function sha256Hex(text) {
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-// Durable KV layer: fixed-window counter per (scope, IP), keys hold only a
-// SHA-256 hash (no raw PII in the namespace), TTL = the window, refreshed on
-// each hit. Last-write-wins races undercount slightly — deliberate best-effort;
-// the isolate layer still applies underneath. Fails open on any KV error
-// (a KV outage must not take the form down).
-export async function rateLimited(env, scope, ip) {
+// Durable KV layer: fixed-window counter per (scope, IP). Keys are SHA-256
+// hashes — mild obscurity only, NOT PII armor (unsalted IPv4 hashes reverse in
+// minutes on a GPU — Garrison 2026-10-09). What makes the counters safe: the
+// TTL (the throttle forgets), the namespace stays export-free, and the
+// throttle is its only reader. Standing decision N2 (Garrison): no per-IP
+// audit trail, ever; if forensics are genuinely forced, the ceiling is
+// aggregate-only per-scope daily counters, on Kris's explicit word, added
+// forward, never retroactive. Last-write-wins races undercount slightly —
+// deliberate best-effort; the isolate layer still applies underneath. Fails
+// open on any KV error (a KV outage must not take the form down) and fires a
+// bounded aggregate alert so the outage is discovered by a metric, not by
+// 429s going missing.
+const kvAlertAt = new Map(); // scope -> last alert timestamp (1/hr/scope/isolate bound)
+
+function kvAlertEmail(env, scope) {
+  const now = Date.now();
+  if (now - (kvAlertAt.get(scope) || 0) < RATE_WINDOW_MS) return null;
+  kvAlertAt.set(scope, now);
+  const subject = "Website Endpoint Watch — RATE_KV unavailable (rate limit degraded)";
+  const bodyText = [
+    "Automated aggregate watch from the Executive Mind endpoints — no submission data attached.",
+    "",
+    "The KV-backed rate limiter (" + scope + " scope) could not reach the RATE_KV namespace.",
+    "Requests are still accepted; rate limiting has degraded to the per-isolate",
+    "best-effort layer (fail-open by design). At most one alert per hour.",
+    "",
+    "Check Cloudflare KV status and the Pages functions logs for KV read/write errors.",
+    "",
+    "—",
+    "Sent by the KV-error watch in functions/api/_guard.js.",
+  ].join("\n");
+  return smtpSend(env && env.ZOHO_EM_ENDPOINT, subject, bodyText).catch(() => {});
+}
+
+export async function rateLimited(env, scope, ip, ctx) {
   if (isolateRateLimited(scope, ip, Date.now())) return true;
   if (env && env.RATE_KV) {
     try {
@@ -184,6 +213,11 @@ export async function rateLimited(env, scope, ip) {
       await env.RATE_KV.put(key, String(cur + 1), { expirationTtl: RATE_WINDOW_MS / 1000 });
     } catch (_) {
       // KV unavailable — fail open; the isolate layer already counted this hit.
+      // Bounded aggregate alert surfaces the outage in Oyola's inbox scan.
+      if (ctx && typeof ctx.waitUntil === "function") {
+        const alert = kvAlertEmail(env, scope);
+        if (alert) ctx.waitUntil(alert);
+      }
     }
   }
   return false;

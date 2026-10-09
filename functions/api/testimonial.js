@@ -61,7 +61,7 @@ export async function onRequestPost(context) {
     }
 
     const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-    if (await rateLimited(env, SCOPE, ip)) {
+    if (await rateLimited(env, SCOPE, ip, context)) {
       return json({ success: false, message: "Too many submissions from this address in a short time. Please try again later." }, 429, { "Retry-After": "600" });
     }
 

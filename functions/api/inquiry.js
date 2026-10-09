@@ -59,7 +59,7 @@ export async function onRequestPost(context) {
     }
 
     const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-    if (await rateLimited(env, SCOPE, ip)) {
+    if (await rateLimited(env, SCOPE, ip, context)) {
       return json({ success: false, message: "Too many inquiries from this address in a short time. Please email admin@executivemind.io directly." }, 429, { "Retry-After": "600" });
     }
 
