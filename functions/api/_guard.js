@@ -200,7 +200,13 @@ function kvAlertEmail(env, scope) {
     "—",
     "Sent by the KV-error watch in functions/api/_guard.js.",
   ].join("\n");
-  return smtpSend(env && env.ZOHO_EM_ENDPOINT, subject, bodyText).catch(() => {});
+  return smtpSend(env && env.ZOHO_EM_ENDPOINT, subject, bodyText)
+    .then(() => console.log("[KV-WATCH] " + scope + ": alert email dispatched (SMTP accepted)"))
+    .catch((err) => {
+      // [KV-WATCH] marker — the email leg must never fail silently again:
+      // this line is what separates a broken smtpSend from a never-fired catch.
+      console.error("[KV-WATCH] " + scope + ": alert email FAILED — " + (err && err.message ? err.message.slice(0, 140) : "unknown error"));
+    });
 }
 
 export async function rateLimited(env, scope, ip, ctx) {
@@ -213,11 +219,15 @@ export async function rateLimited(env, scope, ip, ctx) {
       await env.RATE_KV.put(key, String(cur + 1), { expirationTtl: RATE_WINDOW_MS / 1000 });
     } catch (_) {
       // KV unavailable — fail open; the isolate layer already counted this hit.
-      // Bounded aggregate alert surfaces the outage in Oyola's inbox scan.
-      if (ctx && typeof ctx.waitUntil === "function") {
-        const alert = kvAlertEmail(env, scope);
-        if (alert) ctx.waitUntil(alert);
-      }
+      // [KV-WATCH] log markers (Garrison 2026-10-09): server-logs only, zero
+      // attacker-visible surface (external breadcrumbs DENIED — rate-limiter
+      // health is defender-only intelligence). The pair discriminates:
+      // catch-marker + no FAILED-marker = email leg fine (alert dispatched);
+      // catch-marker + FAILED = smtpSend broken; no catch-marker at all =
+      // the KV error never happened (propagation lag / stale metadata).
+      const alert = ctx && typeof ctx.waitUntil === "function" ? kvAlertEmail(env, scope) : null;
+      console.error("[KV-WATCH] " + scope + ": KV unavailable — fail-open, alert " + (alert ? "dispatched" : "NOT dispatched"));
+      if (alert) ctx.waitUntil(alert);
     }
   }
   return false;
