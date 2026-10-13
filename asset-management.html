@@ -47,27 +47,10 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Key Manager Agent",
-      "applicationCategory": "SecurityApplication",
-      "operatingSystem": "Any (HTTP server)",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Executive Mind",
-        "url": "https://executivemind.io"
-      },
-      "creator": {
-        "@type": "Person",
-        "name": "Kris Racette",
-        "url": "https://krisracette.me"
-      },
-      "description": "Headless HTTP signing server for AI agents. Encrypted vault with AES-256-GCM + Argon2id. Private keys never leave the process.",
-      "url": "https://github.com/Roughn3ck/key_manager"
+      "@type": "WebPage",
+      "name": "AI Asset Management — Executive Mind",
+      "url": "https://executivemind.io/asset-management",
+      "description": "Autonomous AI agents monitoring, rebalancing, and recovering cross-chain digital assets. Real money, real chains, zero human key exposure."
     }
     </script>
     <link rel="stylesheet" href="/assets/reveal.v2.css">
@@ -115,8 +98,7 @@
         <p class="text-xl md:text-2xl text-green-400 font-mono mb-4">AI-Managed Digital &amp; Traditional Finance</p>
         <p class="text-gray-400 max-w-3xl mx-auto mb-8">Autonomous agents monitoring, rebalancing, and recovering cross-chain assets. Real money. Real chains. Zero human key exposure. This is what AI-managed asset management looks like.</p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="#key-manager" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">Key Manager Agent →</a>
-            <a href="#sentinel" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 text-sm">Argus Sentinel →</a>
+            <a href="#sentinel" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">Argus Sentinel →</a>
         </div>
     </div>
 </section>
@@ -153,7 +135,7 @@
             Executive Mind's asset management infrastructure is not a slide deck. It's live code running on real chains, watching real money, making real decisions. Built by <strong class="text-green-300">Kris Racette</strong> and operated by The Pack 🐺 — our team of autonomous AI agents.
         </p>
         <p class="text-gray-300 mb-6">
-            Three components work together: the <strong class="text-green-400">Key Manager Agent</strong> signs transactions without exposing private keys; <strong class="text-green-400">Argus Sentinel</strong> watches every position in real-time; and our <strong class="text-green-400">multi-agent orchestration</strong> layer coordinates complex cross-chain operations. This is the architecture for AI-managed finance — and it's already proven.
+            <strong class="text-green-400">Argus Sentinel</strong> watches every position in real-time, and our <strong class="text-green-400">multi-agent orchestration</strong> layer coordinates complex cross-chain operations. This is the architecture for AI-managed finance — and it's already proven.
         </p>
         <div class="flex flex-wrap gap-2 mt-6">
             <span class="chain-tag text-green-400">SUI</span>
@@ -162,147 +144,6 @@
             <span class="chain-tag text-green-400">BSC</span>
             <span class="chain-tag text-green-400">Solana</span>
             <span class="chain-tag text-green-400">HyperEVM</span>
-        </div>
-    </div>
-</section>
-
-<!-- Key Manager Agent -->
-<section id="key-manager" class="py-16 border-t border-green-900/30 reveal-section">
-    <div class="max-w-5xl mx-auto px-4">
-        <div class="flex items-center gap-3 mb-6">
-            <div class="text-3xl">🔐</div>
-            <div>
-                <h2 class="text-green-400 font-bold text-2xl md:text-3xl reveal">Key Manager Agent</h2>
-                <p class="text-sm text-gray-400">Agentic Key Signing Infrastructure</p>
-            </div>
-        </div>
-        
-        <p class="text-gray-300 mb-6">
-            This is <strong class="text-green-400">not</strong> the desktop app (that's at <a href="/key-manager" class="text-green-400 underline hover:text-green-300">/key-manager</a>). This is the <strong class="text-green-300">Key Manager Agent</strong> — a headless Python HTTP server that lets AI agents sign and broadcast blockchain transactions without ever touching private keys.
-        </p>
-        
-        <div class="terminal-window mb-8">
-            <div class="terminal-header">key_manager_agent.py — localhost:8842</div>
-            <div class="terminal-body">
-                <p><span class="comment"># Encrypted vault → Argon2id key derivation → AES-256-GCM</span></p>
-                <p><span class="comment"># AI sends JSON command. Agent signs internally. Returns tx hash.</span></p>
-                <p><span class="comment"># Private keys NEVER leave the process.</span></p>
-                <p>&nbsp;</p>
-                <p><span class="highlight">POST /sign_tx</span></p>
-                <p>{</p>
-                <p>&nbsp;&nbsp;"account": "G5",</p>
-                <p>&nbsp;&nbsp;"to": "0xC30362313FBBA5cf9163F0bb16a0e01f01A896ca",</p>
-                <p>&nbsp;&nbsp;"data": "0x01...",</p>
-                <p>&nbsp;&nbsp;"chainId": 42161</p>
-                <p>}</p>
-                <p>&nbsp;</p>
-                <p><span class="success">→ {"status": "signed", "txHash": "0x30de..."}</span></p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="metric-card">
-                <h3 class="font-bold text-green-300 mb-2">25 Accounts</h3>
-                <p class="text-sm text-gray-400">25 named accounts across multiple chains, each with dedicated keypairs and address derivation paths.</p>
-            </div>
-            <div class="metric-card">
-                <h3 class="font-bold text-green-300 mb-2">119 Addresses</h3>
-                <p class="text-sm text-gray-400">Tracked addresses across EVM, Solana, SUI, Bitcoin, and other chains — all from 14 master private keys.</p>
-            </div>
-            <div class="metric-card">
-                <h3 class="font-bold text-green-300 mb-2">AES-256-GCM + Argon2id</h3>
-                <p class="text-sm text-gray-400">Same military-grade encryption as the desktop app. Vault unlocks with password, stays encrypted at rest.</p>
-            </div>
-            <div class="metric-card">
-                <h3 class="font-bold text-green-300 mb-2">Security Model</h3>
-                <p class="text-sm text-gray-400">If AI is compromised, attacker can request signatures but can't extract keys. Keys never leave the agent process.</p>
-            </div>
-        </div>
-
-        <div class="bg-black/60 p-6 rounded-lg border-l-4 border-green-400 mb-6">
-            <h3 class="font-bold text-green-300 mb-2">API Commands</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono mt-3">
-                <div class="text-gray-400"><span class="text-green-400">status</span> — vault lock state</div>
-                <div class="text-gray-400"><span class="text-green-400">list_accounts</span> — all accounts</div>
-                <div class="text-gray-400"><span class="text-green-400">get_address</span> — address for account</div>
-                <div class="text-gray-400"><span class="text-green-400">sign_tx</span> — sign transaction</div>
-                <div class="text-gray-400"><span class="text-green-400">broadcast_tx</span> — sign + broadcast</div>
-                <div class="text-gray-400"><span class="text-green-400">sign_message</span> — sign arbitrary data</div>
-                <div class="text-gray-400"><span class="text-green-400">lock</span> — lock vault immediately</div>
-            </div>
-        </div>
-
-        <!-- How It Fits Together -->
-        <div class="mt-12 mb-8">
-            <h3 class="text-green-400 font-bold text-xl md:text-2xl mb-6">How It Fits Together</h3>
-            <p class="text-gray-300 mb-6">The full stack — designed by <strong class="text-green-300">Kris Racette</strong> and Executive Mind — connects four layers that work together to enable autonomous, AI-managed crypto operations:</p>
-            
-            <div class="space-y-4">
-                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">🖥️</span>
-                        <div>
-                            <h4 class="font-bold text-green-300 mb-1">ColdStack Desktop App (v4.1) — The Vault</h4>
-                            <p class="text-sm text-gray-400">Stores mnemonics, derives addresses via BIP39, and now fetches balances via Go Online mode. Human-facing GUI with AES-256-GCM encryption. The vault file is portable — runs from a USB drive.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">🔌</span>
-                        <div>
-                            <h4 class="font-bold text-green-300 mb-1">Key Manager Agent — The Bridge</h4>
-                            <p class="text-sm text-gray-400">Headless HTTP server on <code class="text-green-300 bg-black/60 px-1 rounded">localhost:8842</code>. AI sends JSON commands, agent signs transactions internally, returns tx hash. Private keys never leave the process — even if the AI is compromised, the attacker can request signatures but cannot extract keys.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">🛡️</span>
-                        <div>
-                            <h4 class="font-bold text-green-300 mb-1">Argus Sentinel — The Monitor</h4>
-                            <p class="text-sm text-gray-400">Watches LP positions in real-time via on-chain oracles (Pyth Hermes + Hyperliquid L1 API). Alerts on near-edge and out-of-range conditions. Runs 60-second polling, posts to Discord, responds to slash commands.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-black/60 p-5 rounded-lg border-l-4 border-green-400">
-                    <div class="flex items-start gap-3">
-                        <span class="text-2xl">🧠</span>
-                        <div>
-                            <h4 class="font-bold text-green-300 mb-1">Multi-Agent Orchestration (OpenClaw) — The Brain</h4>
-                            <p class="text-sm text-gray-400">8 specialized AI agents coordinate cross-chain operations. Kimi (CFO) manages financial strategy, Slater (CTO) handles architecture and code, Garrison secures treasury, Sagan does market intelligence. Each agent has a defined role, model, and channel.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-green-900/20 p-6 rounded-lg border border-green-500/30 mt-6">
-                <p class="text-green-300 font-mono text-sm">
-                    <strong>Together:</strong> AI agents manage real money across real chains 24/7, without human key exposure. Already proven — CCTP USDC recovery executed end-to-end while humans slept. The Key Manager Agent signed every transaction. Private keys never left the agent's encrypted memory. Human reviewed the next morning.
-                </p>
-            </div>
-        </div>
-
-        <!-- Technology Stack -->
-        <div class="mt-8 mb-8 bg-black/60 p-6 rounded-lg border-l-4 border-green-400">
-            <h3 class="font-bold text-green-300 mb-4">Technology Stack</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono">
-                <div class="text-gray-400"><span class="text-green-400">Vault:</span> AES-256-GCM + Argon2id (same standards as password managers)</div>
-                <div class="text-gray-400"><span class="text-green-400">BIP39:</span> Standard HD wallet paths (m/44'/60'/..., m/86'/0'/..., etc.)</div>
-                <div class="text-gray-400"><span class="text-green-400">Balance Engine:</span> Public RPC endpoints (no API keys), 15+ chains</div>
-                <div class="text-gray-400"><span class="text-green-400">Price Feeds:</span> CoinGecko free tier, 60s in-memory cache</div>
-                <div class="text-gray-400"><span class="text-green-400">Signing:</span> Internal keccak256 EVM signing, keys never serialized</div>
-                <div class="text-gray-400"><span class="text-green-400">Transport:</span> HTTP JSON on localhost only (binds to 127.0.0.1)</div>
-            </div>
-        </div>
-
-        <div class="text-center">
-            <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">
-                View Source on GitHub →
-            </a>
         </div>
     </div>
 </section>
@@ -401,10 +242,10 @@
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-green-400 font-bold text-2xl md:text-3xl mb-5 reveal">AI-Managed Digital Assets</h2>
         <p class="text-gray-300 mb-6">
-            The combination of Key Manager Agent + Argus Sentinel + multi-agent orchestration creates something new: <strong class="text-green-300">autonomous agents managing real money across real chains, 24/7, without human key exposure.</strong>
+            The combination of Argus Sentinel + multi-agent orchestration creates something new: <strong class="text-green-300">autonomous agents monitoring real money across real chains, 24/7.</strong>
         </p>
         <p class="text-gray-300 mb-6">
-            This isn't theoretical. Our agents have already executed complex cross-chain operations end-to-end — investigating problems, signing transactions, and broadcasting them to live mainnet — all while humans slept. The Key Manager Agent signed every transaction. The private keys never left the agent's encrypted memory. The human reviewed the next morning.
+            This isn't theoretical. Our agents have already executed complex cross-chain operations end-to-end — investigating problems and broadcasting transactions to live mainnet — all while humans slept. The human reviewed the next morning.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div class="metric-card">
@@ -438,10 +279,7 @@
             Built by <strong class="text-green-300">Kris Racette</strong> and operated by The Pack 🐺 — autonomous AI agents running 24/7 on under $60/month in compute.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://github.com/Roughn3ck/key_manager" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">
-                Key Manager on GitHub →
-            </a>
-            <a href="https://github.com/Roughn3ck/sentinel-stack" target="_blank" rel="noopener" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 text-sm">
+            <a href="https://github.com/Roughn3ck/sentinel-stack" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-2xl border-2 border-green-300 text-sm">
                 Sentinel on GitHub →
             </a>
             <a href="/book" class="inline-block border border-green-500 text-green-400 hover:bg-green-500/10 font-bold py-3 px-6 rounded-lg uppercase tracking-wider transition-all duration-300 text-sm">

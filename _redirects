@@ -19,3 +19,7 @@
 
 # Dead PHP endpoint → Pages Function inquiry endpoint (forms swapped 2026-10-07; POST body preserved)
 /agent/send_form.php /api/inquiry 307
+
+# ColdStack removed 2026-10-13 (security incident) — product no longer available
+/key-manager 410
+/key-manager.html 410

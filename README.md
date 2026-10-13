@@ -85,7 +85,6 @@ Everything the Pack builds is open source. MIT. Documented, reproducible, deploy
 | [aria-seo](https://github.com/Roughn3ck/aria-seo) | SEO audit + site-shaper toolkit |
 | [Armchair](https://github.com/Roughn3ck/Armchair) | Real-time voice-to-text + AI agent for Microsoft Teams |
 | [Cochran-Legal-Council](https://github.com/Roughn3ck/Cochran-Legal-Council) | Listen → Think → Speak. Real-time legal AI for live calls |
-| [key_manager](https://github.com/Roughn3ck/key_manager) | ColdStack — offline crypto key vault, BIP39 derivation |
 | [kimi-coord](https://github.com/Roughn3ck/kimi-coord) | Multi-agent task orchestration patterns |
 | [scout-signal](https://github.com/Roughn3ck/scout-signal) | Market intelligence scanner |
 | [sentinel-stack](https://github.com/Roughn3ck/sentinel-stack) | Observe → Harden → Deploy → Verify IaC |

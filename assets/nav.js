@@ -3,7 +3,7 @@
  *
  * Usage (any page):
  *   <div data-nav-slot
- *        data-nav-flavour="main|coldstack|book|agents"
+ *        data-nav-flavour="main|book|agents"
  *        data-nav-active="home|asset|book|articles|security|key|gym|armchair|agents"></div>
  *   <script src="/assets/nav.js" defer></script>
  *
@@ -65,17 +65,6 @@
                 { href: '/security',       label: 'Security',         key: 'security', cta: 'green' },
                 { href: '/#team',          label: 'The Pack 🐺',      key: 'team' },
                 { href: '/#contact',       label: 'Contact',          key: 'contact' },
-            ],
-        },
-        coldstack: {
-            // ColdStack / open-source product family (Key Manager, Gym Tracker, Armchair)
-            // Active page receives a green highlight; outbound GitHub link gets an arrow.
-            items: [
-                { href: '/',                       label: 'Home',        key: 'home' },
-                { href: '/key-manager',            label: 'ColdStack',   key: 'key',    cta: 'green' },
-                { href: '/gym-tracker',            label: 'Gym Tracker', key: 'gym',    cta: 'green' },
-                { href: '/armchair',               label: 'Armchair',    key: 'armchair', cta: 'green' },
-                { href: 'https://github.com/Roughn3ck', label: 'GitHub →', key: 'github', external: true, cta: 'green' },
             ],
         },
         book: {
