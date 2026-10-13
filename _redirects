@@ -21,5 +21,5 @@
 /agent/send_form.php /api/inquiry 307
 
 # ColdStack removed 2026-10-13 (security incident) — product no longer available
-/key-manager /gone.html 410
-/key-manager.html /gone.html 410
+/key-manager /gone 410
+/key-manager.html /gone 410
