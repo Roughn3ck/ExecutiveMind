@@ -23,3 +23,6 @@
 # ColdStack removed 2026-10-13 (security incident) — product no longer available
 /key-manager /gone.html 410
 /key-manager.html /gone.html 410
+
+# LLM Pricing — November 2026 edition
+/references/llm-token-pricing-november-2026.html /references/llm-token-pricing-november-2026 301

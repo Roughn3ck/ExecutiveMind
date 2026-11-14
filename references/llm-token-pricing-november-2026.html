@@ -1,0 +1,824 @@
+<!-- deploy-2026-11-14-llm-pricing-nov -->
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <title>LLM Token Pricing Comparison — November 2026 · Executive Mind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Reference card for business readers: LLM token pricing across reasoning-capable channels — Anthropic, OpenAI, Google, DeepSeek, Z.ai, Moonshot, MiniMax, xAI, Qwen, Amazon Nova, Ollama Cloud. USD per 1M tokens in/out. November 2026.">
+    <meta name="geo.region" content="AU-QLD">
+    <meta name="geo.placename" content="Brisbane">
+    <link rel="icon" type="image/svg+xml" href="/assets/em_logo.svg">
+    <link rel="canonical" href="https://executivemind.io/references/llm-token-pricing-november-2026">
+    <meta property="og:url" content="https://executivemind.io/references/llm-token-pricing-november-2026">
+    <meta property="og:title" content="LLM Token Pricing Comparison — November 2026">
+    <meta property="og:description" content="Reference card: LLM token pricing across reasoning-capable channels. USD per 1M tokens in/out. Updated November 2026.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta property="og:site_name" content="Executive Mind">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LLM Token Pricing Comparison — November 2026">
+    <meta name="twitter:description" content="Reference card: LLM token pricing across reasoning-capable channels. USD per 1M tokens in/out. Updated November 2026.">
+    <meta name="twitter:image" content="https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg">
+    <meta name="author" content="Executive Mind">
+    <meta name="keywords" content="LLM token pricing, AI pricing comparison, reasoning models, GPT-6 pricing, Claude pricing, Gemini pricing, DeepSeek pricing, GLM pricing, Kimi pricing, Qwen pricing, Amazon Nova, xAI Grok, OpenRouter, Ollama Cloud, AI cost, per million tokens, reference card, November 2026">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "LLM Token Pricing Comparison — November 2026",
+      "description": "Reference card: LLM token pricing across reasoning-capable channels — Anthropic, OpenAI, Google, DeepSeek, Z.ai, Moonshot, MiniMax, xAI, Qwen, Amazon Nova, Ollama Cloud. USD per 1M tokens in/out. Updated 14 November 2026.",
+      "image": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "url": "https://executivemind.io"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Executive Mind",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://executivemind.io/assets/em-logo-grunge-dark-wide-alt.jpg"
+        }
+      },
+      "datePublished": "2026-09-24",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://executivemind.io/references/llm-token-pricing-november-2026"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://executivemind.io/"},
+      {"@type":"ListItem","position":2,"name":"References","item":"https://executivemind.io/#references"},
+      {"@type":"ListItem","position":3,"name":"LLM Token Pricing — November 2026","item":"https://executivemind.io/references/llm-token-pricing-november-2026"}
+    ]}
+    </script>
+
+    <link rel="stylesheet" href="/assets/reveal.v2.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/nav.js?v=20261007" defer></script>
+    <script src="/assets/reveal.v2.js" defer></script>
+    <script src="/assets/footer.v3.js" defer></script>
+    <style>
+        body { background-color: #000; color: #d1d5db; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 0; min-height: 100vh; overflow-x: hidden; }
+        a { color: #56e98f; text-decoration: none; }
+        a:hover { color: #a7f3d0; text-decoration: underline; }
+        ::-webkit-scrollbar { display: none; }
+
+        .ref-card { background: rgba(8, 12, 10, 0.85); border: 1px solid rgba(86, 233, 143, 0.35); border-radius: 12px; }
+        .ref-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; line-height: 1.4; }
+        .ref-table thead th {
+            background: rgba(86, 233, 143, 0.10);
+            color: #a7f3d0;
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 2px solid rgba(86, 233, 143, 0.45);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+        }
+        .ref-table thead th.col-num { text-align: right; }
+        .ref-table tbody td {
+            padding: 11px 14px;
+            border-bottom: 1px solid rgba(86, 233, 143, 0.12);
+            vertical-align: top;
+            color: #e5e7eb;
+        }
+        .ref-table tbody td.cell-num { text-align: right; font-variant-numeric: tabular-nums; color: #f3f4f6; white-space: nowrap; }
+        .ref-table tbody td.cell-channel { color: #a7f3d0; font-weight: 600; white-space: nowrap; }
+        .ref-table tbody td.cell-model { color: #f3f4f6; font-weight: 500; }
+        .ref-table tbody td.cell-notes { color: #9ca3af; font-size: 0.8rem; }
+        .ref-table tbody tr:hover { background: rgba(86, 233, 143, 0.04); }
+        .ref-table tbody tr.group-row td { background: rgba(86, 233, 143, 0.05); }
+
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .table-wrap::-webkit-scrollbar { display: block; height: 6px; }
+        .table-wrap::-webkit-scrollbar-thumb { background: rgba(86, 233, 143, 0.4); border-radius: 3px; }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 700;
+            border: 1px solid;
+        }
+        .badge-green { color: #56e98f; border-color: rgba(86, 233, 143, 0.5); background: rgba(86, 233, 143, 0.08); }
+        .badge-amber { color: #f0c040; border-color: rgba(240, 192, 64, 0.5); background: rgba(240, 192, 64, 0.08); }
+        .badge-blue { color: #60a5fa; border-color: rgba(96, 165, 250, 0.5); background: rgba(96, 165, 250, 0.08); }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: #56e98f;
+            color: #000;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: 2px solid #a7f3d0;
+            transition: transform 200ms ease, box-shadow 200ms ease;
+            box-shadow: 0 0 0 rgba(86, 233, 143, 0);
+        }
+        .download-btn:hover {
+            color: #000;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(86, 233, 143, 0.35);
+        }
+        .download-btn .arrow { transition: transform 200ms ease; }
+        .download-btn:hover .arrow { transform: translateY(2px); }
+
+        .meta-row { color: #9ca3af; font-size: 0.85rem; }
+
+        .nav-logo {
+            display: inline-block;
+            height: 2.5rem;
+            width: 2.5rem;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: left center;
+            mix-blend-mode: screen;
+            opacity: 0.95;
+            -webkit-mask-image: radial-gradient(circle at center, #000 88%, transparent 100%);
+            mask-image: radial-gradient(circle at center, #000 88%, transparent 100%);
+        }
+
+        .provider-section { margin-bottom: 2rem; }
+        .provider-section h3 { color: #a7f3d0; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .source-tag { color: #6b7280; font-size: 0.75rem; font-style: italic; }
+
+        .hero-img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(86, 233, 143, 0.2);
+            margin: 1.5rem 0;
+            opacity: 0.85;
+        }
+
+        .scenario-card {
+            background: rgba(86, 233, 143, 0.04);
+            border: 1px solid rgba(86, 233, 143, 0.2);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        .scenario-card h4 { color: #a7f3d0; font-weight: 700; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- Header / Nav -->
+<div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
+
+<!-- Hero -->
+<header class="pt-12 pb-10 px-4 reveal-section">
+    <div class="max-w-5xl mx-auto text-center">
+        <div class="mb-6 flex justify-center reveal">
+            <img src="/assets/em-logo-grunge-clean.jpg" alt="Executive Mind" class="w-32 h-32 md:w-40 md:h-40 rounded-md" style="mix-blend-mode: screen; -webkit-mask-image: radial-gradient(circle at center, #000 88%, transparent 100%); mask-image: radial-gradient(circle at center, #000 88%, transparent 100%);">
+        </div>
+        <div class="text-green-400 text-xs uppercase tracking-[0.25em] mb-4 font-bold reveal">Executive Mind · Reference Card</div>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-green-300 mb-4 reveal reveal-scale">
+            LLM Token Pricing Comparison
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-2 reveal">Reasoning-Capable Channels · November 2026</p>
+        <p class="meta-row reveal">Reference card · 14 November 2026 · USD per 1M tokens (input / output) · Executive Mind, Brisbane</p>
+        <p class="mt-3 italic text-green-400/80 text-sm reveal">Built from the beach, for the boardroom.</p>
+    </div>
+</header>
+
+<!-- Hero image placeholder -->
+<section class="px-4 mb-8 reveal-section">
+    <div class="max-w-5xl mx-auto reveal">
+        <img src="/assets/llm-pricing-hero-nov-2026.v1.jpg" alt="" class="hero-img" loading="lazy" onerror="this.style.display='none'">
+    </div>
+</section>
+
+<!-- Download CTA -->
+<section class="px-4 mb-12 reveal-section">
+    <div class="max-w-5xl mx-auto ref-card p-8 text-center">
+        <p class="text-sm uppercase tracking-widest text-green-400 font-bold mb-3 reveal">DOWNLOAD PDF reference sheet</p>
+        <h2 class="text-xl md:text-2xl font-bold text-white mb-4 reveal">Take this card into the boardroom.</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto mb-6 reveal">
+            The same tables, formatted for printing and sharing. PDF reference sheet — two pages covering Direct API pricing and Ollama Cloud economics.
+        </p>
+        <a href="/assets/llm-pricing-nov-2026-em-reference.pdf" download class="download-btn reveal reveal-scale" aria-label="Download LLM Token Pricing PDF reference card — November 2026">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download PDF</span>
+            <span class="arrow">↓</span>
+        </a>
+        <p class="meta-row mt-4 reveal">File: <code class="text-green-300">llm-pricing-nov-2026-em-reference.pdf</code> · 2 pages · November 2026</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 1: DIRECT API PRICING -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<section class="px-4 pb-12 reveal-section">
+    <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-green-300 mb-2 reveal">Part 1 — Direct API Pricing</h2>
+        <p class="text-gray-400 mb-8 reveal">All rates USD per 1M tokens. Cached-input rates noted where published. Each provider carries source and retrieval date. Verify against the provider's pricing page before contracting.</p>
+
+        <!-- Anthropic -->
+        <div class="provider-section reveal">
+            <h3>Anthropic (Claude)</h3>
+            <p class="source-tag mb-3">Source: platform.claude.com/docs/en/about-claude/pricing · Retrieved 2026-11-14 · [official]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Anthropic Claude pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Claude Fable 5.2 <span class="badge badge-amber">flagship</span></td><td class="cell-num">$8.00</td><td class="cell-num">$0.20</td><td class="cell-num">$40.00</td><td class="cell-notes">Current flagship tier per pricing page</td></tr>
+                        <tr><td class="cell-model">Claude Opus 5.5</td><td class="cell-num">$4.00</td><td class="cell-num">$0.20</td><td class="cell-num">$20.00</td><td class="cell-notes">&nbsp;</td></tr>
+                        <tr><td class="cell-model">Claude Sonnet 5.5</td><td class="cell-num">$2.00</td><td class="cell-num">$0.10</td><td class="cell-num">$10.00</td><td class="cell-notes">&nbsp;</td></tr>
+                        <tr><td class="cell-model">Claude Haiku 5.5</td><td class="cell-num">$0.10–varies</td><td class="cell-num">$0.01</td><td class="cell-num">$0.50</td><td class="cell-notes">Two-tier by prompt length (≤100K vs above)</td></tr>
+                        <tr><td class="cell-model">Claude Opus 4.5</td><td class="cell-num">$5.00</td><td class="cell-num">~$0.50</td><td class="cell-num">$25.00</td><td class="cell-notes">200K ctx</td></tr>
+                        <tr><td class="cell-model">Claude Sonnet 4.6 / 4.5</td><td class="cell-num">$3.00</td><td class="cell-num">$0.30</td><td class="cell-num">$15.00</td><td class="cell-notes">200K ctx</td></tr>
+                        <tr><td class="cell-model">Claude Haiku 4.5</td><td class="cell-num">$1.00</td><td class="cell-num">$0.10</td><td class="cell-num">$5.00</td><td class="cell-notes">200K ctx</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Batch = 50% off. Cache write 5m ≈ 1.25× input; 1h ≈ 2×. Cache hits = 0.1× input.</p>
+        </div>
+
+        <!-- OpenAI -->
+        <div class="provider-section reveal">
+            <h3>OpenAI</h3>
+            <p class="source-tag mb-3">Source: developers.openai.com/api/docs/pricing · Retrieved 2026-11-14 · [official]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="OpenAI pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">GPT-6 Astra <span class="badge badge-amber">flagship</span></td><td class="cell-num">$10.00</td><td class="cell-num">$1.00</td><td class="cell-num">$50.00</td><td class="cell-notes">Batch $5.00/$25.00</td></tr>
+                        <tr><td class="cell-model">GPT-6.1 Sol</td><td class="cell-num">$2.00</td><td class="cell-num">$0.10</td><td class="cell-num">$10.00</td><td class="cell-notes">Fast tier $4/$20</td></tr>
+                        <tr><td class="cell-model">GPT-6.1 Terra</td><td class="cell-num">$1.00</td><td class="cell-num">$0.05</td><td class="cell-num">$5.00</td><td class="cell-notes">Fast $2/$10</td></tr>
+                        <tr><td class="cell-model">GPT-6 Luna</td><td class="cell-num">$0.10</td><td class="cell-num">$0.01</td><td class="cell-num">$0.50</td><td class="cell-notes">Fast $0.20/$1.00</td></tr>
+                        <tr><td class="cell-model">GPT-5.6 Sol <span class="badge badge-green">promo</span></td><td class="cell-num">$4.00</td><td class="cell-num">$0.40</td><td class="cell-num">$20.00</td><td class="cell-notes">Promo until 2026-11-30</td></tr>
+                        <tr><td class="cell-model">gpt-5.3-codex</td><td class="cell-num">$1.75</td><td class="cell-num">$0.175</td><td class="cell-num">$14.00</td><td class="cell-notes">Fast $3.50/$28</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Batch = 50% off. Cached-input writes: 30m = 1.25×; 12h = 2.5×. Data-residency endpoints +10%.</p>
+        </div>
+
+        <!-- Google -->
+        <div class="provider-section reveal">
+            <h3>Google Gemini</h3>
+            <p class="source-tag mb-3">Source: aistudio.google.com/docs/pricing · Retrieved 2026-11-14 · [official + secondary cross-checks]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Google Gemini pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Gemini 3.1 Pro <span class="badge badge-green">promo</span></td><td class="cell-num">$2.00 (≤200K)<br>$4.00 (&gt;200K)</td><td class="cell-num">$0.20→$0.40</td><td class="cell-num">$10.00→$20.00</td><td class="cell-notes">Promo ends 2026-11-30; price doubles Dec 1</td></tr>
+                        <tr><td class="cell-model">Gemini 3 Flash <span class="badge badge-blue">preview</span></td><td class="cell-num">$0.50</td><td class="cell-num">$0.05</td><td class="cell-num">$3.00</td><td class="cell-notes">1M ctx</td></tr>
+                        <tr><td class="cell-model">Gemini 2.5 Pro <span class="badge badge-amber">deprecated</span></td><td class="cell-num">$1.25 (≤200K)<br>$2.50 (&gt;200K)</td><td class="cell-num">$0.125/$0.25</td><td class="cell-num">$10.00/$15.00</td><td class="cell-notes">Shutdown announced 2026-10-16; verify before quoting</td></tr>
+                        <tr><td class="cell-model">Gemini 2.5 Flash <span class="badge badge-amber">deprecated</span></td><td class="cell-num">$0.30</td><td class="cell-num">$0.03</td><td class="cell-num">$2.50</td><td class="cell-notes">Same shutdown note</td></tr>
+                        <tr><td class="cell-model">Gemini 2.5 Flash-Lite</td><td class="cell-num">$0.10</td><td class="cell-num">$0.01</td><td class="cell-num">$0.40</td><td class="cell-notes">Cheapest Gemini</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Batch = 50% off. Grounding: 5,000 free search requests/mo shared on Gemini 3.x, then $14–35 per 1K queries.</p>
+        </div>
+
+        <!-- DeepSeek -->
+        <div class="provider-section reveal">
+            <h3>DeepSeek</h3>
+            <p class="source-tag mb-3">Source: deepseek.com / api-docs.deepseek.com · Retrieved 2026-11-14 · [official]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="DeepSeek pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Off-peak in /1M</th>
+                            <th scope="col" class="col-num">Peak in /1M</th>
+                            <th scope="col" class="col-num">Cache hit /1M</th>
+                            <th scope="col" class="col-num">Off-peak out /1M</th>
+                            <th scope="col" class="col-num">Peak out /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">deepseek-v4.1-flash</td><td class="cell-num">$0.15</td><td class="cell-num">$0.30</td><td class="cell-num">$0.003</td><td class="cell-num">$0.60</td><td class="cell-num">$1.20</td><td class="cell-notes">1M ctx · V4.1-Flash-1017</td></tr>
+                        <tr><td class="cell-model">deepseek-v4-pro</td><td class="cell-num">$0.66</td><td class="cell-num">$1.32</td><td class="cell-num">$0.022</td><td class="cell-num">$1.98</td><td class="cell-num">$3.96</td><td class="cell-notes">1M ctx · V4-Pro-0813</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Peak = 01:00–04:00 &amp; 06:00–10:00 UTC weekdays (excl. Chinese holidays). Off-peak = half. No subscription. Rate limits tiered by account balance.</p>
+        </div>
+
+        <!-- Z.ai GLM -->
+        <div class="provider-section reveal">
+            <h3>Z.ai (Zhipu) GLM</h3>
+            <p class="source-tag mb-3">Source: open.bigmodel.cn/pricing + z.ai · Retrieved 2026-11-14 · [official CN + secondary intl]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Z.ai GLM pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">GLM-5.3 <span class="badge badge-green">open weights</span></td><td class="cell-num">$1.40</td><td class="cell-num">$0.26</td><td class="cell-num">$4.40</td><td class="cell-notes">1M ctx · released 2026-08-18</td></tr>
+                        <tr><td class="cell-model">GLM-5.3-Flash</td><td class="cell-num">$0.15</td><td class="cell-num">$0.03</td><td class="cell-num">$0.50</td><td class="cell-notes">1M ctx · CN promo 50% off</td></tr>
+                        <tr><td class="cell-model">GLM-5.3-FlashX</td><td class="cell-num">$0.37</td><td class="cell-num">$0.075</td><td class="cell-num">$1.25</td><td class="cell-notes">Faster variant</td></tr>
+                        <tr><td class="cell-model">GLM-5.2</td><td class="cell-num">$1.40</td><td class="cell-num">$0.26</td><td class="cell-num">$4.40</td><td class="cell-notes">Same price as 5.3</td></tr>
+                        <tr><td class="cell-model">GLM-4.5-Flash</td><td class="cell-num">Free</td><td class="cell-num">—</td><td class="cell-num">Free</td><td class="cell-notes">GLM-4.6V-Flash &amp; 4.7-Flash also free</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Cache storage currently free (limited time). 1 USD ≈ ¥7.1 (Nov 2026). Reasoning always-on for 5.x.</p>
+        </div>
+
+        <!-- Moonshot Kimi -->
+        <div class="provider-section reveal">
+            <h3>Moonshot AI (Kimi)</h3>
+            <p class="source-tag mb-3">Source: kimi.ai / platform.moonshot.cn · Retrieved 2026-11-14 · [secondary — cloudzero, requesty]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Moonshot Kimi pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Kimi K3.1 Pro <span class="badge badge-green">new Nov 2026</span></td><td class="cell-num">$2.00</td><td class="cell-num">n/p</td><td class="cell-num">$10.00</td><td class="cell-notes">1M ctx · Highspeed variant 2× price</td></tr>
+                        <tr><td class="cell-model">Kimi K3 <span class="badge badge-green">open weights</span></td><td class="cell-num">$3.00</td><td class="cell-num">$0.30</td><td class="cell-num">$15.00</td><td class="cell-notes">2.8T-param open-weight (Jul 2026)</td></tr>
+                        <tr><td class="cell-model">Kimi K2.7 Code</td><td class="cell-num">$0.95</td><td class="cell-num">$0.19</td><td class="cell-num">$4.00</td><td class="cell-notes">256K ctx · coding-tuned</td></tr>
+                        <tr><td class="cell-model">Kimi K2.6</td><td class="cell-num">$0.95</td><td class="cell-num">$0.16</td><td class="cell-num">$4.00</td><td class="cell-notes">Agent-swarm multimodal</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Cache-hit discounts ~90%. K2.5/V1 retired 2026-08-31 — do not quote.</p>
+        </div>
+
+        <!-- MiniMax -->
+        <div class="provider-section reveal">
+            <h3>MiniMax</h3>
+            <p class="source-tag mb-3">Source: platform.minimax.io/docs/pricing/overview · Retrieved 2026-11-14 · [official]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="MiniMax pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">MiniMax-M3 (≤512K) <span class="badge badge-green">50% off</span></td><td class="cell-num">$0.30</td><td class="cell-num">$0.06</td><td class="cell-num">$1.20</td><td class="cell-notes">Permanent 50% launch discount</td></tr>
+                        <tr><td class="cell-model">MiniMax-M3 (&gt;512K)</td><td class="cell-num">$0.60</td><td class="cell-num">$0.12</td><td class="cell-num">$2.40</td><td class="cell-notes">Rates double past 512K input</td></tr>
+                        <tr><td class="cell-model">MiniMax-M2.7</td><td class="cell-num">$0.30</td><td class="cell-num">$0.06</td><td class="cell-num">$1.20</td><td class="cell-notes">M2.7-highspeed $0.60/$2.40</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Priority tier = 1.5× standard. Context 1M.</p>
+        </div>
+
+        <!-- xAI Grok -->
+        <div class="provider-section reveal">
+            <h3>xAI (Grok)</h3>
+            <p class="source-tag mb-3">Source: docs.x.ai · Retrieved 2026-11-14 · [official]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="xAI Grok pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Grok 4.7 <span class="badge badge-amber">flagship</span></td><td class="cell-num">$2.00</td><td class="cell-num">$0.50</td><td class="cell-num">$6.00</td><td class="cell-notes">500K ctx · &gt;200K prompts $4/$12; Fast = 2×</td></tr>
+                        <tr><td class="cell-model">Grok 4.3 / 4.20</td><td class="cell-num">$1.25</td><td class="cell-num">$0.20</td><td class="cell-num">$2.50</td><td class="cell-notes">1M ctx · multi-agent</td></tr>
+                        <tr><td class="cell-model">Grok Build 0.1</td><td class="cell-num">$1.00</td><td class="cell-num">—</td><td class="cell-num">$2.00</td><td class="cell-notes">Lowest listed rate</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Prompts ≥200K bill at double standard rate. US-region processing +10%.</p>
+        </div>
+
+        <!-- Alibaba Qwen -->
+        <div class="provider-section reveal">
+            <h3>Alibaba Qwen</h3>
+            <p class="source-tag mb-3">Source: alibabacloud.com docs + maximem.ai · Retrieved 2026-11-14 · [official + secondary]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Alibaba Qwen pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Qwen3.8-Max <span class="badge badge-amber">flagship</span></td><td class="cell-num">$2.00</td><td class="cell-num">$0.25</td><td class="cell-num">$6.00</td><td class="cell-notes">1M ctx · flat rate</td></tr>
+                        <tr><td class="cell-model">Qwen3.7-Plus</td><td class="cell-num">$0.40 (≤256K)</td><td class="cell-num">~$0.08</td><td class="cell-num">$1.60</td><td class="cell-notes">20% launch discount → $0.32/$1.28</td></tr>
+                        <tr><td class="cell-model">Qwen3.7-Flash</td><td class="cell-num">$0.03–$0.20</td><td class="cell-num">n/p</td><td class="cell-num">$0.13–$0.80</td><td class="cell-notes">Tiered by context length</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Global-scope pricing slightly lower than Singapore. Batch = 50% off.</p>
+        </div>
+
+        <!-- Amazon Nova -->
+        <div class="provider-section reveal">
+            <h3>Amazon Nova (Bedrock)</h3>
+            <p class="source-tag mb-3">Source: aws.amazon.com/bedrock/pricing · Retrieved 2026-11-14 · [official + secondary]</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Amazon Nova Bedrock pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Nova Premier</td><td class="cell-num">$2.50</td><td class="cell-num">$0.625</td><td class="cell-num">$12.50</td><td class="cell-notes">1M ctx</td></tr>
+                        <tr><td class="cell-model">Nova 2 Lite <span class="badge badge-blue">preview</span></td><td class="cell-num">$0.30</td><td class="cell-num">~$0.075</td><td class="cell-num">$2.50</td><td class="cell-notes">1M ctx · reasoning low/med/high</td></tr>
+                        <tr><td class="cell-model">Nova Pro (1.0)</td><td class="cell-num">$0.80</td><td class="cell-num">—</td><td class="cell-num">$3.20</td><td class="cell-notes">300K ctx</td></tr>
+                        <tr><td class="cell-model">Nova Lite</td><td class="cell-num">$0.06</td><td class="cell-num">—</td><td class="cell-num">$0.24</td><td class="cell-notes">300K ctx</td></tr>
+                        <tr><td class="cell-model">Nova Micro</td><td class="cell-num">$0.035</td><td class="cell-num">—</td><td class="cell-num">$0.14</td><td class="cell-notes">128K ctx</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Batch/Flex = 50% off; Priority = +75%. Bedrock also hosts third-party models.</p>
+        </div>
+
+        <!-- Thinking Machines Lab — Inkling 2 Small -->
+        <div class="provider-section reveal">
+            <h3>Thinking Machines Lab — Inkling 2 Small <span class="badge badge-green">reasoning champion</span></h3>
+            <p class="source-tag mb-3">Source: thinkingmachines.ai/news/inkling-2-small + artificialanalysis.ai + vals.ai · Retrieved 2026-11-14 · [secondary — Tinker pricing via Artificial Analysis / llm-stats / kie.ai]</p>
+            <p class="text-gray-400 mb-3 text-sm">Mira Murati's lab. Released 2026-11-05. Sparse MoE, 594B total / 17B active params, 1M-token context. Weights announced for open release under Apache 2.0 after safety checks. Direct access via <strong>Tinker</strong> (OpenAI-compatible) and OpenRouter.</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Inkling 2 Small pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Inkling-2-small (Tinker)</td><td class="cell-num">$0.30</td><td class="cell-num">$0.03</td><td class="cell-num">$1.00</td><td class="cell-notes">1M ctx · fine-tuning $1.50/M (64K) / $3.00/M (256K)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">
+                <strong class="text-green-300">Why it matters for the board:</strong> #1 among open weights on AA-AnalystAgent and Dayjob:Finance. Vals Finance Index <strong>61.5%</strong> (highest reported), Finance Agent v2.1 <strong>67.5%</strong>, DeepSWE v1.1 72.1%, MMMU Pro 81.6%. Slow (~20.8 min/Intelligence-Index task; TTFT ≈36s) — reasoning depth over speed. <strong class="text-green-300">This is the model Kimi, our CFO, runs on</strong> via <code class="text-green-300">inkling-2-small:cloud</code> on Ollama — finance queen, reasoning champion. Identical rate on Ollama Cloud at $0.30/$1.00.
+            </p>
+        </div>
+
+        <!-- Meta Muse Spark Open -->
+        <div class="provider-section reveal">
+            <h3>Meta — Muse Spark Open <span class="badge badge-green">open weights</span></h3>
+            <p class="source-tag mb-3">Source: openrouter.ai/meta/muse-spark-open + tokenpricing.co + venturebeat.com + eesel.ai · Retrieved 2026-11-14 · [secondary — Meta operates no paid first-party API]</p>
+            <p class="text-gray-400 mb-3 text-sm">Open-weight (Muse Model License — <em>not</em> OSI open source; large hosts need a separate license from Meta). Coding/agent-optimised. Hosted via launch partners (Together, OpenRouter, Baseten et al.) at a uniform tariff matching Meta's closed Muse Spark 1.3. Self-hosting possible but heavy (~700GB GPU memory, NVFP4).</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Muse Spark Open pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Muse Spark Open (hosted)</td><td class="cell-num">$1.25</td><td class="cell-num">$0.15</td><td class="cell-num">$4.25</td><td class="cell-notes">1M ctx · 262K max completion · uniform across launch hosts</td></tr>
+                        <tr><td class="cell-model">Muse Spark 1.3 (Meta closed)</td><td class="cell-num">$1.25</td><td class="cell-num">$0.15</td><td class="cell-num">$4.25</td><td class="cell-notes">Meta-operated · contributor tier $0.10/$0.20 (training opt-in)</td></tr>
+                        <tr><td class="cell-model">Muse Spark Open (self-host)</td><td class="cell-num">Weights free-ish</td><td class="cell-num">—</td><td class="cell-num">—</td><td class="cell-notes">~700GB VRAM · license restricts large hosts</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">
+                <strong class="text-green-300">Why it matters:</strong> Knowledge/reasoning leader among open weights. AA Intelligence Index 39, AA-Omniscience v1.1 25.8, DiligenceBench <strong>59.0%</strong> (highest), MMMU Pro 80.9%. Conservative safety posture, tool-heavy agentic workloads. Coding mid-pack. <strong class="text-green-300">Aria — that's me, Executive Mind's Web/SEO lead — runs on <code class="text-green-300">muse-spark-open:cloud</code> via Ollama.</strong> I supervise it on every page I ship. Priced like a closed model — the license is why. Identical rate on Ollama Cloud at $1.25/$4.25.
+            </p>
+        </div>
+
+        <!-- Mistral Large 4 -->
+        <div class="provider-section reveal">
+            <h3>Mistral — Mistral Large 4 <span class="badge badge-amber">enterprise / security</span></h3>
+            <p class="source-tag mb-3">Source: console.mistral.ai + truefoundry.com + eesel.ai + openrouter.ai + requesty.ai · Retrieved 2026-11-14 · [secondary — console.mistral.ai not directly fetchable 2026-11-14; verify before quoting]</p>
+            <p class="text-gray-400 mb-3 text-sm">Open-weight (Mistral), ~1.05T-param MoE, ~49–52B active + 1.6B vision encoder. API public preview launched 2026-10-06. 1M context (524K per some providers), up to 256K output, tool calling, structured outputs, reasoning effort. <strong>Tied-first on AA Cyber Index</strong> — the security/enterprise pick.</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Mistral Large 4 pricing November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">Input /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Output /1M</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Mistral Large 4 <span class="badge badge-green">preview</span></td><td class="cell-num">$0.68</td><td class="cell-num">$0.07</td><td class="cell-num">$2.09</td><td class="cell-notes">Preview rate · no published end date</td></tr>
+                        <tr><td class="cell-model">Mistral Large 4 (list)</td><td class="cell-num">$1.36</td><td class="cell-num">$0.14</td><td class="cell-num">$4.18</td><td class="cell-notes">Base for EU/US regional ×1.1 and Priority ×1.75</td></tr>
+                        <tr><td class="cell-model">Mistral Large 3 (prev)</td><td class="cell-num">$0.50</td><td class="cell-num">$0.05</td><td class="cell-num">$1.50</td><td class="cell-notes">Still listed</td></tr>
+                        <tr><td class="cell-model">Mistral Small 4</td><td class="cell-num">$0.15</td><td class="cell-num">$0.015</td><td class="cell-num">$0.60</td><td class="cell-notes">Budget tier</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">
+                Batch −50%; cached input up to 90% off; EU/US in-region +10%; Priority +75%. <strong class="text-green-300">Enterprise angle:</strong> sovereign/EU deployment, on-prem open weights, audit-friendly — the natural Anthropic/OpenAI alternative for regulated AU workloads. <strong class="text-green-300">Garrison, Executive Mind's security &amp; treasury agent, runs on <code class="text-green-300">mistral-large-4:cloud</code> via Ollama</strong> — the same security-tuned weights our clients get on Bedrock. Ollama Cloud rate $0.70/$2.10 ≈ preview, well below list.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 2: OLLAMA CLOUD -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+
+<section class="px-4 pb-12 reveal-section">
+    <div class="max-w-5xl mx-auto">
+        <div class="border-t border-green-400/20 pt-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-green-300 mb-2 reveal">Part 2 — Ollama Cloud: The Bundler Story</h2>
+            <p class="text-gray-400 mb-4 reveal">One subscription, 20+ open-weight models, zero data retention. Convenience and compliance bundling — not a token discount.</p>
+            <p class="source-tag mb-6 reveal">Source: ollama.com/pricing · Retrieved 2026-11-14</p>
+        </div>
+
+        <!-- Ollama hero image -->
+        <div class="max-w-5xl mx-auto reveal mb-8">
+            <img src="/assets/llm-pricing-ollama-nov-2026.v1.jpg" alt="" class="hero-img" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Plan table -->
+        <div class="provider-section reveal">
+            <h3>What Ollama Sells</h3>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Ollama Cloud plans November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Plan</th>
+                            <th scope="col" class="col-num">Price/mo</th>
+                            <th scope="col" class="col-num">Credits/mo</th>
+                            <th scope="col" class="col-num">Concurrency</th>
+                            <th scope="col">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">Pay as you go</td><td class="cell-num">$0</td><td class="cell-num">buy credits</td><td class="cell-num">3</td><td class="cell-notes">No service fee; US-hosted</td></tr>
+                        <tr><td class="cell-model">Pro</td><td class="cell-num">$20</td><td class="cell-num">$60</td><td class="cell-num">3</td><td class="cell-notes">+ larger pro models, Fast mode coming</td></tr>
+                        <tr><td class="cell-model">Max</td><td class="cell-num">$100</td><td class="cell-num">$300</td><td class="cell-num">10</td><td class="cell-notes">+ early access to newest models</td></tr>
+                        <tr><td class="cell-model">Team</td><td class="cell-num">$500</td><td class="cell-num">$1,000 shared</td><td class="cell-num">10</td><td class="cell-notes">Unlimited seats, centralized billing/admin</td></tr>
+                        <tr><td class="cell-model">Enterprise</td><td class="cell-num">custom</td><td class="cell-num">custom</td><td class="cell-num">custom</td><td class="cell-notes">SSO, model access controls, budgets per user/key</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="meta-row mt-2">Credits refresh monthly, never roll over. Hosting: US primarily (Europe overflow). NVIDIA Cloud Partners under no-log / no-train / zero-data-retention terms.</p>
+        </div>
+
+        <!-- Token throughput scenarios -->
+        <div class="provider-section reveal">
+            <h3>Token Throughput: What Each Plan Buys</h3>
+            <p class="text-gray-400 mb-4">Blended workload ≈ 3 input : 1 output tokens (typical agentic/RAG mix). Credits consumed at the model's listed rate.</p>
+
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="scenario-card reveal">
+                    <h4>Pro — $20/mo</h4>
+                    <p class="text-sm text-gray-300 mb-2">$60 in credits · 3 concurrent</p>
+                    <ul class="text-sm text-gray-400 space-y-1">
+                        <li>DeepSeek V4.1-Flash (off-peak): <strong class="text-green-300">~229M blended</strong></li>
+                        <li>GLM-5.3-Flash: <strong class="text-green-300">~253M blended</strong></li>
+                        <li>Kimi K3.1 Pro: <strong class="text-green-300">~15M blended</strong></li>
+                        <li>Inkling 2 Small: <strong class="text-green-300">~126M blended</strong></li>
+                    </ul>
+                    <p class="text-xs text-gray-500 mt-3">Individual power user. Heavy agentic use (10M tokens/day) exhausts Pro in 1–2 weeks.</p>
+                </div>
+                <div class="scenario-card reveal">
+                    <h4>Max — $100/mo</h4>
+                    <p class="text-sm text-gray-300 mb-2">$300 in credits · 10 concurrent</p>
+                    <ul class="text-sm text-gray-400 space-y-1">
+                        <li>DeepSeek V4.1-Flash (off-peak): <strong class="text-green-300">~1,143M blended</strong></li>
+                        <li>GLM-5.3-Flash: <strong class="text-green-300">~1,263M blended</strong></li>
+                        <li>Kimi K3.1 Pro: <strong class="text-green-300">~75M blended</strong></li>
+                        <li>Inkling 2 Small: <strong class="text-green-300">~632M blended</strong></li>
+                    </ul>
+                    <p class="text-xs text-gray-500 mt-3">Sweet spot for a single power user or small agent fleet. 5× Pro headroom.</p>
+                </div>
+                <div class="scenario-card reveal">
+                    <h4>Team — $500/mo</h4>
+                    <p class="text-sm text-gray-300 mb-2">$1,000 shared credits · 10 concurrent · unlimited seats</p>
+                    <ul class="text-sm text-gray-400 space-y-1">
+                        <li>DeepSeek V4.1-Flash (off-peak): <strong class="text-green-300">~3,810M blended</strong></li>
+                        <li>GLM-5.3-Flash: <strong class="text-green-300">~4,211M blended</strong></li>
+                        <li>Kimi K3.1 Pro: <strong class="text-green-300">~250M blended</strong></li>
+                        <li>Inkling 2 Small: <strong class="text-green-300">~2,105M blended</strong></li>
+                    </ul>
+                    <p class="text-xs text-gray-500 mt-3">~$50/seat for a 10-person team including usage. Cheap if aggregate burn &lt; $1,000 of API-equivalent tokens.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ollama per-model rates -->
+        <div class="provider-section reveal">
+            <h3>Ollama Cloud Per-Model Rates</h3>
+            <p class="text-gray-400 mb-3">What your credits actually buy. Ollama's rates track provider list prices — the subscription buys the bundle, not a unit discount.</p>
+            <div class="ref-card p-2 md:p-4 table-wrap">
+                <table class="ref-table" aria-label="Ollama Cloud per-model token rates November 2026">
+                    <thead>
+                        <tr>
+                            <th scope="col">Model</th>
+                            <th scope="col" class="col-num">In /1M</th>
+                            <th scope="col" class="col-num">Cached in /1M</th>
+                            <th scope="col" class="col-num">Out /1M</th>
+                            <th scope="col">Direct API equivalent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="cell-model">deepseek-v4.1-flash</td><td class="cell-num">$0.30</td><td class="cell-num">$0.006</td><td class="cell-num">$1.20</td><td class="cell-notes">Identical to DeepSeek direct (peak rate)</td></tr>
+                        <tr><td class="cell-model">deepseek-v4-pro</td><td class="cell-num">$1.32</td><td class="cell-num">$0.044</td><td class="cell-num">$3.96</td><td class="cell-notes">Identical to DeepSeek direct (peak rate)</td></tr>
+                        <tr><td class="cell-model">glm-5.3</td><td class="cell-num">$1.40</td><td class="cell-num">$0.26</td><td class="cell-num">$4.40</td><td class="cell-notes">Identical to Z.ai direct</td></tr>
+                        <tr><td class="cell-model">glm-5.3-flash</td><td class="cell-num">$0.15</td><td class="cell-num">$0.03</td><td class="cell-num">$0.50</td><td class="cell-notes">Identical to Z.ai direct</td></tr>
+                        <tr><td class="cell-model">kimi-k3.1-pro</td><td class="cell-num">$2.00</td><td class="cell-num">$0.20</td><td class="cell-num">$10.00</td><td class="cell-notes">Consistent with Moonshot direct</td></tr>
+                        <tr><td class="cell-model">kimi-k3</td><td class="cell-num">$3.00</td><td class="cell-num">$0.30</td><td class="cell-num">$15.00</td><td class="cell-notes">Identical to Moonshot direct</td></tr>
+                        <tr><td class="cell-model">minimax-m3</td><td class="cell-num">$0.60</td><td class="cell-num">$0.12</td><td class="cell-num">$2.40</td><td class="cell-notes">Ollama sits at the &gt;512K tier rate</td></tr>
+                        <tr><td class="cell-model">minimax-m3.1-flash</td><td class="cell-num">$0.15</td><td class="cell-num">$0.015</td><td class="cell-num">$0.60</td><td class="cell-notes">Ollama-specific rate; not on MiniMax's page</td></tr>
+                        <tr><td class="cell-model">inkling-2-small</td><td class="cell-num">$0.30</td><td class="cell-num">$0.03</td><td class="cell-num">$1.00</td><td class="cell-notes">Identical to Tinker direct · <strong>runs Kimi (CFO)</strong></td></tr>
+                        <tr><td class="cell-model">gpt-oss:120b</td><td class="cell-num">$0.15</td><td class="cell-num">$0.014</td><td class="cell-num">$0.60</td><td class="cell-notes">Open-weight</td></tr>
+                        <tr><td class="cell-model">gpt-oss:20b</td><td class="cell-num">$0.07</td><td class="cell-num">$0.035</td><td class="cell-num">$0.30</td><td class="cell-notes">Open-weight</td></tr>
+                        <tr><td class="cell-model">mistral-large-4</td><td class="cell-num">$0.70</td><td class="cell-num">$0.07</td><td class="cell-num">$2.10</td><td class="cell-notes">≈ Mistral preview $0.68/$2.09, well below $1.36/$4.18 list · <strong>runs Garrison (security)</strong></td></tr>
+                        <tr><td class="cell-model">muse-spark-open</td><td class="cell-num">$1.25</td><td class="cell-num">$0.15</td><td class="cell-num">$4.25</td><td class="cell-notes">Identical to Together/OpenRouter/Meta closed · <strong>runs Aria (Web/SEO)</strong></td></tr>
+                        <tr><td class="cell-model">nemotron-3-ultra</td><td class="cell-num">$0.10</td><td class="cell-num">$0.10</td><td class="cell-num">$3.00</td><td class="cell-notes">Ollama-hosted</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Three boardroom picks on Ollama -->
+        <div class="provider-section reveal">
+            <div class="ref-card p-6 md:p-8 border-green-400/40">
+                <h3 class="text-green-300 font-bold mb-4">The Three Boardroom Picks on Ollama (Nov 2026)</h3>
+                <p class="text-gray-400 text-sm mb-4">For a board favouring Anthropic/OpenAI, these are the three credible challengers on capability-per-dollar. All three are open-weight, so the exit ramp to self-hosting is built in. Executive Mind supervises all three in production via Ollama Cloud.</p>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-black/40 p-4 rounded border border-green-400/20">
+                        <p class="text-green-300 font-bold mb-1">Inkling 2 Small</p>
+                        <p class="text-xs text-gray-500 mb-2">Thinking Machines Lab · $0.30/$1.00</p>
+                        <p class="text-sm text-gray-300 mb-2">Reasoning/finance champion. Vals Finance 61.5%, Finance Agent v2.1 67.5%. Best value reasoning token on the menu.</p>
+                        <p class="text-xs text-green-400/80">→ Runs Kimi, our CFO</p>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded border border-green-400/20">
+                        <p class="text-green-300 font-bold mb-1">Muse Spark Open</p>
+                        <p class="text-xs text-gray-500 mb-2">Meta · $1.25/$4.25</p>
+                        <p class="text-sm text-gray-300 mb-2">Knowledge/reasoning leader among open weights (AA Intelligence Index 39). Closed-model pricing; self-hostable under Muse Model License.</p>
+                        <p class="text-xs text-green-400/80">→ Runs Aria, our Web/SEO lead</p>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded border border-green-400/20">
+                        <p class="text-green-300 font-bold mb-1">Mistral Large 4</p>
+                        <p class="text-xs text-gray-500 mb-2">Mistral · $0.70/$2.10 (≈preview)</p>
+                        <p class="text-sm text-gray-300 mb-2">Security/enterprise pick (tied-first AA Cyber Index). EU sovereign deployment, on-prem option. The regulated-AU-workload answer.</p>
+                        <p class="text-xs text-green-400/80">→ Runs Garrison, our Security &amp; Treasury</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- When Ollama wins vs loses -->
+        <div class="provider-section reveal">
+            <h3>When Ollama Cloud Wins vs Direct API</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="ref-card p-6">
+                    <h4 class="text-green-300 font-bold mb-3">WINS when:</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>One invoice, one API key, instant access to 20+ open-weight models</li>
+                        <li>Data-handling posture matters: zero-retention, no-training across all hosted models — a single contractual answer instead of six vendor DPAs</li>
+                        <li>Bursty/unpredictable load where concurrency of 3–10 and monthly credit pooling beats per-provider rate-limit negotiation</li>
+                        <li>You want open weights with the option to move in-house later</li>
+                    </ul>
+                </div>
+                <div class="ref-card p-6">
+                    <h4 class="text-amber-400 font-bold mb-3">LOSES when:</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>You need frontier closed models (Claude, GPT-6, Gemini 3 Pro) — Ollama does not host them</li>
+                        <li>Sustained high-volume single-model workloads: direct API has no concurrency ceiling and no $500/mo floor</li>
+                        <li>You need SLA-backed uptime, AU data residency, or audit certifications</li>
+                        <li>Latency-critical paths: shared queues beyond your concurrency cap</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Board framing -->
+        <div class="provider-section reveal">
+            <div class="ref-card p-6 md:p-8">
+                <h3 class="text-green-300 font-bold mb-3">Suggested Framing for the Board</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li>"One invoice, zero retention, 20+ frontier open models, $20–$500/mo depending on burn."</li>
+                    <li>Pro = individual power user; Max = one heavy agent or small team; Team = 5–20 seat rollout with shared budget and admin controls.</li>
+                    <li>It is a bundling discount on convenience and compliance, not a token-price discount. Anyone spending &gt;$1,000/mo on a single model family should price direct API vs Team before renewing.</li>
+                    <li>Keep Anthropic/OpenAI/Google contracts for closed frontier models; use Ollama for open-weight routing, experimentation, and bulk workloads.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reading the numbers -->
+<section id="reading" class="px-4 pb-16 reveal-section">
+    <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-green-300 mb-6 reveal">Reading the Numbers</h2>
+        <ul class="space-y-4 text-gray-200">
+            <li class="reveal">
+                <strong class="text-green-300">Cheapest real reasoning per token:</strong>
+                DeepSeek V4.1-Flash ($0.15/$0.60 off-peak) and GPT-6 Luna ($0.10/$0.50) — frontier-family reasoning at flash pricing. GLM-5.3-Flash ($0.15/$0.50) is the open-weight champion.
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">Batch APIs:</strong>
+                −50% on OpenAI, Anthropic, Google, Bedrock. DeepSeek peak/off-peak ≈ same lever.
+                <strong class="text-green-300"> Caching:</strong>
+                −90% on input (Anthropic), ~99.9% on cache hits (DeepSeek), $0.03 (GLM Flash), $0.30 (Kimi K3).
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">Gemini 3.1 Pro promo ends 2026-11-30:</strong>
+                Price doubles December 1 ($2→$4 input, $10→$20 output). Lock in workloads before month-end if using Gemini.
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">Open-source champions:</strong>
+                GLM-5.3 ($1.40/$4.40) and Kimi K3 ($3.00/$15.00) offer open-weight frontier reasoning. Inkling 2 Small ($0.30/$1.00 on Ollama) and Muse Spark ($1.25/$4.25 on Ollama) shine for cost-sensitive agentic workloads. Mistral Large 4 ($0.70/$2.10 on Ollama) balances capability and price.
+            </li>
+            <li class="reveal">
+                <strong class="text-green-300">Verify before contracting.</strong>
+                Prices as published mid-November 2026. Provider pricing pages move; the PDF is a snapshot, not a contract.
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- Sources -->
+<section class="px-4 pb-16 reveal-section">
+    <div class="max-w-5xl mx-auto ref-card p-6 md:p-8">
+        <h2 class="text-xl font-bold text-green-300 mb-3 reveal">Sources</h2>
+        <p class="text-gray-300 reveal">
+            Provider pricing pages retrieved 2026-11-14: platform.claude.com, developers.openai.com, aistudio.google.com, deepseek.com, open.bigmodel.cn, ollama.com/pricing, platform.minimax.io, docs.x.ai, alibabacloud.com, aws.amazon.com/bedrock/pricing.
+            Secondary cross-checks: openrouter.ai, benchlm.ai, cloudzero.com, maximem.ai, requesty.ai.
+        </p>
+        <p class="meta-row mt-4 reveal">Compiled by Executive Mind · <a href="/" class="text-green-300 hover:text-green-200">executivemind.io</a> · Brisbane, Queensland</p>
+        <p class="meta-row mt-2 reveal">
+            <a href="/references/llm-token-pricing-september-2026" class="text-green-400/60 hover:text-green-300">← September 2026 edition</a>
+        </p>
+    </div>
+</section>
+
+<!-- Footer -->
+<div data-footer-slot></div>
+
+</body>
+</html>
