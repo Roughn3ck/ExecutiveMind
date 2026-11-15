@@ -166,6 +166,39 @@
             opacity: 0.85;
         }
 
+        /* Transparent artwork (the Brisbane skyline PNG) — no border, the art
+           carries itself. Kept separate from .hero-img so the opaque
+           tug-of-war JPEG further down the page keeps its frame. */
+        .hero-img-art {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            opacity: 0.92;
+        }
+
+        /* ===== Matrix rain (added 2026-11-16) =====
+           Two layers: a full-page fixed rain behind the content (the house
+           pattern from index.html), plus a second rain field scoped to the
+           hero so the glyphs fall ACROSS the cityscape rather than behind it.
+           The skyline PNG is 38% transparent, so the background rain shows
+           through the gaps and the hero rain lands on the solid artwork —
+           depth, not a flat overlay. */
+        .matrix-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; opacity: 0.3; }
+        .matrix-bg canvas { display: block; }
+
+        .skyline-stage { position: relative; isolation: isolate; }
+        .skyline-stage .hero-img-art { position: relative; z-index: 1; }
+        .skyline-rain {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            opacity: 0.55;
+        }
+        .skyline-rain canvas { display: block; width: 100%; height: 100%; }
+
         .scenario-card {
             background: rgba(86, 233, 143, 0.04);
             border: 1px solid rgba(86, 233, 143, 0.2);
@@ -176,6 +209,9 @@
     </style>
 </head>
 <body class="antialiased">
+
+<!-- Matrix rain — full page (house pattern) -->
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
 
 <!-- Header / Nav -->
 <div data-nav-slot data-nav-flavour="main" data-nav-active="articles"></div>
@@ -196,13 +232,14 @@
     </div>
 </header>
 
-<!-- Hero image placeholder -->
+<!-- Hero image — Brisbane skyline with matrix rain falling across it -->
 <section class="px-4 mb-8 reveal-section">
-    <div class="max-w-5xl mx-auto reveal">
+    <div class="max-w-5xl mx-auto reveal skyline-stage">
         <picture>
           <source srcset="/assets/llm-pricing-hero-nov-2026.v4.webp" type="image/webp">
-          <img src="/assets/llm-pricing-hero-nov-2026.v4.png" alt="Brisbane skyline mural — transparent overlay of the Story Bridge and Brisbane skyline painted in the Executive Mind palette" class="hero-img" loading="lazy" onerror="this.style.display='none'">
+          <img src="/assets/llm-pricing-hero-nov-2026.v4.png" alt="Brisbane skyline mural — transparent overlay of the Story Bridge and Brisbane skyline painted in the Executive Mind palette" class="hero-img-art" loading="lazy" onerror="this.style.display='none'">
         </picture>
+        <div class="skyline-rain" aria-hidden="true"><canvas id="skyline-matrix"></canvas></div>
     </div>
 </section>
 
@@ -822,6 +859,86 @@
 
 <!-- Footer -->
 <div data-footer-slot></div>
+
+<script>
+    // ===== Matrix rain (added 2026-11-16) =====
+    // Two independent rain fields:
+    //   #matrix        — full-page fixed layer behind the content (house pattern)
+    //   #skyline-matrix— scoped to the Brisbane skyline hero, layered over the
+    //                    artwork so the glyphs fall ACROSS the cityscape
+    //                    (the PNG is 38% transparent, so the back layer shows
+    //                    through the gaps and the front layer lands on the
+    //                    solid artwork — depth rather than a flat overlay).
+    (function () {
+        const CHARS = "EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
+
+        function makeRain(canvasId, opts) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return null;
+            const ctx = canvas.getContext("2d");
+            const fontSize = opts.fontSize;
+            let columns = 0;
+            let drops = [];
+
+            function resize() {
+                const rect = canvas.getBoundingClientRect();
+                const w = Math.max(1, Math.round(rect.width));
+                const h = Math.max(1, Math.round(rect.height));
+                if (opts.dpr) {
+                    const dpr = Math.min(2, window.devicePixelRatio || 1);
+                    canvas.width = w * dpr;
+                    canvas.height = h * dpr;
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                } else {
+                    canvas.width = w;
+                    canvas.height = h;
+                }
+                columns = Math.floor(w / fontSize);
+                drops = Array(columns).fill(0);
+            }
+
+            function draw() {
+                const rect = canvas.getBoundingClientRect();
+                const w = rect.width;
+                const h = rect.height;
+                // Trail fade — clears the previous frame to a translucent black
+                ctx.fillStyle = opts.fade;
+                ctx.fillRect(0, 0, w, h);
+                ctx.fillStyle = opts.color;
+                ctx.font = fontSize + "px monospace";
+                for (let i = 0; i < drops.length; i++) {
+                    const text = CHARS.charAt(Math.floor(Math.random() * CHARS.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > h && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            resize();
+            window.addEventListener("resize", resize);
+            setInterval(draw, opts.interval);
+            return { resize: resize, draw: draw };
+        }
+
+        // Full-page rain — the house pattern from index.html
+        makeRain("matrix", {
+            fontSize: 14,
+            interval: 33,
+            fade: "rgba(0, 0, 0, 0.05)",
+            color: "#56e98f",
+        });
+
+        // Skyline rain — denser, brighter, falling across the artwork
+        makeRain("skyline-matrix", {
+            fontSize: 13,
+            interval: 42,
+            fade: "rgba(0, 0, 0, 0.07)",
+            color: "#8dffc0",
+        });
+    })();
+</script>
 
 </body>
 </html>
