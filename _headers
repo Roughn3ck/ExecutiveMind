@@ -1,5 +1,10 @@
 # Cloudflare Pages _headers for executivemind.io
 # Generated: 2026-07-11
+# Reworked 2026-11-15: /assets/* is enumerated by extension instead of a
+# blanket rule. A blanket /assets/* rule PLUS an /assets/*.pdf rule made
+# Cloudflare MERGE both Cache-Control values ("max-age=31536000, immutable,
+# public, max-age=3600") — the 1-year value won and PDFs stayed unfreezable.
+# One rule per extension, no overlap, so each file type gets exactly one.
 
 /*
   X-Content-Type-Options: nosniff
@@ -22,12 +27,37 @@
 /robots.txt
   Cache-Control: public, max-age=3600
 
-/assets/*
+# ---- /assets : 1-year immutable for fingerprinted, versioned media ----
+# These are renamed on change (v2/v3 suffixes) or carry a ?v= query, so a long
+# TTL is safe and the immutable flag is honoured by browsers.
+
+/assets/*.jpg
   Cache-Control: public, max-age=31536000, immutable
 
-# PDFs are updated by name — a 1-year immutable TTL means a same-name update
-# never reaches browsers and needs a Cloudflare purge to land. Cache them for
-# an hour instead so PDF revisions ship without manual cache work.
+/assets/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.avif
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# ---- /assets PDFs : short TTL, NOT immutable ----
+# PDFs are revised in place under the same filename. An immutable 1-year TTL
+# means a same-name update never reaches browsers and needs a manual
+# Cloudflare purge. An hour-long revalidating TTL lets revisions ship on
+# their own, with no purge and no versioned filename required.
+
 /assets/*.pdf
   Cache-Control: public, max-age=3600, must-revalidate
 
