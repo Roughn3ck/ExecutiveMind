@@ -25,5 +25,11 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# PDFs are updated by name — a 1-year immutable TTL means a same-name update
+# never reaches browsers and needs a Cloudflare purge to land. Cache them for
+# an hour instead so PDF revisions ship without manual cache work.
+/assets/*.pdf
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /articles/*
   Cache-Control: public, max-age=3600
