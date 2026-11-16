@@ -38,3 +38,7 @@
 # lives at that path, so a redirect there would hijack it.
 /references/llm-token-pricing-november-2026 /llm-token-pricing 301
 /references/llm-token-pricing-november-2026.html /llm-token-pricing 301
+
+# Cochran marketing page removed 2026-11-17 — page deleted, old URLs return 410
+/let-the-agents-live /gone.html 410
+/let-the-agents-live.html /gone.html 410

@@ -23,7 +23,7 @@
 //   -> 429 {success:false, message}   per-IP throttle (isolate + KV)
 //   -> 502 {success:false, message}   SMTP failure — frontends fall back to mailto
 //   -> 503 {success:false, message}   endpoint not configured / AUTH rejected
-// Frontends wired to this endpoint: index.html, let-the-agents-live.html, book.html.
+// Frontends wired to this endpoint: index.html, book.html.
 // A 307 in _redirects keeps any cached copy posting the old /agent/send_form.php
 // path flowing into this handler.
 
