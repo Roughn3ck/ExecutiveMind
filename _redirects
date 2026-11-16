@@ -24,8 +24,17 @@
 /key-manager /gone.html 410
 /key-manager.html /gone.html 410
 
-# LLM Pricing — November 2026 edition
-/references/llm-token-pricing-november-2026.html /references/llm-token-pricing-november-2026 301
+# LLM Pricing PDFs — superseded files redirect to the final print PDF.
+# The files themselves are removed from assets/; these keep any shared link alive.
+/assets/llm-pricing-nov-2026-em-reference.pdf /assets/llm-pricing-nov-2026-em-reference.print.pdf 301
+/assets/llm-pricing-nov-2026-em-reference.v3.pdf /assets/llm-pricing-nov-2026-em-reference.print.pdf 301
+/assets/llm-pricing-quick-reference-nov-2026.pdf /assets/llm-pricing-nov-2026-em-reference.print.pdf 301
+/assets/llm-pricing-quick-reference-nov-2026.print.pdf /assets/llm-pricing-nov-2026-em-reference.print.pdf 301
+/assets/llm-pricing-quick-reference-nov-2026.v1.pdf /assets/llm-pricing-nov-2026-em-reference.print.pdf 301
 
-# Short memorable URL used on the pricing reference card's closing statement
-/llm-token-pricing /references/llm-token-pricing-november-2026 301
+# LLM Pricing — retitled 2026-11-16 to /llm-token-pricing (page moved to root).
+# The old paths redirect to the new canonical URL.
+# NOTE: there is deliberately NO rule for /llm-token-pricing — the page now
+# lives at that path, so a redirect there would hijack it.
+/references/llm-token-pricing-november-2026 /llm-token-pricing 301
+/references/llm-token-pricing-november-2026.html /llm-token-pricing 301
