@@ -20,9 +20,14 @@
 # Dead PHP endpoint → Pages Function inquiry endpoint (forms swapped 2026-10-07; POST body preserved)
 /agent/send_form.php /api/inquiry 307
 
-# ColdStack removed 2026-10-13 (security incident) — product no longer available
-/key-manager /gone.html 410
-/key-manager.html /gone.html 410
+# ColdStack removed 2026-10-13 (security incident) — product no longer available.
+# 301 not 410: Cloudflare Pages _redirects silently drops 410 status codes
+# (verified 2026-11-17 on a preview deployment — the rule parsed but the request
+# fell through to the static 404 handler). A 301 to the noindex tombstone is
+# the honest, working equivalent: the URL is permanently retired and the
+# visitor lands on a page that says so.
+/key-manager /gone 301
+/key-manager.html /gone 301
 
 # LLM Pricing PDFs — superseded files redirect to the final print PDF.
 # The files themselves are removed from assets/; these keep any shared link alive.
@@ -39,6 +44,8 @@
 /references/llm-token-pricing-november-2026 /llm-token-pricing 301
 /references/llm-token-pricing-november-2026.html /llm-token-pricing 301
 
-# Cochran marketing page removed 2026-11-17 — page deleted, old URLs return 410
-/let-the-agents-live /gone.html 410
-/let-the-agents-live.html /gone.html 410
+# Cochran marketing page removed 2026-11-17 — page deleted.
+# 301 not 410: see the /key-manager note above — 410 is not supported by
+# Cloudflare Pages _redirects and falls through to a bare 404.
+/let-the-agents-live /gone 301
+/let-the-agents-live.html /gone 301
