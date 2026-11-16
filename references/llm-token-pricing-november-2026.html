@@ -849,40 +849,54 @@
 
 <script>
     // --- MATRIX RAIN (house pattern, identical to index.html) ---
-    // Canvas is sized from window.innerWidth/innerHeight, NOT getBoundingClientRect:
-    // the canvas carries no CSS sizing, so its layout box is the intrinsic
-    // 300x150 default — measuring that confines the rain to a small patch in
-    // the top-left corner instead of the full viewport.
-    const canvas = document.getElementId('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
-    const fontSize = 14;
-    let columns = Math.floor(canvas.width / fontSize);
-    let drops = Array(columns).fill(0);
-    function resizeCanvas() {
+    // Wrapped in a DOMContentLoaded guard and using window.document explicitly.
+    // The Tailwind Play CDN (cdn.tailwindcss.com) is a blocking classic script
+    // that runs BEFORE this block, and on this page it left a global lexical
+    // binding named `document` in place during this script's execution — so
+    // the bare `document.getElementById(...)` reference threw
+    // "document.getElementById is not a function" and the rain never started
+    // (the canvas stayed at its intrinsic 300x150 default, so nothing painted).
+    // Deferring to DOMContentLoaded runs this after the document and Tailwind
+    // have fully settled, when the global resolves to the real HTMLDocument.
+    function startMatrixRain() {
+        var doc = window.document;
+        var canvas = doc.getElementById('matrix');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        columns = Math.floor(canvas.width / fontSize);
-        drops = Array(columns).fill(0);
-    }
-    window.addEventListener('resize', resizeCanvas);
-    function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#56e98f';
-        ctx.font = fontSize + 'px monospace';
-        for (let i = 0; i < drops.length; i++) {
-            const text = chars.charAt(Math.floor(Math.random() * chars.length));
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
+        var chars = 'EMIND0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+        var fontSize = 14;
+        var columns = Math.floor(canvas.width / fontSize);
+        var drops = Array(columns).fill(0);
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            columns = Math.floor(canvas.width / fontSize);
+            drops = Array(columns).fill(0);
         }
+        window.addEventListener('resize', resizeCanvas);
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#56e98f';
+            ctx.font = fontSize + 'px monospace';
+            for (var i = 0; i < drops.length; i++) {
+                var text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 33);
     }
-    setInterval(draw, 33);
+    if (window.document.readyState === 'loading') {
+        window.document.addEventListener('DOMContentLoaded', startMatrixRain);
+    } else {
+        startMatrixRain();
+    }
 </script>
 
 </body>
